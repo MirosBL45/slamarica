@@ -1,0 +1,21 @@
+@mixin card {
+    background: $color-surface;
+    border-radius: $radius-md;
+    box-shadow: $shadow-card;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin truncate {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@mixin transition($properties: all, $duration: 0.3s, $ease: ease-in-out) {
+    transition: $properties $duration $ease;
+}

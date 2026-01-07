@@ -1,0 +1,26 @@
+// Mobile-first breakpoints
+$bp-xs: 360px; // mali telefoni
+$bp-sm: 480px; // standard telefoni
+$bp-md: 768px; // tablet
+$bp-lg: 1024px; // mali laptop
+$bp-xl: 1280px; // desktop
+$bp-xxl: 1440px; // veliki desktop
+
+// Mixins
+@mixin up($size) {
+    @media (min-width: $size) {
+        @content;
+    }
+}
+
+@mixin down($size) {
+    @media (max-width: $size) {
+        @content;
+    }
+}
+
+@mixin between($min, $max) {
+    @media (min-width: $min) and (max-width: $max) {
+        @content;
+    }
+}
