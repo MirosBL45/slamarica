@@ -1,18 +1,18 @@
 import { makeAutoObservable } from 'mobx';
 
-export interface Household {
+export interface IHousehold {
     id: string;
     name: string;
 }
 
 export class HouseholdStore {
-    household: Household | null = null;
+    household: IHousehold | null = null;
 
     constructor() {
         makeAutoObservable(this);
     }
 
-    setHousehold(household: Household) {
+    setHousehold(household: IHousehold) {
         this.household = household;
     }
 

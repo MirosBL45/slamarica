@@ -1,18 +1,18 @@
 import { makeAutoObservable } from 'mobx';
 
-export interface Member {
+export interface IMember {
     id: string;
     name: string;
 }
 
 export class MembersStore {
-    members: Member[] = [];
+    members: IMember[] = [];
 
     constructor() {
         makeAutoObservable(this);
     }
 
-    addMember(member: Member) {
+    addMember(member: IMember) {
         this.members.push(member);
     }
 
