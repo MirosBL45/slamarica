@@ -1,13 +1,17 @@
-'use client';
-
-import { Button, Card, Form, InputNumber } from 'antd';
+// 'use client';
 
 import ForSave from '@/components/ForSave';
 import TestForMobX from '@/components/TestForMobX';
 import TestPools from '@/components/TestPools';
+import TextLangComp from '@/components/TextLangComp';
 import styles from './page.module.scss';
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
   return (
     <div>
       <h1 className={styles.title}>Slamarica</h1>
@@ -27,20 +31,8 @@ export default function Home() {
         Reprehenderit magni neque numquam cumque.
       </p>
       <TestPools />
-      <p>iznad je test pool</p>
-      <section>
-        <Card style={{ maxWidth: 400, margin: '2rem auto' }}>
-          <Form layout="vertical">
-            <Form.Item label="Plata">
-              <InputNumber style={{ width: '100%' }} />
-            </Form.Item>
-
-            <Button type="primary" block>
-              Potvrdi
-            </Button>
-          </Form>
-        </Card>
-      </section>
+      <p>iznad je test pool</p> *
+      <TextLangComp locale={locale} />
     </div>
   );
 }
