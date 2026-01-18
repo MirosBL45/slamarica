@@ -12,6 +12,7 @@ export default async function Home({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+
   return (
     <div>
       <h1 className={styles.title}>Slamarica</h1>
