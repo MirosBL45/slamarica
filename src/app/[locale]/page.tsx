@@ -1,8 +1,3 @@
-// 'use client';
-
-import ForSave from '@/components/ForSave';
-import TestForMobX from '@/components/TestForMobX';
-import TestPools from '@/components/TestPools';
 import TextLangComp from '@/components/TextLangComp';
 import styles from './page.module.scss';
 
@@ -16,14 +11,12 @@ export default async function Home({
   return (
     <div>
       <h1 className={styles.title}>Slamarica</h1>
-      <ForSave />
       <p>
         ispod ide test Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Nostrum quaerat odio voluptatibus nobis. Sunt, corrupti rem. Libero
         facilis vitae rem voluptates velit fugiat earum quam atque totam
         consequuntur. At, voluptas.
       </p>
-      <TestForMobX />
       <p>iznad ide test</p>
       <p>
         ispod ide jos jedan test Lorem ipsum dolor sit amet consectetur,
@@ -31,7 +24,6 @@ export default async function Home({
         deserunt quae repellat soluta ullam, cum consequatur tempore minima.
         Reprehenderit magni neque numquam cumque.
       </p>
-      <TestPools />
       <p>iznad je test pool</p> *
       <TextLangComp locale={locale} />
     </div>
