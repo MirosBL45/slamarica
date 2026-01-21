@@ -2,24 +2,26 @@
 
 import { observer } from 'mobx-react-lite';
 import { Form, Select, InputNumber, Button, Card } from 'antd';
-import dayjs from 'dayjs';
 
 import { useStores } from '@/stores/StoreContext';
 
+interface Props {
+  month: string; // YYYY-MM (dolazi iz MonthSelector)
+}
+
 interface IFormValues {
   memberId: string;
-  month: string; // YYYY-MM
   salary: number;
 }
 
-const AddIncomeForm = observer(() => {
+const AddIncomeForm = observer(({ month }: Props) => {
   const { membersStore, budgetStore, monthlyIncomeStore } = useStores();
   const [form] = Form.useForm<IFormValues>();
 
   const onFinish = (values: IFormValues) => {
     monthlyIncomeStore.createIncome(
       values.memberId,
-      values.month,
+      month, // 👈 JEDINI izvor meseca
       values.salary,
       budgetStore,
     );
@@ -29,14 +31,7 @@ const AddIncomeForm = observer(() => {
 
   return (
     <Card style={{ maxWidth: 420 }}>
-      <Form
-        form={form}
-        layout="vertical"
-        onFinish={onFinish}
-        initialValues={{
-          month: dayjs().format('YYYY-MM'),
-        }}
-      >
+      <Form form={form} layout="vertical" onFinish={onFinish}>
         <Form.Item
           label="Član"
           name="memberId"
@@ -48,18 +43,6 @@ const AddIncomeForm = observer(() => {
               label: m.name,
               value: m.id,
             }))}
-          />
-        </Form.Item>
-
-        <Form.Item
-          label="Mesec"
-          name="month"
-          rules={[{ required: true, message: 'Unesi mesec' }]}
-        >
-          <InputNumber
-            style={{ width: '100%' }}
-            placeholder="YYYY-MM"
-            stringMode
           />
         </Form.Item>
 

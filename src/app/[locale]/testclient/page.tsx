@@ -5,12 +5,16 @@ import { useStores } from '@/stores/StoreContext';
 import AddIncomeForm from '@/components/AddIncomeForm';
 import MonthlyIncomeList from '@/components/MonthlyIncomeList';
 import MonthlyTotals from '@/components/MonthlyTotals';
+import MonthSelector from '@/components/MonthSelector';
+import { useState } from 'react';
 
 export default function Page() {
   const { membersStore } = useStores();
+  const [month, setMonth] = useState('2026-01');
 
   return (
     <div style={{ padding: '1rem' }}>
+      <MonthSelector value={month} onChange={setMonth} />
       <Button
         onClick={() =>
           membersStore.addMember({
@@ -23,9 +27,9 @@ export default function Page() {
         Dodaj test člana
       </Button>
 
-      <AddIncomeForm />
-      <MonthlyIncomeList month="2026-01" />
-      <MonthlyTotals month="2026-01" />
+      <AddIncomeForm month={month} />
+      <MonthlyIncomeList month={month} />
+      <MonthlyTotals month={month} />
     </div>
   );
 }
