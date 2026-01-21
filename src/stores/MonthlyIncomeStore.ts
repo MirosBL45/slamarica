@@ -25,6 +25,25 @@ export class MonthlyIncomeStore {
         return this.incomes.filter(i => i.month === month);
     }
 
+    getTotalsByMonth(month: string) {
+        const totals: Record<string, number> = {
+            personal: 0,
+            bills: 0,
+            travel: 0,
+            food: 0,
+            savings: 0,
+        };
+
+        this.getByMonth(month).forEach(income => {
+            Object.entries(income.breakdown).forEach(([key, value]) => {
+                totals[key] += value;
+            });
+        });
+
+        return totals;
+    }
+
+
     createIncome(
         memberId: string,
         month: string,

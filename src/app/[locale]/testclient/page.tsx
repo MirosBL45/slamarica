@@ -4,6 +4,7 @@ import { Button } from 'antd';
 import { useStores } from '@/stores/StoreContext';
 import AddIncomeForm from '@/components/AddIncomeForm';
 import MonthlyIncomeList from '@/components/MonthlyIncomeList';
+import MonthlyTotals from '@/components/MonthlyTotals';
 
 export default function Page() {
   const { membersStore } = useStores();
@@ -24,6 +25,7 @@ export default function Page() {
 
       <AddIncomeForm />
       <MonthlyIncomeList month="2026-01" />
+      <MonthlyTotals month="2026-01" />
     </div>
   );
 }
