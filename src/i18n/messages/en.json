@@ -3,5 +3,68 @@
     "confirm": "Confirm",
     "salary": "Salary",
     "total": "Total"
+  },
+  "household": {
+    "title": "Your household budget",
+    "description": "Manage members and monthly income distribution."
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Tips and ideas about managing household budgets.",
+    "comingSoon": "Blog coming soon."
+  },
+  "income": {
+    "member": "Member",
+    "selectMember": "Select member",
+    "salary": "Salary",
+    "enterAmount": "Enter amount",
+    "greaterThanZero": "Must be greater than 0",
+    "addIncome": "Add income",
+    "duplicate": "Income already exists for this member in this month",
+    "percentageError": "Percentages must equal 100%"
+  },
+  "members": {
+    "name": "Member name",
+    "enterName": "Enter member name",
+    "minLength": "Name must have at least 2 characters",
+    "placeholder": "Enter name",
+    "addMember": "Add member",
+    "actions": "Actions",
+    "delete": "Delete",
+    "empty": "No members"
+  },
+  "incomeTable": {
+    "member": "Member",
+    "salary": "Salary",
+    "personal": "Personal",
+    "bills": "Bills",
+    "travel": "Travel",
+    "food": "Food",
+    "savings": "Savings",
+    "unknown": "Unknown",
+    "empty": "No data"
+  },
+  "totals": {
+    "personal": "Personal",
+    "bills": "Bills",
+    "travel": "Travel",
+    "food": "Food",
+    "savings": "Savings"
+  },
+  "month": {
+    "selectMonth": "Select month"
+  },
+  "navbar": {
+    "home": "Home",
+    "household": "Household",
+    "blog": "Blog",
+    "menu": "Menu",
+    "switchLanguage": "Switch language"
+  },
+  "home": {
+    "title": "Household Budget",
+    "description1": "Saving and managing money has never been easier! This app helps you track income and expenses, plan monthly budgets and achieve your financial goals.",
+    "description2": "Smart money management for a happier life!",
+    "enterApp": "Enter the app"
   }
 }

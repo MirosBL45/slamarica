@@ -2,9 +2,11 @@
 
 import { observer } from 'mobx-react-lite';
 import { Table, Button, Card } from 'antd';
+import { useTranslations } from 'next-intl';
 import { useStores } from '@/stores/StoreContext';
 
 const MemberList = observer(() => {
+  const t = useTranslations('members');
   const { membersStore, monthlyIncomeStore } = useStores();
 
   const data = membersStore.members.map((member) => ({
@@ -15,11 +17,11 @@ const MemberList = observer(() => {
 
   const columns = [
     {
-      title: 'Ime',
+      title: t('name'),
       dataIndex: 'name',
     },
     {
-      title: 'Akcije',
+      title: t('actions'),
       render: (_: any, record: any) => {
         const hasIncome = monthlyIncomeStore.hasIncomeForMember(record.id);
 
@@ -30,7 +32,7 @@ const MemberList = observer(() => {
             disabled={hasIncome}
             onClick={() => membersStore.removeMember(record.id, hasIncome)}
           >
-            Obriši
+            {t('delete')}
           </Button>
         );
       },
@@ -43,7 +45,7 @@ const MemberList = observer(() => {
         columns={columns}
         dataSource={data}
         pagination={false}
-        locale={{ emptyText: 'Nema članova' }}
+        locale={{ emptyText: t('empty') }}
       />
     </Card>
   );

@@ -2,6 +2,7 @@
 
 import { observer } from 'mobx-react-lite';
 import { Form, Input, Button, Card } from 'antd';
+import { useTranslations } from 'next-intl';
 import { useStores } from '@/stores/StoreContext';
 
 interface IFormValues {
@@ -9,6 +10,7 @@ interface IFormValues {
 }
 
 const AddMemberForm = observer(() => {
+  const t = useTranslations('members');
   const { membersStore } = useStores();
   const [form] = Form.useForm<IFormValues>();
 
@@ -25,18 +27,18 @@ const AddMemberForm = observer(() => {
     <Card style={{ maxWidth: 420, marginBottom: '1rem' }}>
       <Form form={form} layout="vertical" onFinish={onFinish}>
         <Form.Item
-          label="Ime člana"
+          label={t('name')}
           name="name"
           rules={[
-            { required: true, message: 'Unesi ime člana' },
-            { min: 2, message: 'Ime mora imati bar 2 slova' },
+            { required: true, message: t('enterName') },
+            { min: 2, message: t('minLength') },
           ]}
         >
-          <Input placeholder="Unesi ime" />
+          <Input placeholder={t('placeholder')} />
         </Form.Item>
 
         <Button type="primary" htmlType="submit" block>
-          Dodaj člana
+          {t('addMember')}
         </Button>
       </Form>
     </Card>

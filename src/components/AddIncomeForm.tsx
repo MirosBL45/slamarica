@@ -2,11 +2,12 @@
 
 import { observer } from 'mobx-react-lite';
 import { Form, Select, InputNumber, Button, Card } from 'antd';
+import { useTranslations } from 'next-intl';
 
 import { useStores } from '@/stores/StoreContext';
 
 interface Props {
-  month: string; // YYYY-MM (dolazi iz MonthSelector)
+  month: string;
 }
 
 interface IFormValues {
@@ -15,6 +16,7 @@ interface IFormValues {
 }
 
 const AddIncomeForm = observer(({ month }: Props) => {
+  const t = useTranslations('income');
   const { membersStore, budgetStore, monthlyIncomeStore } = useStores();
   const [form] = Form.useForm<IFormValues>();
 
@@ -32,7 +34,7 @@ const AddIncomeForm = observer(({ month }: Props) => {
       form.setFields([
         {
           name: 'memberId',
-          errors: ['Već postoji unos za ovog člana u ovom mesecu'],
+          errors: [t('duplicate')],
         },
       ]);
     }
@@ -42,12 +44,12 @@ const AddIncomeForm = observer(({ month }: Props) => {
     <Card style={{ maxWidth: 420 }}>
       <Form form={form} layout="vertical" onFinish={onFinish}>
         <Form.Item
-          label="Član"
+          label={t('member')}
           name="memberId"
-          rules={[{ required: true, message: 'Izaberi člana' }]}
+          rules={[{ required: true, message: t('selectMember') }]}
         >
           <Select
-            placeholder="Izaberi člana"
+            placeholder={t('selectMember')}
             options={membersStore.members.map((m) => ({
               label: m.name,
               value: m.id,
@@ -56,11 +58,11 @@ const AddIncomeForm = observer(({ month }: Props) => {
         </Form.Item>
 
         <Form.Item
-          label="Plata"
+          label={t('salary')}
           name="salary"
           rules={[
-            { required: true, message: 'Unesi iznos' },
-            { type: 'number', min: 1, message: 'Mora biti veće od 0' },
+            { required: true, message: t('enterAmount') },
+            { type: 'number', min: 1, message: t('greaterThanZero') },
           ]}
         >
           <InputNumber style={{ width: '100%' }} min={0} step={1000} />
@@ -72,12 +74,12 @@ const AddIncomeForm = observer(({ month }: Props) => {
           block
           disabled={!budgetStore.isValid}
         >
-          Dodaj platu
+          {t('addIncome')}
         </Button>
 
         {!budgetStore.isValid && (
           <div style={{ marginTop: '0.5rem', color: '#b94a48' }}>
-            Procenti moraju biti 100%
+            {t('percentageError')}
           </div>
         )}
       </Form>
