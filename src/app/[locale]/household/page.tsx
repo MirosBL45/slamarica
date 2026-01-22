@@ -13,7 +13,7 @@ export default async function Household({
       <p>Household page</p>
       <TextLangComp locale={locale} />
       <p>ispod ide ovoo</p>
-      <AddIncomeForm />
+      <AddIncomeForm month="2026-01" />
     </div>
   );
 }
