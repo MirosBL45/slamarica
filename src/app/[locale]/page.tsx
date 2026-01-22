@@ -1,5 +1,7 @@
 import TextLangComp from '@/components/TextLangComp';
 import styles from './page.module.scss';
+import Link from 'next/link';
+import { Button } from 'antd';
 
 export default async function Home({
   params,
@@ -26,6 +28,9 @@ export default async function Home({
       </p>
       <p>iznad je test pool</p> *
       <TextLangComp locale={locale} />
+      <Button type="primary">
+        <Link href={`/${locale}/household`}>Uđi u aplikaciju</Link>
+      </Button>
     </div>
   );
 }

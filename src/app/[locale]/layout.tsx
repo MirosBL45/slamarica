@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
+import Navbar from '@/components/Navbar';
 
 import '@/styles/globals.scss';
 
@@ -29,7 +30,10 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <AntdRegistry>{children}</AntdRegistry>
+          <AntdRegistry>
+            <Navbar />
+            {children}
+          </AntdRegistry>
         </NextIntlClientProvider>
       </body>
     </html>
