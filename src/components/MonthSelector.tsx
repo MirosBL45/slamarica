@@ -2,17 +2,20 @@
 
 import { DatePicker } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
-import { useLocale } from 'next-intl';
+import 'dayjs/locale/sr';
+import 'dayjs/locale/en';
+import { useLocale, useTranslations } from 'next-intl';
 
 interface Props {
-  value: string; // "YYYY-MM"
+  value: string;
   onChange: (month: string) => void;
 }
 
 export default function MonthSelector({ value, onChange }: Props) {
   const locale = useLocale();
+  const t = useTranslations('month');
 
-  const format = locale === 'sr' ? 'MM-YYYY' : 'YYYY-MM';
+  dayjs.locale(locale);
 
   const handleChange = (date: Dayjs | null) => {
     if (!date) return;
@@ -24,7 +27,8 @@ export default function MonthSelector({ value, onChange }: Props) {
       picker="month"
       value={dayjs(value)}
       onChange={handleChange}
-      format={format}
+      placeholder={t('selectMonth')}
+      format={locale === 'sr' ? 'MM-YYYY' : 'YYYY-MM'}
       style={{ marginBottom: '1rem' }}
     />
   );

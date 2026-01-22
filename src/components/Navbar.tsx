@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { Menu, Dropdown, Button, Drawer, Grid } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
@@ -11,6 +11,7 @@ const { useBreakpoint } = Grid;
 
 export default function Navbar() {
   const locale = useLocale();
+  const t = useTranslations('navbar');
   const pathname = usePathname();
   const screens = useBreakpoint();
 
@@ -18,7 +19,6 @@ export default function Navbar() {
 
   const otherLocale = locale === 'sr' ? 'en' : 'sr';
 
-  // menja samo prvi segment (locale)
   const switchLocalePath = `/${otherLocale}${pathname.replace(
     `/${locale}`,
     '',
@@ -27,30 +27,17 @@ export default function Navbar() {
   const menuItems = [
     {
       key: 'home',
-      label: <Link href={`/${locale}`}>Home</Link>,
+      label: <Link href={`/${locale}`}>{t('home')}</Link>,
     },
     {
       key: 'household',
-      label: <Link href={`/${locale}/household`}>Household</Link>,
+      label: <Link href={`/${locale}/household`}>{t('household')}</Link>,
     },
     {
       key: 'blog',
-      label: <Link href={`/${locale}/blog`}>Blog</Link>,
+      label: <Link href={`/${locale}/blog`}>{t('blog')}</Link>,
     },
   ];
-
-  const languageMenu = (
-    <Menu
-      items={[
-        {
-          key: 'switch',
-          label: (
-            <Link href={switchLocalePath}>{otherLocale.toUpperCase()}</Link>
-          ),
-        },
-      ]}
-    />
-  );
 
   return (
     <div
@@ -90,11 +77,10 @@ export default function Navbar() {
         </div>
       ) : (
         <>
-          {/* MOBILE */}
           <Button icon={<MenuOutlined />} onClick={() => setOpen(true)} />
 
           <Drawer
-            title="Menu"
+            title={t('menu')}
             placement="left"
             onClose={() => setOpen(false)}
             open={open}
@@ -103,7 +89,7 @@ export default function Navbar() {
 
             <div style={{ marginTop: '1rem' }}>
               <Link href={switchLocalePath}>
-                Promeni jezik ({otherLocale.toUpperCase()})
+                {t('switchLanguage')} ({otherLocale.toUpperCase()})
               </Link>
             </div>
           </Drawer>

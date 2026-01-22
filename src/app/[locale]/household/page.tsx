@@ -1,20 +1,20 @@
-'use client';
+import HouseholdClient from './components/HouseholdClient';
+import { getTranslations } from 'next-intl/server';
 
-import { useState } from 'react';
-import MonthSelector from '@/components/MonthSelector';
-import AddIncomeForm from '@/components/AddIncomeForm';
-import MonthlyIncomeList from '@/components/MonthlyIncomeList';
-import MonthlyTotals from '@/components/MonthlyTotals';
-
-export default function Household() {
-  const [month, setMonth] = useState('2026-01');
+export default async function HouseholdPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'household' });
 
   return (
     <div style={{ padding: '1rem' }}>
-      <MonthSelector value={month} onChange={setMonth} />
-      <AddIncomeForm month={month} />
-      <MonthlyIncomeList month={month} />
-      <MonthlyTotals month={month} />
+      <h1>{t('title')}</h1>
+      <p>{t('description')}</p>
+
+      <HouseholdClient />
     </div>
   );
 }

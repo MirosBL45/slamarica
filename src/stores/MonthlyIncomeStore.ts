@@ -72,6 +72,11 @@ export class MonthlyIncomeStore {
         });
     }
 
+    hasIncomeForMember(memberId: string) {
+        return this.incomes.some(
+            income => income.memberId === memberId
+        );
+    }
 
     clear() {
         this.incomes = [];

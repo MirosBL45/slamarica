@@ -3,5 +3,68 @@
     "confirm": "Potvrdi",
     "salary": "Plata",
     "total": "Ukupno"
+  },
+  "household": {
+    "title": "Vaš kućni budžet",
+    "description": "Upravljajte članovima i raspodelom mesečnih prihoda."
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Saveti i ideje o upravljanju kućnim budžetom.",
+    "comingSoon": "Blog stiže uskoro."
+  },
+  "income": {
+    "member": "Član",
+    "selectMember": "Izaberi člana",
+    "salary": "Plata",
+    "enterAmount": "Unesi iznos",
+    "greaterThanZero": "Mora biti veće od 0",
+    "addIncome": "Dodaj platu",
+    "duplicate": "Već postoji unos za ovog člana u ovom mesecu",
+    "percentageError": "Procenti moraju biti 100%"
+  },
+  "members": {
+    "name": "Ime člana",
+    "enterName": "Unesi ime člana",
+    "minLength": "Ime mora imati bar 2 slova",
+    "placeholder": "Unesi ime",
+    "addMember": "Dodaj člana",
+    "actions": "Akcije",
+    "delete": "Obriši",
+    "empty": "Nema članova"
+  },
+  "incomeTable": {
+    "member": "Član",
+    "salary": "Plata",
+    "personal": "Lični",
+    "bills": "Računi",
+    "travel": "Putovanja",
+    "food": "Hrana",
+    "savings": "Štednja",
+    "unknown": "Nepoznat",
+    "empty": "Nema podataka"
+  },
+  "totals": {
+    "personal": "Lični",
+    "bills": "Računi",
+    "travel": "Putovanja",
+    "food": "Hrana",
+    "savings": "Štednja"
+  },
+  "month": {
+    "selectMonth": "Izaberi mesec"
+  },
+  "navbar": {
+    "home": "Početna",
+    "household": "Kuća",
+    "blog": "Blog",
+    "menu": "Meni",
+    "switchLanguage": "Promeni jezik"
+  },
+  "home": {
+    "title": "Kućni budžet",
+    "description1": "Štednja i upravljanje novcem nikada nisu bili lakši! Ova aplikacija vam pomaže da pratite vaše prihode i rashode, planirate mesečni budžet i ostvarite vaše finansijske ciljeve.",
+    "description2": "Pametno upravljanje novcem za srećniji život!",
+    "enterApp": "Uđi u aplikaciju"
   }
 }
