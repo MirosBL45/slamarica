@@ -16,9 +16,14 @@ export class MembersStore {
         this.members.push(member);
     }
 
-    removeMember(memberId: string) {
+    removeMember(memberId: string, hasIncome: boolean) {
+        if (hasIncome) {
+            throw new Error('Member has income and cannot be deleted');
+        }
+
         this.members = this.members.filter(m => m.id !== memberId);
     }
+
 
     clearMembers() {
         this.members = [];
