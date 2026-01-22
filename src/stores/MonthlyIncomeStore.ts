@@ -50,6 +50,14 @@ export class MonthlyIncomeStore {
         salary: number,
         budgetStore: BudgetStore
     ) {
+        const alreadyExists = this.incomes.some(
+            income => income.memberId === memberId && income.month === month
+        );
+
+        if (alreadyExists) {
+            throw new Error('Income already exists for this member and month');
+        }
+
         const breakdown = budgetStore.pools.reduce((acc, pool) => {
             acc[pool.type] = Math.round((salary * pool.percentage) / 100);
             return acc;
@@ -63,6 +71,7 @@ export class MonthlyIncomeStore {
             breakdown,
         });
     }
+
 
     clear() {
         this.incomes = [];

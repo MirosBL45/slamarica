@@ -19,14 +19,23 @@ const AddIncomeForm = observer(({ month }: Props) => {
   const [form] = Form.useForm<IFormValues>();
 
   const onFinish = (values: IFormValues) => {
-    monthlyIncomeStore.createIncome(
-      values.memberId,
-      month, // 👈 JEDINI izvor meseca
-      values.salary,
-      budgetStore,
-    );
+    try {
+      monthlyIncomeStore.createIncome(
+        values.memberId,
+        month,
+        values.salary,
+        budgetStore,
+      );
 
-    form.resetFields(['salary']);
+      form.resetFields(['salary']);
+    } catch (error) {
+      form.setFields([
+        {
+          name: 'memberId',
+          errors: ['Već postoji unos za ovog člana u ovom mesecu'],
+        },
+      ]);
+    }
   };
 
   return (
