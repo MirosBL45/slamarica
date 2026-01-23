@@ -29,7 +29,7 @@ const AddIncomeForm = observer(({ month }: Props) => {
         budgetStore,
       );
 
-      form.resetFields(['salary']);
+      form.resetFields();
     } catch (error) {
       form.setFields([
         {
@@ -50,10 +50,13 @@ const AddIncomeForm = observer(({ month }: Props) => {
         >
           <Select
             placeholder={t('selectMember')}
-            options={membersStore.members.map((m) => ({
-              label: m.name,
-              value: m.id,
-            }))}
+            notFoundContent={t('noMembers')}
+            options={membersStore.members
+              .filter((m) => m.status === 'active')
+              .map((m) => ({
+                label: m.name,
+                value: m.id,
+              }))}
           />
         </Form.Item>
 

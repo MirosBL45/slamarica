@@ -21,7 +21,8 @@
     "greaterThanZero": "Mora biti veće od 0",
     "addIncome": "Dodaj platu",
     "duplicate": "Već postoji unos za ovog člana u ovom mesecu",
-    "percentageError": "Procenti moraju biti 100%"
+    "percentageError": "Procenti moraju biti 100%",
+    "noMembers": "Nema članova"
   },
   "members": {
     "name": "Ime člana",
@@ -31,7 +32,20 @@
     "addMember": "Dodaj člana",
     "actions": "Akcije",
     "delete": "Obriši",
-    "empty": "Nema članova"
+    "empty": "Nema članova",
+    "status": "Status",
+    "active": "Aktivan",
+    "inactive": "Neaktivan",
+    "confirmDeleteTitle": "Potvrda brisanja",
+    "confirmDeleteText": "Da li ste sigurni da želite da obrišete člana?",
+    "confirmInactiveTitle": "Postavljanje neaktivnog statusa",
+    "confirmInactiveText": "Član već ima unete plate. Biće postavljen kao neaktivan. Da li ste sigurni?",
+    "setInactive": "Postavi neaktivan",
+    "cancel": "Otkaži",
+    "confirmRestoreTitle": "Vraćanje člana",
+    "confirmRestoreText": "Da li želite ponovo da aktivirate ovog člana?",
+    "restore": "Vrati člana",
+    "duplicate": "Član sa tim imenom već postoji"
   },
   "incomeTable": {
     "member": "Član",
