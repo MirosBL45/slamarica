@@ -1,5 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 
+const STORAGE_KEY = 'slamarica_budget';
+
 export type BudgetPoolType =
     | 'personal'
     | 'bills'
@@ -23,10 +25,25 @@ const DEFAULT_POOLS: IBudgetPool[] = [
 
 
 export class BudgetStore {
-    pools: IBudgetPool[] = DEFAULT_POOLS;
+    pools: IBudgetPool[] = DEFAULT_POOLS.map(p => ({ ...p }));
 
     constructor() {
         makeAutoObservable(this);
+    }
+
+    hydrate() {
+        if (typeof window === 'undefined') return;
+
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            this.pools = JSON.parse(stored);
+        }
+    }
+
+    private persist() {
+        if (typeof window !== 'undefined') {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.pools));
+        }
     }
 
     get totalPercentage() {
@@ -41,11 +58,13 @@ export class BudgetStore {
         const pool = this.pools.find(p => p.type === type);
         if (pool) {
             pool.percentage = value;
-        }
+        };
+        this.persist();
     }
 
     resetToDefault() {
         this.pools = DEFAULT_POOLS.map(p => ({ ...p }));
+        this.persist();
     }
 }
 

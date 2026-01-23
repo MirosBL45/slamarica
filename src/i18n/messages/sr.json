@@ -80,5 +80,15 @@
     "description1": "Štednja i upravljanje novcem nikada nisu bili lakši! Ova aplikacija vam pomaže da pratite vaše prihode i rashode, planirate mesečni budžet i ostvarite vaše finansijske ciljeve.",
     "description2": "Pametno upravljanje novcem za srećniji život!",
     "enterApp": "Uđi u aplikaciju"
+  },
+  "budget": {
+    "title": "Raspodela budžeta za mesec",
+    "personal": "Lični",
+    "bills": "Računi",
+    "travel": "Putovanja",
+    "food": "Hrana",
+    "savings": "Štednja",
+    "total": "Ukupno",
+    "locked": "Budžet je zaključan jer već postoji unos za ovaj mesec."
   }
 }
