@@ -1,5 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 
+const STORAGE_KEY = 'slamarica_members';
+
 export interface IMember {
     id: string;
     name: string;
@@ -11,6 +13,21 @@ export class MembersStore {
 
     constructor() {
         makeAutoObservable(this);
+    }
+
+    hydrate() {
+        if (typeof window === 'undefined') return;
+
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            this.members = JSON.parse(stored);
+        }
+    }
+
+    private persist() {
+        if (typeof window !== 'undefined') {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.members));
+        }
     }
 
     addMember(member: { id: string; name: string }) {
@@ -26,6 +43,8 @@ export class MembersStore {
             ...member,
             status: 'active',
         });
+
+        this.persist();
     }
 
 
@@ -40,6 +59,7 @@ export class MembersStore {
             // ima income → samo menjamo status
             member.status = 'inactive';
         }
+        this.persist();
     }
 
     restoreMember(memberId: string) {
@@ -47,9 +67,13 @@ export class MembersStore {
         if (!member) return;
 
         member.status = 'active';
+
+        this.persist();
     }
 
     clearMembers() {
         this.members = [];
+
+        this.persist();
     }
 }
