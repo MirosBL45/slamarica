@@ -3,6 +3,7 @@ import { makeAutoObservable } from 'mobx';
 export interface IMember {
     id: string;
     name: string;
+    status: 'active' | 'inactive';
 }
 
 export class MembersStore {
@@ -12,17 +13,27 @@ export class MembersStore {
         makeAutoObservable(this);
     }
 
-    addMember(member: IMember) {
-        this.members.push(member);
+    addMember(member: { id: string; name: string }) {
+        this.members.push({
+            ...member,
+            status: 'active',
+        });
     }
+
 
     removeMember(memberId: string, hasIncome: boolean) {
-        if (hasIncome) {
-            throw new Error('Member has income and cannot be deleted');
-        }
+        const member = this.members.find(m => m.id === memberId);
+        if (!member) return;
 
-        this.members = this.members.filter(m => m.id !== memberId);
+        if (!hasIncome) {
+            // nema income → stvarno brišemo
+            this.members = this.members.filter(m => m.id !== memberId);
+        } else {
+            // ima income → samo menjamo status
+            member.status = 'inactive';
+        }
     }
+
 
 
     clearMembers() {

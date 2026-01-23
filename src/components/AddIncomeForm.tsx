@@ -50,10 +50,12 @@ const AddIncomeForm = observer(({ month }: Props) => {
         >
           <Select
             placeholder={t('selectMember')}
-            options={membersStore.members.map((m) => ({
-              label: m.name,
-              value: m.id,
-            }))}
+            options={membersStore.members
+              .filter((m) => m.status === 'active')
+              .map((m) => ({
+                label: m.name,
+                value: m.id,
+              }))}
           />
         </Form.Item>
 
