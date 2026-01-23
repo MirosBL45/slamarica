@@ -2,6 +2,8 @@ import { makeAutoObservable } from 'mobx';
 import { BudgetPoolType } from './BudgetStore';
 import { BudgetStore } from './BudgetStore';
 
+const STORAGE_KEY = 'slamarica_incomes';
+
 export interface IMonthlyIncome {
     id: string;
     memberId: string;
@@ -17,8 +19,25 @@ export class MonthlyIncomeStore {
         makeAutoObservable(this);
     }
 
+    hydrate() {
+        if (typeof window === 'undefined') return;
+
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            this.incomes = JSON.parse(stored);
+        }
+    }
+
+    private persist() {
+        if (typeof window !== 'undefined') {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.incomes));
+        }
+    }
+
     addIncome(income: IMonthlyIncome) {
         this.incomes.push(income);
+
+        this.persist();
     }
 
     getByMonth(month: string) {
@@ -80,5 +99,6 @@ export class MonthlyIncomeStore {
 
     clear() {
         this.incomes = [];
+        this.persist();
     }
 }
