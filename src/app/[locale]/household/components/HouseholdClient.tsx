@@ -13,11 +13,12 @@ import { useStores } from '@/stores/StoreContext';
 export default function HouseholdClient() {
   const [month, setMonth] = useState('2026-01');
 
-  const { membersStore, monthlyIncomeStore } = useStores();
+  const { membersStore, monthlyIncomeStore, budgetStore } = useStores();
 
   useEffect(() => {
     membersStore.hydrate();
     monthlyIncomeStore.hydrate();
+    budgetStore.hydrate();
   }, []);
 
   return (
