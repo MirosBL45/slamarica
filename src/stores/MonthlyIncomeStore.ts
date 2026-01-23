@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx';
-import { BudgetPoolType } from './BudgetStore';
+import { BudgetPoolType, IBudgetPool } from './BudgetStore';
 import { BudgetStore } from './BudgetStore';
 
 const STORAGE_KEY = 'slamarica_incomes';
@@ -13,10 +13,26 @@ export interface IMonthlyIncome {
 }
 
 export class MonthlyIncomeStore {
+    monthlyBudgets: {
+        month: string;
+        pools: IBudgetPool[];
+    }[] = [];
+
     incomes: IMonthlyIncome[] = [];
 
     constructor() {
         makeAutoObservable(this);
+    }
+
+    getBudgetForMonth(month: string) {
+        return this.monthlyBudgets.find(b => b.month === month);
+    }
+
+    createBudgetForMonth(month: string, pools: IBudgetPool[]) {
+        this.monthlyBudgets.push({
+            month,
+            pools: pools.map(p => ({ ...p })) // snapshot
+        });
     }
 
     hydrate() {
@@ -77,7 +93,14 @@ export class MonthlyIncomeStore {
             throw new Error('Income already exists for this member and month');
         }
 
-        const breakdown = budgetStore.pools.reduce((acc, pool) => {
+        let monthBudget = this.getBudgetForMonth(month);
+
+        if (!monthBudget) {
+            this.createBudgetForMonth(month, budgetStore.pools);
+            monthBudget = this.getBudgetForMonth(month);
+        }
+
+        const breakdown = monthBudget!.pools.reduce((acc, pool) => {
             acc[pool.type] = Math.round((salary * pool.percentage) / 100);
             return acc;
         }, {} as Record<BudgetPoolType, number>);

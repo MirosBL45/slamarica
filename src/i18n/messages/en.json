@@ -80,5 +80,15 @@
     "description1": "Saving and managing money has never been easier! This app helps you track income and expenses, plan monthly budgets and achieve your financial goals.",
     "description2": "Smart money management for a happier life!",
     "enterApp": "Enter the app"
+  },
+  "budget": {
+    "title": "Monthly budget distribution",
+    "personal": "Personal",
+    "bills": "Bills",
+    "travel": "Travel",
+    "food": "Food",
+    "savings": "Savings",
+    "total": "Total",
+    "locked": "Budget is locked because income already exists for this month."
   }
 }
