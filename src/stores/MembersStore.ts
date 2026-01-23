@@ -14,6 +14,14 @@ export class MembersStore {
     }
 
     addMember(member: { id: string; name: string }) {
+        const exists = this.members.some(
+            m => m.name.toLowerCase() === member.name.toLowerCase()
+        );
+
+        if (exists) {
+            throw new Error('Member already exists');
+        }
+
         this.members.push({
             ...member,
             status: 'active',
@@ -34,7 +42,12 @@ export class MembersStore {
         }
     }
 
+    restoreMember(memberId: string) {
+        const member = this.members.find(m => m.id === memberId);
+        if (!member) return;
 
+        member.status = 'active';
+    }
 
     clearMembers() {
         this.members = [];

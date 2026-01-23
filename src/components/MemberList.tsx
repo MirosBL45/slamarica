@@ -11,9 +11,10 @@ const MemberList = observer(() => {
 
   const data = membersStore.members.map((member) => ({
     key: member.id,
-    name: member.name,
     id: member.id,
+    name: member.name,
     status: member.status,
+    hasIncome: monthlyIncomeStore.hasIncomeForMember(member.id),
   }));
 
   const columns = [
@@ -43,17 +44,37 @@ const MemberList = observer(() => {
     {
       title: t('actions'),
       render: (_: any, record: any) => {
-        const hasIncome = monthlyIncomeStore.hasIncomeForMember(record.id);
+        const { hasIncome } = record;
 
+        // ako je inactive → nudimo vraćanje
+        if (record.status === 'inactive') {
+          return (
+            <Button
+              type="primary"
+              size="small"
+              onClick={() => {
+                Modal.confirm({
+                  title: t('confirmRestoreTitle'),
+                  content: t('confirmRestoreText'),
+                  okText: t('restore'),
+                  cancelText: t('cancel'),
+                  onOk: () => {
+                    membersStore.restoreMember(record.id);
+                  },
+                });
+              }}
+            >
+              {t('restore')}
+            </Button>
+          );
+        }
+
+        // active član
         return (
           <Button
             danger
             size="small"
             onClick={() => {
-              const hasIncome = monthlyIncomeStore.hasIncomeForMember(
-                record.id,
-              );
-
               Modal.confirm({
                 title: hasIncome
                   ? t('confirmInactiveTitle')

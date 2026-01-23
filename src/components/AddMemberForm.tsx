@@ -15,12 +15,21 @@ const AddMemberForm = observer(() => {
   const [form] = Form.useForm<IFormValues>();
 
   const onFinish = (values: IFormValues) => {
-    membersStore.addMember({
-      id: crypto.randomUUID(),
-      name: values.name.trim(),
-    });
+    try {
+      membersStore.addMember({
+        id: crypto.randomUUID(),
+        name: values.name.trim(),
+      });
 
-    form.resetFields();
+      form.resetFields();
+    } catch (error) {
+      form.setFields([
+        {
+          name: 'name',
+          errors: [t('duplicate')],
+        },
+      ]);
+    }
   };
 
   return (
