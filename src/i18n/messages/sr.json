@@ -90,5 +90,17 @@
     "savings": "Štednja",
     "total": "Ukupno",
     "locked": "Budžet je zaključan jer već postoji unos za ovaj mesec."
-  }
+  },
+  "settings": {
+  "title": "Podešavanja kuće"
+  },
+  "householdLayout": {
+  "title": "Kućni budžet",
+  "text": "Možete otići na",
+  "settings": "podešavanja",
+  "settingsTitle": "Idi na podešavanja",
+  "main": "glavnu stranicu kuće",
+  "mainTitle": "Idi na glavnu stranicu kuće",
+  "or": "ili na"
+}
 }
