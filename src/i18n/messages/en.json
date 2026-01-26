@@ -90,5 +90,17 @@
     "savings": "Savings",
     "total": "Total",
     "locked": "Budget is locked because income already exists for this month."
-  }
+  },
+  "settings": {
+  "title": "Household settings"
+  },
+  "householdLayout": {
+  "title": "Household",
+  "text": "You can go to",
+  "settings": "settings",
+  "settingsTitle": "Go to settings",
+  "main": "main household page",
+  "mainTitle": "Go to main household page",
+  "or": "or to"
+}
 }
