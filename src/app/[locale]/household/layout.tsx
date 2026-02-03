@@ -21,14 +21,14 @@ export default async function HouseholdLayout({
 
         <p>
           {t('text')}{' '}
-          <Link
+          <Link style={{color: 'green'}}
             title={t('settingsTitle')}
             href={`/${locale}/household/settings`}
           >
             {t('settings')}
           </Link>{' '}
           {t('or')}{' '}
-          <Link
+          <Link style={{color: 'green'}}
             title={t('mainTitle')}
             href={`/${locale}/household`}
           >
