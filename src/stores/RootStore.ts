@@ -20,12 +20,15 @@
 // export const rootStore = new RootStore();
 
 import { HouseholdStore } from './HouseholdStore';
+import { MembersStore } from './MembersStore';
 
 export class RootStore {
   householdStore: HouseholdStore;
+  membersStore: MembersStore;
 
   constructor() {
     this.householdStore = new HouseholdStore();
+    this.membersStore = new MembersStore(this);
   }
 }
 
