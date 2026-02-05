@@ -1,8 +1,7 @@
 import { makeAutoObservable } from "mobx";
-import { BudgetPoolType, IBudgetPool } from "./BudgetStore";
+import { BudgetPoolType } from "./BudgetStore";
 import { BudgetStore } from "./BudgetStore";
-
-const STORAGE_KEY = "slamarica_incomes";
+import { RootStore } from "./RootStore";
 
 export interface IMonthlyIncome {
   id: string;
@@ -13,56 +12,21 @@ export interface IMonthlyIncome {
 }
 
 export class MonthlyIncomeStore {
-  monthlyBudgets: {
-    month: string;
-    pools: IBudgetPool[];
-  }[] = [];
-
-  incomes: IMonthlyIncome[] = [];
-
-  constructor() {
+  constructor(private rootStore: RootStore) {
     makeAutoObservable(this);
   }
 
-  getBudgetForMonth(month: string) {
-    return this.monthlyBudgets.find((b) => b.month === month);
-  }
-
-  createBudgetForMonth(month: string, pools: IBudgetPool[]) {
-    this.monthlyBudgets.push({
-      month,
-      pools: pools.map((p) => ({ ...p })), // snapshot
-    });
-  }
-
-  hydrate() {
-    if (typeof window === "undefined") return;
-
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      const parsed = JSON.parse(stored);
-
-      this.incomes = parsed.incomes ?? [];
-      this.monthlyBudgets = parsed.monthlyBudgets ?? [];
-    }
-  }
-
-  private persist() {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify({
-          incomes: this.incomes,
-          monthlyBudgets: this.monthlyBudgets,
-        }),
-      );
-    }
+  get incomes() {
+    return (
+      this.rootStore.householdStore.activeHousehold?.incomes ?? []
+    );
   }
 
   addIncome(income: IMonthlyIncome) {
-    this.incomes.push(income);
+    const household = this.rootStore.householdStore.activeHousehold;
+    if (!household) return;
 
-    this.persist();
+    household.incomes.push(income);
   }
 
   getByMonth(month: string) {
@@ -91,29 +55,31 @@ export class MonthlyIncomeStore {
     memberId: string,
     month: string,
     salary: number,
-    budgetStore: BudgetStore,
+    budgetStore: BudgetStore
   ) {
-    const alreadyExists = this.incomes.some(
-      (income) => income.memberId === memberId && income.month === month,
+    const household = this.rootStore.householdStore.activeHousehold;
+    if (!household) return;
+
+    const alreadyExists = household.incomes.some(
+      (income) =>
+        income.memberId === memberId &&
+        income.month === month
     );
 
     if (alreadyExists) {
-      throw new Error("Income already exists for this member and month");
+      throw new Error(
+        "Income already exists for this member and month"
+      );
     }
 
-    let monthBudget = this.getBudgetForMonth(month);
-
-    if (!monthBudget) {
-      this.createBudgetForMonth(month, budgetStore.pools);
-      monthBudget = this.getBudgetForMonth(month);
-    }
-
-    const breakdown = monthBudget!.pools.reduce(
+    const breakdown = budgetStore.pools.reduce(
       (acc, pool) => {
-        acc[pool.type] = Math.round((salary * pool.percentage) / 100);
+        acc[pool.type] = Math.round(
+          (salary * pool.percentage) / 100
+        );
         return acc;
       },
-      {} as Record<BudgetPoolType, number>,
+      {} as Record<BudgetPoolType, number>
     );
 
     this.addIncome({
@@ -126,11 +92,16 @@ export class MonthlyIncomeStore {
   }
 
   hasIncomeForMember(memberId: string) {
-    return this.incomes.some((income) => income.memberId === memberId);
+    return this.incomes.some(
+      (income) => income.memberId === memberId
+    );
   }
 
   clear() {
-    this.incomes = [];
-    this.persist();
+    const household =
+      this.rootStore.householdStore.activeHousehold;
+    if (!household) return;
+
+    household.incomes = [];
   }
 }

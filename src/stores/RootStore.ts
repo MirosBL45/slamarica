@@ -21,14 +21,18 @@
 
 import { HouseholdStore } from './HouseholdStore';
 import { MembersStore } from './MembersStore';
+import { MonthlyIncomeStore } from './MonthlyIncomeStore';
 
 export class RootStore {
   householdStore: HouseholdStore;
   membersStore: MembersStore;
+  monthlyIncomeStore: MonthlyIncomeStore;
 
   constructor() {
     this.householdStore = new HouseholdStore();
     this.membersStore = new MembersStore(this);
+    this.monthlyIncomeStore = new MonthlyIncomeStore(this);
+
   }
 }
 
