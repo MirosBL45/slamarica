@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { observer } from 'mobx-react-lite';
-import { Form, Select, InputNumber, Button, Card } from 'antd';
-import { useTranslations } from 'next-intl';
+import { observer } from "mobx-react-lite";
+import { Form, Select, InputNumber, Button, Card } from "antd";
+import { useTranslations } from "next-intl";
 
-import { useStores } from '@/stores/StoreContext';
+import { useStores } from "@/stores/StoreContext";
 
 interface Props {
   month: string;
@@ -16,7 +16,7 @@ interface IFormValues {
 }
 
 const AddIncomeForm = observer(({ month }: Props) => {
-  const t = useTranslations('income');
+  const t = useTranslations("income");
   const { membersStore, budgetStore, monthlyIncomeStore } = useStores();
   const [form] = Form.useForm<IFormValues>();
 
@@ -33,10 +33,11 @@ const AddIncomeForm = observer(({ month }: Props) => {
     } catch (error) {
       form.setFields([
         {
-          name: 'memberId',
-          errors: [t('duplicate')],
+          name: "memberId",
+          errors: [t("duplicate")],
         },
       ]);
+      alert(error);
     }
   };
 
@@ -44,15 +45,15 @@ const AddIncomeForm = observer(({ month }: Props) => {
     <Card style={{ maxWidth: 420 }}>
       <Form form={form} layout="vertical" onFinish={onFinish}>
         <Form.Item
-          label={t('member')}
+          label={t("member")}
           name="memberId"
-          rules={[{ required: true, message: t('selectMember') }]}
+          rules={[{ required: true, message: t("selectMember") }]}
         >
           <Select
-            placeholder={t('selectMember')}
-            notFoundContent={t('noMembers')}
+            placeholder={t("selectMember")}
+            notFoundContent={t("noMembers")}
             options={membersStore.members
-              .filter((m) => m.status === 'active')
+              .filter((m) => m.status === "active")
               .map((m) => ({
                 label: m.name,
                 value: m.id,
@@ -61,28 +62,47 @@ const AddIncomeForm = observer(({ month }: Props) => {
         </Form.Item>
 
         <Form.Item
-          label={t('salary')}
+          label={t("salary")}
           name="salary"
           rules={[
-            { required: true, message: t('enterAmount') },
-            { type: 'number', min: 1, message: t('greaterThanZero') },
+            { required: true, message: t("salaryRequired") },
+            {
+              validator: (_, value) => {
+                if (typeof value !== "number" || Number.isNaN(value)) {
+                  return Promise.reject(t("salaryMustBeNumber"));
+                }
+                if (value <= 0) {
+                  return Promise.reject(t("salaryMustBePositive"));
+                }
+                return Promise.resolve();
+              },
+            },
           ]}
         >
-          <InputNumber style={{ width: '100%' }} min={0} step={1000} />
+          <InputNumber
+            style={{ width: "100%" }}
+            min={0}
+            step={1000}
+            parser={(value) => {
+              const onlyDigits = (value || "").replace(/[^\d]/g, "");
+              return Number(onlyDigits || 0);
+            }}
+            formatter={(value) => `${value ?? ""}`}
+          />
         </Form.Item>
 
         <Button
           type="primary"
           htmlType="submit"
           block
-          disabled={!budgetStore.isValid}
+          disabled={!budgetStore.isValid(month)}
         >
-          {t('addIncome')}
+          {t("addIncome")}
         </Button>
 
-        {!budgetStore.isValid && (
-          <div style={{ marginTop: '0.5rem', color: '#b94a48' }}>
-            {t('percentageError')}
+        {!budgetStore.isValid(month) && (
+          <div style={{ marginTop: "0.5rem", color: "#b94a48" }}>
+            {t("percentageError")}
           </div>
         )}
       </Form>

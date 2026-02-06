@@ -3,6 +3,8 @@ import { IMember } from "./MembersStore";
 import { IMonthlyIncome } from "./MonthlyIncomeStore";
 import { IBudgetPool } from "./BudgetStore";
 
+const STORAGE_KEY = "slamarica_households_v1";
+
 export interface IMonthlyBudget {
   month: string;
   pools: IBudgetPool[];
@@ -22,15 +24,40 @@ export class HouseholdStore {
 
   constructor() {
     makeAutoObservable(this);
+    this.hydrate();
+  }
 
-    // ako nema nijedne kuće, napravi jednu default
+  hydrate() {
+    if (typeof window === "undefined") return;
+
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      this.households = parsed.households ?? [];
+      this.activeHouseholdId = parsed.activeHouseholdId ?? null;
+    }
+
     if (this.households.length === 0) {
       this.createHousehold("My house");
     }
   }
 
+  persist() {
+    if (typeof window === "undefined") return;
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        households: this.households,
+        activeHouseholdId: this.activeHouseholdId,
+      })
+    );
+  }
+
   get activeHousehold() {
-    return this.households.find((h) => h.id === this.activeHouseholdId) ?? null;
+    return this.households.find(
+      (h) => h.id === this.activeHouseholdId
+    ) ?? null;
   }
 
   createHousehold(name: string) {
@@ -44,34 +71,17 @@ export class HouseholdStore {
 
     this.households.push(newHousehold);
     this.activeHouseholdId = newHousehold.id;
+    this.persist();
   }
-
-  addMember(name: string) {
-  const household = this.activeHousehold;
-  if (!household) return;
-
-  const exists = household.members.some(
-    m => m.name.toLowerCase() === name.toLowerCase()
-  );
-
-  if (exists) {
-    throw new Error('Member already exists');
-  }
-
-  household.members.push({
-    id: crypto.randomUUID(),
-    name,
-    status: 'active',
-  });
-}
-
 
   setActiveHousehold(id: string) {
     this.activeHouseholdId = id;
+    this.persist();
   }
 
   clearAll() {
     this.households = [];
     this.activeHouseholdId = null;
+    this.persist();
   }
 }

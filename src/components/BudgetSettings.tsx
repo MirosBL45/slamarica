@@ -4,6 +4,8 @@ import { observer } from 'mobx-react-lite';
 import { Card, InputNumber, Row, Col } from 'antd';
 import { useStores } from '@/stores/StoreContext';
 import { useTranslations } from 'next-intl';
+import { useEffect } from 'react';
+
 
 interface Props {
   month: string;
@@ -13,10 +15,19 @@ const BudgetSettings = observer(({ month }: Props) => {
   const { budgetStore, monthlyIncomeStore } = useStores();
   const t = useTranslations('budget');
 
-  const monthBudget = monthlyIncomeStore.getBudgetForMonth(month);
-  const isLocked = !!monthBudget;
+  // 🔒 zaključano ako već postoji bar jedna plata za taj mesec
+  const isLocked =
+    monthlyIncomeStore.getByMonth(month).length > 0;
 
-  const pools = monthBudget ? monthBudget.pools : budgetStore.pools;
+useEffect(() => {
+  budgetStore.initMonth(month);
+}, [budgetStore, month]);
+
+
+
+
+  // 📦 procenti za taj mesec
+  const pools = budgetStore.getPools(month);
 
   return (
     <Card style={{ marginBottom: '1rem' }}>
@@ -32,7 +43,11 @@ const BudgetSettings = observer(({ month }: Props) => {
               value={pool.percentage}
               disabled={isLocked}
               onChange={(value) =>
-                budgetStore.setPercentage(pool.type, Number(value))
+                budgetStore.setPercentage(
+                  month,
+                  pool.type,
+                  Number(value ?? 0)
+                )
               }
               style={{ width: '100%' }}
             />
@@ -41,7 +56,7 @@ const BudgetSettings = observer(({ month }: Props) => {
       ))}
 
       <div style={{ marginTop: '0.5rem', fontWeight: 500 }}>
-        {t('total')}: {budgetStore.totalPercentage}%
+        {t('total')}: {budgetStore.getTotalPercentage(month)}%
       </div>
 
       {isLocked && (

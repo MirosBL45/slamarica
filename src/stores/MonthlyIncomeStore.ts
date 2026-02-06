@@ -1,7 +1,6 @@
 import { makeAutoObservable } from "mobx";
-import { BudgetPoolType } from "./BudgetStore";
-import { BudgetStore } from "./BudgetStore";
 import { RootStore } from "./RootStore";
+import { BudgetPoolType, BudgetStore } from "./BudgetStore";
 
 export interface IMonthlyIncome {
   id: string;
@@ -17,16 +16,7 @@ export class MonthlyIncomeStore {
   }
 
   get incomes() {
-    return (
-      this.rootStore.householdStore.activeHousehold?.incomes ?? []
-    );
-  }
-
-  addIncome(income: IMonthlyIncome) {
-    const household = this.rootStore.householdStore.activeHousehold;
-    if (!household) return;
-
-    household.incomes.push(income);
+    return this.rootStore.householdStore.activeHousehold?.incomes ?? [];
   }
 
   getByMonth(month: string) {
@@ -51,57 +41,56 @@ export class MonthlyIncomeStore {
     return totals;
   }
 
-  createIncome(
-    memberId: string,
-    month: string,
-    salary: number,
-    budgetStore: BudgetStore
-  ) {
+  hasIncomeForMember(memberId: string) {
+    return this.incomes.some((income) => income.memberId === memberId);
+  }
+
+ createIncome(
+  memberId: string,
+  month: string,
+  salary: number,
+  budgetStore: BudgetStore,
+) {
     const household = this.rootStore.householdStore.activeHousehold;
     if (!household) return;
 
     const alreadyExists = household.incomes.some(
-      (income) =>
-        income.memberId === memberId &&
-        income.month === month
+      (income) => income.memberId === memberId && income.month === month,
     );
 
     if (alreadyExists) {
-      throw new Error(
-        "Income already exists for this member and month"
-      );
+      throw new Error("Income already exists for this member and month");
     }
 
-    const breakdown = budgetStore.pools.reduce(
-      (acc, pool) => {
-        acc[pool.type] = Math.round(
-          (salary * pool.percentage) / 100
-        );
-        return acc;
-      },
-      {} as Record<BudgetPoolType, number>
-    );
+    budgetStore.initMonth(month);
 
-    this.addIncome({
+
+    const pools = budgetStore.getPools(month);
+
+    const breakdown: Record<BudgetPoolType, number> = {
+      personal: 0,
+      bills: 0,
+      travel: 0,
+      food: 0,
+      savings: 0,
+    };
+
+    pools.forEach((pool: { type: BudgetPoolType; percentage: number }) => {
+      breakdown[pool.type] = Math.round((salary * pool.percentage) / 100);
+    });
+
+    pools.forEach((pool: { type: BudgetPoolType; percentage: number }) => {
+      breakdown[pool.type] = Math.round((salary * pool.percentage) / 100);
+    });
+
+    household.incomes.push({
       id: crypto.randomUUID(),
       memberId,
       month,
       salary,
       breakdown,
     });
-  }
 
-  hasIncomeForMember(memberId: string) {
-    return this.incomes.some(
-      (income) => income.memberId === memberId
-    );
-  }
-
-  clear() {
-    const household =
-      this.rootStore.householdStore.activeHousehold;
-    if (!household) return;
-
-    household.incomes = [];
+    this.rootStore.householdStore.persist();
   }
 }

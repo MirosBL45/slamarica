@@ -22,7 +22,10 @@
     "addIncome": "Dodaj platu",
     "duplicate": "Već postoji unos za ovog člana u ovom mesecu",
     "percentageError": "Procenti moraju biti 100%",
-    "noMembers": "Nema članova"
+    "noMembers": "Nema članova",
+    "salaryRequired": "Unesi iznos",
+    "salaryMustBeNumber": "Unesi isključivo broj",
+    "salaryMustBePositive": "Iznos mora biti veći od 0"
   },
   "members": {
     "name": "Ime člana",

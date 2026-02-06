@@ -21,7 +21,7 @@ export class MembersStore {
     if (!household) return;
 
     const exists = household.members.some(
-      (m) => m.name.toLowerCase() === member.name.toLowerCase()
+      (m) => m.name.toLowerCase() === member.name.toLowerCase(),
     );
 
     if (exists) {
@@ -32,22 +32,28 @@ export class MembersStore {
       ...member,
       status: "active",
     });
+
+    this.rootStore.householdStore.persist();
   }
 
-  removeMember(memberId: string, hasIncome: boolean) {
+  removeMember(memberId: string) {
     const household = this.rootStore.householdStore.activeHousehold;
     if (!household) return;
 
     const member = household.members.find((m) => m.id === memberId);
     if (!member) return;
 
+    const hasIncome = household.incomes.some((i) => i.memberId === memberId);
+
     if (!hasIncome) {
-      household.members = household.members.filter(
-        (m) => m.id !== memberId
-      );
+      // ako NEMA plata → briše se
+      household.members = household.members.filter((m) => m.id !== memberId);
     } else {
+      // ako IMA makar jednu platu → samo postaje inactive
       member.status = "inactive";
     }
+
+    this.rootStore.householdStore.persist();
   }
 
   restoreMember(memberId: string) {
@@ -58,6 +64,8 @@ export class MembersStore {
     if (!member) return;
 
     member.status = "active";
+
+    this.rootStore.householdStore.persist();
   }
 
   clearMembers() {
@@ -65,5 +73,7 @@ export class MembersStore {
     if (!household) return;
 
     household.members = [];
+
+    this.rootStore.householdStore.persist();
   }
 }

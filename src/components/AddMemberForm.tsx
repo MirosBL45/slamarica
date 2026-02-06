@@ -29,6 +29,7 @@ const AddMemberForm = observer(() => {
           errors: [t('duplicate')],
         },
       ]);
+      alert(error);
     }
   };
 
