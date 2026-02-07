@@ -5,23 +5,33 @@ import { Table, Button, Card, Tag, Modal } from 'antd';
 import { useTranslations } from 'next-intl';
 import { useStores } from '@/stores/StoreContext';
 
+interface ITableMember {
+  key: string;
+  id: string;
+  name: string;
+  status: 'active' | 'inactive';
+  hasIncome: boolean;
+}
+
+
 const MemberList = observer(() => {
   const t = useTranslations('members');
   const { membersStore, monthlyIncomeStore } = useStores();
 
-  const data = membersStore.members.map((member) => ({
-    key: member.id,
-    id: member.id,
-    name: member.name,
-    status: member.status,
-    hasIncome: monthlyIncomeStore.hasIncomeForMember(member.id),
-  }));
+  const data: ITableMember[] = membersStore.members.map((member) => ({
+  key: member.id,
+  id: member.id,
+  name: member.name,
+  status: member.status,
+  hasIncome: monthlyIncomeStore.hasIncomeForMember(member.id),
+}));
+
 
   const columns = [
     {
       title: t('name'),
       dataIndex: 'name',
-      render: (value: string, record: any) => (
+      render: (value: string, record: ITableMember) => (
         <span
           style={{
             opacity: record.status === 'inactive' ? 0.6 : 1,
@@ -43,7 +53,7 @@ const MemberList = observer(() => {
     },
     {
       title: t('actions'),
-      render: (_: any, record: any) => {
+      render: (_: unknown, record: ITableMember) => {
         const { hasIncome } = record;
 
         // ako je inactive → nudimo vraćanje
@@ -85,7 +95,7 @@ const MemberList = observer(() => {
                 okText: hasIncome ? t('setInactive') : t('delete'),
                 cancelText: t('cancel'),
                 onOk: () => {
-                  membersStore.removeMember(record.id, hasIncome);
+                  membersStore.removeMember(record.id);
                 },
               });
             }}

@@ -1,70 +1,95 @@
-import { makeAutoObservable } from 'mobx';
-
-const STORAGE_KEY = 'slamarica_budget';
+import { makeAutoObservable } from "mobx";
+import { RootStore } from "./RootStore";
 
 export type BudgetPoolType =
-    | 'personal'
-    | 'bills'
-    | 'travel'
-    | 'food'
-    | 'savings';
+  | "personal"
+  | "bills"
+  | "travel"
+  | "food"
+  | "savings";
 
 export interface IBudgetPool {
-    type: BudgetPoolType;
-    label: string;
-    percentage: number;
+  type: BudgetPoolType;
+  label: string;
+  percentage: number;
+}
+
+export interface IMonthlyBudget {
+  month: string;
+  pools: IBudgetPool[];
 }
 
 const DEFAULT_POOLS: IBudgetPool[] = [
-    { type: 'personal', label: 'Lični novac', percentage: 20 },
-    { type: 'bills', label: 'Računi', percentage: 10 },
-    { type: 'travel', label: 'Putovanja', percentage: 10 },
-    { type: 'food', label: 'Hrana', percentage: 20 },
-    { type: 'savings', label: 'Kućna štednja', percentage: 40 },
+  { type: "personal", label: "Lični novac", percentage: 20 },
+  { type: "bills", label: "Računi", percentage: 10 },
+  { type: "travel", label: "Putovanja", percentage: 10 },
+  { type: "food", label: "Hrana", percentage: 20 },
+  { type: "savings", label: "Kućna štednja", percentage: 40 },
 ];
 
-
 export class BudgetStore {
-    pools: IBudgetPool[] = DEFAULT_POOLS.map(p => ({ ...p }));
+  constructor(private rootStore: RootStore) {
+    makeAutoObservable(this);
+  }
 
-    constructor() {
-        makeAutoObservable(this);
-    }
+  private get household() {
+    return this.rootStore.householdStore.activeHousehold;
+  }
 
-    hydrate() {
-        if (typeof window === 'undefined') return;
+  private cloneDefault() {
+    return DEFAULT_POOLS.map((p) => ({ ...p }));
+  }
 
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
-            this.pools = JSON.parse(stored);
-        }
-    }
+  // ✅ OVO sme da upisuje (poziva se iz useEffect / akcije)
+  initMonth(month: string) {
+    const household = this.household;
+    if (!household) return;
 
-    private persist() {
-        if (typeof window !== 'undefined') {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.pools));
-        }
-    }
+    const exists = household.monthlyBudgets.some((b) => b.month === month);
+    if (exists) return;
 
-    get totalPercentage() {
-        return this.pools.reduce((sum, p) => sum + p.percentage, 0);
-    }
+    household.monthlyBudgets.push({
+      month,
+      pools: this.cloneDefault(),
+    });
 
-    get isValid() {
-        return this.totalPercentage === 100;
-    }
+    this.rootStore.householdStore.persist();
+  }
 
-    setPercentage(type: BudgetPoolType, value: number) {
-        const pool = this.pools.find(p => p.type === type);
-        if (pool) {
-            pool.percentage = value;
-        };
-        this.persist();
-    }
+  // ✅ OVO NIKAD ne upisuje (sigurno za render)
+  getPools(month: string): IBudgetPool[] {
+    const household = this.household;
+    if (!household) return this.cloneDefault();
 
-    resetToDefault() {
-        this.pools = DEFAULT_POOLS.map(p => ({ ...p }));
-        this.persist();
-    }
+    const existing = household.monthlyBudgets.find((b) => b.month === month);
+    return existing ? existing.pools : this.cloneDefault();
+  }
+
+  setPercentage(month: string, type: BudgetPoolType, value: number) {
+    this.initMonth(month);
+
+    const household = this.household;
+    if (!household) return;
+
+    const budget = household.monthlyBudgets.find((b) => b.month === month);
+    if (!budget) return;
+
+    const pool = budget.pools.find((p) => p.type === type);
+    if (!pool) return;
+
+    pool.percentage = value;
+    this.rootStore.householdStore.persist();
+  }
+
+  getTotalPercentage(month: string) {
+    return this.getPools(month).reduce((sum, p) => sum + p.percentage, 0);
+  }
+
+  isValid(month: string) {
+    return this.getTotalPercentage(month) === 100;
+  }
+
+  isLocked(month: string) {
+    return this.household?.incomes.some((i) => i.month === month) ?? false;
+  }
 }
-

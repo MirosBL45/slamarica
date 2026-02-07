@@ -1,79 +1,79 @@
-import { makeAutoObservable } from 'mobx';
-
-const STORAGE_KEY = 'slamarica_members';
+import { makeAutoObservable } from "mobx";
+import { RootStore } from "./RootStore";
 
 export interface IMember {
-    id: string;
-    name: string;
-    status: 'active' | 'inactive';
+  id: string;
+  name: string;
+  status: "active" | "inactive";
 }
 
 export class MembersStore {
-    members: IMember[] = [];
+  constructor(private rootStore: RootStore) {
+    makeAutoObservable(this);
+  }
 
-    constructor() {
-        makeAutoObservable(this);
+  get members() {
+    return this.rootStore.householdStore.activeHousehold?.members ?? [];
+  }
+
+  addMember(member: { id: string; name: string }) {
+    const household = this.rootStore.householdStore.activeHousehold;
+    if (!household) return;
+
+    const exists = household.members.some(
+      (m) => m.name.toLowerCase() === member.name.toLowerCase(),
+    );
+
+    if (exists) {
+      throw new Error("Member already exists");
     }
 
-    hydrate() {
-        if (typeof window === 'undefined') return;
+    household.members.push({
+      ...member,
+      status: "active",
+    });
 
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
-            this.members = JSON.parse(stored);
-        }
+    this.rootStore.householdStore.persist();
+  }
+
+  removeMember(memberId: string) {
+    const household = this.rootStore.householdStore.activeHousehold;
+    if (!household) return;
+
+    const member = household.members.find((m) => m.id === memberId);
+    if (!member) return;
+
+    const hasIncome = household.incomes.some((i) => i.memberId === memberId);
+
+    if (!hasIncome) {
+      // ako NEMA plata → briše se
+      household.members = household.members.filter((m) => m.id !== memberId);
+    } else {
+      // ako IMA makar jednu platu → samo postaje inactive
+      member.status = "inactive";
     }
 
-    private persist() {
-        if (typeof window !== 'undefined') {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.members));
-        }
-    }
+    this.rootStore.householdStore.persist();
+  }
 
-    addMember(member: { id: string; name: string }) {
-        const exists = this.members.some(
-            m => m.name.toLowerCase() === member.name.toLowerCase()
-        );
+  restoreMember(memberId: string) {
+    const household = this.rootStore.householdStore.activeHousehold;
+    if (!household) return;
 
-        if (exists) {
-            throw new Error('Member already exists');
-        }
+    const member = household.members.find((m) => m.id === memberId);
+    if (!member) return;
 
-        this.members.push({
-            ...member,
-            status: 'active',
-        });
+    member.status = "active";
 
-        this.persist();
-    }
+    this.rootStore.householdStore.persist();
+  }
 
+  clearMembers() {
+    const household = this.rootStore.householdStore.activeHousehold;
+    if (!household) return;
 
-    removeMember(memberId: string, hasIncome: boolean) {
-        const member = this.members.find(m => m.id === memberId);
-        if (!member) return;
+    household.members = [];
 
-        if (!hasIncome) {
-            // nema income → stvarno brišemo
-            this.members = this.members.filter(m => m.id !== memberId);
-        } else {
-            // ima income → samo menjamo status
-            member.status = 'inactive';
-        }
-        this.persist();
-    }
-
-    restoreMember(memberId: string) {
-        const member = this.members.find(m => m.id === memberId);
-        if (!member) return;
-
-        member.status = 'active';
-
-        this.persist();
-    }
-
-    clearMembers() {
-        this.members = [];
-
-        this.persist();
-    }
+    this.rootStore.householdStore.persist();
+  }
 }

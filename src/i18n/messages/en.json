@@ -22,7 +22,10 @@
     "addIncome": "Add income",
     "duplicate": "Income already exists for this member in this month",
     "percentageError": "Percentages must equal 100%",
-    "noMembers": "No members"
+    "noMembers": "No members",
+    "salaryRequired": "Enter amount",
+    "salaryMustBeNumber": "Enter numbers only",
+    "salaryMustBePositive": "Amount must be greater than 0"
   },
   "members": {
     "name": "Member name",

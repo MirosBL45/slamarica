@@ -25,7 +25,7 @@ export default function MonthSelector({ value, onChange }: Props) {
   return (
     <DatePicker
       picker="month"
-      value={dayjs(value)}
+      value={value ? dayjs(value) : undefined}
       onChange={handleChange}
       placeholder={t('selectMonth')}
       format={locale === 'sr' ? 'MM-YYYY' : 'YYYY-MM'}
