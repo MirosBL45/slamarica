@@ -1,0 +1,109 @@
+{
+    "common": {
+        "confirm": "Confirmar",
+        "salary": "Salario",
+        "total": "Total"
+    },
+    "household": {
+        "title": "Tu presupuesto familiar",
+        "description": "Gestiona los miembros y la distribución de los ingresos mensuales."
+    },
+    "blog": {
+        "title": "Blog",
+        "description": "Consejos e ideas sobre la gestión del presupuesto familiar.",
+        "comingSoon": "El blog llegará pronto."
+    },
+    "income": {
+        "member": "Miembro",
+        "selectMember": "Selecciona un miembro",
+        "salary": "Salario",
+        "enterAmount": "Introduce el importe",
+        "greaterThanZero": "Debe ser mayor que 0",
+        "addIncome": "Agregar salario",
+        "duplicate": "Ya existe un registro para este miembro en este mes",
+        "percentageError": "Los porcentajes deben sumar 100%",
+        "noMembers": "No hay miembros",
+        "salaryRequired": "Introduce el importe",
+        "salaryMustBeNumber": "Introduce solo un número",
+        "salaryMustBePositive": "El importe debe ser mayor que 0"
+    },
+    "members": {
+        "name": "Nombre del miembro",
+        "enterName": "Introduce el nombre del miembro",
+        "minLength": "El nombre debe tener al menos 2 letras",
+        "placeholder": "Introduce el nombre",
+        "addMember": "Agregar miembro",
+        "actions": "Acciones",
+        "delete": "Eliminar",
+        "empty": "No hay miembros",
+        "status": "Estado",
+        "active": "Activo",
+        "inactive": "Inactivo",
+        "confirmDeleteTitle": "Confirmación de eliminación",
+        "confirmDeleteText": "¿Estás seguro de que deseas eliminar al miembro?",
+        "confirmInactiveTitle": "Establecer como inactivo",
+        "confirmInactiveText": "El miembro ya tiene salarios registrados. Se marcará como inactivo. ¿Estás seguro?",
+        "setInactive": "Marcar como inactivo",
+        "cancel": "Cancelar",
+        "confirmRestoreTitle": "Restaurar miembro",
+        "confirmRestoreText": "¿Deseas reactivar a este miembro?",
+        "restore": "Restaurar miembro",
+        "duplicate": "Ya existe un miembro con ese nombre"
+    },
+    "incomeTable": {
+        "member": "Miembro",
+        "salary": "Salario",
+        "personal": "Personal",
+        "bills": "Facturas",
+        "travel": "Viajes",
+        "food": "Comida",
+        "savings": "Ahorros",
+        "unknown": "Desconocido",
+        "empty": "No hay datos"
+    },
+    "totals": {
+        "personal": "Personal",
+        "bills": "Facturas",
+        "travel": "Viajes",
+        "food": "Comida",
+        "savings": "Ahorros"
+    },
+    "month": {
+        "selectMonth": "Selecciona el mes"
+    },
+    "navbar": {
+        "home": "Inicio",
+        "household": "Hogar",
+        "blog": "Blog",
+        "menu": "Menú",
+        "switchLanguage": "Cambiar idioma"
+    },
+    "home": {
+        "title": "Presupuesto familiar",
+        "description1": "¡Ahorrar y gestionar el dinero nunca ha sido tan fácil! Esta aplicación te ayuda a seguir tus ingresos y gastos, planificar tu presupuesto mensual y alcanzar tus objetivos financieros.",
+        "description2": "¡Gestión inteligente del dinero para una vida más feliz!",
+        "enterApp": "Entrar en la aplicación"
+    },
+    "budget": {
+        "title": "Distribución del presupuesto mensual",
+        "personal": "Personal",
+        "bills": "Facturas",
+        "travel": "Viajes",
+        "food": "Comida",
+        "savings": "Ahorros",
+        "total": "Total",
+        "locked": "El presupuesto está bloqueado porque ya existe un registro para este mes."
+    },
+    "settings": {
+        "title": "Configuración del presupuesto familiar"
+    },
+    "householdLayout": {
+        "title": "Presupuesto familiar",
+        "text": "Puedes ir a",
+        "settings": "configuración",
+        "settingsTitle": "Ir a configuración",
+        "main": "la página principal del hogar",
+        "mainTitle": "Ir a la página principal del hogar",
+        "or": "o a"
+    }
+}

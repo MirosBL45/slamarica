@@ -6,6 +6,10 @@ import Navbar from '@/components/Navbar';
 
 import '@/styles/globals.scss';
 
+const supportedLocales = ['sr', 'en', 'es', 'de'] as const;
+
+type Locale = (typeof supportedLocales)[number];
+
 export async function generateMetadata({
   params,
 }: {
@@ -13,19 +17,27 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
 
-  const titles = {
+  if (!supportedLocales.includes(locale as Locale)) {
+    notFound();
+  }
+
+  const titles: Record<Locale, string> = {
     sr: 'Slamarica – Kućni budžet',
     en: 'Slamarica – Household Budget',
+    es: 'Slamarica – Presupuesto Familiar',
+    de: 'Slamarica – Haushaltsbudget',
   };
 
-  const descriptions = {
+  const descriptions: Record<Locale, string> = {
     sr: 'Pametna raspodela kućnog budžeta po članovima.',
     en: 'Smart household budget distribution per member.',
+    es: 'Distribución inteligente del presupuesto familiar por miembro.',
+    de: 'Intelligente Verteilung des Haushaltsbudgets pro Mitglied.',
   };
 
   return {
-    title: titles[locale as 'sr' | 'en'],
-    description: descriptions[locale as 'sr' | 'en'],
+    title: titles[locale as Locale],
+    description: descriptions[locale as Locale],
   };
 }
 
@@ -38,7 +50,7 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  if (!['sr', 'en'].includes(locale)) {
+  if (!supportedLocales.includes(locale as Locale)) {
     notFound();
   }
 

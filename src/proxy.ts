@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const SUPPORTED_LOCALES = ['sr', 'en'];
+const SUPPORTED_LOCALES = ['sr', 'en', 'es', 'de'];
 const DEFAULT_LOCALE = 'sr';
 
 export function proxy(request: NextRequest) {
@@ -15,12 +15,14 @@ export function proxy(request: NextRequest) {
     }
 
     const hasLocale = SUPPORTED_LOCALES.some(
-        (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`)
+        (locale) =>
+            pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
     );
 
     if (!hasLocale) {
         const url = request.nextUrl.clone();
-        url.pathname = `/${DEFAULT_LOCALE}${pathname === '/' ? '' : pathname}`;
+        url.pathname = `/${DEFAULT_LOCALE}${pathname === '/' ? '' : pathname
+            }`;
         return NextResponse.redirect(url);
     }
 
