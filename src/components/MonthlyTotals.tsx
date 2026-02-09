@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 import { Card } from 'antd';
 import { useStores } from '@/stores/StoreContext';
 import { useLocale, useTranslations } from 'next-intl';
-import { formatNumber } from '@/lib/format';
+import { formatNumber } from '@/lib/formatNumber';
 
 interface Props {
   month: string;

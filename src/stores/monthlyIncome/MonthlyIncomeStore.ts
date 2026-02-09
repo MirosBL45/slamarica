@@ -1,14 +1,10 @@
 import { makeAutoObservable } from "mobx";
-import { RootStore } from "./RootStore";
-import { BudgetPoolType, BudgetStore } from "./BudgetStore";
+import { RootStore } from "../RootStore";
+import { BudgetStore } from "../budget/BudgetStore";
+import { BudgetPoolType } from "../budget/budget.types";
 
-export interface IMonthlyIncome {
-  id: string;
-  memberId: string;
-  month: string;
-  salary: number;
-  breakdown: Record<BudgetPoolType, number>;
-}
+import { v4 as uuidv4 } from "uuid";
+
 
 export class MonthlyIncomeStore {
   constructor(private rootStore: RootStore) {
@@ -84,7 +80,7 @@ export class MonthlyIncomeStore {
     });
 
     household.incomes.push({
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       memberId,
       month,
       salary,

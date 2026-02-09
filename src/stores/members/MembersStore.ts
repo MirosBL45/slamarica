@@ -1,11 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { RootStore } from "./RootStore";
-
-export interface IMember {
-  id: string;
-  name: string;
-  status: "active" | "inactive";
-}
+import { RootStore } from "../RootStore";
 
 export class MembersStore {
   constructor(private rootStore: RootStore) {
