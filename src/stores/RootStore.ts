@@ -1,7 +1,7 @@
-import { BudgetStore } from './BudgetStore';
-import { HouseholdStore } from './HouseholdStore';
-import { MembersStore } from './MembersStore';
-import { MonthlyIncomeStore } from './MonthlyIncomeStore';
+import { BudgetStore } from './budget/BudgetStore';
+import { HouseholdStore } from './household/HouseholdStore';
+import { MembersStore } from './members/MembersStore';
+import { MonthlyIncomeStore } from './monthlyIncome/MonthlyIncomeStore';
 
 export class RootStore {
   householdStore: HouseholdStore;

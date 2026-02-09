@@ -2,9 +2,10 @@
 
 import { observer } from "mobx-react-lite";
 import { Form, Select, InputNumber, Button, Card } from "antd";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { useStores } from "@/stores/StoreContext";
+import { formatNumber } from "@/lib/formatNumber";
 
 interface Props {
   month: string;
@@ -19,6 +20,7 @@ const AddIncomeForm = observer(({ month }: Props) => {
   const t = useTranslations("income");
   const { membersStore, budgetStore, monthlyIncomeStore } = useStores();
   const [form] = Form.useForm<IFormValues>();
+  const locale = useLocale();
 
   const onFinish = (values: IFormValues) => {
     try {
@@ -81,13 +83,17 @@ const AddIncomeForm = observer(({ month }: Props) => {
         >
           <InputNumber
             style={{ width: "100%" }}
+            inputMode="numeric"
             min={0}
             step={1000}
             parser={(value) => {
               const onlyDigits = (value || "").replace(/[^\d]/g, "");
               return Number(onlyDigits || 0);
             }}
-            formatter={(value) => `${value ?? ""}`}
+            formatter={(value) => {
+              if (value == null) return "";
+              return formatNumber(Number(value), locale);
+            }}
           />
         </Form.Item>
 

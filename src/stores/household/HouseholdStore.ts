@@ -1,22 +1,10 @@
 import { makeAutoObservable } from "mobx";
-import { IMember } from "./MembersStore";
-import { IMonthlyIncome } from "./MonthlyIncomeStore";
-import { IBudgetPool } from "./BudgetStore";
+import { IHousehold } from "./household.types";
+
+import { v4 as uuidv4 } from "uuid";
 
 const STORAGE_KEY = "slamarica_households_v1";
 
-export interface IMonthlyBudget {
-  month: string;
-  pools: IBudgetPool[];
-}
-
-export interface IHousehold {
-  id: string;
-  name: string;
-  members: IMember[];
-  incomes: IMonthlyIncome[];
-  monthlyBudgets: IMonthlyBudget[];
-}
 
 export class HouseholdStore {
   households: IHousehold[] = [];
@@ -62,7 +50,7 @@ export class HouseholdStore {
 
   createHousehold(name: string) {
     const newHousehold: IHousehold = {
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       name,
       members: [],
       incomes: [],

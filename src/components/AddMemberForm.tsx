@@ -5,6 +5,8 @@ import { Form, Input, Button, Card } from 'antd';
 import { useTranslations } from 'next-intl';
 import { useStores } from '@/stores/StoreContext';
 
+import { v4 as uuidv4 } from "uuid";
+
 interface IFormValues {
   name: string;
 }
@@ -17,7 +19,7 @@ const AddMemberForm = observer(() => {
   const onFinish = (values: IFormValues) => {
     try {
       membersStore.addMember({
-        id: crypto.randomUUID(),
+        id: uuidv4(),
         name: values.name.trim(),
       });
 
