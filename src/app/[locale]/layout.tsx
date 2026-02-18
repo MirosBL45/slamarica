@@ -22,10 +22,10 @@ export async function generateMetadata({
   }
 
   const titles: Record<Locale, string> = {
-    sr: "Slamarica – Kućni budžet",
-    en: "Slamarica – Household Budget",
-    es: "Slamarica – Presupuesto Familiar",
-    de: "Slamarica – Haushaltsbudget",
+    sr: "Slamarica - Kućni budžet",
+    en: "Slamarica - Household Budget",
+    es: "Slamarica - Presupuesto Familiar",
+    de: "Slamarica - Haushaltsbudget",
   };
 
   const descriptions: Record<Locale, string> = {
@@ -56,11 +56,6 @@ export async function generateMetadata({
     es: ["presupuesto familiar", "finanzas", "control de gastos", "ahorro"],
     de: ["Haushaltsbudget", "Finanzen", "Ausgaben verfolgen", "Sparen"],
   };
-
-  // return {
-  //   title: titles[locale as Locale],
-  //   description: descriptions[locale as Locale],
-  // };
 
   return {
     metadataBase: new URL("https://slamarica.app"),

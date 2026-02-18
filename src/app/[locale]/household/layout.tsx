@@ -1,6 +1,55 @@
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+const supportedLocales = ["sr", "en", "es", "de"] as const;
+
+type Locale = (typeof supportedLocales)[number];
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (!supportedLocales.includes(locale as Locale)) {
+    notFound();
+  }
+
+  const titles: Record<Locale, string> = {
+    sr: "Kućni budžet - Upravljanje finansijama | Slamarica",
+    en: "Household Budget - Manage Your Finances | Slamarica",
+    es: "Presupuesto Familiar - Gestiona tus finanzas | Slamarica",
+    de: "Haushaltsbudget - Finanzen verwalten | Slamarica",
+  };
+
+  const descriptions: Record<Locale, string> = {
+    sr: "Organizujte kućne finansije, pratite prihode i troškove, planirajte štednju i finansijske ciljeve. Slamarica vam pomaže da imate potpunu kontrolu nad porodičnim budžetom.",
+    en: "Organize your household finances, track income and expenses, plan savings and financial goals. Slamarica helps you stay in full control of your family budget.",
+    es: "Organiza las finanzas familiares, controla ingresos y gastos, y planifica el ahorro y tus objetivos financieros.",
+    de: "Organisieren Sie Ihre Haushaltsfinanzen, verfolgen Sie Einnahmen und Ausgaben und planen Sie Sparziele.",
+  };
+
+  return {
+    title: titles[locale as Locale],
+    description: descriptions[locale as Locale],
+
+    alternates: {
+      canonical: `/${locale}/household`,
+      languages: {
+        sr: "/sr/household",
+        en: "/en/household",
+        es: "/es/household",
+        de: "/de/household",
+      },
+    },
+  };
+}
+
+
 export default async function HouseholdLayout({
   children,
   params,
