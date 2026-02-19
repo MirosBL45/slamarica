@@ -59,14 +59,16 @@
     "food": "Hrana",
     "savings": "Štednja",
     "unknown": "Nepoznat",
-    "empty": "Nema podataka"
+    "empty": "Nema podataka",
+    "investments": "Investicije"
   },
   "totals": {
     "personal": "Lični",
     "bills": "Računi",
     "travel": "Putovanja",
     "food": "Hrana",
-    "savings": "Štednja"
+    "savings": "Štednja",
+    "investments": "Investicije"
   },
   "month": {
     "selectMonth": "Izaberi mesec"
@@ -92,7 +94,8 @@
     "food": "Hrana",
     "savings": "Štednja",
     "total": "Ukupno",
-    "locked": "Budžet je zaključan jer već postoji unos za ovaj mesec."
+    "locked": "Budžet je zaključan jer već postoji unos za ovaj mesec.",
+    "investments": "Investicije"
   },
   "settings": {
     "title": "Podešavanja kućnog budžeta"
@@ -105,5 +108,6 @@
     "main": "glavnu stranicu kuće",
     "mainTitle": "Idi na glavnu stranicu kuće",
     "or": "ili na"
-  }
+  },
+  "investments": "Investicije"
 }

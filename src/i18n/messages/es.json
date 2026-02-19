@@ -59,14 +59,16 @@
         "food": "Comida",
         "savings": "Ahorros",
         "unknown": "Desconocido",
-        "empty": "No hay datos"
+        "empty": "No hay datos",
+        "investments": "Inversiones"
     },
     "totals": {
         "personal": "Personal",
         "bills": "Facturas",
         "travel": "Viajes",
         "food": "Comida",
-        "savings": "Ahorros"
+        "savings": "Ahorros",
+        "investments": "Inversiones"
     },
     "month": {
         "selectMonth": "Selecciona el mes"
@@ -92,7 +94,8 @@
         "food": "Comida",
         "savings": "Ahorros",
         "total": "Total",
-        "locked": "El presupuesto está bloqueado porque ya existe un registro para este mes."
+        "locked": "El presupuesto está bloqueado porque ya existe un registro para este mes.",
+        "investments": "Inversiones"
     },
     "settings": {
         "title": "Configuración del presupuesto familiar"
@@ -105,5 +108,6 @@
         "main": "la página principal del hogar",
         "mainTitle": "Ir a la página principal del hogar",
         "or": "o a"
-    }
+    },
+    "investments": "Inversiones"
 }

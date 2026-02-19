@@ -3,7 +3,8 @@ export type BudgetPoolType =
   | "bills"
   | "travel"
   | "food"
-  | "savings";
+  | "savings"
+  | "investments";
 
 export interface IBudgetPool {
   type: BudgetPoolType;

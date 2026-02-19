@@ -59,14 +59,16 @@
         "food": "Lebensmittel",
         "savings": "Ersparnisse",
         "unknown": "Unbekannt",
-        "empty": "Keine Daten"
+        "empty": "Keine Daten",
+        "investments": "Investitionen"
     },
     "totals": {
         "personal": "Persönlich",
         "bills": "Rechnungen",
         "travel": "Reisen",
         "food": "Lebensmittel",
-        "savings": "Ersparnisse"
+        "savings": "Ersparnisse",
+        "investments": "Investitionen"
     },
     "month": {
         "selectMonth": "Monat auswählen"
@@ -92,7 +94,8 @@
         "food": "Lebensmittel",
         "savings": "Ersparnisse",
         "total": "Gesamt",
-        "locked": "Das Budget ist gesperrt, da für diesen Monat bereits ein Eintrag existiert."
+        "locked": "Das Budget ist gesperrt, da für diesen Monat bereits ein Eintrag existiert.",
+        "investments": "Investitionen"
     },
     "settings": {
         "title": "Haushaltsbudget-Einstellungen"
@@ -105,5 +108,6 @@
         "main": "zur Hauptseite des Haushalts",
         "mainTitle": "Zur Hauptseite des Haushalts gehen",
         "or": "oder zu"
-    }
+    },
+    "investments": "Investitionen"
 }
