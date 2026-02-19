@@ -1,5 +1,6 @@
 import AddMemberForm from '@/components/AddMemberForm';
 import MemberList from '@/components/MemberList';
+import CurrencySettings from '@/components/CurrencySettings';
 import { getTranslations } from 'next-intl/server';
 
 import { Metadata } from "next";
@@ -66,7 +67,7 @@ export default async function HouseholdSettings({
   return (
     <div style={{ padding: '1rem' }}>
       <h1>{t('title')}</h1>
-
+      <CurrencySettings />
       <AddMemberForm />
       <MemberList />
     </div>

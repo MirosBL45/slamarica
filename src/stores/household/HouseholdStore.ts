@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { IHousehold } from "./household.types";
+import { MoneyCurrency, IHousehold } from "./household.types";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -52,6 +52,7 @@ export class HouseholdStore {
     const newHousehold: IHousehold = {
       id: uuidv4(),
       name,
+      currency: MoneyCurrency.RSD,
       members: [],
       incomes: [],
       monthlyBudgets: [],
@@ -66,6 +67,15 @@ export class HouseholdStore {
     this.activeHouseholdId = id;
     this.persist();
   }
+
+  setCurrency(currency: MoneyCurrency) {
+  const household = this.activeHousehold;
+  if (!household) return;
+
+  household.currency = currency;
+  this.persist();
+}
+
 
   clearAll() {
     this.households = [];
