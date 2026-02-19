@@ -26,6 +26,7 @@ export class MonthlyIncomeStore {
       travel: 0,
       food: 0,
       savings: 0,
+      investments: 0,
     };
 
     this.getByMonth(month).forEach((income) => {
@@ -69,6 +70,7 @@ export class MonthlyIncomeStore {
       travel: 0,
       food: 0,
       savings: 0,
+      investments: 0,
     };
 
     pools.forEach((pool: { type: BudgetPoolType; percentage: number }) => {

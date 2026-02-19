@@ -59,14 +59,16 @@
     "food": "Food",
     "savings": "Savings",
     "unknown": "Unknown",
-    "empty": "No data"
+    "empty": "No data",
+    "investments": "Investments"
   },
   "totals": {
     "personal": "Personal",
     "bills": "Bills",
     "travel": "Travel",
     "food": "Food",
-    "savings": "Savings"
+    "savings": "Savings",
+    "investments": "Investments"
   },
   "month": {
     "selectMonth": "Select month"
@@ -92,7 +94,8 @@
     "food": "Food",
     "savings": "Savings",
     "total": "Total",
-    "locked": "Budget is locked because income already exists for this month."
+    "locked": "Budget is locked because income already exists for this month.",
+    "investments": "Investments"
   },
   "settings": {
     "title": "Household settings"

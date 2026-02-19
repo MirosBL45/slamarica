@@ -2,14 +2,13 @@ import { makeAutoObservable } from "mobx";
 import { RootStore } from "../RootStore";
 import { BudgetPoolType, IBudgetPool } from "./budget.types";
 
-
-
 const DEFAULT_POOLS: IBudgetPool[] = [
   { type: "personal", label: "Lični novac", percentage: 20 },
   { type: "bills", label: "Računi", percentage: 10 },
   { type: "travel", label: "Putovanja", percentage: 10 },
   { type: "food", label: "Hrana", percentage: 20 },
-  { type: "savings", label: "Kućna štednja", percentage: 40 },
+  { type: "savings", label: "Kućna štednja", percentage: 30 },
+  { type: "investments", label: "Investicije", percentage: 10 },
 ];
 
 export class BudgetStore {
