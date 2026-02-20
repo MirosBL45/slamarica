@@ -5,7 +5,6 @@ import { BudgetPoolType } from "../budget/budget.types";
 
 import { v4 as uuidv4 } from "uuid";
 
-
 export class MonthlyIncomeStore {
   constructor(private rootStore: RootStore) {
     makeAutoObservable(this);
@@ -42,12 +41,12 @@ export class MonthlyIncomeStore {
     return this.incomes.some((income) => income.memberId === memberId);
   }
 
- createIncome(
-  memberId: string,
-  month: string,
-  salary: number,
-  budgetStore: BudgetStore,
-) {
+  createIncome(
+    memberId: string,
+    month: string,
+    salary: number,
+    budgetStore: BudgetStore,
+  ) {
     const household = this.rootStore.householdStore.activeHousehold;
     if (!household) return;
 
@@ -60,7 +59,6 @@ export class MonthlyIncomeStore {
     }
 
     budgetStore.initMonth(month);
-
 
     const pools = budgetStore.getPools(month);
 
@@ -89,6 +87,7 @@ export class MonthlyIncomeStore {
       breakdown,
     });
 
+    this.rootStore.householdStore.lockCurrency();
     this.rootStore.householdStore.persist();
   }
 }

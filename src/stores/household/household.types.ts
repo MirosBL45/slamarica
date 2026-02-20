@@ -20,4 +20,5 @@ export interface IHousehold {
   members: IMember[];
   incomes: IMonthlyIncome[];
   monthlyBudgets: IMonthlyBudget[];
+  currencyLocked: boolean;
 }

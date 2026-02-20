@@ -4,14 +4,20 @@ import { observer } from "mobx-react-lite";
 import { Table, Card } from "antd";
 import { useStores } from "@/stores/StoreContext";
 import { useLocale, useTranslations } from "next-intl";
-import { formatNumber } from "@/lib/formatNumber";
+// import { formatNumber } from "@/lib/formatNumber";
+import { formatCurrency } from "@/lib/formatCurrency";
+import { MoneyCurrency } from "@/stores/household/household.types";
+
 
 interface Props {
   month: string;
 }
 
 const MonthlyIncomeList = observer(({ month }: Props) => {
-  const { monthlyIncomeStore, membersStore } = useStores();
+  const { monthlyIncomeStore, membersStore, householdStore } = useStores();
+
+  const currency = householdStore.activeHousehold?.currency ?? MoneyCurrency.RSD;
+
   const locale = useLocale();
   const t = useTranslations("incomeTable");
 
@@ -36,37 +42,37 @@ const MonthlyIncomeList = observer(({ month }: Props) => {
     {
       title: t("salary"),
       dataIndex: "salary",
-      render: (value: number) => formatNumber(value, locale),
+      render: (value: number) => formatCurrency(value, locale, currency),
     },
     {
       title: t("personal"),
       dataIndex: "personal",
-      render: (value: number) => formatNumber(value, locale),
+      render: (value: number) => formatCurrency(value, locale, currency),
     },
     {
       title: t("bills"),
       dataIndex: "bills",
-      render: (value: number) => formatNumber(value, locale),
+      render: (value: number) => formatCurrency(value, locale, currency),
     },
     {
       title: t("travel"),
       dataIndex: "travel",
-      render: (value: number) => formatNumber(value, locale),
+      render: (value: number) => formatCurrency(value, locale, currency),
     },
     {
       title: t("food"),
       dataIndex: "food",
-      render: (value: number) => formatNumber(value, locale),
+      render: (value: number) => formatCurrency(value, locale, currency),
     },
     {
       title: t("savings"),
       dataIndex: "savings",
-      render: (value: number) => formatNumber(value, locale),
+      render: (value: number) => formatCurrency(value, locale, currency),
     },
     {
       title: t("investments"),
       dataIndex: "investments",
-      render: (value: number) => formatNumber(value, locale),
+      render: (value: number) => formatCurrency(value, locale, currency),
     },
   ];
 
