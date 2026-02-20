@@ -4,14 +4,20 @@ import { observer } from "mobx-react-lite";
 import { Card } from "antd";
 import { useStores } from "@/stores/StoreContext";
 import { useLocale, useTranslations } from "next-intl";
-import { formatNumber } from "@/lib/formatNumber";
+// import { formatNumber } from "@/lib/formatNumber";
+import { formatCurrency } from "@/lib/formatCurrency";
+import { MoneyCurrency } from "@/stores/household/household.types";
 
 interface Props {
   month: string;
 }
 
 const MonthlyTotals = observer(({ month }: Props) => {
-  const { monthlyIncomeStore } = useStores();
+  const { monthlyIncomeStore, householdStore } = useStores();
+
+  const currency =
+  householdStore.activeHousehold?.currency ?? MoneyCurrency.RSD;
+
   const locale = useLocale();
   const t = useTranslations("totals");
 
@@ -20,22 +26,22 @@ const MonthlyTotals = observer(({ month }: Props) => {
   return (
     <Card style={{ marginTop: "1rem" }}>
       <div>
-        {t("personal")}: {formatNumber(totals.personal, locale)}
+        {t("personal")}: {formatCurrency(totals.personal, locale, currency)}
       </div>
       <div>
-        {t("bills")}: {formatNumber(totals.bills, locale)}
+        {t("bills")}: {formatCurrency(totals.bills, locale, currency)}
       </div>
       <div>
-        {t("travel")}: {formatNumber(totals.travel, locale)}
+        {t("travel")}: {formatCurrency(totals.travel, locale, currency)}
       </div>
       <div>
-        {t("food")}: {formatNumber(totals.food, locale)}
+        {t("food")}: {formatCurrency(totals.food, locale, currency)}
       </div>
       <div>
-        {t("savings")}: {formatNumber(totals.savings, locale)}
+        {t("savings")}: {formatCurrency(totals.savings, locale, currency)}
       </div>
       <div>
-        {t("investments")}: {formatNumber(totals.investments, locale)}
+        {t("investments")}: {formatCurrency(totals.investments, locale, currency)}
       </div>
     </Card>
   );

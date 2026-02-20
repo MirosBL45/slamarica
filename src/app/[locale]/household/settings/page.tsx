@@ -1,6 +1,7 @@
-import AddMemberForm from '@/components/AddMemberForm';
-import MemberList from '@/components/MemberList';
-import { getTranslations } from 'next-intl/server';
+import AddMemberForm from "@/components/AddMemberForm";
+import MemberList from "@/components/MemberList";
+import CurrencySettings from "@/components/CurrencySettings";
+import { getTranslations } from "next-intl/server";
 
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -50,7 +51,6 @@ export async function generateMetadata({
   };
 }
 
-
 export default async function HouseholdSettings({
   params,
 }: {
@@ -60,13 +60,13 @@ export default async function HouseholdSettings({
 
   const t = await getTranslations({
     locale,
-    namespace: 'settings',
+    namespace: "settings",
   });
 
   return (
-    <div style={{ padding: '1rem' }}>
-      <h1>{t('title')}</h1>
-
+    <div style={{ padding: "1rem" }}>
+      <h1>{t("title")}</h1>
+      <CurrencySettings />
       <AddMemberForm />
       <MemberList />
     </div>
