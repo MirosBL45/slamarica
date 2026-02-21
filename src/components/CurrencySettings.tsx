@@ -12,7 +12,6 @@ const CurrencySettings = observer(() => {
   const currency = householdStore.activeHousehold?.currency;
 
   const activeUserId = membersStore.members[0]?.id;
-  console.log(activeUserId);
 
   return (
     <Card style={{ marginBottom: "1rem" }}>
