@@ -14,6 +14,8 @@ export class MembersStore {
     const household = this.rootStore.householdStore.activeHousehold;
     if (!household) return;
 
+    const isFirst = household.members.length === 0;
+
     const exists = household.members.some(
       (m) => m.name.toLowerCase() === member.name.toLowerCase(),
     );
@@ -25,9 +27,21 @@ export class MembersStore {
     household.members.push({
       ...member,
       status: "active",
+      role: isFirst ? "admin" : "member",
     });
 
     this.rootStore.householdStore.persist();
+  }
+
+  get currentAdmin() {
+    const household = this.rootStore.householdStore.activeHousehold;
+    if (!household) return null;
+
+    return household.members.find((m) => m.role === "admin") ?? null;
+  }
+
+  isAdmin(memberId: string) {
+    return this.currentAdmin?.id === memberId;
   }
 
   removeMember(memberId: string) {

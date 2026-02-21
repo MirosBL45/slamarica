@@ -6,14 +6,22 @@ import AddIncomeForm from "@/components/AddIncomeForm";
 import MonthlyIncomeList from "@/components/MonthlyIncomeList";
 import MonthlyTotals from "@/components/MonthlyTotals";
 import BudgetSettings from "@/components/BudgetSettings";
+import { BaseHasPermission } from "@/components/BaseHasPermission";
 import dayjs from "dayjs";
+import { useStores } from "@/stores/StoreContext";
 
 export default function HouseholdClient() {
   const [month, setMonth] = useState(() => dayjs().format("YYYY-MM"));
 
+  const { membersStore } = useStores();
+
+  const activeUserId = membersStore.members[0]?.id;
+
   return (
     <>
-      <BudgetSettings month={month} />
+      <BaseHasPermission permission={membersStore.isAdmin(activeUserId)}>
+        <BudgetSettings month={month} />
+      </BaseHasPermission>
       <MonthSelector value={month} onChange={setMonth} />
       <AddIncomeForm month={month} />
       <MonthlyIncomeList month={month} />
