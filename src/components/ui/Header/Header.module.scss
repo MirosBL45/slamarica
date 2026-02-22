@@ -1,0 +1,38 @@
+@use "@/styles/variables" as v;
+
+.header {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid v.$color-border;
+    z-index: 50;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: v.$color-text-main;
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: v.$color-primary;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

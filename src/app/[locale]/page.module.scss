@@ -1,3 +1,9 @@
 .title {
   background-color: $color-success;
 }
+
+.heroContainer {
+  display: flex;
+  align-items: center;
+  padding: 4rem 1.25rem 3rem;
+}
