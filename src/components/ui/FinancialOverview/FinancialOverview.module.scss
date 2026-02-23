@@ -1,0 +1,44 @@
+@use "@/styles/variables" as v;
+
+.top {
+    margin-bottom: 1.5rem;
+}
+
+.label {
+    font-size: 0.9rem;
+    color: v.$color-text-muted;
+}
+
+.amount {
+    font-size: 2rem;
+    color: v.$color-text-main;
+}
+
+.small {
+    color: v.$color-text-muted;
+    font-size: 0.85rem;
+}
+
+.bars {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.rowTop {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.bar {
+    height: 6px;
+    border-radius: 999px;
+    background: v.$color-bg;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    border-radius: 999px;
+}

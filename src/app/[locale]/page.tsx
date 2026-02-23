@@ -1,7 +1,10 @@
-import styles from './page.module.scss';
-import Link from 'next/link';
-import { Button } from 'antd';
-import { getTranslations } from 'next-intl/server';
+import styles from "./page.module.scss";
+import { getTranslations } from "next-intl/server";
+import Hero from "@/components/ui/Hero/Hero";
+import FinancialOverview from "@/components/ui/FinancialOverview/FinancialOverview";
+import Features from "@/components/ui/Features/Features";
+import Calculator from "@/components/ui/Calculator/Calculator";
+import CTA from "@/components/ui/CTA/CTA";
 
 export default async function Home({
   params,
@@ -9,18 +12,21 @@ export default async function Home({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'home' });
+  const t = await getTranslations({ locale, namespace: "home" });
 
   return (
-    <div>
-      <h1 className={styles.title}>{t('title')}</h1>
+    <>
+      <p className={styles.description}>{t("description1")}</p>
+      <p className={styles.description}>{t("description2")}</p>
 
-      <p>{t('description1')}</p>
-      <p>{t('description2')}</p>
+      <main className={styles.mainContent}>
+        <Hero />
+        <FinancialOverview />
+      </main>
 
-      <Button type="primary">
-        <Link href={`/${locale}/household`}>{t('enterApp')}</Link>
-      </Button>
-    </div>
+      <Calculator />
+      <Features />
+      <CTA />
+    </>
   );
 }

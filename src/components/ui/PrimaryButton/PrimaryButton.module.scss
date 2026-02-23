@@ -1,0 +1,40 @@
+@use "@/styles/variables" as v;
+
+.button {
+    padding: 0.875rem 1.5rem;
+    border-radius: v.$radius-lg;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s ease;
+    border: none;
+}
+
+.primary {
+    background: v.$color-primary;
+    color: v.$color-surface;
+    box-shadow: v.$shadow-card;
+
+    &:hover {
+        transform: translateY(-2px);
+        background: darken(v.$color-primary, 5%);
+    }
+}
+
+.outline {
+    background: transparent;
+    border: 1px solid v.$color-border;
+    color: v.$color-text-main;
+
+    &:hover {
+        background: v.$color-bg;
+    }
+}
+
+.white {
+    background: v.$color-surface;
+    color: v.$color-primary;
+
+    &:hover {
+        background: v.$color-bg;
+    }
+}

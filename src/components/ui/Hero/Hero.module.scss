@@ -1,0 +1,49 @@
+@use "@/styles/variables" as v;
+@use "@/styles/breakpoints" as b;
+
+.content {
+  width: 100%;
+
+  @include b.up(b.$bp-md) {
+    width: 50%;
+  }
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid v.$color-border;
+  background: v.$color-accent-soft;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  color: v.$color-text-main;
+
+  span {
+    color: v.$color-primary;
+  }
+}
+
+.brakeTitle {
+  display: none;
+
+  @include b.up(b.$bp-md) {
+    display: block;
+  }
+}
+
+.description {
+  margin-top: 1rem;
+  color: v.$color-text-muted;
+}
+
+.actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}

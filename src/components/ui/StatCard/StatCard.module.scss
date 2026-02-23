@@ -1,0 +1,22 @@
+@use "@/styles/variables" as v;
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: v.$radius-md;
+    border: 1px solid v.$color-border;
+    padding: 1.25rem;
+    background: linear-gradient(to bottom right, v.$color-surface, rgba(247, 247, 245, 0.5));
+}
+
+.label {
+    font-size: 0.875rem;
+    color: v.$color-text-muted;
+}
+
+.amount {
+    font-size: 1.5rem;
+    color: v.$color-text-main;
+    margin-top: 0.25rem;
+}
