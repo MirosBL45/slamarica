@@ -108,5 +108,16 @@
         "main": "la página principal del hogar",
         "mainTitle": "Ir a la página principal del hogar",
         "or": "o a"
+    },
+    "ispod_ide_text_koji_se_stavlja_u_UI": {
+        "title": "Haushaltsbudget"
+    },
+    "hero": {
+        "badge": "Con la confianza de familias de todo el mundo",
+        "title1": "Claridad financiera",
+        "title2": "para tu hogar",
+        "description": "Toma el control de las finanzas de tu familia. Divide tus ingresos en categorías inteligentes, sigue tus ahorros y construye estabilidad financiera.",
+        "action1": "Comenzar ahora",
+        "action2": "Más información"
     }
 }

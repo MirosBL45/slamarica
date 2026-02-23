@@ -1,4 +1,4 @@
-import ContainerCard from "../ContainerCard/ContainerCard";
+import { ContainerCard } from "@/components/ui";
 import styles from "./FinancialOverview.module.scss";
 import { demoCategories } from "@/lib/demoCategories";
 

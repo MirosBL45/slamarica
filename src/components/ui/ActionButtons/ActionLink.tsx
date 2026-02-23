@@ -1,6 +1,6 @@
 import Link, { LinkProps } from "next/link";
 import { AnchorHTMLAttributes, ReactNode } from "react";
-import styles from "./PrimaryButton.module.scss";
+import styles from "./Action.module.scss";
 
 type Variant = "primary" | "outline" | "white";
 
@@ -9,7 +9,7 @@ interface Props extends LinkProps, Omit<AnchorHTMLAttributes<HTMLAnchorElement>,
   children: ReactNode;
 }
 
-export default function PrimaryLink({
+export default function ActionLink({
   children,
   variant = "primary",
   className,

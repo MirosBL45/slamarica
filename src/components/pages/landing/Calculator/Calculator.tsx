@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import ContainerCard from "../ContainerCard/ContainerCard";
-import PercentaBadge from "../PercentBadge/PercentBadge";
 import styles from "./Calculator.module.scss";
 import { demoCategories } from "@/lib/demoCategories";
+import { ContainerCard, PercentBadge } from "@/components/ui";
 
 export default function Calculator() {
   const [income, setIncome] = useState<number>(5000);
@@ -45,7 +44,7 @@ export default function Calculator() {
                   <div className={styles.amount}>${value.toFixed(0)}</div>
                 </div>
 
-                <PercentaBadge percent={cat.percent} color={cat.color} />
+                <PercentBadge percent={cat.percent} color={cat.color} />
               </div>
             );
           })}

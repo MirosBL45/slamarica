@@ -1,8 +1,6 @@
-"use client";
-
 import styles from "./Header.module.scss";
-import PrimaryButton from "../PrimaryButton/PrimaryButton";
-import Link from "next/link";
+
+import { ActionLink } from "@/components/ui";
 
 export default function Header() {
   return (
@@ -13,9 +11,9 @@ export default function Header() {
           Household
         </div>
 
-        <Link href="/login">
-          <PrimaryButton variant="outline">Sign In</PrimaryButton>
-        </Link>
+        <ActionLink variant="outline" href="/login">
+          Sign In
+        </ActionLink>
       </div>
     </header>
   );
