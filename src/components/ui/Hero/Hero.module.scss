@@ -1,44 +1,41 @@
 @use "@/styles/variables" as v;
-
-.hero {
-    padding: 4rem 1.25rem 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+@use "@/styles/breakpoints" as b;
 
 .content {
-    max-width: 620px;
+  width: 100%;
+
+  @include b.up(b.$bp-md) {
+    width: 50%;
+  }
 }
 
 .badge {
-    display: inline-block;
-    padding: 0.4rem 0.8rem;
-    border-radius: 999px;
-    border: 1px solid v.$color-border;
-    background: v.$color-accent-soft;
-    margin-bottom: 1.5rem;
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid v.$color-border;
+  background: v.$color-accent-soft;
+  margin-bottom: 1.5rem;
 }
 
 .title {
-    font-size: 2.5rem;
-    line-height: 1.1;
-    color: v.$color-text-main;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  color: v.$color-text-main;
 
-    span {
-        color: v.$color-primary;
-    }
+  span {
+    color: v.$color-primary;
+  }
 }
 
-
-
 .description {
-    margin-top: 1rem;
-    color: v.$color-text-muted;
+  margin-top: 1rem;
+  color: v.$color-text-muted;
 }
 
 .actions {
-    margin-top: 1.5rem;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }

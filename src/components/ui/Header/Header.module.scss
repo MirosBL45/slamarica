@@ -3,7 +3,7 @@
 .header {
     position: sticky;
     top: 0;
-    background: rgba(255, 255, 255, 0.85);
+    background: v.$color-bg;
     backdrop-filter: blur(8px);
     border-bottom: 1px solid v.$color-border;
     z-index: 50;
@@ -31,7 +31,7 @@
     height: 32px;
     border-radius: 8px;
     background: v.$color-primary;
-    color: white;
+    color: v.$color-surface;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -11,7 +11,7 @@
 
 .primary {
     background: v.$color-primary;
-    color: white;
+    color: v.$color-surface;
     box-shadow: v.$shadow-card;
 
     &:hover {
@@ -31,7 +31,7 @@
 }
 
 .white {
-    background: white;
+    background: v.$color-surface;
     color: v.$color-primary;
 
     &:hover {

@@ -5,6 +5,8 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import Navbar from "@/components/Navbar";
 
 import "@/styles/globals.scss";
+import Header from "@/components/ui/Header/Header";
+import Footer from "@/components/ui/Footer/Footer";
 
 const supportedLocales = ["sr", "en", "es", "de"] as const;
 
@@ -141,7 +143,9 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           <AntdRegistry>
             <Navbar />
+            <Header />
             {children}
+            <Footer />
           </AntdRegistry>
         </NextIntlClientProvider>
       </body>

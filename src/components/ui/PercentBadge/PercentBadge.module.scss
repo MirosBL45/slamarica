@@ -1,3 +1,5 @@
+@use "@/styles/variables" as v;
+
 .badge {
     width: 44px;
     height: 44px;
@@ -5,6 +7,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: v.$color-surface;
     font-weight: 500;
 }

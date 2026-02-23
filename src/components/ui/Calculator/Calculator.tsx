@@ -15,7 +15,7 @@ export default function Calculator() {
   };
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id="demoCalculator">
       <ContainerCard>
         <div className={styles.header}>
           <h2>Try the Calculator</h2>

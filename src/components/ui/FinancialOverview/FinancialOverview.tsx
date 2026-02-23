@@ -1,26 +1,26 @@
-"use client";
-
 import ContainerCard from "../ContainerCard/ContainerCard";
 import styles from "./FinancialOverview.module.scss";
 import { demoCategories } from "@/lib/demoCategories";
-import { useState } from "react";
+
+const INCOME = 5000;
 
 export default function FinancialOverview() {
-  const [income, setIncome] = useState(5000);
+  
 
   return (
     <ContainerCard>
-      <div className={styles.top}>
+      
+      <article className={styles.top}>
         <div>
           <div className={styles.label}>Financial Overview</div>
-          <div className={styles.amount}>${income.toLocaleString()}</div>
+          <div className={styles.amount}>${INCOME.toLocaleString()}</div>
           <div className={styles.small}>Monthly Income</div>
         </div>
-      </div>
+      </article>
 
       <div className={styles.bars}>
         {demoCategories.map((cat) => {
-          const value = (income * cat.percent) / 100;
+          const value = (INCOME * cat.percent) / 100;
 
           return (
             <div key={cat.name} className={styles.row}>
@@ -42,6 +42,7 @@ export default function FinancialOverview() {
           );
         })}
       </div>
+      
     </ContainerCard>
   );
 }
