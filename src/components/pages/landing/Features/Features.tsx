@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./Features.module.scss";
-import ContainerCard from "../ContainerCard/ContainerCard";
+import { ContainerCard } from "@/components/ui";
 
 const features = [
   {

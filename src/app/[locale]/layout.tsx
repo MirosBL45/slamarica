@@ -5,8 +5,7 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import Navbar from "@/components/Navbar";
 
 import "@/styles/globals.scss";
-import Header from "@/components/ui/Header/Header";
-import Footer from "@/components/ui/Footer/Footer";
+import { Header, Footer } from "@/components/layout";
 
 const supportedLocales = ["sr", "en", "es", "de"] as const;
 
