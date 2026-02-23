@@ -28,6 +28,14 @@
   }
 }
 
+.brakeTitle {
+  display: none;
+
+  @include b.up(b.$bp-md) {
+    display: block;
+  }
+}
+
 .description {
   margin-top: 1rem;
   color: v.$color-text-muted;

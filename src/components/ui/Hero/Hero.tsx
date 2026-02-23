@@ -7,8 +7,8 @@ export default function Hero() {
       <div className={styles.badge}>Trusted by families worldwide</div>
 
       <h1 className={styles.title}>
-        Financial clarity
-        <br />
+        Financial clarity{' '}
+        <br className={styles.brakeTitle} />
         <span>for your household</span>
       </h1>
 
