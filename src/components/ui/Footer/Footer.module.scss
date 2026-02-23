@@ -1,0 +1,15 @@
+@use "@/styles/variables" as v;
+
+.footer {
+  border-top: 1px solid v.$color-border;
+  background: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
