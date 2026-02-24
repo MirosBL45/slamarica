@@ -1,11 +1,8 @@
 import HouseholdClient from './components/HouseholdClient';
 import { getTranslations } from 'next-intl/server';
+import { PageProps } from "@/lib/types/i18n";
 
-export default async function HouseholdPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+export default async function HouseholdPage({ params }: PageProps) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'household' });
 

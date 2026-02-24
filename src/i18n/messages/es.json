@@ -119,5 +119,9 @@
         "description": "Toma el control de las finanzas de tu familia. Divide tus ingresos en categorías inteligentes, sigue tus ahorros y construye estabilidad financiera.",
         "action1": "Comenzar ahora",
         "action2": "Más información"
+    },
+    "financialOverview": {
+        "title": "Resumen financiero",
+        "monthly": "Ingreso mensual"
     }
 }

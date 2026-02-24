@@ -1,20 +1,22 @@
+import { getTranslations } from 'next-intl/server';
 import { ContainerCard } from "@/components/ui";
-import styles from "./FinancialOverview.module.scss";
+import { LocaleProps } from "@/lib/types/i18n";
 import { demoCategories } from "@/lib/demoCategories";
+import styles from "./FinancialOverview.module.scss";
 
 const INCOME = 5000;
 
-export default function FinancialOverview() {
-  
+export default async function FinancialOverview({ locale }: LocaleProps) {
+  const t = await getTranslations({ locale, namespace: "financialOverview" });
 
   return (
     <ContainerCard>
       
       <article className={styles.top}>
         <div>
-          <div className={styles.label}>Financial Overview</div>
+          <div className={styles.label}>{t("title")}</div>
           <div className={styles.amount}>${INCOME.toLocaleString()}</div>
-          <div className={styles.small}>Monthly Income</div>
+          <div className={styles.small}>{t("monthly")}</div>
         </div>
       </article>
 

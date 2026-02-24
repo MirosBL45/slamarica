@@ -119,5 +119,9 @@
     "description": "Take control of your family finances. Split income into smart categories, track savings and build stability.",
     "action1": "Enter the app",
     "action2": "Learn more"
+  },
+  "financialOverview": {
+    "title": "Financial overview",
+    "monthly": "Monthly income"
   }
 }
