@@ -122,6 +122,17 @@
     },
     "financialOverview": {
         "title": "Resumen financiero",
-        "monthly": "Ingreso mensual"
+        "monthly": "Ingreso mensual",
+        "calculator": "Prueba la calculadora",
+        "income": "Aprenda a asignar sus ingresos a categorías presupuestarias sensatas",
+        "placeholder":"Ingrese el monto",
+        "categories": {
+            "personal": "Dinero personal",
+            "bills": "Facturas",
+            "travel": "Viajes",
+            "food": "Comida",
+            "savings": "Ahorros del hogar",
+            "investments": "Inversiones"
+        }
     }
 }

@@ -1,21 +1,29 @@
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
+import { PageProps, Locale, SUPPORTED_LOCALES } from "@/lib/types/i18n";
 
-import { Metadata } from "next";
+// import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-const supportedLocales = ["sr", "en", "es", "de"] as const;
+// const supportedLocales = ["sr", "en", "es", "de"] as const;
 
-type Locale = (typeof supportedLocales)[number];
+// type Locale = (typeof supportedLocales)[number];
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
+// export async function generateMetadata({
+//   params,
+// }: {
+//   params: Promise<{ locale: string }>;
+// }): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps) {
   const { locale } = await params;
 
-  if (!supportedLocales.includes(locale as Locale)) {
+  // if (!supportedLocales.includes(locale as Locale)) {
+  //   notFound();
+  // }
+
+
+  // Provera koristi centralizovanu listu
+  if (!SUPPORTED_LOCALES.includes(locale as Locale)) {
     notFound();
   }
 

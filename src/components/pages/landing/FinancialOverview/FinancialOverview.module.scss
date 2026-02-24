@@ -4,11 +4,6 @@
     margin-bottom: 1.5rem;
 }
 
-.label {
-    font-size: 0.9rem;
-    color: v.$color-text-muted;
-}
-
 .amount {
     font-size: 2rem;
     color: v.$color-text-main;
@@ -16,7 +11,7 @@
 
 .small {
     color: v.$color-text-muted;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
 }
 
 .bars {
@@ -41,4 +36,8 @@
 .fill {
     height: 100%;
     border-radius: 999px;
+}
+
+.helpForScrollToCalculator {
+    visibility: hidden;
 }

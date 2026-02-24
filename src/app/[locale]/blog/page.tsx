@@ -1,20 +1,23 @@
 import { getTranslations } from "next-intl/server";
+import {
+  PageProps,
+  Locale,
+  SUPPORTED_LOCALES,
+  getAlternativeLanguages,
+} from "@/lib/types/i18n";
 
-import { Metadata } from "next";
+// import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-const supportedLocales = ["sr", "en", "es", "de"] as const;
-
-type Locale = (typeof supportedLocales)[number];
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
+// export async function generateMetadata({
+//   params,
+// }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps) {
   const { locale } = await params;
+  // const l = locale as Locale;
 
-  if (!supportedLocales.includes(locale as Locale)) {
+  // Provera koristi centralizovanu listu
+  if (!SUPPORTED_LOCALES.includes(locale as Locale)) {
     notFound();
   }
 
@@ -38,21 +41,22 @@ export async function generateMetadata({
 
     alternates: {
       canonical: `/${locale}/blog`,
-      languages: {
-        sr: "/sr/blog",
-        en: "/en/blog",
-        es: "/es/blog",
-        de: "/de/blog",
-      },
+      languages: getAlternativeLanguages("/blog"),
     },
+
+    // alternates: {
+    //   canonical: `/${locale}/blog`,
+    //   languages: {
+    //     sr: "/sr/blog",
+    //     en: "/en/blog",
+    //     es: "/es/blog",
+    //     de: "/de/blog",
+    //   },
+    // },
   };
 }
 
-export default async function BlogPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+export default async function BlogPage({ params }: PageProps) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "blog" });
 

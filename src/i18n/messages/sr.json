@@ -122,6 +122,17 @@
   },
   "financialOverview": {
     "title": "Finansijski pregled",
-    "monthly": "Mesečni prihod"
+    "monthly": "Mesečni prihod",
+    "calculator": "Isprobaj kalkulator",
+    "income": "Pogledajte kako se vaš prihod može raspodeliti po pametnim kategorijama budžeta",
+    "placeholder":"Unesite iznos",
+    "categories": {
+      "personal": "Lični novac",
+      "bills": "Računi",
+      "travel": "Putovanja",
+      "food": "Hrana",
+      "savings": "Kućna štednja",
+      "investments": "Investicije"
+    }
   }
 }
