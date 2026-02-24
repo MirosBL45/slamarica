@@ -125,7 +125,7 @@
     "monthly": "Monthly income",
     "calculator": "Try the Calculator",
     "income": "See how your income can be distributed across smart budget categories",
-    "placeholder":"Enter amount",
+    "placeholder": "Enter amount",
     "categories": {
       "personal": "Personal Money",
       "bills": "Bills",
@@ -134,5 +134,28 @@
       "savings": "House Savings",
       "investments": "Investments"
     }
+  },
+  "features": {
+    "title": "Built for modern families",
+    "description": "Our apps are designed to help you easily manage family finances and achieve your savings goals",
+    "items": {
+      "distribution": {
+        "title": "Smart Distribution",
+        "desc": "Automatically split income across customizable categories"
+      },
+      "growth": {
+        "title": "Track Growth",
+        "desc": "Watch your savings grow with powerful insights"
+      },
+      "secure": {
+        "title": "Secure & Private",
+        "desc": "Your financial data stays protected and encrypted"
+      }
+    }
+  },
+  "cta": {
+    "title": "Start building financial clarity today",
+    "description": "Join families who have taken control of their finances",
+    "cta": "Get Started Free"
   }
 }

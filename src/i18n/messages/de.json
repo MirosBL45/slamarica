@@ -125,7 +125,7 @@
         "monthly": "Monatliches Einkommen",
         "calculator": "Rechner testen",
         "income": "Erfahren Sie, wie Sie Ihr Einkommen auf sinnvolle Budgetkategorien verteilen können",
-        "placeholder":"Betrag eingeben",
+        "placeholder": "Betrag eingeben",
         "categories": {
             "personal": "Persönliches Geld",
             "bills": "Rechnungen",
@@ -134,5 +134,28 @@
             "savings": "Haushaltsersparnisse",
             "investments": "Investitionen"
         }
+    },
+    "features": {
+        "title": "Gebaut für moderne Familien",
+        "description": "Unsere Apps wurden entwickelt, um Ihnen die Verwaltung Ihrer Familienfinanzen zu erleichtern und Ihnen beim Erreichen Ihrer Sparziele zu helfen",
+        "items": {
+            "distribution": {
+                "title": "Intelligente Verteilung",
+                "desc": "Teilen Sie Einnahmen automatisch in anpassbare Kategorien auf"
+            },
+            "growth": {
+                "title": "Wachstum verfolgen",
+                "desc": "Beobachten Sie Ihre Ersparnisse mit hilfreichen Einblicken"
+            },
+            "secure": {
+                "title": "Sicher & Privat",
+                "desc": "Ihre Finanzdaten bleiben geschützt und verschlüsselt"
+            }
+        }
+    },
+    "cta": {
+        "title": "Starten Sie heute mit der Erstellung finanzieller Klarheit",
+        "description": "Treten Sie Familien bei, die die Kontrolle über ihre Finanzen übernommen haben",
+        "cta": "Kostenlos starten"
     }
 }

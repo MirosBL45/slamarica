@@ -8,3 +8,9 @@ export const DEMO_CATEGORIES = [
 ];
 
 export const INCOME = 3900;
+
+export const FEATURES_DATA = [
+  { id: "distribution" },
+  { id: "growth" },
+  { id: "secure" },
+];

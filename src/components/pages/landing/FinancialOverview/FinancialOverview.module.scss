@@ -4,9 +4,17 @@
     margin-bottom: 1.5rem;
 }
 
+.smallTitle {
+    color: v.$color-text-muted;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
 .amount {
     font-size: 2rem;
     color: v.$color-text-main;
+    margin: 0.85rem 0 0.35rem;
 }
 
 .small {

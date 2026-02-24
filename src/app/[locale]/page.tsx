@@ -24,8 +24,8 @@ export default async function Home({ params }: PageProps) {
       </main>
 
       <Calculator />
-      <Features />
-      <CTA />
+      <Features locale={locale} />
+      <CTA locale={locale} />
     </>
   );
 }

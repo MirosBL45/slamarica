@@ -1,36 +1,23 @@
-"use client";
-
-import styles from "./Features.module.scss";
+import { getTranslations } from "next-intl/server";
+import { LocaleProps } from "@/lib/types/i18n";
 import { ContainerCard } from "@/components/ui";
+import { FEATURES_DATA } from "@/lib/demoConstants";
+import styles from "./Features.module.scss";
 
-const features = [
-  {
-    title: "Smart Distribution",
-    desc: "Automatically split income across customizable categories",
-  },
-  {
-    title: "Track Growth",
-    desc: "Watch your savings grow with powerful insights",
-  },
-  {
-    title: "Secure & Private",
-    desc: "Your financial data stays protected and encrypted",
-  },
-];
+export default async function Features({ locale }: LocaleProps) {
+  const t = await getTranslations({ locale, namespace: "features" });
 
-export default function Features() {
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <h2>Built for modern families</h2>
-        <p>Everything you need to manage household finances</p>
+        <h2>{t("title")}</h2>
+        <p>{t("description")}</p>
       </div>
-
       <div className={styles.grid}>
-        {features.map((f) => (
-          <ContainerCard key={f.title}>
-            <h3>{f.title}</h3>
-            <p>{f.desc}</p>
+        {FEATURES_DATA.map((f) => (
+          <ContainerCard key={f.id}>
+            <h3>{t(`items.${f.id}.title`)}</h3>
+            <p>{t(`items.${f.id}.desc`)}</p>
           </ContainerCard>
         ))}
       </div>

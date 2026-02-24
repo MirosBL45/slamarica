@@ -125,7 +125,7 @@
         "monthly": "Ingreso mensual",
         "calculator": "Prueba la calculadora",
         "income": "Aprenda a asignar sus ingresos a categorías presupuestarias sensatas",
-        "placeholder":"Ingrese el monto",
+        "placeholder": "Ingrese el monto",
         "categories": {
             "personal": "Dinero personal",
             "bills": "Facturas",
@@ -134,5 +134,28 @@
             "savings": "Ahorros del hogar",
             "investments": "Inversiones"
         }
+    },
+    "features": {
+        "title": "Construido para familias modernas",
+        "description": "Nuestras aplicaciones están diseñadas para ayudarte a gestionar fácilmente las finanzas familiares y alcanzar tus objetivos de ahorro",
+        "items": {
+            "distribution": {
+                "title": "Distribución Inteligente",
+                "desc": "Divide tus ingresos automáticamente en categorías personalizables"
+            },
+            "growth": {
+                "title": "Sigue el Crecimiento",
+                "desc": "Mira cómo crecen tus ahorros con análisis detallados"
+            },
+            "secure": {
+                "title": "Seguro y Privado",
+                "desc": "Tus datos financieros están protegidos y cifrados"
+            }
+        }
+    },
+    "cta": {
+        "title": "Comienza a construir claridad financiera hoy",
+        "description": "Únete a familias que han tomado el control de sus finanzas",
+        "cta": "Comenzar gratis"
     }
 }
