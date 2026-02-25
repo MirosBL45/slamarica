@@ -80,12 +80,6 @@
     "menu": "Menu",
     "switchLanguage": "Switch language"
   },
-  "home": {
-    "title": "Household Budget",
-    "description1": "Saving and managing money has never been easier! This app helps you track income and expenses, plan monthly budgets and achieve your financial goals.",
-    "description2": "Smart money management for a happier life!",
-    "enterApp": "Enter the app"
-  },
   "budget": {
     "title": "Monthly budget distribution",
     "personal": "Personal",

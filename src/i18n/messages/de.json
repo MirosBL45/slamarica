@@ -1,165 +1,159 @@
 {
-    "common": {
-        "confirm": "Bestätigen",
-        "salary": "Gehalt",
-        "total": "Gesamt"
-    },
-    "household": {
-        "title": "Ihr Haushaltsbudget",
-        "description": "Verwalten Sie Mitglieder und die Verteilung der monatlichen Einnahmen."
-    },
-    "blog": {
-        "title": "Blog",
-        "description": "Tipps und Ideen zur Verwaltung des Haushaltsbudgets.",
-        "comingSoon": "Der Blog kommt bald, laganinitm."
-    },
-    "income": {
-        "member": "Mitglied",
-        "selectMember": "Mitglied auswählen",
-        "salary": "Gehalt",
-        "enterAmount": "Betrag eingeben",
-        "greaterThanZero": "Muss größer als 0 sein",
-        "addIncome": "Gehalt hinzufügen",
-        "duplicate": "Für dieses Mitglied existiert bereits ein Eintrag in diesem Monat",
-        "percentageError": "Die Prozentsätze müssen 100% ergeben",
-        "noMembers": "Keine Mitglieder",
-        "salaryRequired": "Betrag eingeben",
-        "salaryMustBeNumber": "Nur eine Zahl eingeben",
-        "salaryMustBePositive": "Der Betrag muss größer als 0 sein"
-    },
-    "members": {
-        "name": "Name des Mitglieds",
-        "enterName": "Name des Mitglieds eingeben",
-        "minLength": "Der Name muss mindestens 2 Buchstaben haben",
-        "placeholder": "Name eingeben",
-        "addMember": "Mitglied hinzufügen",
-        "actions": "Aktionen",
-        "delete": "Löschen",
-        "empty": "Keine Mitglieder",
-        "status": "Status",
-        "active": "Aktiv",
-        "inactive": "Inaktiv",
-        "confirmDeleteTitle": "Löschbestätigung",
-        "confirmDeleteText": "Sind Sie sicher, dass Sie das Mitglied löschen möchten?",
-        "confirmInactiveTitle": "Als inaktiv markieren",
-        "confirmInactiveText": "Das Mitglied hat bereits eingetragene Gehälter. Es wird als inaktiv markiert. Sind Sie sicher?",
-        "setInactive": "Als inaktiv markieren",
-        "cancel": "Abbrechen",
-        "confirmRestoreTitle": "Mitglied wiederherstellen",
-        "confirmRestoreText": "Möchten Sie dieses Mitglied wieder aktivieren?",
-        "restore": "Mitglied wiederherstellen",
-        "duplicate": "Ein Mitglied mit diesem Namen existiert bereits"
-    },
-    "incomeTable": {
-        "member": "Mitglied",
-        "salary": "Gehalt",
-        "personal": "Persönlich",
-        "bills": "Rechnungen",
-        "travel": "Reisen",
-        "food": "Lebensmittel",
-        "savings": "Ersparnisse",
-        "unknown": "Unbekannt",
-        "empty": "Keine Daten",
-        "investments": "Investitionen"
-    },
-    "totals": {
-        "personal": "Persönlich",
-        "bills": "Rechnungen",
-        "travel": "Reisen",
-        "food": "Lebensmittel",
-        "savings": "Ersparnisse",
-        "investments": "Investitionen"
-    },
-    "month": {
-        "selectMonth": "Monat auswählen"
-    },
-    "navbar": {
-        "home": "Startseite",
-        "household": "Haushalt",
-        "blog": "Blog",
-        "menu": "Menü",
-        "switchLanguage": "Sprache wechseln"
-    },
-    "home": {
-        "title": "Haushaltsbudget",
-        "description1": "Sparen und Geld verwalten war noch nie so einfach! Diese App hilft Ihnen, Ihre Einnahmen und Ausgaben zu verfolgen, Ihr monatliches Budget zu planen und Ihre finanziellen Ziele zu erreichen.",
-        "description2": "Intelligentes Geldmanagement für ein glücklicheres Leben!",
-        "enterApp": "App öffnen"
-    },
-    "budget": {
-        "title": "Monatliche Budgetverteilung",
-        "personal": "Persönlich",
-        "bills": "Rechnungen",
-        "travel": "Reisen",
-        "food": "Lebensmittel",
-        "savings": "Ersparnisse",
-        "total": "Gesamt",
-        "locked": "Das Budget ist gesperrt, da für diesen Monat bereits ein Eintrag existiert.",
-        "investments": "Investitionen"
-    },
-    "settings": {
-        "title": "Haushaltsbudget-Einstellungen"
-    },
-    "householdLayout": {
-        "title": "Haushaltsbudget",
-        "text": "Sie können zu",
-        "settings": "Einstellungen",
-        "settingsTitle": "Zu den Einstellungen gehen",
-        "main": "zur Hauptseite des Haushalts",
-        "mainTitle": "Zur Hauptseite des Haushalts gehen",
-        "or": "oder zu"
-    },
-    "blogLayout": {
+  "common": {
+    "confirm": "Bestätigen",
+    "salary": "Gehalt",
+    "total": "Gesamt"
+  },
+  "household": {
+    "title": "Ihr Haushaltsbudget",
+    "description": "Verwalten Sie Mitglieder und die Verteilung der monatlichen Einnahmen."
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Tipps und Ideen zur Verwaltung des Haushaltsbudgets.",
+    "comingSoon": "Der Blog kommt bald, laganinitm."
+  },
+  "income": {
+    "member": "Mitglied",
+    "selectMember": "Mitglied auswählen",
+    "salary": "Gehalt",
+    "enterAmount": "Betrag eingeben",
+    "greaterThanZero": "Muss größer als 0 sein",
+    "addIncome": "Gehalt hinzufügen",
+    "duplicate": "Für dieses Mitglied existiert bereits ein Eintrag in diesem Monat",
+    "percentageError": "Die Prozentsätze müssen 100% ergeben",
+    "noMembers": "Keine Mitglieder",
+    "salaryRequired": "Betrag eingeben",
+    "salaryMustBeNumber": "Nur eine Zahl eingeben",
+    "salaryMustBePositive": "Der Betrag muss größer als 0 sein"
+  },
+  "members": {
+    "name": "Name des Mitglieds",
+    "enterName": "Name des Mitglieds eingeben",
+    "minLength": "Der Name muss mindestens 2 Buchstaben haben",
+    "placeholder": "Name eingeben",
+    "addMember": "Mitglied hinzufügen",
+    "actions": "Aktionen",
+    "delete": "Löschen",
+    "empty": "Keine Mitglieder",
+    "status": "Status",
+    "active": "Aktiv",
+    "inactive": "Inaktiv",
+    "confirmDeleteTitle": "Löschbestätigung",
+    "confirmDeleteText": "Sind Sie sicher, dass Sie das Mitglied löschen möchten?",
+    "confirmInactiveTitle": "Als inaktiv markieren",
+    "confirmInactiveText": "Das Mitglied hat bereits eingetragene Gehälter. Es wird als inaktiv markiert. Sind Sie sicher?",
+    "setInactive": "Als inaktiv markieren",
+    "cancel": "Abbrechen",
+    "confirmRestoreTitle": "Mitglied wiederherstellen",
+    "confirmRestoreText": "Möchten Sie dieses Mitglied wieder aktivieren?",
+    "restore": "Mitglied wiederherstellen",
+    "duplicate": "Ein Mitglied mit diesem Namen existiert bereits"
+  },
+  "incomeTable": {
+    "member": "Mitglied",
+    "salary": "Gehalt",
+    "personal": "Persönlich",
+    "bills": "Rechnungen",
+    "travel": "Reisen",
+    "food": "Lebensmittel",
+    "savings": "Ersparnisse",
+    "unknown": "Unbekannt",
+    "empty": "Keine Daten",
+    "investments": "Investitionen"
+  },
+  "totals": {
+    "personal": "Persönlich",
+    "bills": "Rechnungen",
+    "travel": "Reisen",
+    "food": "Lebensmittel",
+    "savings": "Ersparnisse",
+    "investments": "Investitionen"
+  },
+  "month": {
+    "selectMonth": "Monat auswählen"
+  },
+  "navbar": {
+    "home": "Startseite",
+    "household": "Haushalt",
+    "blog": "Blog",
+    "menu": "Menü",
+    "switchLanguage": "Sprache wechseln"
+  },
+  "budget": {
+    "title": "Monatliche Budgetverteilung",
+    "personal": "Persönlich",
+    "bills": "Rechnungen",
+    "travel": "Reisen",
+    "food": "Lebensmittel",
+    "savings": "Ersparnisse",
+    "total": "Gesamt",
+    "locked": "Das Budget ist gesperrt, da für diesen Monat bereits ein Eintrag existiert.",
+    "investments": "Investitionen"
+  },
+  "settings": {
+    "title": "Haushaltsbudget-Einstellungen"
+  },
+  "householdLayout": {
+    "title": "Haushaltsbudget",
+    "text": "Sie können zu",
+    "settings": "Einstellungen",
+    "settingsTitle": "Zu den Einstellungen gehen",
+    "main": "zur Hauptseite des Haushalts",
+    "mainTitle": "Zur Hauptseite des Haushalts gehen",
+    "or": "oder zu"
+  },
+  "blogLayout": {
     "title": "Blog",
     "text": "Lesen Sie unsere neuesten Artikel zum Thema Haushaltsplanung und Finanztipps"
   },
-    "ispod_ide_text_koji_se_stavlja_u_UI": {
-        "title": "Haushaltsbudget"
-    },
-    "hero": {
-        "badge": "Weltweit vertrauen Familien diesem Netzwerk.",
-        "title1": "Finanzielle Klarheit",
-        "title2": "für Ihr Haushalt",
-        "description": "Übernehmen Sie die Kontrolle über Ihre Familienfinanzen. Teilen Sie Ihr Einkommen in intelligente Kategorien auf, verfolgen Sie Ihre Ersparnisse und bauen Sie finanzielle Stabilität auf.",
-        "action1": "Zur App",
-        "action2": "Mehr erfahren"
-    },
-    "financialOverview": {
-        "title": "Finanzübersicht",
-        "monthly": "Monatliches Einkommen",
-        "calculator": "Rechner testen",
-        "income": "Erfahren Sie, wie Sie Ihr Einkommen auf sinnvolle Budgetkategorien verteilen können",
-        "placeholder": "Betrag eingeben",
-        "categories": {
-            "personal": "Persönliches Geld",
-            "bills": "Rechnungen",
-            "travel": "Reisen",
-            "food": "Lebensmittel",
-            "savings": "Haushaltsersparnisse",
-            "investments": "Investitionen"
-        }
-    },
-    "features": {
-        "title": "Gebaut für moderne Familien",
-        "description": "Unsere Apps wurden entwickelt, um Ihnen die Verwaltung Ihrer Familienfinanzen zu erleichtern und Ihnen beim Erreichen Ihrer Sparziele zu helfen",
-        "items": {
-            "distribution": {
-                "title": "Intelligente Verteilung",
-                "desc": "Teilen Sie Einnahmen automatisch in anpassbare Kategorien auf"
-            },
-            "growth": {
-                "title": "Wachstum verfolgen",
-                "desc": "Beobachten Sie Ihre Ersparnisse mit hilfreichen Einblicken"
-            },
-            "secure": {
-                "title": "Sicher & Privat",
-                "desc": "Ihre Finanzdaten bleiben geschützt und verschlüsselt"
-            }
-        }
-    },
-    "cta": {
-        "title": "Starten Sie heute mit der Erstellung finanzieller Klarheit",
-        "description": "Treten Sie Familien bei, die die Kontrolle über ihre Finanzen übernommen haben",
-        "cta": "Kostenlos starten"
+  "ispod_ide_text_koji_se_stavlja_u_UI": {
+    "title": "Haushaltsbudget"
+  },
+  "hero": {
+    "badge": "Weltweit vertrauen Familien diesem Netzwerk.",
+    "title1": "Finanzielle Klarheit",
+    "title2": "für Ihr Haushalt",
+    "description": "Übernehmen Sie die Kontrolle über Ihre Familienfinanzen. Teilen Sie Ihr Einkommen in intelligente Kategorien auf, verfolgen Sie Ihre Ersparnisse und bauen Sie finanzielle Stabilität auf.",
+    "action1": "Zur App",
+    "action2": "Mehr erfahren"
+  },
+  "financialOverview": {
+    "title": "Finanzübersicht",
+    "monthly": "Monatliches Einkommen",
+    "calculator": "Rechner testen",
+    "income": "Erfahren Sie, wie Sie Ihr Einkommen auf sinnvolle Budgetkategorien verteilen können",
+    "placeholder": "Betrag eingeben",
+    "categories": {
+      "personal": "Persönliches Geld",
+      "bills": "Rechnungen",
+      "travel": "Reisen",
+      "food": "Lebensmittel",
+      "savings": "Haushaltsersparnisse",
+      "investments": "Investitionen"
     }
+  },
+  "features": {
+    "title": "Gebaut für moderne Familien",
+    "description": "Unsere Apps wurden entwickelt, um Ihnen die Verwaltung Ihrer Familienfinanzen zu erleichtern und Ihnen beim Erreichen Ihrer Sparziele zu helfen",
+    "items": {
+      "distribution": {
+        "title": "Intelligente Verteilung",
+        "desc": "Teilen Sie Einnahmen automatisch in anpassbare Kategorien auf"
+      },
+      "growth": {
+        "title": "Wachstum verfolgen",
+        "desc": "Beobachten Sie Ihre Ersparnisse mit hilfreichen Einblicken"
+      },
+      "secure": {
+        "title": "Sicher & Privat",
+        "desc": "Ihre Finanzdaten bleiben geschützt und verschlüsselt"
+      }
+    }
+  },
+  "cta": {
+    "title": "Starten Sie heute mit der Erstellung finanzieller Klarheit",
+    "description": "Treten Sie Familien bei, die die Kontrolle über ihre Finanzen übernommen haben",
+    "cta": "Kostenlos starten"
+  }
 }
