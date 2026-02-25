@@ -6,6 +6,9 @@ export default async function HouseholdPage({ params }: PageProps) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'household' });
 
+  // FAKE FOR LOADING
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+
   return (
     <div style={{ padding: '1rem' }}>
       <h1>{t('title')}</h1>
