@@ -3,5 +3,6 @@ import PercentBadge from "./PercentBadge/PercentBadge";
 import StatCard from "./StatCard/StatCard";
 import ActionButton from "./ActionButtons/ActionButton";
 import ActionLink from "./ActionButtons/ActionLink";
+import SectionHeader from "./SectionHeader/SectionHeader";
 
-export { ContainerCard, PercentBadge, StatCard, ActionButton, ActionLink };
+export { ContainerCard, PercentBadge, StatCard, ActionButton, ActionLink, SectionHeader };

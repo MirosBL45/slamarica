@@ -1,0 +1,29 @@
+@use "@/styles/variables" as v;
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  // Varijanta 1 (Calculator stil)
+  &.primary {
+    h2 {
+      color: v.$color-text-main;
+    }
+    p {
+      color: v.$color-text-muted;
+    }
+  }
+
+  // Varijanta 2 (Surface/Title stil)
+  &.surface {
+    color: v.$color-surface;
+
+    p {
+      opacity: 0.9;
+    }
+  }
+}

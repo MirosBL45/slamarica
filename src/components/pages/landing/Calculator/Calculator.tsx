@@ -3,7 +3,7 @@
 import { useState } from "react";
 import styles from "./Calculator.module.scss";
 import { DEMO_CATEGORIES, INCOME } from "@/lib/demoConstants";
-import { ContainerCard, PercentBadge } from "@/components/ui";
+import { ContainerCard, PercentBadge, SectionHeader } from "@/components/ui";
 import { useTranslations } from "next-intl";
 
 export default function Calculator() {
@@ -18,10 +18,11 @@ export default function Calculator() {
   return (
     <section className={styles.section}>
       <ContainerCard>
-        <div className={styles.header}>
-          <h2>{t("calculator")}</h2>
-          <p>{t("income")}</p>
-        </div>
+        <SectionHeader
+          title={t("calculator")}
+          description={t("income")}
+          variant="primary"
+        />
 
         <div className={styles.inputBlock}>
           <label>{t("monthly")}</label>
