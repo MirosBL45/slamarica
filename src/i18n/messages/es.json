@@ -109,6 +109,10 @@
         "mainTitle": "Ir a la página principal del hogar",
         "or": "o a"
     },
+    "blogLayout": {
+    "title": "Blog",
+    "text": "Lea nuestros últimos artículos sobre cómo administrar presupuestos familiares y consejos financieros"
+  },
     "ispod_ide_text_koji_se_stavlja_u_UI": {
         "title": "Haushaltsbudget"
     },

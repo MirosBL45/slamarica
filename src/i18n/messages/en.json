@@ -109,6 +109,10 @@
     "mainTitle": "Go to main household page",
     "or": "or to"
   },
+  "blogLayout": {
+    "title": "Blog",
+    "text": "Read our latest articles about managing household budgets and financial tips"
+  },
   "ispod_ide_text_koji_se_stavlja_u_UI": {
     "title": "Haushaltsbudget"
   },

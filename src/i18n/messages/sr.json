@@ -109,6 +109,10 @@
     "mainTitle": "Idi na glavnu stranicu kuće",
     "or": "ili na"
   },
+  "blogLayout": {
+    "title": "Blog",
+    "text": "Čitajte naše najnovije članke o upravljanju kućnim budžetom i finansijskim savetima"
+  },
   "ispod_ide_text_koji_se_stavlja_u_UI": {
     "title": "Haushaltsbudget"
   },

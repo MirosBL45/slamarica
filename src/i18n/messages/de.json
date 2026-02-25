@@ -109,6 +109,10 @@
         "mainTitle": "Zur Hauptseite des Haushalts gehen",
         "or": "oder zu"
     },
+    "blogLayout": {
+    "title": "Blog",
+    "text": "Lesen Sie unsere neuesten Artikel zum Thema Haushaltsplanung und Finanztipps"
+  },
     "ispod_ide_text_koji_se_stavlja_u_UI": {
         "title": "Haushaltsbudget"
     },

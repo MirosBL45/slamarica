@@ -1,26 +1,16 @@
-import Link from 'next/link';
-import { getTranslations } from 'next-intl/server';
-import { PageProps, Locale, SUPPORTED_LOCALES } from "@/lib/types/i18n";
+import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import {
+  PageProps,
+  Locale,
+  SUPPORTED_LOCALES,
+  getAlternativeLanguages,
+} from "@/lib/types/i18n";
 
-// import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-// const supportedLocales = ["sr", "en", "es", "de"] as const;
-
-// type Locale = (typeof supportedLocales)[number];
-
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: Promise<{ locale: string }>;
-// }): Promise<Metadata> {
 export async function generateMetadata({ params }: PageProps) {
   const { locale } = await params;
-
-  // if (!supportedLocales.includes(locale as Locale)) {
-  //   notFound();
-  // }
-
 
   // Provera koristi centralizovanu listu
   if (!SUPPORTED_LOCALES.includes(locale as Locale)) {
@@ -47,16 +37,10 @@ export async function generateMetadata({ params }: PageProps) {
 
     alternates: {
       canonical: `/${locale}/household`,
-      languages: {
-        sr: "/sr/household",
-        en: "/en/household",
-        es: "/es/household",
-        de: "/de/household",
-      },
+      languages: getAlternativeLanguages("/household"),
     },
   };
 }
-
 
 export default async function HouseholdLayout({
   children,
@@ -67,29 +51,31 @@ export default async function HouseholdLayout({
 }) {
   const { locale } = await params;
   const t = await getTranslations({
-  locale,
-  namespace: 'householdLayout',
-});
+    locale,
+    namespace: "householdLayout",
+  });
 
   return (
     <div>
-      <header style={{ padding: '1rem' }}>
-        <h1>{t('title')}</h1>
+      <header style={{ padding: "1rem" }}>
+        <h1>{t("title")}</h1>
 
         <p>
-          {t('text')}{' '}
-          <Link style={{color: 'green'}}
-            title={t('settingsTitle')}
+          {t("text")}{" "}
+          <Link
+            style={{ color: "green" }}
+            title={t("settingsTitle")}
             href={`/${locale}/household/settings`}
           >
-            {t('settings')}
-          </Link>{' '}
-          {t('or')}{' '}
-          <Link style={{color: 'green'}}
-            title={t('mainTitle')}
+            {t("settings")}
+          </Link>{" "}
+          {t("or")}{" "}
+          <Link
+            style={{ color: "green" }}
+            title={t("mainTitle")}
             href={`/${locale}/household`}
           >
-            {t('main')}
+            {t("main")}
           </Link>
           .
         </p>
