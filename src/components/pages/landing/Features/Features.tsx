@@ -20,11 +20,16 @@ export default async function Features({ locale }: LocaleProps) {
 
           return (
             <ContainerCard key={feat.id}>
-              {/* a ako ikada poželiš drugu veličinu, samo prosledi npr. <Icon size="40px" /> */}
-              <Badge icon={<Icon />} bgColor={feat.bgColor} hoverBgColor={feat.bgHoverColor} />
-
-              <h3>{t(`items.${feat.id}.title`)}</h3>
-              <p>{t(`items.${feat.id}.desc`)}</p>
+              <div className={styles.featuresItem}>
+                {/* npr. <Icon size="40px" /> */}
+                <Badge
+                  icon={<Icon />}
+                  bgColor={feat.bgColor}
+                  hoverBgColor={feat.bgHoverColor}
+                />
+                <h3>{t(`items.${feat.id}.title`)}</h3>
+                <p>{t(`items.${feat.id}.desc`)}</p>
+              </div>
             </ContainerCard>
           );
         })}

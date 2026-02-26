@@ -33,22 +33,3 @@
         grid-template-columns: 1fr 1fr;
     }
 }
-
-.card {
-    padding: 1.25rem;
-    border-radius: v.$radius-md;
-    border: 1px solid v.$color-border;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.label {
-    font-size: 0.9rem;
-    color: v.$color-text-muted;
-}
-
-.amount {
-    font-size: 1.4rem;
-    color: v.$color-text-main;
-}

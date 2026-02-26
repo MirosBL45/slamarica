@@ -3,7 +3,7 @@
 import { useState } from "react";
 import styles from "./Calculator.module.scss";
 import { DEMO_CATEGORIES, INCOME } from "@/lib/demoConstants";
-import { ContainerCard, SectionHeader, Badge } from "@/components/ui";
+import { ContainerCard, SectionHeader, StatCard } from "@/components/ui";
 import { useTranslations } from "next-intl";
 
 export default function Calculator() {
@@ -41,16 +41,13 @@ export default function Calculator() {
             const value = (income * cat.percent) / 100;
 
             return (
-              <div key={cat.id} className={styles.card}>
-                <div>
-                  <div className={styles.label}>
-                    {t(`categories.${cat.id}`)}
-                  </div>
-                  <div className={styles.amount}>&euro;{value.toFixed(0)}</div>
-                </div>
-
-                <Badge bgColor={cat.color}>{cat.percent}%</Badge>
-              </div>
+              <StatCard
+                key={cat.id}
+                label={t(`categories.${cat.id}`)}
+                amount={value}
+                percentage={cat.percent}
+                color={cat.color}
+              />
             );
           })}
         </div>
