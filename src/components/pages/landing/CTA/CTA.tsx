@@ -1,16 +1,23 @@
+import { getTranslations } from "next-intl/server";
+import { LocaleProps } from "@/lib/types/i18n";
+import { ActionLink, SectionHeader, ContainerCard } from "@/components/ui";
 import styles from "./CTA.module.scss";
 
-import { ActionLink } from "@/components/ui";
+export default async function CTA({ locale }: LocaleProps) {
+  const t = await getTranslations({ locale, namespace: "cta" });
 
-export default function CTA() {
   return (
     <section className={styles.section}>
-      <div className={styles.card}>
-        <h2>Start building financial clarity today</h2>
-        <p>Join families who have taken control of their finances</p>
-
-        <ActionLink href="/login">Get Started Free</ActionLink>
-      </div>
+      <ContainerCard variant="primary">
+        <div className={styles.center}>
+        <SectionHeader
+          title={t("title")}
+          description={t("description")}
+          variant="surface"
+        />
+        <ActionLink href="/login">{t("cta")}</ActionLink>
+        </div>
+      </ContainerCard>
     </section>
   );
 }

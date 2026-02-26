@@ -80,12 +80,6 @@
     "menu": "Menu",
     "switchLanguage": "Switch language"
   },
-  "home": {
-    "title": "Household Budget",
-    "description1": "Saving and managing money has never been easier! This app helps you track income and expenses, plan monthly budgets and achieve your financial goals.",
-    "description2": "Smart money management for a happier life!",
-    "enterApp": "Enter the app"
-  },
   "budget": {
     "title": "Monthly budget distribution",
     "personal": "Personal",
@@ -109,6 +103,10 @@
     "mainTitle": "Go to main household page",
     "or": "or to"
   },
+  "blogLayout": {
+    "title": "Blog",
+    "text": "Read our latest articles about managing household budgets and financial tips"
+  },
   "ispod_ide_text_koji_se_stavlja_u_UI": {
     "title": "Haushaltsbudget"
   },
@@ -119,5 +117,43 @@
     "description": "Take control of your family finances. Split income into smart categories, track savings and build stability.",
     "action1": "Enter the app",
     "action2": "Learn more"
+  },
+  "financialOverview": {
+    "title": "Financial overview",
+    "monthly": "Monthly income",
+    "calculator": "Try the Calculator",
+    "income": "See how your income can be distributed across smart budget categories",
+    "placeholder": "Enter amount",
+    "categories": {
+      "personal": "Personal Money",
+      "bills": "Bills",
+      "travel": "Travel",
+      "food": "Food",
+      "savings": "House Savings",
+      "investments": "Investments"
+    }
+  },
+  "features": {
+    "title": "Built for modern families",
+    "description": "Our apps are designed to help you easily manage family finances and achieve your savings goals",
+    "items": {
+      "distribution": {
+        "title": "Smart Distribution",
+        "desc": "Automatically split income across customizable categories"
+      },
+      "growth": {
+        "title": "Track Growth",
+        "desc": "Watch your savings grow with powerful insights"
+      },
+      "secure": {
+        "title": "Secure & Private",
+        "desc": "Your financial data stays protected and encrypted"
+      }
+    }
+  },
+  "cta": {
+    "title": "Start building financial clarity today",
+    "description": "Join families who have taken control of their finances",
+    "cta": "Get Started Free"
   }
 }

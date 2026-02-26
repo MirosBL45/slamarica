@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "@/styles/variables" as v;
 
 .section {
@@ -6,23 +7,7 @@
   padding: 0 1.25rem;
 }
 
-.card {
-  padding: 3rem 2rem;
-  border-radius: v.$radius-lg;
-  background: linear-gradient(
-    135deg,
-    v.$color-primary,
-    darken(v.$color-primary, 10%)
-  );
+.center {
   text-align: center;
-  color: v.$color-surface;
-
-  h2 {
-    margin-bottom: 1rem;
-  }
-
-  p {
-    opacity: 0.9;
-    margin-bottom: 1.5rem;
-  }
 }
+

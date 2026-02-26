@@ -1,21 +1,9 @@
 @use "@/styles/breakpoints" as b;
 
-.description {
-  margin-top: 1rem;
-  font-size: 1.125rem;
-  color: #555;
-}
-
-.heroContainer {
-  display: flex;
-  align-items: center;
-  padding: 4rem 1.25rem 3rem;
-}
-
 .mainContent {
     display: flex;
     flex-direction: column; // Baza: Mobilni (vertikalno)
-    margin: 0 auto;
+    margin: 2rem auto;
     max-width: 1200px;
     
     // 1. Najmanji uređaji (do 480px)

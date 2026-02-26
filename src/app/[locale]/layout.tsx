@@ -1,24 +1,21 @@
-import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import Navbar from "@/components/Navbar";
+import {
+  PageProps,
+  Locale,
+  SUPPORTED_LOCALES,
+  getAlternativeLanguages,
+} from "@/lib/types/i18n";
 
 import "@/styles/globals.scss";
 import { Header, Footer } from "@/components/layout";
 
-const supportedLocales = ["sr", "en", "es", "de"] as const;
-
-type Locale = (typeof supportedLocales)[number];
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps) {
   const { locale } = await params;
 
-  if (!supportedLocales.includes(locale as Locale)) {
+  if (!SUPPORTED_LOCALES.includes(locale as Locale)) {
     notFound();
   }
 
@@ -81,13 +78,8 @@ export async function generateMetadata({
     },
 
     alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        sr: "/sr",
-        en: "/en",
-        es: "/es",
-        de: "/de",
-      },
+      canonical: `/${locale}/`,
+      languages: getAlternativeLanguages("/"),
     },
 
     openGraph: {
@@ -130,7 +122,7 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  if (!supportedLocales.includes(locale as Locale)) {
+  if (!SUPPORTED_LOCALES.includes(locale as Locale)) {
     notFound();
   }
 

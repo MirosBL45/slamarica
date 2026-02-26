@@ -1,38 +1,38 @@
-"use client";
-
+import { getTranslations } from "next-intl/server";
+import { LocaleProps } from "@/lib/types/i18n";
+import { ContainerCard, SectionHeader, Badge } from "@/components/ui";
+import { FEATURES_DATA } from "@/lib/demoConstants";
 import styles from "./Features.module.scss";
-import { ContainerCard } from "@/components/ui";
 
-const features = [
-  {
-    title: "Smart Distribution",
-    desc: "Automatically split income across customizable categories",
-  },
-  {
-    title: "Track Growth",
-    desc: "Watch your savings grow with powerful insights",
-  },
-  {
-    title: "Secure & Private",
-    desc: "Your financial data stays protected and encrypted",
-  },
-];
+export default async function Features({ locale }: LocaleProps) {
+  const t = await getTranslations({ locale, namespace: "features" });
 
-export default function Features() {
   return (
     <section className={styles.section}>
-      <div className={styles.header}>
-        <h2>Built for modern families</h2>
-        <p>Everything you need to manage household finances</p>
-      </div>
-
+      <SectionHeader
+        title={t("title")}
+        description={t("description")}
+        variant="primary"
+      />
       <div className={styles.grid}>
-        {features.map((f) => (
-          <ContainerCard key={f.title}>
-            <h3>{f.title}</h3>
-            <p>{f.desc}</p>
-          </ContainerCard>
-        ))}
+        {FEATURES_DATA.map((feat) => {
+          const Icon = feat.icon;
+
+          return (
+            <ContainerCard key={feat.id}>
+              <div className={styles.featuresItem}>
+                {/* npr. <Icon size="40px" /> */}
+                <Badge
+                  icon={<Icon />}
+                  bgColor={feat.bgColor}
+                  hoverBgColor={feat.bgHoverColor}
+                />
+                <h3>{t(`items.${feat.id}.title`)}</h3>
+                <p>{t(`items.${feat.id}.desc`)}</p>
+              </div>
+            </ContainerCard>
+          );
+        })}
       </div>
     </section>
   );

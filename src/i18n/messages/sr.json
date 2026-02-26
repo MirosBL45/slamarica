@@ -80,12 +80,6 @@
     "menu": "Meni",
     "switchLanguage": "Promeni jezik"
   },
-  "home": {
-    "title": "Kućni budžet",
-    "description1": "Štednja i upravljanje novcem nikada nisu bili lakši! Ova aplikacija vam pomaže da pratite vaše prihode i rashode, planirate mesečni budžet i ostvarite vaše finansijske ciljeve.",
-    "description2": "Pametno upravljanje novcem za srećniji život!",
-    "enterApp": "Uđi u aplikaciju"
-  },
   "budget": {
     "title": "Raspodela budžeta za mesec",
     "personal": "Lični",
@@ -109,6 +103,10 @@
     "mainTitle": "Idi na glavnu stranicu kuće",
     "or": "ili na"
   },
+  "blogLayout": {
+    "title": "Blog",
+    "text": "Čitajte naše najnovije članke o upravljanju kućnim budžetom i finansijskim savetima"
+  },
   "ispod_ide_text_koji_se_stavlja_u_UI": {
     "title": "Haushaltsbudget"
   },
@@ -119,5 +117,43 @@
     "description": "Preuzmite kontrolu nad porodičnim finansijama. Rasporedite prihode u pametne kategorije, pratite štednju i izgradite finansijsku stabilnost.",
     "action1": "Uđi u aplikaciju",
     "action2": "Saznajte više"
+  },
+  "financialOverview": {
+    "title": "Finansijski pregled",
+    "monthly": "Mesečni prihod",
+    "calculator": "Isprobaj kalkulator",
+    "income": "Pogledajte kako se vaš prihod može raspodeliti po pametnim kategorijama budžeta",
+    "placeholder": "Unesite iznos",
+    "categories": {
+      "personal": "Lični novac",
+      "bills": "Računi",
+      "travel": "Putovanja",
+      "food": "Hrana",
+      "savings": "Kućna štednja",
+      "investments": "Investicije"
+    }
+  },
+  "features": {
+    "title": "Ključne funkcije",
+    "description": "Naše aplikacije su dizajnirane da vam pomognu da lako upravljate porodičnim finansijama i ostvarite svoje ciljeve štednje",
+    "items": {
+      "distribution": {
+        "title": "Pametna raspodela",
+        "desc": "Automatski podelite prihode kroz prilagodljive kategorije"
+      },
+      "growth": {
+        "title": "Pratite napredak",
+        "desc": "Gledajte kako vaša štednja raste uz moćne uvide u troškove"
+      },
+      "secure": {
+        "title": "Sigurno i privatno",
+        "desc": "Vaši finansijski podaci su zaštićeni i šifrovani"
+      }
+    }
+  },
+  "cta": {
+    "title": "Započnite izgradnju finansijske jasnoće danas",
+    "description": "Pridružite se porodicama koje su preuzele kontrolu nad svojim finansijama",
+    "cta": "Započnite besplatno"
   }
 }

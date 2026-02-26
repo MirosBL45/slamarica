@@ -1,0 +1,37 @@
+@use "@/styles/variables" as v;
+
+.bigContaner {
+  margin-top: 100px;
+  font-size: 45px;
+}
+
+.loadingSpinnerContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: v.$color-primary;
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingSpinner {
+  width: 154px;
+  height: 154px;
+  border: 8px solid;
+  border-color: v.$color-accent transparent v.$color-primary-light transparent;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

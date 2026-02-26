@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import styles from "./Calculator.module.scss";
-import { demoCategories } from "@/lib/demoCategories";
-import { ContainerCard, PercentBadge } from "@/components/ui";
+import { DEMO_CATEGORIES, INCOME } from "@/lib/demoConstants";
+import { ContainerCard, SectionHeader, StatCard } from "@/components/ui";
+import { useTranslations } from "next-intl";
 
 export default function Calculator() {
-  const [income, setIncome] = useState<number>(5000);
+  const [income, setIncome] = useState<number>(INCOME);
+  const t = useTranslations("financialOverview");
 
   const handleChange = (value: string) => {
     const numeric = Number(value.replace(/[^\d]/g, ""));
@@ -14,38 +16,38 @@ export default function Calculator() {
   };
 
   return (
-    <section className={styles.section} id="demoCalculator">
+    <section className={styles.section}>
       <ContainerCard>
-        <div className={styles.header}>
-          <h2>Try the Calculator</h2>
-          <p>
-            See how your income can be distributed across smart budget
-            categories
-          </p>
-        </div>
+        <SectionHeader
+          title={t("calculator")}
+          description={t("income")}
+          variant="primary"
+        />
 
         <div className={styles.inputBlock}>
-          <label>Monthly Income</label>
+          <label>{t("monthly")}</label>
           <input
-            value={income}
+            type="number"
+            inputMode="numeric"
+            value={income === 0 ? "" : income}
             onChange={(e) => handleChange(e.target.value)}
             className={styles.input}
+            placeholder={t("placeholder")}
           />
         </div>
 
         <div className={styles.grid}>
-          {demoCategories.map((cat) => {
+          {DEMO_CATEGORIES.map((cat) => {
             const value = (income * cat.percent) / 100;
 
             return (
-              <div key={cat.name} className={styles.card}>
-                <div>
-                  <div className={styles.label}>{cat.name}</div>
-                  <div className={styles.amount}>${value.toFixed(0)}</div>
-                </div>
-
-                <PercentBadge percent={cat.percent} color={cat.color} />
-              </div>
+              <StatCard
+                key={cat.id}
+                label={t(`categories.${cat.id}`)}
+                amount={value}
+                percentage={cat.percent}
+                color={cat.color}
+              />
             );
           })}
         </div>

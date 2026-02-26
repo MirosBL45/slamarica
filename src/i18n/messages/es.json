@@ -1,123 +1,159 @@
 {
-    "common": {
-        "confirm": "Confirmar",
-        "salary": "Salario",
-        "total": "Total"
-    },
-    "household": {
-        "title": "Tu presupuesto familiar",
-        "description": "Gestiona los miembros y la distribución de los ingresos mensuales."
-    },
-    "blog": {
-        "title": "Blog",
-        "description": "Consejos e ideas sobre la gestión del presupuesto familiar.",
-        "comingSoon": "El blog llegará pronto, laganini."
-    },
-    "income": {
-        "member": "Miembro",
-        "selectMember": "Selecciona un miembro",
-        "salary": "Salario",
-        "enterAmount": "Introduce el importe",
-        "greaterThanZero": "Debe ser mayor que 0",
-        "addIncome": "Agregar salario",
-        "duplicate": "Ya existe un registro para este miembro en este mes",
-        "percentageError": "Los porcentajes deben sumar 100%",
-        "noMembers": "No hay miembros",
-        "salaryRequired": "Introduce el importe",
-        "salaryMustBeNumber": "Introduce solo un número",
-        "salaryMustBePositive": "El importe debe ser mayor que 0"
-    },
-    "members": {
-        "name": "Nombre del miembro",
-        "enterName": "Introduce el nombre del miembro",
-        "minLength": "El nombre debe tener al menos 2 letras",
-        "placeholder": "Introduce el nombre",
-        "addMember": "Agregar miembro",
-        "actions": "Acciones",
-        "delete": "Eliminar",
-        "empty": "No hay miembros",
-        "status": "Estado",
-        "active": "Activo",
-        "inactive": "Inactivo",
-        "confirmDeleteTitle": "Confirmación de eliminación",
-        "confirmDeleteText": "¿Estás seguro de que deseas eliminar al miembro?",
-        "confirmInactiveTitle": "Establecer como inactivo",
-        "confirmInactiveText": "El miembro ya tiene salarios registrados. Se marcará como inactivo. ¿Estás seguro?",
-        "setInactive": "Marcar como inactivo",
-        "cancel": "Cancelar",
-        "confirmRestoreTitle": "Restaurar miembro",
-        "confirmRestoreText": "¿Deseas reactivar a este miembro?",
-        "restore": "Restaurar miembro",
-        "duplicate": "Ya existe un miembro con ese nombre"
-    },
-    "incomeTable": {
-        "member": "Miembro",
-        "salary": "Salario",
-        "personal": "Personal",
-        "bills": "Facturas",
-        "travel": "Viajes",
-        "food": "Comida",
-        "savings": "Ahorros",
-        "unknown": "Desconocido",
-        "empty": "No hay datos",
-        "investments": "Inversiones"
-    },
-    "totals": {
-        "personal": "Personal",
-        "bills": "Facturas",
-        "travel": "Viajes",
-        "food": "Comida",
-        "savings": "Ahorros",
-        "investments": "Inversiones"
-    },
-    "month": {
-        "selectMonth": "Selecciona el mes"
-    },
-    "navbar": {
-        "home": "Inicio",
-        "household": "Hogar",
-        "blog": "Blog",
-        "menu": "Menú",
-        "switchLanguage": "Cambiar idioma"
-    },
-    "home": {
-        "title": "Presupuesto familiar",
-        "description1": "¡Ahorrar y gestionar el dinero nunca ha sido tan fácil! Esta aplicación te ayuda a seguir tus ingresos y gastos, planificar tu presupuesto mensual y alcanzar tus objetivos financieros.",
-        "description2": "¡Gestión inteligente del dinero para una vida más feliz!",
-        "enterApp": "Entrar en la aplicación"
-    },
-    "budget": {
-        "title": "Distribución del presupuesto mensual",
-        "personal": "Personal",
-        "bills": "Facturas",
-        "travel": "Viajes",
-        "food": "Comida",
-        "savings": "Ahorros",
-        "total": "Total",
-        "locked": "El presupuesto está bloqueado porque ya existe un registro para este mes.",
-        "investments": "Inversiones"
-    },
-    "settings": {
-        "title": "Configuración del presupuesto familiar"
-    },
-    "householdLayout": {
-        "title": "Presupuesto familiar",
-        "text": "Puedes ir a",
-        "settings": "configuración",
-        "settingsTitle": "Ir a configuración",
-        "main": "la página principal del hogar",
-        "mainTitle": "Ir a la página principal del hogar",
-        "or": "o a"
-    },
-    "ispod_ide_text_koji_se_stavlja_u_UI": {
-        "title": "Haushaltsbudget"
-    },
-    "hero": {
-        "badge": "Con la confianza de familias de todo el mundo",
-        "title1": "Claridad financiera",
-        "title2": "para tu hogar",
-        "description": "Toma el control de las finanzas de tu familia. Divide tus ingresos en categorías inteligentes, sigue tus ahorros y construye estabilidad financiera.",
-        "action1": "Comenzar ahora",
-        "action2": "Más información"
+  "common": {
+    "confirm": "Confirmar",
+    "salary": "Salario",
+    "total": "Total"
+  },
+  "household": {
+    "title": "Tu presupuesto familiar",
+    "description": "Gestiona los miembros y la distribución de los ingresos mensuales."
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Consejos e ideas sobre la gestión del presupuesto familiar.",
+    "comingSoon": "El blog llegará pronto, laganini."
+  },
+  "income": {
+    "member": "Miembro",
+    "selectMember": "Selecciona un miembro",
+    "salary": "Salario",
+    "enterAmount": "Introduce el importe",
+    "greaterThanZero": "Debe ser mayor que 0",
+    "addIncome": "Agregar salario",
+    "duplicate": "Ya existe un registro para este miembro en este mes",
+    "percentageError": "Los porcentajes deben sumar 100%",
+    "noMembers": "No hay miembros",
+    "salaryRequired": "Introduce el importe",
+    "salaryMustBeNumber": "Introduce solo un número",
+    "salaryMustBePositive": "El importe debe ser mayor que 0"
+  },
+  "members": {
+    "name": "Nombre del miembro",
+    "enterName": "Introduce el nombre del miembro",
+    "minLength": "El nombre debe tener al menos 2 letras",
+    "placeholder": "Introduce el nombre",
+    "addMember": "Agregar miembro",
+    "actions": "Acciones",
+    "delete": "Eliminar",
+    "empty": "No hay miembros",
+    "status": "Estado",
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "confirmDeleteTitle": "Confirmación de eliminación",
+    "confirmDeleteText": "¿Estás seguro de que deseas eliminar al miembro?",
+    "confirmInactiveTitle": "Establecer como inactivo",
+    "confirmInactiveText": "El miembro ya tiene salarios registrados. Se marcará como inactivo. ¿Estás seguro?",
+    "setInactive": "Marcar como inactivo",
+    "cancel": "Cancelar",
+    "confirmRestoreTitle": "Restaurar miembro",
+    "confirmRestoreText": "¿Deseas reactivar a este miembro?",
+    "restore": "Restaurar miembro",
+    "duplicate": "Ya existe un miembro con ese nombre"
+  },
+  "incomeTable": {
+    "member": "Miembro",
+    "salary": "Salario",
+    "personal": "Personal",
+    "bills": "Facturas",
+    "travel": "Viajes",
+    "food": "Comida",
+    "savings": "Ahorros",
+    "unknown": "Desconocido",
+    "empty": "No hay datos",
+    "investments": "Inversiones"
+  },
+  "totals": {
+    "personal": "Personal",
+    "bills": "Facturas",
+    "travel": "Viajes",
+    "food": "Comida",
+    "savings": "Ahorros",
+    "investments": "Inversiones"
+  },
+  "month": {
+    "selectMonth": "Selecciona el mes"
+  },
+  "navbar": {
+    "home": "Inicio",
+    "household": "Hogar",
+    "blog": "Blog",
+    "menu": "Menú",
+    "switchLanguage": "Cambiar idioma"
+  },
+  "budget": {
+    "title": "Distribución del presupuesto mensual",
+    "personal": "Personal",
+    "bills": "Facturas",
+    "travel": "Viajes",
+    "food": "Comida",
+    "savings": "Ahorros",
+    "total": "Total",
+    "locked": "El presupuesto está bloqueado porque ya existe un registro para este mes.",
+    "investments": "Inversiones"
+  },
+  "settings": {
+    "title": "Configuración del presupuesto familiar"
+  },
+  "householdLayout": {
+    "title": "Presupuesto familiar",
+    "text": "Puedes ir a",
+    "settings": "configuración",
+    "settingsTitle": "Ir a configuración",
+    "main": "la página principal del hogar",
+    "mainTitle": "Ir a la página principal del hogar",
+    "or": "o a"
+  },
+  "blogLayout": {
+    "title": "Blog",
+    "text": "Lea nuestros últimos artículos sobre cómo administrar presupuestos familiares y consejos financieros"
+  },
+  "ispod_ide_text_koji_se_stavlja_u_UI": {
+    "title": "Haushaltsbudget"
+  },
+  "hero": {
+    "badge": "Con la confianza de familias de todo el mundo",
+    "title1": "Claridad financiera",
+    "title2": "para tu hogar",
+    "description": "Toma el control de las finanzas de tu familia. Divide tus ingresos en categorías inteligentes, sigue tus ahorros y construye estabilidad financiera.",
+    "action1": "Comenzar ahora",
+    "action2": "Más información"
+  },
+  "financialOverview": {
+    "title": "Resumen financiero",
+    "monthly": "Ingreso mensual",
+    "calculator": "Prueba la calculadora",
+    "income": "Aprenda a asignar sus ingresos a categorías presupuestarias sensatas",
+    "placeholder": "Ingrese el monto",
+    "categories": {
+      "personal": "Dinero personal",
+      "bills": "Facturas",
+      "travel": "Viajes",
+      "food": "Comida",
+      "savings": "Ahorros del hogar",
+      "investments": "Inversiones"
     }
+  },
+  "features": {
+    "title": "Construido para familias modernas",
+    "description": "Nuestras aplicaciones están diseñadas para ayudarte a gestionar fácilmente las finanzas familiares y alcanzar tus objetivos de ahorro",
+    "items": {
+      "distribution": {
+        "title": "Distribución Inteligente",
+        "desc": "Divide tus ingresos automáticamente en categorías personalizables"
+      },
+      "growth": {
+        "title": "Sigue el Crecimiento",
+        "desc": "Mira cómo crecen tus ahorros con análisis detallados"
+      },
+      "secure": {
+        "title": "Seguro y Privado",
+        "desc": "Tus datos financieros están protegidos y cifrados"
+      }
+    }
+  },
+  "cta": {
+    "title": "Comienza a construir claridad financiera hoy",
+    "description": "Únete a familias que han tomado el control de sus finanzas",
+    "cta": "Comenzar gratis"
+  }
 }

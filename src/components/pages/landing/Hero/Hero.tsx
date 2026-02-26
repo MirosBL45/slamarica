@@ -1,12 +1,9 @@
 import { getTranslations } from 'next-intl/server';
 import { ActionLink } from "@/components/ui";
+import { LocaleProps } from "@/lib/types/i18n";
 import styles from "./Hero.module.scss";
 
-interface HeroProps {
-  locale: string;
-}
-
-export default async function Hero({ locale }: HeroProps) {
+export default async function Hero({ locale }: LocaleProps) {
   const t = await getTranslations({ locale, namespace: "hero" });
 
   return (

@@ -6,10 +6,11 @@ import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { Menu, Dropdown, Button, Drawer, Grid } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
+import { SUPPORTED_LOCALES } from "@/lib/types/i18n";
 
 const { useBreakpoint } = Grid;
 
-const supportedLocales = ['sr', 'en', 'es', 'de'];
+// const supportedLocales = ['sr', 'en', 'es', 'de'];
 
 export default function Navbar() {
   const locale = useLocale();
@@ -38,7 +39,7 @@ export default function Navbar() {
     },
   ];
 
-  const languageItems = supportedLocales.map((lng) => ({
+  const languageItems = SUPPORTED_LOCALES.map((lng) => ({
     key: lng,
     label: <Link href={getLocalePath(lng)}>{lng.toUpperCase()}</Link>,
   }));
@@ -78,7 +79,7 @@ export default function Navbar() {
             <Menu mode="vertical" items={menuItems} />
 
             <div style={{ marginTop: '1rem' }}>
-              {supportedLocales.map((lng) => (
+              {SUPPORTED_LOCALES.map((lng) => (
                 <div key={lng}>
                   <Link href={getLocalePath(lng)}>{lng.toUpperCase()}</Link>
                 </div>
