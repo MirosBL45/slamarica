@@ -1,10 +1,8 @@
-type DecentWorkAndEconomicGrowthSolidProps = {
-  size: string;
+type GrowthIconProps = {
+  size?: string;
 };
 
-const DecentWorkAndEconomicGrowthSolid = ({
-  size,
-}: DecentWorkAndEconomicGrowthSolidProps) => (
+const GrowthIcon = ({ size = "24px" }: GrowthIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -20,4 +18,4 @@ const DecentWorkAndEconomicGrowthSolid = ({
   </svg>
 );
 
-export default DecentWorkAndEconomicGrowthSolid;
+export default GrowthIcon;

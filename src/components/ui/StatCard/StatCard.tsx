@@ -11,7 +11,7 @@ interface Props {
 export default function StatCard({ title, amount, percent, color }: Props) {
   return (
     <div className={styles.card}>
-      <div>
+      <div>ewuyriuwyriuweyrwiue
         <div className={styles.label}>{title}</div>
         <div className={styles.amount}>{amount.toLocaleString()}</div>
       </div>

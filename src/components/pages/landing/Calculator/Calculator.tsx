@@ -3,7 +3,7 @@
 import { useState } from "react";
 import styles from "./Calculator.module.scss";
 import { DEMO_CATEGORIES, INCOME } from "@/lib/demoConstants";
-import { ContainerCard, PercentBadge, SectionHeader } from "@/components/ui";
+import { ContainerCard, SectionHeader, Badge } from "@/components/ui";
 import { useTranslations } from "next-intl";
 
 export default function Calculator() {
@@ -49,7 +49,7 @@ export default function Calculator() {
                   <div className={styles.amount}>&euro;{value.toFixed(0)}</div>
                 </div>
 
-                <PercentBadge percent={cat.percent} color={cat.color} />
+                <Badge bgColor={cat.color}>{cat.percent}%</Badge>
               </div>
             );
           })}

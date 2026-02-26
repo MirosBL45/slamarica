@@ -1,8 +1,8 @@
-type SecurityCheckedProps = {
-  size: string;
+type SecureIconProps = {
+  size?: string;
 };
 
-const SecurityChecked = ({ size }: SecurityCheckedProps) => (
+const SecureIcon = ({ size = "24px" }: SecureIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -16,4 +16,4 @@ const SecurityChecked = ({ size }: SecurityCheckedProps) => (
   </svg>
 );
 
-export default SecurityChecked;
+export default SecureIcon;

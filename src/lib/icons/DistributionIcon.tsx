@@ -1,8 +1,8 @@
-type SplitBranchProps = {
-  size: string;
+type DistributionIconProps = {
+  size?: string;
 };
 
-const SplitBranch = ({ size }: SplitBranchProps) => (
+const DistributionIcon = ({ size = "24px" }: DistributionIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -23,4 +23,4 @@ const SplitBranch = ({ size }: SplitBranchProps) => (
   </svg>
 );
 
-export default SplitBranch;
+export default DistributionIcon;
