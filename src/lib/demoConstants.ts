@@ -12,7 +12,22 @@ export const DEMO_CATEGORIES = [
 export const INCOME = 3900;
 
 export const FEATURES_DATA = [
-  { id: "distribution", icon: DistributionIcon, bgColor: "#3f5f5a", bgHoverColor: "#2dbf30e6" },
-{ id: "growth", icon: GrowthIcon, bgColor: "#c2a36b", bgHoverColor: "#ad3390bc" },
-  { id: "secure", icon: SecureIcon, bgColor: "#6f8f8a", bgHoverColor: "#1136c8ea" },
+  {
+    id: "distribution",
+    icon: DistributionIcon,
+    bgColor: "#3f5f5a",
+    bgHoverColor: "#2dbf30e6",
+  },
+  {
+    id: "growth",
+    icon: GrowthIcon,
+    bgColor: "#c2a36b",
+    bgHoverColor: "#ad3390bc",
+  },
+  {
+    id: "secure",
+    icon: SecureIcon,
+    bgColor: "#6f8f8a",
+    bgHoverColor: "#1136c8ea",
+  },
 ];
