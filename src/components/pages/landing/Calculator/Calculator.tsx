@@ -9,14 +9,13 @@ import {
   SectionHeader,
   StatCard,
 } from "@/components/ui";
-import { Slider, InputNumber, Space } from "antd";
+import { Slider, InputNumber, Space, Progress, Tooltip } from "antd";
 
 import { useTranslations } from "next-intl";
 
 export default function Calculator() {
   const [income, setIncome] = useState<number>(INCOME);
   const [categories, setCategories] = useState(DEMO_CATEGORIES);
-  const [animating, setAnimating] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const t = useTranslations("financialOverview");
 
@@ -36,8 +35,6 @@ export default function Calculator() {
   const totalPercent = categories.reduce((sum, cat) => sum + cat.percent, 0);
 
   function normalize() {
-    setAnimating(true);
-
     const total = categories.reduce((s, c) => s + c.percent, 0);
 
     const normalized = categories.map((cat) => ({
@@ -52,10 +49,7 @@ export default function Calculator() {
       normalized[normalized.length - 1].percent += diff;
     }
 
-    setTimeout(() => {
-      setCategories(normalized);
-      setAnimating(false);
-    }, 80);
+    setCategories(normalized);
   }
 
   return (
@@ -68,7 +62,7 @@ export default function Calculator() {
         />
 
         <div className={styles.inputBlock}>
-          <label>{t("monthly")}</label>
+          <label>{t("monthly")} &euro;</label>
           <input
             type="number"
             inputMode="numeric"
@@ -81,14 +75,24 @@ export default function Calculator() {
 
         <div className={styles.progressWrapper}>
           {categories.map((cat) => (
-            <div
+            <Tooltip
               key={cat.id}
-              className={styles.progressSegment}
-              style={{
-                width: animating ? "0%" : `${cat.percent}%`,
-                backgroundColor: cat.color,
-              }}
-            />
+              title={`${t(`categories.${cat.id}`)} — ${cat.percent}%`}
+            >
+              <div
+                style={{
+                  width: `${cat.percent}%`,
+                }}
+              >
+                <Progress
+                  percent={100}
+                  showInfo={false}
+                  strokeColor={cat.color}
+                  railColor="transparent"
+                  size="small"
+                />
+              </div>
+            </Tooltip>
           ))}
         </div>
 
@@ -97,7 +101,7 @@ export default function Calculator() {
             const value = (income * cat.percent) / 100;
 
             return (
-              <div key={cat.id} className={styles.statWrapper}>
+              <div key={cat.id}>
                 <StatCard
                   label={t(`categories.${cat.id}`)}
                   amount={value}
@@ -128,7 +132,7 @@ export default function Calculator() {
                       min={0}
                       max={100}
                       controls={false}
-                      inputMode="numeric"                      
+                      inputMode="numeric"
                       value={cat.percent}
                       onChange={(value) => updatePercent(cat.id, value ?? 0)}
                     />
@@ -139,26 +143,26 @@ export default function Calculator() {
             );
           })}
         </div>
-        <ContainerCard>
-          <div className={styles.controls}>
-            <div className={styles.percentInfo}>
-              Total: {totalPercent}%
-              {totalPercent !== 100 && (
-                <span className={styles.warning}>
-                  Percentages should equal 100%
-                </span>
-              )}
-            </div>
+
+        <div className={styles.controls}>
+          <div className={styles.controlsFirstRow}>
+            <p className={styles.percentInfo}>
+              {t("total")}: {totalPercent}%
+            </p>
 
             <ActionButton
               onClick={normalize}
               variant="primary"
               disabled={totalPercent === 100}
             >
-              Normalize to 100%
+              {t("normalize")}
             </ActionButton>
           </div>
-        </ContainerCard>
+
+          {totalPercent !== 100 && (
+            <p className={styles.warning}>{t("percentages")}</p>
+          )}
+        </div>
       </ContainerCard>
     </section>
   );

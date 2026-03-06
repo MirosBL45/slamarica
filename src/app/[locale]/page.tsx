@@ -12,7 +12,7 @@ export default async function Home({ params }: PageProps) {
   const { locale } = await params;
 
   // FAKE FOR LOADING
-  await new Promise((resolve) => setTimeout(resolve, 1500));
+  // await new Promise((resolve) => setTimeout(resolve, 1500));
 
   return (
     <>

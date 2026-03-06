@@ -39,3 +39,15 @@
         background: v.$color-bg;
     }
 }
+
+.button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background: v.$color-inactive;
+  border-color: v.$color-inactive;
+  color: v.$text-inactive;
+
+  &:hover {
+        transform: translateY(0px);
+    }
+}
