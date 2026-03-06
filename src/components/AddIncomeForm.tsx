@@ -5,7 +5,7 @@ import { Form, Select, InputNumber, Button, Card } from "antd";
 import { useLocale, useTranslations } from "next-intl";
 
 import { useStores } from "@/stores/StoreContext";
-import { formatNumber } from "@/lib/formatNumber";
+import { formatNumber } from "@/utils/helpers/formatNumber";
 
 interface Props {
   month: string;

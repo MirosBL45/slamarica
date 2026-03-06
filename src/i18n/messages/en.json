@@ -158,5 +158,10 @@
     "title": "Start building financial clarity today",
     "description": "Join families who have taken control of their finances",
     "cta": "Get Started Free"
+  },
+  "navbarLayout": {
+    "login": "Log in",
+    "description": "Join families who have taken control of their finances",
+    "cta": "Get Started Free"
   }
 }

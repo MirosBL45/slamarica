@@ -1,4 +1,5 @@
 import { NextIntlClientProvider } from "next-intl";
+import Providers from "../providers";
 import { notFound } from "next/navigation";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import Navbar from "@/components/Navbar";
@@ -131,14 +132,16 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <AntdRegistry>
-            <Navbar />
-            <Header />
-            {children}
-            <Footer />
-          </AntdRegistry>
-        </NextIntlClientProvider>
+        <Providers>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <AntdRegistry>
+              <Navbar />
+              <Header />
+              {children}
+              <Footer />
+            </AntdRegistry>
+          </NextIntlClientProvider>
+        </Providers>
       </body>
     </html>
   );

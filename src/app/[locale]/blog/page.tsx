@@ -6,7 +6,7 @@ export default async function BlogPage({ params }: PageProps) {
   const t = await getTranslations({ locale, namespace: "blog" });
 
   // FAKE FOR LOADING
-  await new Promise((resolve) => setTimeout(resolve, 1500));
+  // await new Promise((resolve) => setTimeout(resolve, 1500));
 
   return (
     <div style={{ padding: "1rem" }}>

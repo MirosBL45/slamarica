@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import styles from "./Calculator.module.scss";
-import { DEMO_CATEGORIES, INCOME } from "@/lib/demoConstants";
+import { DEMO_CATEGORIES, INCOME } from "@/utils/helpers/demoConstants";
 import {
   ActionButton,
   ContainerCard,
