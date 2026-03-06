@@ -1,20 +1,30 @@
 @use "@/styles/variables" as v;
 
 .card {
-    padding: 1.25rem;
-    border-radius: v.$radius-md;
-    border: 1px solid v.$color-border;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  padding: 1.25rem;
+  border-radius: v.$radius-md;
+  border: 1px solid v.$color-border;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .label {
-    font-size: 0.9rem;
-    color: v.$color-text-muted;
+  font-size: 0.9rem;
+  color: v.$color-text-muted;
 }
 
 .amount {
-    font-size: 1.4rem;
-    color: v.$color-text-main;
+  font-size: 1.4rem;
+  color: v.$color-text-main;
+}
+
+.card {
+  transition: all 0.25s ease;
+}
+
+.active {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  border: 1px solid currentColor;
 }

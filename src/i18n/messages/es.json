@@ -124,6 +124,9 @@
     "calculator": "Prueba la calculadora",
     "income": "Aprenda a asignar sus ingresos a categorías presupuestarias sensatas",
     "placeholder": "Ingrese el monto",
+    "total": "Total",
+    "normalize": "Repartir al 100%",
+    "percentages": "Los porcentajes deben sumar 100%",
     "categories": {
       "personal": "Dinero personal",
       "bills": "Facturas",
