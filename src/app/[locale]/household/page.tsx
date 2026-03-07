@@ -15,9 +15,6 @@ export default async function HouseholdPage({ params }: PageProps) {
     redirect(`/${locale}/login`);
   }
 
-  // FAKE FOR LOADING
-  // await new Promise((resolve) => setTimeout(resolve, 1500));
-
   return (
     <div style={{ padding: "1rem" }}>
       <h1>{t("title")}</h1>
