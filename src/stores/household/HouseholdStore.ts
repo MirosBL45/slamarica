@@ -15,6 +15,17 @@ export class HouseholdStore {
     this.hydrate();
   }
 
+  async loadFromServer() {
+    const res = await fetch("/api/household");
+
+    if (!res.ok) return;
+
+    const household = await res.json();
+
+    this.households = [household];
+    this.activeHouseholdId = household._id;
+  }
+
   hydrate() {
     if (typeof window === "undefined") return;
 
