@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { useStores } from "@/stores/StoreContext";
 import { formatNumber } from "@/utils/helpers/formatNumber";
+import { MemberStatus } from "@/stores/members/members.types";
 
 interface Props {
   month: string;
@@ -55,7 +56,7 @@ const AddIncomeForm = observer(({ month }: Props) => {
             placeholder={t("selectMember")}
             notFoundContent={t("noMembers")}
             options={membersStore.members
-              .filter((m) => m.status === "active")
+              .filter((m) => m.status === MemberStatus.ACTIVE)
               .map((m) => ({
                 label: m.name,
                 value: m.id,

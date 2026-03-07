@@ -19,18 +19,19 @@ export class MonthlyIncomeStore {
   }
 
   getTotalsByMonth(month: string) {
-    const totals: Record<string, number> = {
-      personal: 0,
-      bills: 0,
-      travel: 0,
-      food: 0,
-      savings: 0,
-      investments: 0,
+    const totals: Record<BudgetPoolType, number> = {
+      [BudgetPoolType.PERSONAL]: 0,
+      [BudgetPoolType.BILLS]: 0,
+      [BudgetPoolType.TRAVEL]: 0,
+      [BudgetPoolType.FOOD]: 0,
+      [BudgetPoolType.SAVINGS]: 0,
+      [BudgetPoolType.INVESTMENTS]: 0,
     };
 
     this.getByMonth(month).forEach((income) => {
       Object.entries(income.breakdown).forEach(([key, value]) => {
-        totals[key] += value;
+        // Key cast-ujemo u Enum jer Object.entries po defaultu vraća string
+        totals[key as BudgetPoolType] += value;
       });
     });
 
@@ -63,12 +64,12 @@ export class MonthlyIncomeStore {
     const pools = budgetStore.getPools(month);
 
     const breakdown: Record<BudgetPoolType, number> = {
-      personal: 0,
-      bills: 0,
-      travel: 0,
-      food: 0,
-      savings: 0,
-      investments: 0,
+      [BudgetPoolType.PERSONAL]: 0,
+      [BudgetPoolType.BILLS]: 0,
+      [BudgetPoolType.TRAVEL]: 0,
+      [BudgetPoolType.FOOD]: 0,
+      [BudgetPoolType.SAVINGS]: 0,
+      [BudgetPoolType.INVESTMENTS]: 0,
     };
 
     pools.forEach((pool: { type: BudgetPoolType; percentage: number }) => {
