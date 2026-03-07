@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { LocaleProps } from "@/lib/types/i18n";
 import { ContainerCard, SectionHeader, Badge } from "@/components/ui";
-import { FEATURES_DATA } from "@/lib/demoConstants";
+import { FEATURES_DATA } from "@/utils/helpers/demoConstants";
 import styles from "./Features.module.scss";
 
 export default async function Features({ locale }: LocaleProps) {

@@ -1,4 +1,4 @@
-import { DistributionIcon, GrowthIcon, SecureIcon } from "@/lib/icons";
+import { DistributionIcon, GrowthIcon, SecureIcon } from "@/components/icons";
 
 export const DEMO_CATEGORIES = [
   { id: "bills", percent: 18, color: "var(--color-primary-light)" },

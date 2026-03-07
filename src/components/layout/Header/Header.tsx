@@ -1,8 +1,16 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
+
 import styles from "./Header.module.scss";
 
 import { ActionLink } from "@/components/ui";
 
 export default function Header() {
+  const t = useTranslations("navbarLayout");
+  const { locale } = useParams();
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -11,8 +19,8 @@ export default function Header() {
           Household
         </div>
 
-        <ActionLink variant="outline" href="/login">
-          Sign In
+        <ActionLink variant="outline" href={`/${locale}/login`}>
+          {t("login")}
         </ActionLink>
       </div>
     </header>

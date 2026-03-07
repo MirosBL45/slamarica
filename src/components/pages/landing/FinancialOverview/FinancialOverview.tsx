@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { LocaleProps } from "@/lib/types/i18n";
 import { ContainerCard } from "@/components/ui";
-import { DEMO_CATEGORIES, INCOME } from "@/lib/demoConstants";
+import { DEMO_CATEGORIES, INCOME } from "@/utils/helpers/demoConstants";
 import styles from "./FinancialOverview.module.scss";
 
 export default async function FinancialOverview({ locale }: LocaleProps) {
@@ -41,7 +41,9 @@ export default async function FinancialOverview({ locale }: LocaleProps) {
           );
         })}
       </div>
-      <p id="demoCalculator" className={styles.helpForScrollToCalculator}>help For Scroll To Calculator</p>
+      <p id="demoCalculator" className={styles.helpForScrollToCalculator}>
+        help For Scroll To Calculator
+      </p>
     </ContainerCard>
   );
 }

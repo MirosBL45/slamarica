@@ -158,5 +158,10 @@
     "title": "Započnite izgradnju finansijske jasnoće danas",
     "description": "Pridružite se porodicama koje su preuzele kontrolu nad svojim finansijama",
     "cta": "Započnite besplatno"
+  },
+  "navbarLayout": {
+    "login": "Ulogujte se",
+    "description": "Pridružite se porodicama koje su preuzele kontrolu nad svojim finansijama",
+    "cta": "Započnite besplatno"
   }
 }
