@@ -1,15 +1,122 @@
 @use "@/styles/variables" as v;
+@use "@/styles/breakpoints" as b;
 
 .footer {
   border-top: 1px solid v.$color-border;
-  background: v.$color-bg;
+  background: linear-gradient(to bottom, v.$color-bg, v.$color-surface);
+  margin-top: 100px;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1.5rem;
+
+  padding: 40px 1.5rem;
+
   display: flex;
   justify-content: space-between;
-  font-size: 0.9rem;
+  align-items: center;
+  gap: 30px;
+}
+
+/* BRAND */
+
+.brand h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: v.$color-primary;
+}
+
+.brand p {
+  font-size: 0.85rem;
+  color: v.$color-text-muted;
+}
+
+/* LINKS */
+
+.links {
+  display: flex;
+  gap: 10px;
+}
+
+.links a {
+  position: relative;
+  color: v.$color-text-main;
+  transition: color 0.2s ease;
+}
+
+.links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+
+  width: 0;
+  height: 1px;
+
+  background: v.$color-primary;
+  transition: width 0.25s ease;
+}
+
+.links a:hover {
+  color: v.$color-primary;
+}
+
+.links a:hover::after {
+  width: 100%;
+}
+
+/* ICONS */
+
+.icons {
+  display: flex;
+  gap: 15px;
+}
+
+.icons a {
+  display: grid;
+  place-items: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: v.$radius-sm;
+
+  transition: all 0.25s ease;
+}
+
+.icons a:hover {
+  color: v.$color-primary;
+  background: v.$color-accent-soft;
+  transform: translateY(-2px);
+}
+
+/* BOTTOM */
+
+.bottom {
+  text-align: center;
+  padding: 15px;
+  font-size: 0.85rem;
+  border-top: 1px solid v.$color-border;
+  color: v.$color-text-muted;
+}
+
+.bottom a {
+  border-bottom: 1px solid currentColor;
+}
+
+/* MOBILE */
+
+@include b.down(b.$bp-md) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
