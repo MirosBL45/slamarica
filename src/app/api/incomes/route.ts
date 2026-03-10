@@ -1,0 +1,64 @@
+import clientPromise from "@/lib/mongodb";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/auth/authOptions";
+import { NextResponse } from "next/server";
+import { v4 as uuidv4 } from "uuid";
+
+export async function POST(req: Request) {
+    const session = await getServerSession(authOptions);
+
+    if (!session?.user?.email) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const body = await req.json();
+
+    const { memberId, month, salary, breakdown } = body;
+
+    const client = await clientPromise;
+    const db = client.db();
+
+    const user = await db.collection("users").findOne({
+        email: session.user.email,
+    });
+
+    if (!user) {
+        return NextResponse.json({ error: "User not found" });
+    }
+
+    const household = await db.collection("households").findOne({
+        userId: user._id.toString(),
+    });
+
+    if (!household) {
+        return NextResponse.json({ error: "Household not found" });
+    }
+
+    const incomes = household.incomes ?? [];
+
+    const alreadyExists = incomes.some(
+        (i: any) => i.memberId === memberId && i.month === month
+    );
+
+    if (alreadyExists) {
+        return NextResponse.json(
+            { error: "Income already exists for this member and month" },
+            { status: 400 }
+        );
+    }
+
+    const income = {
+        id: uuidv4(),
+        memberId,
+        month,
+        salary,
+        breakdown,
+    };
+
+    await db.collection("households").updateOne(
+        { _id: household._id },
+        { $push: { incomes: income } }
+    );
+
+    return NextResponse.json(income);
+}

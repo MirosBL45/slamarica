@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MonthSelector from "@/components/MonthSelector";
 import AddIncomeForm from "@/components/AddIncomeForm";
 import MonthlyIncomeList from "@/components/MonthlyIncomeList";
@@ -13,7 +13,12 @@ import { useStores } from "@/stores/StoreContext";
 export default function HouseholdClient() {
   const [month, setMonth] = useState(() => dayjs().format("YYYY-MM"));
 
-  const { membersStore } = useStores();
+  const { membersStore, householdStore } = useStores();
+
+  useEffect(() => {
+    householdStore.loadFromServer();
+    membersStore.loadMembers();
+  }, []);
 
   const activeUserId = membersStore.members[0]?.id;
 

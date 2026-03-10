@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { RootStore } from "../RootStore";
+import { MemberRole, MemberStatus } from "./members.types";
 
 export class MembersStore {
   constructor(private rootStore: RootStore) {
@@ -10,25 +11,59 @@ export class MembersStore {
     return this.rootStore.householdStore.activeHousehold?.members ?? [];
   }
 
-  addMember(member: { id: string; name: string }) {
+  async loadMembers() {
+    const res = await fetch("/api/members");
+
+    if (!res.ok) return;
+
+    const members = await res.json();
+
     const household = this.rootStore.householdStore.activeHousehold;
     if (!household) return;
 
-    const isFirst = household.members.length === 0;
+    household.members = members;
+  }
 
-    const exists = household.members.some(
-      (m) => m.name.toLowerCase() === member.name.toLowerCase(),
-    );
+  // addMember(member: { id: string; name: string }) {
+  //   const household = this.rootStore.householdStore.activeHousehold;
+  //   if (!household) return;
 
-    if (exists) {
-      throw new Error("Member already exists");
+  //   const isFirst = household.members.length === 0;
+
+  //   const exists = household.members.some(
+  //     (m) => m.name.toLowerCase() === member.name.toLowerCase(),
+  //   );
+
+  //   if (exists) {
+  //     throw new Error("Member already exists");
+  //   }
+
+  //   household.members.push({
+  //     ...member,
+  //     status: MemberStatus.ACTIVE,
+  //     role: isFirst ? MemberRole.ADMIN : MemberRole.MEMBER,
+  //   });
+
+  //   this.rootStore.householdStore.persist();
+  // }
+
+  async addMember(name: string) {
+    const res = await fetch("/api/members", {
+      method: "POST",
+      body: JSON.stringify({ name }),
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || "Failed to create member");
     }
 
-    household.members.push({
-      ...member,
-      status: "active",
-      role: isFirst ? "admin" : "member",
-    });
+    const member = await res.json();
+
+    const household = this.rootStore.householdStore.activeHousehold;
+    if (!household) return;
+
+    household.members.push(member);
 
     this.rootStore.householdStore.persist();
   }
@@ -37,7 +72,7 @@ export class MembersStore {
     const household = this.rootStore.householdStore.activeHousehold;
     if (!household) return null;
 
-    return household.members.find((m) => m.role === "admin") ?? null;
+    return household.members.find((m) => m.role === MemberRole.ADMIN) ?? null;
   }
 
   isAdmin(memberId: string) {
@@ -58,7 +93,7 @@ export class MembersStore {
       household.members = household.members.filter((m) => m.id !== memberId);
     } else {
       // ako IMA makar jednu platu → samo postaje inactive
-      member.status = "inactive";
+      member.status = MemberStatus.INACTIVE;
     }
 
     this.rootStore.householdStore.persist();
@@ -71,7 +106,7 @@ export class MembersStore {
     const member = household.members.find((m) => m.id === memberId);
     if (!member) return;
 
-    member.status = "active";
+    member.status = MemberStatus.ACTIVE;
 
     this.rootStore.householdStore.persist();
   }
