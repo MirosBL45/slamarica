@@ -73,13 +73,6 @@
   "month": {
     "selectMonth": "Izaberi mesec"
   },
-  "navbar": {
-    "home": "Početna",
-    "household": "Kuća",
-    "blog": "Blog",
-    "menu": "Meni",
-    "switchLanguage": "Promeni jezik"
-  },
   "budget": {
     "title": "Raspodela budžeta za mesec",
     "personal": "Lični",
@@ -162,6 +155,10 @@
   "navbarLayout": {
     "login": "Ulogujte se",
     "description": "Pridružite se porodicama koje su preuzele kontrolu nad svojim finansijama",
-    "cta": "Započnite besplatno"
+    "cta": "Započnite besplatno",
+    "home": "Početna",
+    "household": "Kuća",
+    "blog": "Blog",
+    "menu": "Meni"
   }
 }
