@@ -42,7 +42,7 @@ export class MonthlyIncomeStore {
     return this.incomes.some((income) => income.memberId === memberId);
   }
 
-  createIncome(
+  async createIncome(
     memberId: string,
     month: string,
     salary: number,
@@ -80,6 +80,16 @@ export class MonthlyIncomeStore {
       breakdown[pool.type] = Math.round((salary * pool.percentage) / 100);
     });
 
+    await fetch("/api/incomes", {
+      method: "POST",
+      body: JSON.stringify({
+        memberId,
+        month,
+        salary,
+        breakdown,
+      }),
+    });
+
     household.incomes.push({
       id: uuidv4(),
       memberId,
@@ -88,7 +98,7 @@ export class MonthlyIncomeStore {
       breakdown,
     });
 
-    this.rootStore.householdStore.lockCurrency();
-    this.rootStore.householdStore.persist();
+    // this.rootStore.householdStore.lockCurrency();
+    // this.rootStore.householdStore.persist();
   }
 }

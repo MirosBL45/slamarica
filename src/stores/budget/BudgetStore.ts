@@ -49,7 +49,7 @@ export class BudgetStore {
     return existing ? existing.pools : this.cloneDefault();
   }
 
-  setPercentage(month: string, type: BudgetPoolType, value: number) {
+  async setPercentage(month: string, type: BudgetPoolType, value: number) {
     this.initMonth(month);
 
     const household = this.household;
@@ -62,6 +62,15 @@ export class BudgetStore {
     if (!pool) return;
 
     pool.percentage = value;
+
+    await fetch("/api/monthlyBudgets", {
+      method: "POST",
+      body: JSON.stringify({
+        month,
+        pools: budget.pools,
+      }),
+    });
+
     this.rootStore.householdStore.persist();
   }
 
