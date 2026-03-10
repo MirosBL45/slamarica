@@ -73,13 +73,6 @@
   "month": {
     "selectMonth": "Select month"
   },
-  "navbar": {
-    "home": "Home",
-    "household": "Household",
-    "blog": "Blog",
-    "menu": "Menu",
-    "switchLanguage": "Switch language"
-  },
   "budget": {
     "title": "Monthly budget distribution",
     "personal": "Personal",
@@ -162,6 +155,10 @@
   "navbarLayout": {
     "login": "Log in",
     "description": "Join families who have taken control of their finances",
-    "cta": "Get Started Free"
+    "cta": "Get Started Free",
+    "home": "Home",
+    "household": "Household",
+    "blog": "Blog",
+    "menu": "Menu"
   }
 }

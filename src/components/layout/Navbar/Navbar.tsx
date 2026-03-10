@@ -25,7 +25,7 @@ const FLAGS: Record<string, string> = {
 export default function Navbar() {
   const locale = useLocale();
   const pathname = usePathname();
-  const t = useTranslations("navbar");
+  const t = useTranslations("navbarLayout");
 
   const screens = useBreakpoint();
   const [open, setOpen] = useState(false);
@@ -134,10 +134,21 @@ export default function Navbar() {
               placement="left"
               open={open}
               onClose={() => setOpen(false)}
-              title="Menu"
+              size={280}
+              rootClassName={styles.drawer}
+              classNames={{
+                header: styles.drawerHeader,
+                body: styles.drawerBody,
+              }}
+              title={
+                <div className={styles.drawerTitle}>
+                  <div className={styles.icon}>✦</div>
+                  Slamarica
+                </div>
+              }
             >
               <div className={styles.mobileNav}>
-                {navLinks.map((link) => (
+                {navLinks.map((link, index) => (
                   <Link
                     key={link.href}
                     href={link.href}
@@ -145,17 +156,21 @@ export default function Navbar() {
                     className={`${styles.mobileLink} ${
                       isActive(link.href) ? styles.mobileActive : ""
                     }`}
+                    style={{ animationDelay: `${index * 0.05}s` }}
                   >
                     {link.label}
                   </Link>
                 ))}
 
                 <div className={styles.mobileLanguages}>
-                  {SUPPORTED_LOCALES.map((lng) => (
+                  {SUPPORTED_LOCALES.map((lng, index) => (
                     <Link
                       key={lng}
                       href={getLocalePath(lng)}
                       onClick={closeDrawer}
+                      style={{
+                        animationDelay: `${(navLinks.length + index) * 0.05}s`,
+                      }}
                     >
                       {FLAGS[lng]} {lng.toUpperCase()}
                     </Link>
@@ -167,6 +182,9 @@ export default function Navbar() {
                   href={`/${locale}/login`}
                   onClick={closeDrawer}
                   className={styles.mobileLogin}
+                  style={{
+                    animationDelay: `${(navLinks.length + SUPPORTED_LOCALES.length) * 0.05}s`,
+                  }}
                 >
                   {t("login")}
                 </ActionLink>
