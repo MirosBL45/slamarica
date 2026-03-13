@@ -56,8 +56,8 @@ export default function Navbar() {
       href: `/${locale}/household`,
     },
     {
-      label: t("blog"),
-      href: `/${locale}/blog`,
+      label: t("articles"),
+      href: `/${locale}/articles`,
     },
   ];
 

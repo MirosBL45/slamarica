@@ -8,10 +8,10 @@
     "title": "Vaš kućni budžet",
     "description": "Upravljajte članovima i raspodelom mesečnih prihoda."
   },
-  "blog": {
-    "title": "Blog",
+  "articles": {
+    "title": "Saveti",
     "description": "Saveti i ideje o upravljanju kućnim budžetom.",
-    "comingSoon": "Blog stiže uskoro, samo lagano."
+    "comingSoon": "Saveti stižu uskoro, samo laganooooo."
   },
   "income": {
     "member": "Član",
@@ -96,9 +96,9 @@
     "mainTitle": "Idi na glavnu stranicu kuće",
     "or": "ili na"
   },
-  "blogLayout": {
-    "title": "Blog",
-    "text": "Čitajte naše najnovije članke o upravljanju kućnim budžetom i finansijskim savetima"
+  "articlesLayout": {
+    "title": "Saveti",
+    "text": "Čitajte naše najnovije savete o upravljanju kućnim budžetom i finansijskim savetima"
   },
   "ispod_ide_text_koji_se_stavlja_u_UI": {
     "title": "Haushaltsbudget"
@@ -158,7 +158,7 @@
     "cta": "Započnite besplatno",
     "home": "Početna",
     "household": "Kuća",
-    "blog": "Blog",
+    "articles": "Saveti",
     "menu": "Meni"
   }
 }
