@@ -18,17 +18,17 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   const titles: Record<Locale, string> = {
-    sr: "Saveti o finansijama i kućnom budžetu - Blog Slamarica",
-    en: "Personal Finance & Budgeting Tips - Blog Slamarica",
-    es: "Finanzas personales y presupuesto - Blog Slamarica",
-    de: "Persönliche Finanzen & Haushaltsbudget - Blog Slamarica",
+    sr: "Saveti o finansijama i kućnom budžetu - Vodiči Slamarica",
+    en: "Personal Finance & Budgeting Tips - Slamarica Guides",
+    es: "Finanzas personales y presupuesto - Guías Slamarica",
+    de: "Persönliche Finanzen & Haushaltsbudget - Slamarica Ratgeber",
   };
 
   const descriptions: Record<Locale, string> = {
-    sr: "Čitajte najnovije savete o upravljanju novcem, štednji, planiranju kućnog budžeta i finansijskoj stabilnosti. Naučite kako da bolje kontrolišete troškove i ostvarite svoje finansijske ciljeve.",
-    en: "Read the latest tips on money management, saving, household budgeting, and financial stability. Learn how to control expenses and achieve your financial goals.",
-    es: "Lee los mejores consejos sobre gestión del dinero, ahorro y presupuesto familiar para mejorar tu estabilidad financiera.",
-    de: "Lesen Sie aktuelle Tipps zu Geldmanagement, Sparen und Haushaltsbudget, um Ihre finanzielle Stabilität zu verbessern.",
+    sr: "Otkrijte praktične vodiče za upravljanje novcem, pametnu štednju i planiranje kućnog budžeta. Naučite kako da preuzmete kontrolu nad troškovima i ostvarite finansijsku slobodu uz Slamaricu.",
+    en: "Explore expert guides on money management, smart saving, and household budgeting. Take control of your expenses and reach your financial goals with Slamarica's professional resources.",
+    es: "Descubre guías prácticas sobre gestión de dinero, ahorro y presupuesto familiar. Toma el control de tus gastos y alcanza la estabilidad financiera con las herramientas de Slamarica.",
+    de: "Praxisnahe Ratgeber für Geldmanagement, Sparen und Haushaltsplanung. Lernen Sie, Ihre Ausgaben effektiv zu kontrollieren und finanzielle Stabilität mit Slamarica zu erreichen.",
   };
 
   return {
@@ -36,13 +36,13 @@ export async function generateMetadata({ params }: PageProps) {
     description: descriptions[locale as Locale],
 
     alternates: {
-      canonical: `/${locale}/blog`,
-      languages: getAlternativeLanguages("/blog"),
+      canonical: `/${locale}/articles`,
+      languages: getAlternativeLanguages("/articles"),
     },
   };
 }
 
-export default async function BlogLayout({
+export default async function ArticlesLayout({
   children,
   params,
 }: {
@@ -52,7 +52,7 @@ export default async function BlogLayout({
   const { locale } = await params;
   const t = await getTranslations({
     locale,
-    namespace: "blogLayout",
+    namespace: "articlesLayout",
   });
 
   return (

@@ -2,6 +2,6 @@ import Spinner from "@/components/ui/Spinner/Spinner";
 
 export default function Loading() {
   return (
-    <Spinner text="Loading Blog..." />
+    <Spinner text="Loading articles..." />
   )
 }
