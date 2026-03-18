@@ -79,34 +79,84 @@ export class MembersStore {
     return this.currentAdmin?.id === memberId;
   }
 
-  removeMember(memberId: string) {
+  // removeMember(memberId: string) {
+  //   const household = this.rootStore.householdStore.activeHousehold;
+  //   if (!household) return;
+
+  //   const member = household.members.find((m) => m.id === memberId);
+  //   if (!member) return;
+
+  //   const hasIncome = household.incomes.some((i) => i.memberId === memberId);
+
+  //   if (!hasIncome) {
+  //     // ako NEMA plata → briše se
+  //     household.members = household.members.filter((m) => m.id !== memberId);
+  //   } else {
+  //     // ako IMA makar jednu platu → samo postaje inactive
+  //     member.status = MemberStatus.INACTIVE;
+  //   }
+
+  //   this.rootStore.householdStore.persist();
+  // }
+
+  // restoreMember(memberId: string) {
+  //   const household = this.rootStore.householdStore.activeHousehold;
+  //   if (!household) return;
+
+  //   const member = household.members.find((m) => m.id === memberId);
+  //   if (!member) return;
+
+  //   member.status = MemberStatus.ACTIVE;
+
+  //   this.rootStore.householdStore.persist();
+  // }
+
+  async removeMember(memberId: string) {
     const household = this.rootStore.householdStore.activeHousehold;
     if (!household) return;
 
-    const member = household.members.find((m) => m.id === memberId);
-    if (!member) return;
-
     const hasIncome = household.incomes.some((i) => i.memberId === memberId);
 
+    const res = await fetch("/api/members", {
+      method: hasIncome ? "PATCH" : "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(
+        hasIncome ? { memberId, status: "inactive" } : { memberId },
+      ),
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || "Failed to remove member");
+    }
+
     if (!hasIncome) {
-      // ako NEMA plata → briše se
       household.members = household.members.filter((m) => m.id !== memberId);
     } else {
-      // ako IMA makar jednu platu → samo postaje inactive
-      member.status = MemberStatus.INACTIVE;
+      const member = household.members.find((m) => m.id === memberId);
+      if (member) member.status = MemberStatus.INACTIVE;
     }
 
     this.rootStore.householdStore.persist();
   }
 
-  restoreMember(memberId: string) {
+  async restoreMember(memberId: string) {
     const household = this.rootStore.householdStore.activeHousehold;
     if (!household) return;
 
-    const member = household.members.find((m) => m.id === memberId);
-    if (!member) return;
+    const res = await fetch("/api/members", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ memberId, status: "active" }),
+    });
 
-    member.status = MemberStatus.ACTIVE;
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || "Failed to restore member");
+    }
+
+    const member = household.members.find((m) => m.id === memberId);
+    if (member) member.status = MemberStatus.ACTIVE;
 
     this.rootStore.householdStore.persist();
   }

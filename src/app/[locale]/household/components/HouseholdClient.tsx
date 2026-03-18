@@ -17,7 +17,6 @@ export default function HouseholdClient() {
 
   useEffect(() => {
     householdStore.loadFromServer();
-    membersStore.loadMembers();
   }, []);
 
   const activeUserId = membersStore.members[0]?.id;

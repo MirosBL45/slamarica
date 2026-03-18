@@ -8,7 +8,7 @@ const STORAGE_KEY = "slamarica_households_v1";
 export class HouseholdStore {
   households: IHousehold[] = [];
   activeHouseholdId: string | null = null;
-  currencyLocked = false;
+  // currencyLocked = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -22,7 +22,14 @@ export class HouseholdStore {
 
     const household = await res.json();
 
-    this.households = [household];
+    this.households = [
+      {
+        ...household,
+        id: household._id,
+        currencyLocked: household.currencyLocked ?? false,
+      },
+    ];
+
     this.activeHouseholdId = household._id;
   }
 
@@ -78,16 +85,54 @@ export class HouseholdStore {
     this.persist();
   }
 
-  setCurrency(currency: MoneyCurrency) {
+  // setCurrency(currency: MoneyCurrency) {
+  //   const household = this.activeHousehold;
+  //   if (!household || this.currencyLocked) return;
+
+  //   household.currency = currency;
+  //   this.persist();
+  // }
+
+  // lockCurrency() {
+  //   this.currencyLocked = true;
+  //   this.persist();
+  // }
+
+  // setCurrency(currency: MoneyCurrency) {
+  //   const household = this.activeHousehold;
+  //   if (!household || household.currencyLocked) return;
+
+  //   household.currency = currency;
+  //   this.persist();
+  // }
+
+  async setCurrency(currency: MoneyCurrency) {
     const household = this.activeHousehold;
-    if (!household || this.currencyLocked) return;
+    if (!household || household.currencyLocked) return;
 
     household.currency = currency;
+
+    await fetch("/api/household", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ currency }),
+    });
+
     this.persist();
   }
 
-  lockCurrency() {
-    this.currencyLocked = true;
+  async lockCurrency() {
+    const household = this.activeHousehold;
+    if (!household) return;
+
+    household.currencyLocked = true;
+
+    await fetch("/api/household", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ currencyLocked: true }),
+    });
+
     this.persist();
   }
 
