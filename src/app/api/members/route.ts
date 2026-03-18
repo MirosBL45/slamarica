@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/auth/authOptions";
 import { NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
-import { IMember, MemberRole, MemberStatus } from "@/stores/members/members.types";
+import { IMember, MemberRole, MemberStatus } from "@/types/member.types";
 
 export async function POST(req: Request) {
     const session = await getServerSession(authOptions);
@@ -34,10 +34,10 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: "Household not found" });
     }
 
-    const members = household.members ?? [];
+    const members = (household.members ?? []) as IMember[];
 
     const exists = members.some(
-        (m: any) =>
+        (m: IMember) =>
             typeof m.name === "string" &&
             m.name.toLowerCase() === name.toLowerCase()
     );

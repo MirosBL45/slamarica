@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import { RootStore } from "../RootStore";
 import { BudgetStore } from "../budget/BudgetStore";
-import { BudgetPoolType } from "../budget/budget.types";
+import { BudgetPoolType } from "@/types/budget.types";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -97,8 +97,5 @@ export class MonthlyIncomeStore {
       salary,
       breakdown,
     });
-
-    // this.rootStore.householdStore.lockCurrency();
-    // this.rootStore.householdStore.persist();
   }
 }

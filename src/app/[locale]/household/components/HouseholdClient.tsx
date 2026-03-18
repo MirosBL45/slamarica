@@ -17,16 +17,15 @@ export default function HouseholdClient() {
 
   useEffect(() => {
     householdStore.loadFromServer();
-    membersStore.loadMembers();
   }, []);
 
   const activeUserId = membersStore.members[0]?.id;
 
   return (
     <>
-      <BaseHasPermission permission={membersStore.isAdmin(activeUserId)}>
+      {/* <BaseHasPermission permission={membersStore.isAdmin(activeUserId)}> */}
         <BudgetSettings month={month} />
-      </BaseHasPermission>
+      {/* </BaseHasPermission> */}
       <MonthSelector value={month} onChange={setMonth} />
       <AddIncomeForm month={month} />
       <MonthlyIncomeList month={month} />

@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { Table, Button, Card, Tag, Modal } from "antd";
 import { useTranslations } from "next-intl";
 import { useStores } from "@/stores/StoreContext";
-import { MemberStatus } from "@/stores/members/members.types";
+import { MemberStatus } from "@/types/member.types";
 
 interface ITableMember {
   key: string;

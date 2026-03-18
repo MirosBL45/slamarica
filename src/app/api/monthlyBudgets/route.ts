@@ -2,65 +2,66 @@ import clientPromise from "@/lib/mongodb";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/auth/authOptions";
 import { NextResponse } from "next/server";
+import { IMonthlyBudget } from "@/types/budget.types";
 
 export async function POST(req: Request) {
-    const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
 
-    if (!session?.user?.email) {
-        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
+  if (!session?.user?.email) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
 
-    const body = await req.json();
-    const { month, pools } = body;
+  const body = await req.json();
+  const { month, pools } = body;
 
-    const client = await clientPromise;
-    const db = client.db();
+  const client = await clientPromise;
+  const db = client.db();
 
-    const user = await db.collection("users").findOne({
-        email: session.user.email,
-    });
+  const user = await db.collection("users").findOne({
+    email: session.user.email,
+  });
 
-    if (!user) {
-        return NextResponse.json({ error: "User not found" });
-    }
+  if (!user) {
+    return NextResponse.json({ error: "User not found" });
+  }
 
-    const household = await db.collection("households").findOne({
-        userId: user._id.toString(),
-    });
+  const household = await db.collection("households").findOne({
+    userId: user._id.toString(),
+  });
 
-    if (!household) {
-        return NextResponse.json({ error: "Household not found" });
-    }
+  if (!household) {
+    return NextResponse.json({ error: "Household not found" });
+  }
 
-    const existing = (household.monthlyBudgets ?? []).find(
-        (b: any) => b.month === month
+  const budgets = (household.monthlyBudgets ?? []) as IMonthlyBudget[];
+
+  const existing = budgets.find((b) => b.month === month);
+
+  if (existing) {
+    await db.collection("households").updateOne(
+      {
+        _id: household._id,
+        "monthlyBudgets.month": month,
+      },
+      {
+        $set: {
+          "monthlyBudgets.$.pools": pools,
+        },
+      },
     );
+  } else {
+    await db.collection("households").updateOne(
+      { _id: household._id },
+      {
+        $push: {
+          monthlyBudgets: {
+            month,
+            pools,
+          },
+        },
+      },
+    );
+  }
 
-    if (existing) {
-        await db.collection("households").updateOne(
-            {
-                _id: household._id,
-                "monthlyBudgets.month": month,
-            },
-            {
-                $set: {
-                    "monthlyBudgets.$.pools": pools,
-                },
-            }
-        );
-    } else {
-        await db.collection("households").updateOne(
-            { _id: household._id },
-            {
-                $push: {
-                    monthlyBudgets: {
-                        month,
-                        pools,
-                    },
-                },
-            }
-        );
-    }
-
-    return NextResponse.json({ success: true });
+  return NextResponse.json({ success: true });
 }

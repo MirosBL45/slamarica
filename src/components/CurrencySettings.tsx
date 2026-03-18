@@ -3,7 +3,7 @@
 import { Select, Card } from "antd";
 import { observer } from "mobx-react-lite";
 import { useStores } from "@/stores/StoreContext";
-import { MoneyCurrency } from "@/stores/household/household.types";
+import { MoneyCurrency } from "@/types/household.types";
 import { BaseHasPermission } from "@/components/BaseHasPermission";
 
 const CurrencySettings = observer(() => {
@@ -20,7 +20,7 @@ const CurrencySettings = observer(() => {
           value={currency}
           style={{ width: 200 }}
           onChange={(value) => householdStore.setCurrency(value)}
-          disabled={householdStore.currencyLocked}
+          disabled={!!householdStore.activeHousehold?.currencyLocked}
           options={[
             { value: MoneyCurrency.RSD, label: "Dinar (RSD)" },
             { value: MoneyCurrency.EUR, label: "Euro (EUR)" },

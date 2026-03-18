@@ -1,4 +1,4 @@
-import { BudgetPoolType } from "../budget/budget.types";
+import { BudgetPoolType } from "./budget.types";
 
 export interface IMonthlyIncome {
   id: string;

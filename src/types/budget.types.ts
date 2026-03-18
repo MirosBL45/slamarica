@@ -1,10 +1,10 @@
 export enum BudgetPoolType {
-  PERSONAL = 'personal',
-  BILLS = 'bills',
-  TRAVEL = 'travel',
-  FOOD = 'food',
-  SAVINGS = 'savings',
-  INVESTMENTS = 'investments',
+  PERSONAL = "personal",
+  BILLS = "bills",
+  TRAVEL = "travel",
+  FOOD = "food",
+  SAVINGS = "savings",
+  INVESTMENTS = "investments",
 }
 
 export interface IBudgetPool {
