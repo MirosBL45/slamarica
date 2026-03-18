@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { RootStore } from "../RootStore";
-import { MemberRole, MemberStatus } from "./members.types";
+import { MemberRole, MemberStatus } from "@/types/member.types";
 
 export class MembersStore {
   constructor(private rootStore: RootStore) {
@@ -23,29 +23,6 @@ export class MembersStore {
 
     household.members = members;
   }
-
-  // addMember(member: { id: string; name: string }) {
-  //   const household = this.rootStore.householdStore.activeHousehold;
-  //   if (!household) return;
-
-  //   const isFirst = household.members.length === 0;
-
-  //   const exists = household.members.some(
-  //     (m) => m.name.toLowerCase() === member.name.toLowerCase(),
-  //   );
-
-  //   if (exists) {
-  //     throw new Error("Member already exists");
-  //   }
-
-  //   household.members.push({
-  //     ...member,
-  //     status: MemberStatus.ACTIVE,
-  //     role: isFirst ? MemberRole.ADMIN : MemberRole.MEMBER,
-  //   });
-
-  //   this.rootStore.householdStore.persist();
-  // }
 
   async addMember(name: string) {
     const res = await fetch("/api/members", {
@@ -78,38 +55,6 @@ export class MembersStore {
   isAdmin(memberId: string) {
     return this.currentAdmin?.id === memberId;
   }
-
-  // removeMember(memberId: string) {
-  //   const household = this.rootStore.householdStore.activeHousehold;
-  //   if (!household) return;
-
-  //   const member = household.members.find((m) => m.id === memberId);
-  //   if (!member) return;
-
-  //   const hasIncome = household.incomes.some((i) => i.memberId === memberId);
-
-  //   if (!hasIncome) {
-  //     // ako NEMA plata → briše se
-  //     household.members = household.members.filter((m) => m.id !== memberId);
-  //   } else {
-  //     // ako IMA makar jednu platu → samo postaje inactive
-  //     member.status = MemberStatus.INACTIVE;
-  //   }
-
-  //   this.rootStore.householdStore.persist();
-  // }
-
-  // restoreMember(memberId: string) {
-  //   const household = this.rootStore.householdStore.activeHousehold;
-  //   if (!household) return;
-
-  //   const member = household.members.find((m) => m.id === memberId);
-  //   if (!member) return;
-
-  //   member.status = MemberStatus.ACTIVE;
-
-  //   this.rootStore.householdStore.persist();
-  // }
 
   async removeMember(memberId: string) {
     const household = this.rootStore.householdStore.activeHousehold;

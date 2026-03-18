@@ -5,8 +5,8 @@ import { Card } from "antd";
 import { useStores } from "@/stores/StoreContext";
 import { useLocale, useTranslations } from "next-intl";
 import { formatCurrency } from "@/utils/helpers/formatCurrency";
-import { MoneyCurrency } from "@/stores/household/household.types";
-import { BudgetPoolType } from "@/stores/budget/budget.types";
+import { MoneyCurrency } from "@/types/household.types";
+import { BudgetPoolType } from "@/types/budget.types";
 
 interface Props {
   month: string;

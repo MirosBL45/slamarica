@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 
@@ -28,17 +28,30 @@ export default function LoginPage() {
 
   return (
     <div>
-      <button
-        onClick={() =>
-          signIn("google", {
-            callbackUrl: `/${locale}/household`,
-          })
-        }
-      >
-        Login with Google
-      </button>
+      <div>
+        <button
+          onClick={() =>
+            signIn("google", {
+              callbackUrl: `/${locale}/household`,
+            })
+          }
+        >
+          Login with Google
+        </button>
+        <p>ispod logout</p>
+        <button
+          onClick={() =>
+            signOut({
+              callbackUrl: `/${locale}/login`,
+            })
+          }
+        >
+          Logout
+        </button>
+      </div>
 
       <hr />
+      <p>ispod obican login</p>
 
       <input placeholder="email" onChange={(e) => setEmail(e.target.value)} />
 

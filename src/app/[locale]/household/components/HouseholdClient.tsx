@@ -23,9 +23,9 @@ export default function HouseholdClient() {
 
   return (
     <>
-      <BaseHasPermission permission={membersStore.isAdmin(activeUserId)}>
+      {/* <BaseHasPermission permission={membersStore.isAdmin(activeUserId)}> */}
         <BudgetSettings month={month} />
-      </BaseHasPermission>
+      {/* </BaseHasPermission> */}
       <MonthSelector value={month} onChange={setMonth} />
       <AddIncomeForm month={month} />
       <MonthlyIncomeList month={month} />

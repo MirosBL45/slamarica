@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { MoneyCurrency, IHousehold } from "./household.types";
+import { MoneyCurrency, IHousehold } from "@/types/household.types";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -8,7 +8,6 @@ const STORAGE_KEY = "slamarica_households_v1";
 export class HouseholdStore {
   households: IHousehold[] = [];
   activeHouseholdId: string | null = null;
-  // currencyLocked = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -84,27 +83,6 @@ export class HouseholdStore {
     this.activeHouseholdId = id;
     this.persist();
   }
-
-  // setCurrency(currency: MoneyCurrency) {
-  //   const household = this.activeHousehold;
-  //   if (!household || this.currencyLocked) return;
-
-  //   household.currency = currency;
-  //   this.persist();
-  // }
-
-  // lockCurrency() {
-  //   this.currencyLocked = true;
-  //   this.persist();
-  // }
-
-  // setCurrency(currency: MoneyCurrency) {
-  //   const household = this.activeHousehold;
-  //   if (!household || household.currencyLocked) return;
-
-  //   household.currency = currency;
-  //   this.persist();
-  // }
 
   async setCurrency(currency: MoneyCurrency) {
     const household = this.activeHousehold;

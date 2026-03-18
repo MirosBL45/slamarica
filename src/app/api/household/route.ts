@@ -2,7 +2,7 @@ import clientPromise from "@/lib/mongodb";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/auth/authOptions";
 import { NextResponse } from "next/server";
-import { MoneyCurrency } from "@/stores/household/household.types";
+import { MoneyCurrency } from "@/types/household.types";
 import { householdName } from "@/utils/helpers/householdName";
 
 type HouseholdPatchData = {

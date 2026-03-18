@@ -51,7 +51,13 @@ export default function Footer() {
 
       <div className={styles.bottom}>
         © {currentYear} Household • Built by{" "}
-        <Link href="https://miroslavjovic.com">Miroslav Jović</Link>
+        <Link
+          href="https://miroslavjovic.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Miroslav Jović
+        </Link>
       </div>
     </footer>
   );
