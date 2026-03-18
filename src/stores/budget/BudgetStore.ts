@@ -32,9 +32,20 @@ export class BudgetStore {
     const exists = household.monthlyBudgets.some((b) => b.month === month);
     if (exists) return;
 
+    const pools = this.cloneDefault();
+
     household.monthlyBudgets.push({
       month,
-      pools: this.cloneDefault(),
+      pools,
+    });
+
+    fetch("/api/monthlyBudgets", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        month,
+        pools,
+      }),
     });
 
     this.rootStore.householdStore.persist();
