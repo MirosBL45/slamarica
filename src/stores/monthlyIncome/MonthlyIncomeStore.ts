@@ -76,10 +76,6 @@ export class MonthlyIncomeStore {
       breakdown[pool.type] = Math.round((salary * pool.percentage) / 100);
     });
 
-    pools.forEach((pool: { type: BudgetPoolType; percentage: number }) => {
-      breakdown[pool.type] = Math.round((salary * pool.percentage) / 100);
-    });
-
     await fetch("/api/incomes", {
       method: "POST",
       body: JSON.stringify({
@@ -97,5 +93,17 @@ export class MonthlyIncomeStore {
       salary,
       breakdown,
     });
+  }
+
+  async loadIncomes() {
+    const res = await fetch("/api/incomes");
+    if (!res.ok) return;
+
+    const incomes = await res.json();
+
+    const household = this.rootStore.householdStore.activeHousehold;
+    if (!household) return;
+
+    household.incomes = incomes;
   }
 }
