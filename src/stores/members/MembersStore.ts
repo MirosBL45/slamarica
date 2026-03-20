@@ -25,23 +25,27 @@ export class MembersStore {
   }
 
   async addMember(name: string) {
+    const household = this.rootStore.householdStore.activeHousehold;
+    if (!household) return;
+
+    // ✅ duplikat provera
+    const exists = household.members.some(
+      (m) => m.name.toLowerCase() === name.trim().toLowerCase()
+    );
+    if (exists) {
+      throw new Error("Member already exists");
+    }
+
     const res = await fetch("/api/members", {
       method: "POST",
       body: JSON.stringify({ name }),
     });
-
     if (!res.ok) {
       const err = await res.json();
       throw new Error(err.error || "Failed to create member");
     }
-
     const member = await res.json();
-
-    const household = this.rootStore.householdStore.activeHousehold;
-    if (!household) return;
-
     household.members.push(member);
-
     this.rootStore.householdStore.persist();
   }
 

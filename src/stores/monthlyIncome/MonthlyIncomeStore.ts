@@ -2,6 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { RootStore } from "../RootStore";
 import { BudgetStore } from "../budget/BudgetStore";
 import { BudgetPoolType } from "@/types/budget.types";
+import { MemberStatus } from "@/types/member.types";
 
 // import { v4 as uuidv4 } from "uuid";
 
@@ -50,6 +51,11 @@ export class MonthlyIncomeStore {
   ) {
     const household = this.rootStore.householdStore.activeHousehold;
     if (!household) return;
+
+    const member = household.members.find((m) => m.id === memberId);
+    if (member?.status === MemberStatus.INACTIVE) {
+      throw new Error("Inactive member cannot submit income");
+    }
 
     const alreadyExists = household.incomes.some(
       (income) => income.memberId === memberId && income.month === month,

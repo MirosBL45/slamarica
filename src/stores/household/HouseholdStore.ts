@@ -42,9 +42,9 @@ export class HouseholdStore {
       this.activeHouseholdId = parsed.activeHouseholdId ?? null;
     }
 
-    if (this.households.length === 0) {
-      this.createHousehold("My house");
-    }
+    // if (this.households.length === 0) {
+    //   this.createHousehold("My house");
+    // }
   }
 
   persist() {

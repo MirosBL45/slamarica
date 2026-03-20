@@ -4,6 +4,7 @@ import { authOptions } from "@/auth/authOptions";
 import { NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 import { IMonthlyIncome } from "@/types/income.types";
+import { IMember, MemberStatus } from "@/types/member.types";
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
@@ -25,7 +26,7 @@ export async function POST(req: Request) {
 
   const household = await db.collection("households").findOne({
     userEmail: session.user.email,
-});
+  });
 
   // if (!user) {
   //   return NextResponse.json({ error: "User not found" });
@@ -37,6 +38,16 @@ export async function POST(req: Request) {
 
   if (!household) {
     return NextResponse.json({ error: "Household not found" });
+  }
+
+  const member = household.members.find(
+    (m: IMember) => m.id === memberId
+  );
+  if (member?.status === MemberStatus.INACTIVE) {
+    return NextResponse.json(
+      { error: "Inactive member cannot submit income" },
+      { status: 400 },
+    );
   }
 
   const incomes = (household.incomes ?? []) as IMonthlyIncome[];
@@ -87,7 +98,7 @@ export async function GET() {
 
   const household = await db.collection("households").findOne({
     userEmail: session.user.email,
-});
+  });
 
   // if (!user) {
   //   return NextResponse.json({ error: "User not found" });
