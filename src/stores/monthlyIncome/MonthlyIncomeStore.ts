@@ -3,7 +3,7 @@ import { RootStore } from "../RootStore";
 import { BudgetStore } from "../budget/BudgetStore";
 import { BudgetPoolType } from "@/types/budget.types";
 
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
 export class MonthlyIncomeStore {
   constructor(private rootStore: RootStore) {
@@ -76,7 +76,26 @@ export class MonthlyIncomeStore {
       breakdown[pool.type] = Math.round((salary * pool.percentage) / 100);
     });
 
-    await fetch("/api/incomes", {
+    // await fetch("/api/incomes", {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     memberId,
+    //     month,
+    //     salary,
+    //     breakdown,
+    //   }),
+    // });
+
+    // household.incomes.push({
+    //   id: uuidv4(),
+    //   memberId,
+    //   month,
+    //   salary,
+    //   breakdown,
+    // });
+
+    // ✅ NOVO — uzmeš income od servera i pushuješ taj isti objekat
+    const res = await fetch("/api/incomes", {
       method: "POST",
       body: JSON.stringify({
         memberId,
@@ -86,13 +105,8 @@ export class MonthlyIncomeStore {
       }),
     });
 
-    household.incomes.push({
-      id: uuidv4(),
-      memberId,
-      month,
-      salary,
-      breakdown,
-    });
+    const income = await res.json(); // server vraca { id, memberId, month, salary, breakdown }
+    household.incomes.push(income); // ✅ isti ID kao u bazi
   }
 
   async loadIncomes() {

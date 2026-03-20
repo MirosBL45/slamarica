@@ -38,6 +38,7 @@ export async function GET() {
   if (!household) {
     const result = await db.collection("households").insertOne({
       userId: user._id.toString(),
+      userEmail: session.user.email,
       name: nameHouse,
       currency: MoneyCurrency.RSD,
       currencyLocked: false,
