@@ -20,19 +20,7 @@ export async function POST(req: Request) {
 
   const household = await db.collection("households").findOne({
     userEmail: session.user.email,
-});
-
-  // const user = await db.collection("users").findOne({
-  //   email: session.user.email,
-  // });
-
-  // if (!user) {
-  //   return NextResponse.json({ error: "User not found" });
-  // }
-
-  // const household = await db.collection("households").findOne({
-  //   userId: user._id.toString(),
-  // });
+  });
 
   if (!household) {
     return NextResponse.json({ error: "Household not found" });
@@ -84,15 +72,7 @@ export async function GET() {
 
   const household = await db.collection("households").findOne({
     userEmail: session.user.email,
-});
-
-  // const user = await db.collection("users").findOne({
-  //   email: session.user.email,
-  // });
-
-  // const household = await db.collection("households").findOne({
-  //   userId: user?._id.toString(),
-  // });
+  });
 
   return NextResponse.json(household?.members ?? []);
 }
@@ -108,15 +88,7 @@ export async function DELETE(req: Request) {
 
   const household = await db.collection("households").findOne({
     userEmail: session.user.email,
-});
-
-  // const user = await db.collection("users").findOne({
-  //   email: session?.user?.email,
-  // });
-
-  // const household = await db.collection("households").findOne({
-  //   userId: user?._id.toString(),
-  // });
+  });
 
   const hasIncome = household?.incomes?.some(
     (i: IMonthlyIncome) => i.memberId === memberId,
@@ -149,15 +121,7 @@ export async function PATCH(req: Request) {
 
   const household = await db.collection("households").findOne({
     userEmail: session.user.email,
-});
-
-  // const user = await db.collection("users").findOne({
-  //   email: session?.user?.email,
-  // });
-
-  // const household = await db.collection("households").findOne({
-  //   userId: user?._id.toString(),
-  // });
+  });
 
   await db.collection("households").updateOne(
     {

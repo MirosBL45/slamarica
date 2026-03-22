@@ -4,8 +4,6 @@ import { BudgetStore } from "../budget/BudgetStore";
 import { BudgetPoolType } from "@/types/budget.types";
 import { MemberStatus } from "@/types/member.types";
 
-// import { v4 as uuidv4 } from "uuid";
-
 export class MonthlyIncomeStore {
   constructor(private rootStore: RootStore) {
     makeAutoObservable(this);
@@ -31,7 +29,6 @@ export class MonthlyIncomeStore {
 
     this.getByMonth(month).forEach((income) => {
       Object.entries(income.breakdown).forEach(([key, value]) => {
-        // Key cast-ujemo u Enum jer Object.entries po defaultu vraća string
         totals[key as BudgetPoolType] += value;
       });
     });
@@ -82,27 +79,9 @@ export class MonthlyIncomeStore {
       breakdown[pool.type] = Math.round((salary * pool.percentage) / 100);
     });
 
-    // await fetch("/api/incomes", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     memberId,
-    //     month,
-    //     salary,
-    //     breakdown,
-    //   }),
-    // });
-
-    // household.incomes.push({
-    //   id: uuidv4(),
-    //   memberId,
-    //   month,
-    //   salary,
-    //   breakdown,
-    // });
-
-    // ✅ NOVO — uzmeš income od servera i pushuješ taj isti objekat
     const res = await fetch("/api/incomes", {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         memberId,
         month,
@@ -111,8 +90,14 @@ export class MonthlyIncomeStore {
       }),
     });
 
-    const income = await res.json(); // server vraca { id, memberId, month, salary, breakdown }
-    household.incomes.push(income); // ✅ isti ID kao u bazi
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || "Failed");
+    }
+
+    const income = await res.json();
+    household.incomes.push(income);
+    this.rootStore.householdStore.persist();
   }
 
   async loadIncomes() {

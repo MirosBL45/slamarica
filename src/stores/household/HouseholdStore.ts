@@ -30,6 +30,8 @@ export class HouseholdStore {
     ];
 
     this.activeHouseholdId = household._id;
+
+    this.persist();
   }
 
   hydrate() {
@@ -41,10 +43,6 @@ export class HouseholdStore {
       this.households = parsed.households ?? [];
       this.activeHouseholdId = parsed.activeHouseholdId ?? null;
     }
-
-    // if (this.households.length === 0) {
-    //   this.createHousehold("My house");
-    // }
   }
 
   persist() {

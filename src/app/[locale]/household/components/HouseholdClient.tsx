@@ -15,30 +15,27 @@ export default function HouseholdClient() {
 
   const { membersStore, householdStore, monthlyIncomeStore } = useStores();
 
-  // useEffect(() => {
-  //   householdStore.loadFromServer();
-  // }, []);
-
   useEffect(() => {
-  const load = async () => {
-    try {
-      await householdStore.loadFromServer();
-      await monthlyIncomeStore.loadIncomes();
-    } catch {
-      // fallback → ništa ne radiš
-      // već imaš podatke iz localStorage (hydrate)
-    }
-  };
+    const load = async () => {
+      try {
+        await householdStore.loadFromServer();
+        await monthlyIncomeStore.loadIncomes();
+        await membersStore.loadMembers();
+      } catch {
+        // fallback → ništa ne radiš
+        // već imaš podatke iz localStorage (hydrate)
+      }
+    };
 
-  load();
-}, []);
+    load();
+  }, []);
 
   const activeUserId = membersStore.members[0]?.id;
 
   return (
     <>
       {/* <BaseHasPermission permission={membersStore.isAdmin(activeUserId)}> */}
-        <BudgetSettings month={month} />
+      <BudgetSettings month={month} />
       {/* </BaseHasPermission> */}
       <MonthSelector value={month} onChange={setMonth} />
       <AddIncomeForm month={month} />

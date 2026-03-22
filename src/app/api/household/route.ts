@@ -69,14 +69,6 @@ export async function PATCH(req: Request) {
   const client = await clientPromise;
   const db = client.db();
 
-  const user = await db.collection("users").findOne({
-    email: session.user.email,
-  });
-
-  if (!user) {
-    return NextResponse.json({ error: "User not found" }, { status: 404 });
-  }
-
   const updateData: HouseholdPatchData = {};
 
   if (currency) updateData.currency = currency;
@@ -85,9 +77,10 @@ export async function PATCH(req: Request) {
     updateData.currencyLocked = currencyLocked;
   }
 
-  await db
-    .collection("households")
-    .updateOne({ userId: user._id.toString() }, { $set: updateData });
+  await db.collection("households").updateOne(
+    { userEmail: session.user.email },
+    { $set: updateData }
+  );
 
   return NextResponse.json({ success: true });
 }
