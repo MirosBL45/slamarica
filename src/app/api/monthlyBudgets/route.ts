@@ -17,16 +17,8 @@ export async function POST(req: Request) {
   const client = await clientPromise;
   const db = client.db();
 
-  const user = await db.collection("users").findOne({
-    email: session.user.email,
-  });
-
-  if (!user) {
-    return NextResponse.json({ error: "User not found" });
-  }
-
   const household = await db.collection("households").findOne({
-    userId: user._id.toString(),
+    userEmail: session.user.email,
   });
 
   if (!household) {

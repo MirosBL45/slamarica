@@ -13,10 +13,21 @@ import { useStores } from "@/stores/StoreContext";
 export default function HouseholdClient() {
   const [month, setMonth] = useState(() => dayjs().format("YYYY-MM"));
 
-  const { membersStore, householdStore } = useStores();
+  const { membersStore, householdStore, monthlyIncomeStore } = useStores();
 
   useEffect(() => {
-    householdStore.loadFromServer();
+    const load = async () => {
+      try {
+        await householdStore.loadFromServer();
+        await monthlyIncomeStore.loadIncomes();
+        await membersStore.loadMembers();
+      } catch {
+        // fallback → ništa ne radiš
+        // već imaš podatke iz localStorage (hydrate)
+      }
+    };
+
+    load();
   }, []);
 
   const activeUserId = membersStore.members[0]?.id;
@@ -24,7 +35,7 @@ export default function HouseholdClient() {
   return (
     <>
       {/* <BaseHasPermission permission={membersStore.isAdmin(activeUserId)}> */}
-        <BudgetSettings month={month} />
+      <BudgetSettings month={month} />
       {/* </BaseHasPermission> */}
       <MonthSelector value={month} onChange={setMonth} />
       <AddIncomeForm month={month} />

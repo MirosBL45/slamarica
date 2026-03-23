@@ -2,8 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { RootStore } from "../RootStore";
 import { BudgetStore } from "../budget/BudgetStore";
 import { BudgetPoolType } from "@/types/budget.types";
-
-import { v4 as uuidv4 } from "uuid";
+import { MemberStatus } from "@/types/member.types";
 
 export class MonthlyIncomeStore {
   constructor(private rootStore: RootStore) {
@@ -30,7 +29,6 @@ export class MonthlyIncomeStore {
 
     this.getByMonth(month).forEach((income) => {
       Object.entries(income.breakdown).forEach(([key, value]) => {
-        // Key cast-ujemo u Enum jer Object.entries po defaultu vraća string
         totals[key as BudgetPoolType] += value;
       });
     });
@@ -50,6 +48,11 @@ export class MonthlyIncomeStore {
   ) {
     const household = this.rootStore.householdStore.activeHousehold;
     if (!household) return;
+
+    const member = household.members.find((m) => m.id === memberId);
+    if (member?.status === MemberStatus.INACTIVE) {
+      throw new Error("Inactive member cannot submit income");
+    }
 
     const alreadyExists = household.incomes.some(
       (income) => income.memberId === memberId && income.month === month,
@@ -76,12 +79,9 @@ export class MonthlyIncomeStore {
       breakdown[pool.type] = Math.round((salary * pool.percentage) / 100);
     });
 
-    pools.forEach((pool: { type: BudgetPoolType; percentage: number }) => {
-      breakdown[pool.type] = Math.round((salary * pool.percentage) / 100);
-    });
-
-    await fetch("/api/incomes", {
+    const res = await fetch("/api/incomes", {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         memberId,
         month,
@@ -90,12 +90,25 @@ export class MonthlyIncomeStore {
       }),
     });
 
-    household.incomes.push({
-      id: uuidv4(),
-      memberId,
-      month,
-      salary,
-      breakdown,
-    });
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || "Failed");
+    }
+
+    const income = await res.json();
+    household.incomes.push(income);
+    this.rootStore.householdStore.persist();
+  }
+
+  async loadIncomes() {
+    const res = await fetch("/api/incomes");
+    if (!res.ok) return;
+
+    const incomes = await res.json();
+
+    const household = this.rootStore.householdStore.activeHousehold;
+    if (!household) return;
+
+    household.incomes = incomes;
   }
 }

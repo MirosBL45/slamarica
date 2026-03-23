@@ -4,6 +4,7 @@ import { authOptions } from "@/auth/authOptions";
 import { NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 import { IMonthlyIncome } from "@/types/income.types";
+import { IMember, MemberStatus } from "@/types/member.types";
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
@@ -19,20 +20,22 @@ export async function POST(req: Request) {
   const client = await clientPromise;
   const db = client.db();
 
-  const user = await db.collection("users").findOne({
-    email: session.user.email,
-  });
-
-  if (!user) {
-    return NextResponse.json({ error: "User not found" });
-  }
-
   const household = await db.collection("households").findOne({
-    userId: user._id.toString(),
+    userEmail: session.user.email,
   });
 
   if (!household) {
     return NextResponse.json({ error: "Household not found" });
+  }
+
+  const member = household.members.find(
+    (m: IMember) => m.id === memberId
+  );
+  if (member?.status === MemberStatus.INACTIVE) {
+    return NextResponse.json(
+      { error: "Inactive member cannot submit income" },
+      { status: 400 },
+    );
   }
 
   const incomes = (household.incomes ?? []) as IMonthlyIncome[];
@@ -65,4 +68,25 @@ export async function POST(req: Request) {
   );
 
   return NextResponse.json(income);
+}
+
+export async function GET() {
+  const session = await getServerSession(authOptions);
+
+  if (!session?.user?.email) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const client = await clientPromise;
+  const db = client.db();
+
+  const household = await db.collection("households").findOne({
+    userEmail: session.user.email,
+  });
+
+  if (!household) {
+    return NextResponse.json({ error: "Household not found" });
+  }
+
+  return NextResponse.json(household.incomes ?? []);
 }
