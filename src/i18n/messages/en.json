@@ -160,5 +160,14 @@
     "household": "Household",
     "articles": "Articles",
     "menu": "Menu"
+  },
+  "privacy": {
+    "title": "Privacy",
+    "description": "Your privacy is important to us. This Privacy Policy explains what information we collect, how we use it, and what rights you have."
+  },
+  "footer": {
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact"
   }
 }

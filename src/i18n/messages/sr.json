@@ -160,5 +160,14 @@
     "household": "Kuća",
     "articles": "Saveti",
     "menu": "Meni"
+  },
+  "privacy": {
+    "title": "Privatnost",
+    "description": "Vaša privatnost nam je važna. Ova Politika privatnosti objašnjava koje podatke prikupljamo, kako ih koristimo i koja su vaša prava."
+  },
+  "footer": {
+    "privacy": "Privatnost",
+    "terms": "Uslovi korišćenja",
+    "contact": "Kontakt"
   }
 }

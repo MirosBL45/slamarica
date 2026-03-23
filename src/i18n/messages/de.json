@@ -160,5 +160,14 @@
     "household": "Haushalt",
     "articles": "Ratgeber",
     "menu": "Menü"
+  },
+  "privacy": {
+    "title": "Datenschutz",
+    "description": "Der Schutz Ihrer Daten ist uns wichtig. Diese Datenschutzerklärung erläutert, welche Informationen wir erfassen, wie wir sie verwenden und welche Rechte Sie haben."
+  },
+  "footer": {
+    "privacy": "Datenschutz",
+    "terms": "Allgemeine",
+    "contact": "Kontakt"
   }
 }

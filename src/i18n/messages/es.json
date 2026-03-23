@@ -160,5 +160,14 @@
     "household": "Hogar",
     "articles": "Guías",
     "menu": "Menú"
+  },
+  "privacy": {
+    "title": "Privacidad",
+    "description": "Su privacidad es importante para nosotros. Esta Política de Privacidad explica qué información recopilamos, cómo la utilizamos y qué derechos tiene usted."
+  },
+  "footer": {
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "contact": "Contacto"
   }
 }
