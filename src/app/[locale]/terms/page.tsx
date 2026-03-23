@@ -2,22 +2,22 @@ import { getTranslations } from "next-intl/server";
 import { PageProps } from "@/lib/types/i18n";
 import styles from "./page.module.scss";
 
-type PrivacyList = {
+type TermsList = {
   title?: string;
   items: string[];
 };
 
-type PrivacySection = {
+type TermsSection = {
   title: string;
   content?: string[];
-  lists?: PrivacyList[];
+  lists?: TermsList[];
 };
 
-export default async function PrivacyPage({ params }: PageProps) {
+export default async function TermsPage({ params }: PageProps) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "privacy" });
+  const t = await getTranslations({ locale, namespace: "terms" });
 
-  const sections = (t.raw("sections") as PrivacySection[]) ?? [];
+  const sections = (t.raw("sections") as TermsSection[]) ?? [];
 
   return (
     <main className={styles.mainContent}>
@@ -37,7 +37,11 @@ export default async function PrivacyPage({ params }: PageProps) {
 
           {section.lists?.map((list, listIndex) => (
             <div key={listIndex} className={styles.listBlock}>
-              {list.title && <p className={styles.listTitle}>{list.title}</p>}
+              {list.title && (
+                <p className={styles.listTitle}>
+                  <strong>{list.title}</strong>
+                </p>
+              )}
 
               <ul>
                 {list.items.map((item, itemIndex) => (

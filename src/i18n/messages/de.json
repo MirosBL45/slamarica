@@ -162,8 +162,202 @@
     "menu": "Menü"
   },
   "privacy": {
-    "title": "Datenschutz",
-    "description": "Der Schutz Ihrer Daten ist uns wichtig. Diese Datenschutzerklärung erläutert, welche Informationen wir erfassen, wie wir sie verwenden und welche Rechte Sie haben."
+    "title": "Datenschutzerklärung",
+    "lastUpdated": "Letzte Aktualisierung: March 23, 2026",
+    "intro": "Willkommen bei der Slamarica-App.",
+    "description": "Ihre Privatsphäre ist uns wichtig. Diese Datenschutzerklärung erklärt, welche Daten wir erfassen, wie wir sie verwenden und welche Rechte Sie haben.",
+    "sections": [
+      {
+        "title": "Welche Daten wir erfassen",
+        "content": [
+          "Wir können folgende Informationen erfassen:"
+        ],
+        "lists": [
+          {
+            "title": "Daten, die Sie bereitstellen",
+            "items": [
+              "Name des Haushalts",
+              "Finanzdaten (Einnahmen, Ausgaben, Kategorien)",
+              "Währung",
+              "Daten, die Sie manuell in die App eingeben"
+            ]
+          },
+          {
+            "title": "Kontodaten",
+            "items": [
+              "E-Mail-Adresse",
+              "Daten des Authentifizierungsanbieters (z. B. Google)"
+            ]
+          },
+          {
+            "title": "Technische Daten",
+            "items": [
+              "IP-Adresse",
+              "Geräte- und Browsertyp",
+              "Grundlegende Anwendungsprotokolle"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Wie wir Ihre Daten verwenden",
+        "content": [
+          "Wir verwenden Ihre Daten ausschließlich für folgende Zwecke:"
+        ],
+        "lists": [
+          {
+            "items": [
+              "Den Betrieb der Anwendung",
+              "Die Speicherung und Anzeige Ihrer Daten",
+              "Die Verbesserung der Benutzererfahrung",
+              "Sicherheit und Verhinderung von Missbrauch"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Speicherung der Daten",
+        "content": [
+          "Ihre Daten werden in sicheren Datenbanken gespeichert, solange Sie die Anwendung nutzen.",
+          "Sie können jederzeit die Löschung Ihrer Daten verlangen."
+        ]
+      },
+      {
+        "title": "Weitergabe von Daten",
+        "content": [
+          "Wir geben Ihre personenbezogenen Daten nicht weiter, außer wenn wir gesetzlich dazu verpflichtet sind oder wenn wir vertrauenswürdige Dienste nutzen (z. B. Hosting oder Authentifizierung)."
+        ]
+      },
+      {
+        "title": "Cookies",
+        "content": [
+          "Wir verwenden Cookies für die grundlegende Funktionalität der Anwendung und zur Aufrechterhaltung der Sitzung."
+        ]
+      },
+      {
+        "title": "Sicherheit",
+        "content": [
+          "Wir ergreifen angemessene Maßnahmen zum Schutz Ihrer Daten, jedoch ist kein System vollständig sicher."
+        ]
+      },
+      {
+        "title": "Ihre Rechte",
+        "lists": [
+          {
+            "items": [
+              "Zugriff auf Ihre Daten",
+              "Berichtigung Ihrer Daten",
+              "Löschung Ihrer Daten verlangen",
+              "Die Nutzung der Anwendung beenden"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Änderungen dieser Richtlinie",
+        "content": [
+          "Wir behalten uns das Recht vor, diese Richtlinie zu ändern. Alle Änderungen werden auf dieser Seite veröffentlicht."
+        ]
+      },
+      {
+        "title": "Kontakt",
+        "content": [
+          "Alle Fragen können Sie über das Kontaktformular auf der Kontaktseite senden."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "title": "Nutzungsbedingungen",
+    "lastUpdated": "Letzte Aktualisierung: March 23, 2026",
+    "intro": "Willkommen bei der Slamarica-App.",
+    "description": "Durch die Nutzung dieser Anwendung stimmen Sie den folgenden Bedingungen zu.",
+    "sections": [
+      {
+        "title": "Nutzung der Anwendung",
+        "content": [
+          "Slamarica dient der persönlichen Finanzverwaltung.",
+          "Die Nutzung ist nur zu rechtmäßigen Zwecken erlaubt."
+        ],
+        "lists": [
+          {
+            "items": [
+              "Eingabe und Verwaltung finanzieller Daten",
+              "Organisation von Einnahmen und Ausgaben",
+              "Nutzung aller verfügbaren Funktionen"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Verbotene Aktivitäten",
+        "content": [
+          "Benutzer dürfen nicht:"
+        ],
+        "lists": [
+          {
+            "items": [
+              "Die Anwendung für illegale Zwecke nutzen",
+              "Unbefugten Zugriff versuchen",
+              "Den Betrieb der Anwendung stören",
+              "Daten oder Funktionen missbrauchen"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Benutzerkonten",
+        "content": [
+          "Sie sind für die Sicherheit Ihres Kontos verantwortlich.",
+          "Alle Aktivitäten über Ihr Konto liegen in Ihrer Verantwortung."
+        ]
+      },
+      {
+        "title": "Daten und Verantwortung",
+        "content": [
+          "Slamarica übernimmt keine Gewähr für die Richtigkeit der Finanzberichte.",
+          "Sie sind für die eingegebenen Daten verantwortlich."
+        ]
+      },
+      {
+        "title": "Verfügbarkeit",
+        "content": [
+          "Wir garantieren keine unterbrechungsfreie oder fehlerfreie Verfügbarkeit."
+        ]
+      },
+      {
+        "title": "Änderungen an der Anwendung",
+        "content": [
+          "Wir können Funktionen jederzeit ändern oder einstellen."
+        ]
+      },
+      {
+        "title": "Haftungsbeschränkung",
+        "content": [
+          "Slamarica haftet nicht für finanzielle oder andere Schäden."
+        ]
+      },
+      {
+        "title": "Beendigung",
+        "content": [
+          "Sie können die Nutzung jederzeit beenden.",
+          "Wir können den Zugang bei Verstößen sperren."
+        ]
+      },
+      {
+        "title": "Änderungen der Bedingungen",
+        "content": [
+          "Diese Bedingungen können jederzeit geändert werden.",
+          "Die weitere Nutzung gilt als Zustimmung."
+        ]
+      },
+      {
+        "title": "Kontakt",
+        "content": [
+          "Alle Fragen können Sie über das Kontaktformular auf der Kontaktseite senden."
+        ]
+      }
+    ]
   },
   "footer": {
     "privacy": "Datenschutz",
