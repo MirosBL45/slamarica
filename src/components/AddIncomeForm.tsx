@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { useStores } from "@/stores/StoreContext";
 import { formatNumber } from "@/utils/helpers/formatNumber";
+import { MemberStatus } from "@/types/member.types";
 
 interface Props {
   month: string;
@@ -22,9 +23,9 @@ const AddIncomeForm = observer(({ month }: Props) => {
   const [form] = Form.useForm<IFormValues>();
   const locale = useLocale();
 
-  const onFinish = (values: IFormValues) => {
+  const onFinish = async (values: IFormValues) => {
     try {
-      monthlyIncomeStore.createIncome(
+      await monthlyIncomeStore.createIncome(
         values.memberId,
         month,
         values.salary,
@@ -32,14 +33,18 @@ const AddIncomeForm = observer(({ month }: Props) => {
       );
 
       form.resetFields();
-    } catch (error) {
+    } catch (error: unknown) {
+      const message =
+        error instanceof Error ? error.message : "Something went wrong";
+
       form.setFields([
         {
           name: "memberId",
           errors: [t("duplicate")],
         },
       ]);
-      alert(error);
+
+      alert(message);
     }
   };
 
@@ -55,7 +60,7 @@ const AddIncomeForm = observer(({ month }: Props) => {
             placeholder={t("selectMember")}
             notFoundContent={t("noMembers")}
             options={membersStore.members
-              .filter((m) => m.status === "active")
+              .filter((m) => m.status === MemberStatus.ACTIVE)
               .map((m) => ({
                 label: m.name,
                 value: m.id,

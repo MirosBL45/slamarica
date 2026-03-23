@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { RootStore } from "../RootStore";
+import { MemberRole, MemberStatus } from "@/types/member.types";
 
 export class MembersStore {
   constructor(private rootStore: RootStore) {
@@ -10,26 +11,41 @@ export class MembersStore {
     return this.rootStore.householdStore.activeHousehold?.members ?? [];
   }
 
-  addMember(member: { id: string; name: string }) {
+  async loadMembers() {
+    const res = await fetch("/api/members");
+
+    if (!res.ok) return;
+
+    const members = await res.json();
+
     const household = this.rootStore.householdStore.activeHousehold;
     if (!household) return;
 
-    const isFirst = household.members.length === 0;
+    household.members = members;
+  }
 
+  async addMember(name: string) {
+    const household = this.rootStore.householdStore.activeHousehold;
+    if (!household) return;
+
+    // ✅ duplikat provera
     const exists = household.members.some(
-      (m) => m.name.toLowerCase() === member.name.toLowerCase(),
+      (m) => m.name.toLowerCase() === name.trim().toLowerCase()
     );
-
     if (exists) {
       throw new Error("Member already exists");
     }
 
-    household.members.push({
-      ...member,
-      status: "active",
-      role: isFirst ? "admin" : "member",
+    const res = await fetch("/api/members", {
+      method: "POST",
+      body: JSON.stringify({ name }),
     });
-
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || "Failed to create member");
+    }
+    const member = await res.json();
+    household.members.push(member);
     this.rootStore.householdStore.persist();
   }
 
@@ -37,41 +53,59 @@ export class MembersStore {
     const household = this.rootStore.householdStore.activeHousehold;
     if (!household) return null;
 
-    return household.members.find((m) => m.role === "admin") ?? null;
+    return household.members.find((m) => m.role === MemberRole.ADMIN) ?? null;
   }
 
   isAdmin(memberId: string) {
     return this.currentAdmin?.id === memberId;
   }
 
-  removeMember(memberId: string) {
+  async removeMember(memberId: string) {
     const household = this.rootStore.householdStore.activeHousehold;
     if (!household) return;
 
-    const member = household.members.find((m) => m.id === memberId);
-    if (!member) return;
-
     const hasIncome = household.incomes.some((i) => i.memberId === memberId);
 
+    const res = await fetch("/api/members", {
+      method: hasIncome ? "PATCH" : "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(
+        hasIncome ? { memberId, status: "inactive" } : { memberId },
+      ),
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || "Failed to remove member");
+    }
+
     if (!hasIncome) {
-      // ako NEMA plata → briše se
       household.members = household.members.filter((m) => m.id !== memberId);
     } else {
-      // ako IMA makar jednu platu → samo postaje inactive
-      member.status = "inactive";
+      const member = household.members.find((m) => m.id === memberId);
+      if (member) member.status = MemberStatus.INACTIVE;
     }
 
     this.rootStore.householdStore.persist();
   }
 
-  restoreMember(memberId: string) {
+  async restoreMember(memberId: string) {
     const household = this.rootStore.householdStore.activeHousehold;
     if (!household) return;
 
-    const member = household.members.find((m) => m.id === memberId);
-    if (!member) return;
+    const res = await fetch("/api/members", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ memberId, status: "active" }),
+    });
 
-    member.status = "active";
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || "Failed to restore member");
+    }
+
+    const member = household.members.find((m) => m.id === memberId);
+    if (member) member.status = MemberStatus.ACTIVE;
 
     this.rootStore.householdStore.persist();
   }

@@ -8,10 +8,10 @@
     "title": "Ihr Haushaltsbudget",
     "description": "Verwalten Sie Mitglieder und die Verteilung der monatlichen Einnahmen."
   },
-  "blog": {
-    "title": "Blog",
+  "articles": {
+    "title": "Ratgeber",
     "description": "Tipps und Ideen zur Verwaltung des Haushaltsbudgets.",
-    "comingSoon": "Der Blog kommt bald, laganinitm."
+    "comingSoon": "Der Ratgeber kommt bald, laganinitm."
   },
   "income": {
     "member": "Mitglied",
@@ -73,13 +73,6 @@
   "month": {
     "selectMonth": "Monat auswählen"
   },
-  "navbar": {
-    "home": "Startseite",
-    "household": "Haushalt",
-    "blog": "Blog",
-    "menu": "Menü",
-    "switchLanguage": "Sprache wechseln"
-  },
   "budget": {
     "title": "Monatliche Budgetverteilung",
     "personal": "Persönlich",
@@ -103,8 +96,8 @@
     "mainTitle": "Zur Hauptseite des Haushalts gehen",
     "or": "oder zu"
   },
-  "blogLayout": {
-    "title": "Blog",
+  "articlesLayout": {
+    "title": "Ratgeber",
     "text": "Lesen Sie unsere neuesten Artikel zum Thema Haushaltsplanung und Finanztipps"
   },
   "ispod_ide_text_koji_se_stavlja_u_UI": {
@@ -162,6 +155,10 @@
   "navbarLayout": {
     "login": "Einloggen",
     "description": "Treten Sie Familien bei, die die Kontrolle über ihre Finanzen übernommen haben",
-    "cta": "Kostenlos starten"
+    "cta": "Kostenlos starten",
+    "home": "Startseite",
+    "household": "Haushalt",
+    "articles": "Ratgeber",
+    "menu": "Menü"
   }
 }

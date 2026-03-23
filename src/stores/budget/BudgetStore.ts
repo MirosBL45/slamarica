@@ -1,14 +1,14 @@
 import { makeAutoObservable } from "mobx";
 import { RootStore } from "../RootStore";
-import { BudgetPoolType, IBudgetPool } from "./budget.types";
+import { BudgetPoolType, IBudgetPool } from "@/types/budget.types";
 
 const DEFAULT_POOLS: IBudgetPool[] = [
-  { type: "personal", label: "Lični novac", percentage: 20 },
-  { type: "bills", label: "Računi", percentage: 10 },
-  { type: "travel", label: "Putovanja", percentage: 10 },
-  { type: "food", label: "Hrana", percentage: 20 },
-  { type: "savings", label: "Kućna štednja", percentage: 30 },
-  { type: "investments", label: "Investicije", percentage: 10 },
+  { type: BudgetPoolType.PERSONAL, label: "Lični novac", percentage: 20 },
+  { type: BudgetPoolType.BILLS, label: "Računi", percentage: 10 },
+  { type: BudgetPoolType.TRAVEL, label: "Putovanja", percentage: 10 },
+  { type: BudgetPoolType.FOOD, label: "Hrana", percentage: 20 },
+  { type: BudgetPoolType.SAVINGS, label: "Kućna štednja", percentage: 30 },
+  { type: BudgetPoolType.INVESTMENTS, label: "Investicije", percentage: 10 },
 ];
 
 export class BudgetStore {
@@ -32,9 +32,20 @@ export class BudgetStore {
     const exists = household.monthlyBudgets.some((b) => b.month === month);
     if (exists) return;
 
+    const pools = this.cloneDefault();
+
     household.monthlyBudgets.push({
       month,
-      pools: this.cloneDefault(),
+      pools,
+    });
+
+    fetch("/api/monthlyBudgets", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        month,
+        pools,
+      }),
     });
 
     this.rootStore.householdStore.persist();
@@ -49,7 +60,7 @@ export class BudgetStore {
     return existing ? existing.pools : this.cloneDefault();
   }
 
-  setPercentage(month: string, type: BudgetPoolType, value: number) {
+  async setPercentage(month: string, type: BudgetPoolType, value: number) {
     this.initMonth(month);
 
     const household = this.household;
@@ -62,6 +73,15 @@ export class BudgetStore {
     if (!pool) return;
 
     pool.percentage = value;
+
+    await fetch("/api/monthlyBudgets", {
+      method: "POST",
+      body: JSON.stringify({
+        month,
+        pools: budget.pools,
+      }),
+    });
+
     this.rootStore.householdStore.persist();
   }
 

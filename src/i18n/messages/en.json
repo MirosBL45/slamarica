@@ -8,10 +8,10 @@
     "title": "Your household budget",
     "description": "Manage members and monthly income distribution."
   },
-  "blog": {
-    "title": "Blog",
+  "articles": {
+    "title": "Articles",
     "description": "Tips and ideas about managing household budgets.",
-    "comingSoon": "Blog coming soon, it is ok."
+    "comingSoon": "Articles coming soon, it is ok."
   },
   "income": {
     "member": "Member",
@@ -73,13 +73,6 @@
   "month": {
     "selectMonth": "Select month"
   },
-  "navbar": {
-    "home": "Home",
-    "household": "Household",
-    "blog": "Blog",
-    "menu": "Menu",
-    "switchLanguage": "Switch language"
-  },
   "budget": {
     "title": "Monthly budget distribution",
     "personal": "Personal",
@@ -103,8 +96,8 @@
     "mainTitle": "Go to main household page",
     "or": "or to"
   },
-  "blogLayout": {
-    "title": "Blog",
+  "articlesLayout": {
+    "title": "Articles",
     "text": "Read our latest articles about managing household budgets and financial tips"
   },
   "ispod_ide_text_koji_se_stavlja_u_UI": {
@@ -162,6 +155,10 @@
   "navbarLayout": {
     "login": "Log in",
     "description": "Join families who have taken control of their finances",
-    "cta": "Get Started Free"
+    "cta": "Get Started Free",
+    "home": "Home",
+    "household": "Household",
+    "articles": "Articles",
+    "menu": "Menu"
   }
 }

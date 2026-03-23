@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { MoneyCurrency, IHousehold } from "./household.types";
+import { MoneyCurrency, IHousehold } from "@/types/household.types";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -8,11 +8,30 @@ const STORAGE_KEY = "slamarica_households_v1";
 export class HouseholdStore {
   households: IHousehold[] = [];
   activeHouseholdId: string | null = null;
-  currencyLocked = false;
 
   constructor() {
     makeAutoObservable(this);
     this.hydrate();
+  }
+
+  async loadFromServer() {
+    const res = await fetch("/api/household");
+
+    if (!res.ok) return;
+
+    const household = await res.json();
+
+    this.households = [
+      {
+        ...household,
+        id: household._id,
+        currencyLocked: household.currencyLocked ?? false,
+      },
+    ];
+
+    this.activeHouseholdId = household._id;
+
+    this.persist();
   }
 
   hydrate() {
@@ -23,10 +42,6 @@ export class HouseholdStore {
       const parsed = JSON.parse(stored);
       this.households = parsed.households ?? [];
       this.activeHouseholdId = parsed.activeHouseholdId ?? null;
-    }
-
-    if (this.households.length === 0) {
-      this.createHousehold("My house");
     }
   }
 
@@ -67,16 +82,33 @@ export class HouseholdStore {
     this.persist();
   }
 
-  setCurrency(currency: MoneyCurrency) {
+  async setCurrency(currency: MoneyCurrency) {
     const household = this.activeHousehold;
-    if (!household || this.currencyLocked) return;
+    if (!household || household.currencyLocked) return;
 
     household.currency = currency;
+
+    await fetch("/api/household", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ currency }),
+    });
+
     this.persist();
   }
 
-  lockCurrency() {
-    this.currencyLocked = true;
+  async lockCurrency() {
+    const household = this.activeHousehold;
+    if (!household) return;
+
+    household.currencyLocked = true;
+
+    await fetch("/api/household", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ currencyLocked: true }),
+    });
+
     this.persist();
   }
 

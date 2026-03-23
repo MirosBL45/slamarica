@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MonthSelector from "@/components/MonthSelector";
 import AddIncomeForm from "@/components/AddIncomeForm";
 import MonthlyIncomeList from "@/components/MonthlyIncomeList";
@@ -13,15 +13,30 @@ import { useStores } from "@/stores/StoreContext";
 export default function HouseholdClient() {
   const [month, setMonth] = useState(() => dayjs().format("YYYY-MM"));
 
-  const { membersStore } = useStores();
+  const { membersStore, householdStore, monthlyIncomeStore } = useStores();
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        await householdStore.loadFromServer();
+        await monthlyIncomeStore.loadIncomes();
+        await membersStore.loadMembers();
+      } catch {
+        // fallback → ništa ne radiš
+        // već imaš podatke iz localStorage (hydrate)
+      }
+    };
+
+    load();
+  }, []);
 
   const activeUserId = membersStore.members[0]?.id;
 
   return (
     <>
-      <BaseHasPermission permission={membersStore.isAdmin(activeUserId)}>
-        <BudgetSettings month={month} />
-      </BaseHasPermission>
+      {/* <BaseHasPermission permission={membersStore.isAdmin(activeUserId)}> */}
+      <BudgetSettings month={month} />
+      {/* </BaseHasPermission> */}
       <MonthSelector value={month} onChange={setMonth} />
       <AddIncomeForm month={month} />
       <MonthlyIncomeList month={month} />

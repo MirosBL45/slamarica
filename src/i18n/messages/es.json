@@ -8,10 +8,10 @@
     "title": "Tu presupuesto familiar",
     "description": "Gestiona los miembros y la distribución de los ingresos mensuales."
   },
-  "blog": {
-    "title": "Blog",
+  "articles": {
+    "title": "Guías",
     "description": "Consejos e ideas sobre la gestión del presupuesto familiar.",
-    "comingSoon": "El blog llegará pronto, laganini."
+    "comingSoon": "Las guías llegaran pronto, laganini."
   },
   "income": {
     "member": "Miembro",
@@ -73,13 +73,6 @@
   "month": {
     "selectMonth": "Selecciona el mes"
   },
-  "navbar": {
-    "home": "Inicio",
-    "household": "Hogar",
-    "blog": "Blog",
-    "menu": "Menú",
-    "switchLanguage": "Cambiar idioma"
-  },
   "budget": {
     "title": "Distribución del presupuesto mensual",
     "personal": "Personal",
@@ -103,8 +96,8 @@
     "mainTitle": "Ir a la página principal del hogar",
     "or": "o a"
   },
-  "blogLayout": {
-    "title": "Blog",
+  "articlesLayout": {
+    "title": "Guías",
     "text": "Lea nuestros últimos artículos sobre cómo administrar presupuestos familiares y consejos financieros"
   },
   "ispod_ide_text_koji_se_stavlja_u_UI": {
@@ -162,6 +155,10 @@
   "navbarLayout": {
     "login": "Iniciar sesión",
     "description": "Únete a familias que han tomado el control de sus finanzas",
-    "cta": "Comenzar gratis"
+    "cta": "Comenzar gratis",
+    "home": "Inicio",
+    "household": "Hogar",
+    "articles": "Guías",
+    "menu": "Menú"
   }
 }

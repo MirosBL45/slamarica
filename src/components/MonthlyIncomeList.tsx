@@ -5,7 +5,8 @@ import { Table, Card } from "antd";
 import { useStores } from "@/stores/StoreContext";
 import { useLocale, useTranslations } from "next-intl";
 import { formatCurrency } from "@/utils/helpers/formatCurrency";
-import { MoneyCurrency } from "@/stores/household/household.types";
+import { MoneyCurrency } from "@/types/household.types";
+import { BudgetPoolType } from "@/types/budget.types";
 
 interface Props {
   month: string;
@@ -27,12 +28,12 @@ const MonthlyIncomeList = observer(({ month }: Props) => {
       key: income.id,
       member: member?.name ?? t("unknown"),
       salary: income.salary,
-      personal: income.breakdown.personal,
-      bills: income.breakdown.bills,
-      travel: income.breakdown.travel,
-      food: income.breakdown.food,
-      savings: income.breakdown.savings,
-      investments: income.breakdown.investments,
+      personal: income.breakdown[BudgetPoolType.PERSONAL],
+      bills: income.breakdown[BudgetPoolType.BILLS],
+      travel: income.breakdown[BudgetPoolType.TRAVEL],
+      food: income.breakdown[BudgetPoolType.FOOD],
+      savings: income.breakdown[BudgetPoolType.SAVINGS],
+      investments: income.breakdown[BudgetPoolType.INVESTMENTS],
     };
   });
 
