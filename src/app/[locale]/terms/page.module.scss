@@ -1,0 +1,45 @@
+@use "@/styles/breakpoints" as b;
+@use "@/styles/variables" as v;
+
+.mainContent {
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 1rem;
+  color: v.$color-primary;
+
+  h1 {
+    margin: 2rem 0;
+  }
+
+  h2 {
+    margin: 3rem 0 2rem;
+  }
+
+  p {
+    margin: 1rem 0;
+    color: v.$color-accent-dark;
+  }
+
+  ul {
+    padding-left: 1.5rem;
+    color: v.$color-accent-dark;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  // 2. Standardni telefoni i tableti (od 480px do 768px)
+  @include b.up(b.$bp-sm) {
+    h1 {
+      margin: 3rem 0;
+    }
+  }
+
+  // 3. Desktop / Tablet Landscape (od 768px pa naviše)
+  @include b.up(b.$bp-md) {
+    h1 {
+      margin: 4rem 0;
+    }
+  }
+}

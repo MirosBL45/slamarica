@@ -1,9 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import styles from "./Footer.module.scss";
+import { useLocale, useTranslations } from "next-intl";
 import { GithubOutlined, LinkedinOutlined, XOutlined } from "@ant-design/icons";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const locale = useLocale();
+  const t = useTranslations("footer");
 
   return (
     <footer className={styles.footer}>
@@ -16,9 +21,9 @@ export default function Footer() {
 
         {/* center */}
         <div className={styles.links}>
-          <Link href="/privacy">Privacy</Link>
-          <Link href="/terms">Terms</Link>
-          <Link href="/contact">Contact</Link>
+          <Link href={`/${locale}/privacy`}>{t("privacy")}</Link>
+          <Link href={`/${locale}/terms`}>{t("terms")}</Link>
+          <Link href={`/${locale}/contact`}>{t("contact")}</Link>
         </div>
 
         {/* right */}

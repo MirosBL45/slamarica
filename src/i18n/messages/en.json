@@ -160,5 +160,208 @@
     "household": "Household",
     "articles": "Articles",
     "menu": "Menu"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: March 23, 2026",
+    "intro": "Welcome to the Slamarica application.",
+    "description": "Your privacy is important to us. This Privacy Policy explains what data we collect, how we use it, and your rights.",
+    "sections": [
+      {
+        "title": "What data we collect",
+        "content": [
+          "We may collect the following information:"
+        ],
+        "lists": [
+          {
+            "title": "Data you provide",
+            "items": [
+              "Household name",
+              "Financial data (income, expenses, categories)",
+              "Currency",
+              "Data you manually enter into the application"
+            ]
+          },
+          {
+            "title": "Account data",
+            "items": [
+              "Email address",
+              "Authentication provider data (e.g. Google)"
+            ]
+          },
+          {
+            "title": "Technical data",
+            "items": [
+              "IP address",
+              "Device and browser type",
+              "Basic application logs"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "How we use your data",
+        "content": [
+          "We use your data exclusively for:"
+        ],
+        "lists": [
+          {
+            "items": [
+              "Operating the application",
+              "Storing and displaying your data",
+              "Improving the user experience",
+              "Security and prevention of misuse"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Data retention",
+        "content": [
+          "Your data is stored in secure databases while you use the application.",
+          "You may request deletion of your data at any time."
+        ]
+      },
+      {
+        "title": "Data sharing",
+        "content": [
+          "We do not share your personal data except when required by law or when we use trusted services (e.g. hosting, authentication)."
+        ]
+      },
+      {
+        "title": "Cookies",
+        "content": [
+          "We use cookies for the basic functionality of the application and to maintain your session."
+        ]
+      },
+      {
+        "title": "Security",
+        "content": [
+          "We take reasonable measures to protect your data, but no system is 100% secure."
+        ]
+      },
+      {
+        "title": "Your rights",
+        "lists": [
+          {
+            "items": [
+              "Access your data",
+              "Correct your data",
+              "Request deletion of your data",
+              "Stop using the application"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Changes to this policy",
+        "content": [
+          "We reserve the right to update this policy. Any changes will be published on this page."
+        ]
+      },
+      {
+        "title": "Contact",
+        "content": [
+          "You can send all your questions via the contact form on the contact page."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: March 23, 2026",
+    "intro": "Welcome to the Slamarica application.",
+    "description": "By using this application, you agree to the following terms.",
+    "sections": [
+      {
+        "title": "Use of the application",
+        "content": [
+          "Slamarica is designed for personal financial management.",
+          "You may use the application only for lawful purposes."
+        ],
+        "lists": [
+          {
+            "items": [
+              "Entering and tracking financial data",
+              "Organizing expenses and income",
+              "Using all available application features"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Prohibited activities",
+        "content": [
+          "Users must not:"
+        ],
+        "lists": [
+          {
+            "items": [
+              "Use the application for illegal purposes",
+              "Attempt unauthorized access",
+              "Disrupt the application",
+              "Abuse data or functionality"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "User accounts",
+        "content": [
+          "You are responsible for maintaining the security of your account.",
+          "All activities under your account are your responsibility."
+        ]
+      },
+      {
+        "title": "Data and responsibility",
+        "content": [
+          "Slamarica does not guarantee the accuracy of financial reports.",
+          "You are responsible for the data you enter."
+        ]
+      },
+      {
+        "title": "Availability",
+        "content": [
+          "We do not guarantee uninterrupted or error-free availability."
+        ]
+      },
+      {
+        "title": "Changes to the application",
+        "content": [
+          "We may modify or discontinue features at any time."
+        ]
+      },
+      {
+        "title": "Limitation of liability",
+        "content": [
+          "Slamarica is not liable for any financial or other damages."
+        ]
+      },
+      {
+        "title": "Termination",
+        "content": [
+          "You may stop using the application at any time.",
+          "We may suspend access for violations."
+        ]
+      },
+      {
+        "title": "Changes to terms",
+        "content": [
+          "These terms may be updated at any time.",
+          "Continued use means acceptance of changes."
+        ]
+      },
+      {
+        "title": "Contact",
+        "content": [
+          "You can send all your questions via the contact form on the contact page."
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact"
   }
 }
