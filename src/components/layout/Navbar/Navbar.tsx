@@ -12,6 +12,7 @@ import styles from "./Navbar.module.scss";
 
 import { ActionLink } from "@/components/ui";
 import { SUPPORTED_LOCALES } from "@/lib/types/i18n";
+import { route } from "@/utils/route";
 
 const { useBreakpoint } = Grid;
 
@@ -26,6 +27,7 @@ export default function Navbar() {
   const locale = useLocale();
   const pathname = usePathname();
   const t = useTranslations("navbarLayout");
+  const r = route(locale);
 
   const screens = useBreakpoint();
   const [open, setOpen] = useState(false);
@@ -53,11 +55,11 @@ export default function Navbar() {
     },
     {
       label: t("household"),
-      href: `/${locale}/household`,
+      href: r.household.index,
     },
     {
       label: t("articles"),
-      href: `/${locale}/articles`,
+      href: r.articles,
     },
   ];
 
@@ -119,7 +121,7 @@ export default function Navbar() {
 
               <ActionLink
                 variant="outline"
-                href={`/${locale}/login`}
+                href={r.login}
                 className={styles.loginBtn}
               >
                 {t("login")}
@@ -179,7 +181,7 @@ export default function Navbar() {
 
                 <ActionLink
                   variant="outline"
-                  href={`/${locale}/login`}
+                  href={r.login}
                   onClick={closeDrawer}
                   className={styles.mobileLogin}
                   style={{
