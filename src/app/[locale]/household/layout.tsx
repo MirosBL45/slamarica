@@ -6,6 +6,7 @@ import {
   SUPPORTED_LOCALES,
   getAlternativeLanguages,
 } from "@/lib/types/i18n";
+import { route } from "@/utils/route";
 
 import { notFound } from "next/navigation";
 
@@ -54,6 +55,7 @@ export default async function HouseholdLayout({
     locale,
     namespace: "householdLayout",
   });
+  const r = route(locale);
 
   return (
     <div>
@@ -65,7 +67,7 @@ export default async function HouseholdLayout({
           <Link
             style={{ color: "green" }}
             title={t("settingsTitle")}
-            href={`/${locale}/household/settings`}
+            href={r.household.settings}
           >
             {t("settings")}
           </Link>{" "}
@@ -73,7 +75,7 @@ export default async function HouseholdLayout({
           <Link
             style={{ color: "green" }}
             title={t("mainTitle")}
-            href={`/${locale}/household`}
+            href={r.household.index}
           >
             {t("main")}
           </Link>
