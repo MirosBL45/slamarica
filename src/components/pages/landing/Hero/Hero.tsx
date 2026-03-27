@@ -20,7 +20,7 @@ export default async function Hero({ locale }: LocaleProps) {
       <p className={styles.description}>{t("description")}</p>
 
       <div className={styles.actions}>
-        <ActionLink href={r.login} variant="primary">
+        <ActionLink href={r.household.index} variant="primary">
           {t("action1")}
         </ActionLink>
 
