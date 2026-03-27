@@ -55,11 +55,7 @@ export default function LoginPage() {
 
       <input placeholder="email" onChange={(e) => setEmail(e.target.value)} />
 
-      <input
-        type="password"
-        placeholder="password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
 
       <button
         onClick={() =>

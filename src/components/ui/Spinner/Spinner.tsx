@@ -1,4 +1,4 @@
-import styles from './Spinner.module.scss';
+import styles from "./Spinner.module.scss";
 
 export default function Spinner({ text }: { text: string }) {
   return (
@@ -8,5 +8,5 @@ export default function Spinner({ text }: { text: string }) {
         <div className={styles.loadingSpinner}></div>
       </div>
     </div>
-  )
+  );
 }

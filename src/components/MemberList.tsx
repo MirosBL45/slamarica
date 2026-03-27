@@ -85,12 +85,8 @@ const MemberList = observer(() => {
             size="small"
             onClick={() => {
               Modal.confirm({
-                title: hasIncome
-                  ? t("confirmInactiveTitle")
-                  : t("confirmDeleteTitle"),
-                content: hasIncome
-                  ? t("confirmInactiveText")
-                  : t("confirmDeleteText"),
+                title: hasIncome ? t("confirmInactiveTitle") : t("confirmDeleteTitle"),
+                content: hasIncome ? t("confirmInactiveText") : t("confirmDeleteText"),
                 okText: hasIncome ? t("setInactive") : t("delete"),
                 cancelText: t("cancel"),
                 onOk: () => {

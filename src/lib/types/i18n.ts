@@ -14,7 +14,5 @@ export interface PageProps {
 
 // za alternates u metadata
 export const getAlternativeLanguages = (path: string) => {
-  return Object.fromEntries(
-    SUPPORTED_LOCALES.map((lang) => [lang, `/${lang}${path}`])
-  );
+  return Object.fromEntries(SUPPORTED_LOCALES.map((lang) => [lang, `/${lang}${path}`]));
 };

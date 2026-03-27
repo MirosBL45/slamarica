@@ -1,11 +1,6 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import {
-  PageProps,
-  Locale,
-  SUPPORTED_LOCALES,
-  getAlternativeLanguages,
-} from "@/lib/types/i18n";
+import { PageProps, Locale, SUPPORTED_LOCALES, getAlternativeLanguages } from "@/lib/types/i18n";
 
 import { notFound } from "next/navigation";
 
@@ -62,11 +57,7 @@ export default async function ArticlesLayout({
 
         <p>{t("text")}</p>
         <p>
-          <Link
-            style={{ color: "green" }}
-            title="Go to main household page"
-            href={`/${locale}`}
-          >
+          <Link style={{ color: "green" }} title="Go to main household page" href={`/${locale}`}>
             homepage
           </Link>
         </p>

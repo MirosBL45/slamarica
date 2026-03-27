@@ -3,12 +3,7 @@ type GrowthIconProps = {
 };
 
 const GrowthIcon = ({ size = "24px" }: GrowthIconProps) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox="0 0 14 14"
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 14 14">
     <path
       fill="#000000"
       fillRule="evenodd"

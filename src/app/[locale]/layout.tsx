@@ -2,12 +2,7 @@ import { NextIntlClientProvider } from "next-intl";
 import Providers from "../providers";
 import { notFound } from "next/navigation";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import {
-  PageProps,
-  Locale,
-  SUPPORTED_LOCALES,
-  getAlternativeLanguages,
-} from "@/lib/types/i18n";
+import { PageProps, Locale, SUPPORTED_LOCALES, getAlternativeLanguages } from "@/lib/types/i18n";
 
 import "@/styles/globals.scss";
 import { Navbar, Footer } from "@/components/layout";

@@ -4,7 +4,11 @@
 
 import { Pie } from "@ant-design/plots";
 
-export function BudgetChart({ categories }: { categories: { id: string; percent: number; color: string }[] }) {
+export function BudgetChart({
+  categories,
+}: {
+  categories: { id: string; percent: number; color: string }[];
+}) {
   const data = categories.map((c) => ({
     type: c.id,
     value: c.percent,

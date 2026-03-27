@@ -5,20 +5,14 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-
   width: 44px;
   height: 44px;
-
-//   padding: 6px 10px;
   border-radius: 12px;
-
   font-weight: 500;
   font-size: 14px;
-
   background-color: var(--badge-bg, v.$color-primary);
   border: 1px solid var(--badge-border, transparent);
   color: var(--badge-text, v.$color-surface);
-
   transition: all 0.2s ease;
 
   &:hover {

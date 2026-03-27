@@ -9,18 +9,9 @@ interface StatCardProps {
   active?: boolean;
 }
 
-export default function StatCard({
-  label,
-  amount,
-  percentage,
-  color,
-  active,
-}: StatCardProps) {
+export default function StatCard({ label, amount, percentage, color, active }: StatCardProps) {
   return (
-    <div
-      className={`${styles.card} ${active ? styles.active : ""}`}
-      style={{ color }}
-    >
+    <div className={`${styles.card} ${active ? styles.active : ""}`} style={{ color }}>
       <div>
         <div className={styles.label}>{label}</div>
         <div className={styles.amount}>&euro;{amount.toFixed(0)}</div>

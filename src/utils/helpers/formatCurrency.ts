@@ -1,12 +1,8 @@
-import { MoneyCurrency } from "@/stores/household/household.types";
+import { MoneyCurrency } from "@/types/household.types";
 
-export function formatCurrency(
-  value: number,
-  locale: string,
-  currency: MoneyCurrency
-) {
+export function formatCurrency(value: number, locale: string, currency: MoneyCurrency) {
   return new Intl.NumberFormat(locale, {
-    style: 'currency',
+    style: "currency",
     currency,
   }).format(value);
 }

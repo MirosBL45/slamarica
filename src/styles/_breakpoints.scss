@@ -8,19 +8,19 @@ $bp-xxl: 1440px; // veliki desktop
 
 // Mixins
 @mixin up($size) {
-    @media (min-width: $size) {
-        @content;
-    }
+  @media (min-width: $size) {
+    @content;
+  }
 }
 
 @mixin down($size) {
-    @media (max-width: $size) {
-        @content;
-    }
+  @media (max-width: $size) {
+    @content;
+  }
 }
 
 @mixin between($min, $max) {
-    @media (min-width: $min) and (max-width: $max) {
-        @content;
-    }
+  @media (min-width: $min) and (max-width: $max) {
+    @content;
+  }
 }
