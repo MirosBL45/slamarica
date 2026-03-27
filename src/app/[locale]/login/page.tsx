@@ -3,7 +3,13 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+
+import ContainerCard from "@/components/ui/ContainerCard/ContainerCard";
+import AppInput from "@/components/ui/AppInput/AppInput";
+import { ActionButton, ActionLink } from "@/components/ui";
+
 import Spinner from "@/components/ui/Spinner/Spinner";
+import styles from "./page.module.scss";
 
 export default function LoginPage() {
   const { locale } = useParams<{ locale: string }>();
@@ -79,30 +85,63 @@ export default function LoginPage() {
   }
 
   return (
-    <div>
-      <button onClick={handleGoogleLogin}>Login with Google</button>
-      <button onClick={handleLogout}>Logout</button>
+    <div className={styles.page}>
+      <div className={styles.logo}>
+        <div className={styles.icon}>✦</div>
+        <span>Household</span>
+      </div>
 
-      <hr />
+      <ContainerCard className={styles.card}>
+        <h1 className={styles.title}>Welcome back</h1>
+        <p className={styles.subtitle}>Sign in to your household account</p>
 
-      <input
-        type="email"
-        value={email}
-        placeholder="email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
+        <div className={styles.form}>
+          <AppInput
+            label="Email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="your@email.com"
+          />
 
-      <input
-        value={password}
-        type="password"
-        placeholder="password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+          <AppInput
+            label="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="••••••••"
+          />
 
-      <button onClick={handleCredentialsLogin}>Login</button>
-      <button onClick={handleRegister}>Register</button>
+          <div className={styles.row}>
+            <label className={styles.checkbox}>
+              <input type="checkbox" />
+              Remember me
+            </label>
 
-      {error ? <p>{error}</p> : null}
+            <ActionLink href={`/${locale}/forgot-password`} variant="white">
+              Forgot password?
+            </ActionLink>
+          </div>
+
+          <ActionButton onClick={handleCredentialsLogin} disabled={!email || !password}>
+            Sign In
+          </ActionButton>
+
+          <ActionButton variant="outline" onClick={handleGoogleLogin}>
+            Continue with Google
+          </ActionButton>
+
+          {error && <p className={styles.error}>{error}</p>}
+        </div>
+
+        <p className={styles.bottomText}>
+          Don&apos;t have an account? <span onClick={handleRegister}>Create one</span>
+        </p>
+      </ContainerCard>
+
+      <ActionLink href={`/${locale}`} variant="white">
+        ← Back to home
+      </ActionLink>
     </div>
   );
 }
