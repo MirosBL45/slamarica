@@ -77,10 +77,9 @@ export async function PATCH(req: Request) {
     updateData.currencyLocked = currencyLocked;
   }
 
-  await db.collection("households").updateOne(
-    { userEmail: session.user.email },
-    { $set: updateData }
-  );
+  await db
+    .collection("households")
+    .updateOne({ userEmail: session.user.email }, { $set: updateData });
 
   return NextResponse.json({ success: true });
 }

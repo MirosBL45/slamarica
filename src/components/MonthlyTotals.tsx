@@ -15,8 +15,7 @@ interface Props {
 const MonthlyTotals = observer(({ month }: Props) => {
   const { monthlyIncomeStore, householdStore } = useStores();
 
-  const currency =
-    householdStore.activeHousehold?.currency ?? MoneyCurrency.RSD;
+  const currency = householdStore.activeHousehold?.currency ?? MoneyCurrency.RSD;
 
   const locale = useLocale();
   const t = useTranslations("totals");
@@ -26,28 +25,22 @@ const MonthlyTotals = observer(({ month }: Props) => {
   return (
     <Card style={{ marginTop: "1rem" }}>
       <div>
-        {t("personal")}:{" "}
-        {formatCurrency(totals[BudgetPoolType.PERSONAL], locale, currency)}
+        {t("personal")}: {formatCurrency(totals[BudgetPoolType.PERSONAL], locale, currency)}
       </div>
       <div>
-        {t("bills")}:{" "}
-        {formatCurrency(totals[BudgetPoolType.BILLS], locale, currency)}
+        {t("bills")}: {formatCurrency(totals[BudgetPoolType.BILLS], locale, currency)}
       </div>
       <div>
-        {t("travel")}:{" "}
-        {formatCurrency(totals[BudgetPoolType.TRAVEL], locale, currency)}
+        {t("travel")}: {formatCurrency(totals[BudgetPoolType.TRAVEL], locale, currency)}
       </div>
       <div>
-        {t("food")}:{" "}
-        {formatCurrency(totals[BudgetPoolType.FOOD], locale, currency)}
+        {t("food")}: {formatCurrency(totals[BudgetPoolType.FOOD], locale, currency)}
       </div>
       <div>
-        {t("savings")}:{" "}
-        {formatCurrency(totals[BudgetPoolType.SAVINGS], locale, currency)}
+        {t("savings")}: {formatCurrency(totals[BudgetPoolType.SAVINGS], locale, currency)}
       </div>
       <div>
-        {t("investments")}:{" "}
-        {formatCurrency(totals[BudgetPoolType.INVESTMENTS], locale, currency)}
+        {t("investments")}: {formatCurrency(totals[BudgetPoolType.INVESTMENTS], locale, currency)}
       </div>
     </Card>
   );

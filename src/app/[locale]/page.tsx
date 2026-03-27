@@ -1,10 +1,4 @@
-import {
-  Hero,
-  FinancialOverview,
-  Calculator,
-  Features,
-  CTA,
-} from "@/components/pages/landing";
+import { Hero, FinancialOverview, Calculator, Features, CTA } from "@/components/pages/landing";
 import { PageProps } from "@/lib/types/i18n";
 import styles from "./page.module.scss";
 

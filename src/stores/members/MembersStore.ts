@@ -69,9 +69,7 @@ export class MembersStore {
     const res = await fetch("/api/members", {
       method: hasIncome ? "PATCH" : "DELETE",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(
-        hasIncome ? { memberId, status: "inactive" } : { memberId },
-      ),
+      body: JSON.stringify(hasIncome ? { memberId, status: "inactive" } : { memberId }),
     });
 
     if (!res.ok) {

@@ -80,9 +80,7 @@ export default function Navbar() {
   };
 
   return (
-    <header
-      className={`${styles.header} ${scrolled ? styles.headerScrolled : ""}`}
-    >
+    <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ""}`}>
       <div className={styles.container}>
         {/* LOGO */}
         <Link href={`/${locale}`} className={styles.logo}>
@@ -98,9 +96,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`${styles.link} ${
-                    isActive(link.href) ? styles.active : ""
-                  }`}
+                  className={`${styles.link} ${isActive(link.href) ? styles.active : ""}`}
                 >
                   {link.label}
                 </Link>
@@ -108,22 +104,14 @@ export default function Navbar() {
             </nav>
 
             <div className={styles.actions}>
-              <Dropdown
-                menu={{ items: languageItems }}
-                trigger={["hover"]}
-                placement="bottomRight"
-              >
+              <Dropdown menu={{ items: languageItems }} trigger={["hover"]} placement="bottomRight">
                 <Button className={styles.langBtn}>
                   <GlobalOutlined />
                   {FLAGS[locale]} {locale.toUpperCase()}
                 </Button>
               </Dropdown>
 
-              <ActionLink
-                variant="outline"
-                href={r.login}
-                className={styles.loginBtn}
-              >
+              <ActionLink variant="outline" href={r.login} className={styles.loginBtn}>
                 {t("login")}
               </ActionLink>
             </div>

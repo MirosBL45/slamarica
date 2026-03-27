@@ -1,3 +1,3 @@
-This is a [Next.js](https://nextjs.org) project named Slamarica
+This is a [Next.js] project named Slamarica
 It is about home budget...
-This is a simple personal budgeting app for tracking income and expenses.
+This is a family budgeting app for tracking income and expenses.

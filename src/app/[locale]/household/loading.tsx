@@ -1,7 +1,5 @@
 import Spinner from "@/components/ui/Spinner/Spinner";
 
 export default function Loading() {
-  return (
-    <Spinner text="Loading household..." />
-  )
+  return <Spinner text="Loading household..." />;
 }

@@ -3,12 +3,7 @@
 import { useState } from "react";
 import styles from "./Calculator.module.scss";
 import { DEMO_CATEGORIES, INCOME } from "@/utils/helpers/demoConstants";
-import {
-  ActionButton,
-  ContainerCard,
-  SectionHeader,
-  StatCard,
-} from "@/components/ui";
+import { ActionButton, ContainerCard, SectionHeader, StatCard } from "@/components/ui";
 import { Slider, InputNumber, Space, Progress, Tooltip } from "antd";
 
 import { useTranslations } from "next-intl";
@@ -26,9 +21,7 @@ export default function Calculator() {
 
   function updatePercent(id: string, newPercent: number) {
     setCategories((prev) =>
-      prev.map((cat) =>
-        cat.id === id ? { ...cat, percent: newPercent } : cat,
-      ),
+      prev.map((cat) => (cat.id === id ? { ...cat, percent: newPercent } : cat))
     );
   }
 
@@ -55,11 +48,7 @@ export default function Calculator() {
   return (
     <section className={styles.section}>
       <ContainerCard>
-        <SectionHeader
-          title={t("calculator")}
-          description={t("income")}
-          variant="primary"
-        />
+        <SectionHeader title={t("calculator")} description={t("income")} variant="primary" />
 
         <div className={styles.inputBlock}>
           <label>{t("monthly")} &euro;</label>
@@ -75,10 +64,7 @@ export default function Calculator() {
 
         <div className={styles.progressWrapper}>
           {categories.map((cat) => (
-            <Tooltip
-              key={cat.id}
-              title={`${t(`categories.${cat.id}`)} — ${cat.percent}%`}
-            >
+            <Tooltip key={cat.id} title={`${t(`categories.${cat.id}`)} — ${cat.percent}%`}>
               <div
                 style={{
                   width: `${cat.percent}%`,
@@ -150,18 +136,12 @@ export default function Calculator() {
               {t("total")}: {totalPercent}%
             </p>
 
-            <ActionButton
-              onClick={normalize}
-              variant="primary"
-              disabled={totalPercent === 100}
-            >
+            <ActionButton onClick={normalize} variant="primary" disabled={totalPercent === 100}>
               {t("normalize")}
             </ActionButton>
           </div>
 
-          {totalPercent !== 100 && (
-            <p className={styles.warning}>{t("percentages")}</p>
-          )}
+          {totalPercent !== 100 && <p className={styles.warning}>{t("percentages")}</p>}
         </div>
       </ContainerCard>
     </section>

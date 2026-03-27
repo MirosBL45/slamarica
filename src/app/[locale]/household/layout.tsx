@@ -1,11 +1,6 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import {
-  PageProps,
-  Locale,
-  SUPPORTED_LOCALES,
-  getAlternativeLanguages,
-} from "@/lib/types/i18n";
+import { PageProps, Locale, SUPPORTED_LOCALES, getAlternativeLanguages } from "@/lib/types/i18n";
 import { route } from "@/utils/route";
 
 import { notFound } from "next/navigation";
@@ -64,19 +59,11 @@ export default async function HouseholdLayout({
 
         <p>
           {t("text")}{" "}
-          <Link
-            style={{ color: "green" }}
-            title={t("settingsTitle")}
-            href={r.household.settings}
-          >
+          <Link style={{ color: "green" }} title={t("settingsTitle")} href={r.household.settings}>
             {t("settings")}
           </Link>{" "}
           {t("or")}{" "}
-          <Link
-            style={{ color: "green" }}
-            title={t("mainTitle")}
-            href={r.household.index}
-          >
+          <Link style={{ color: "green" }} title={t("mainTitle")} href={r.household.index}>
             {t("main")}
           </Link>
           .

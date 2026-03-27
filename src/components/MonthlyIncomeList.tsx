@@ -15,8 +15,7 @@ interface Props {
 const MonthlyIncomeList = observer(({ month }: Props) => {
   const { monthlyIncomeStore, membersStore, householdStore } = useStores();
 
-  const currency =
-    householdStore.activeHousehold?.currency ?? MoneyCurrency.RSD;
+  const currency = householdStore.activeHousehold?.currency ?? MoneyCurrency.RSD;
 
   const locale = useLocale();
   const t = useTranslations("incomeTable");

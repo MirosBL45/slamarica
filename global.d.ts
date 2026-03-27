@@ -1,4 +1,4 @@
-import { Messages } from './i18n/request';
+import { Messages } from "./i18n/request";
 
 // declare global {
 //     // eslint-disable-next-line @typescript-eslint/no-empty-object-type

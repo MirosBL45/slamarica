@@ -2,20 +2,20 @@
 @use "@/styles/variables" as v;
 
 .card {
-    padding: 2rem;
-    border-radius: v.$radius-lg;
-    background: v.$color-surface;
-    box-shadow: v.$shadow-card;
-    flex: 1;
+  padding: 2rem;
+  border-radius: v.$radius-lg;
+  background: v.$color-surface;
+  box-shadow: v.$shadow-card;
+  flex: 1;
 
-    // Varijanta sa gradijentom
-    &.primaryGradient {
-        background: linear-gradient(
-            135deg,
-            v.$color-primary,
-            color.scale(v.$color-primary, $lightness: -10%)
-        );
-        // Ovde možeš dodati i boju teksta ako je gradijent taman
-        color: white;
-    }
+  // Varijanta sa gradijentom
+  &.primaryGradient {
+    background: linear-gradient(
+      135deg,
+      v.$color-primary,
+      color.scale(v.$color-primary, $lightness: -10%)
+    );
+    // Ovde možeš dodati i boju teksta ako je gradijent taman
+    color: white;
+  }
 }

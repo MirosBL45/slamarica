@@ -39,7 +39,7 @@ export async function POST(req: Request) {
         $set: {
           "monthlyBudgets.$.pools": pools,
         },
-      },
+      }
     );
   } else {
     await db.collection("households").updateOne(
@@ -51,7 +51,7 @@ export async function POST(req: Request) {
             pools,
           },
         },
-      },
+      }
     );
   }
 

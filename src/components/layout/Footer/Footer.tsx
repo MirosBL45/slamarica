@@ -30,27 +30,15 @@ export default function Footer() {
 
         {/* right */}
         <div className={styles.icons}>
-          <Link
-            href="https://www.linkedin.com/in/mj888/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="https://www.linkedin.com/in/mj888/" target="_blank" rel="noopener noreferrer">
             <LinkedinOutlined />
           </Link>
 
-          <Link
-            href="https://github.com/MirosBL45"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="https://github.com/MirosBL45" target="_blank" rel="noopener noreferrer">
             <GithubOutlined />
           </Link>
 
-          <Link
-            href="https://x.com/MiroslavJovic45"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="https://x.com/MiroslavJovic45" target="_blank" rel="noopener noreferrer">
             <XOutlined />
           </Link>
         </div>
@@ -58,11 +46,7 @@ export default function Footer() {
 
       <div className={styles.bottom}>
         © {currentYear} Household • Built by{" "}
-        <Link
-          href="https://miroslavjovic.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Link href="https://miroslavjovic.com" target="_blank" rel="noopener noreferrer">
           Miroslav Jović
         </Link>
       </div>

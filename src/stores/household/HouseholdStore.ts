@@ -53,7 +53,7 @@ export class HouseholdStore {
       JSON.stringify({
         households: this.households,
         activeHouseholdId: this.activeHouseholdId,
-      }),
+      })
     );
   }
 

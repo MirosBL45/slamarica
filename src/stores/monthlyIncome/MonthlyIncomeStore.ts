@@ -40,12 +40,7 @@ export class MonthlyIncomeStore {
     return this.incomes.some((income) => income.memberId === memberId);
   }
 
-  async createIncome(
-    memberId: string,
-    month: string,
-    salary: number,
-    budgetStore: BudgetStore,
-  ) {
+  async createIncome(memberId: string, month: string, salary: number, budgetStore: BudgetStore) {
     const household = this.rootStore.householdStore.activeHousehold;
     if (!household) return;
 
@@ -55,7 +50,7 @@ export class MonthlyIncomeStore {
     }
 
     const alreadyExists = household.incomes.some(
-      (income) => income.memberId === memberId && income.month === month,
+      (income) => income.memberId === memberId && income.month === month
     );
 
     if (alreadyExists) {

@@ -9,11 +9,7 @@ export default async function Features({ locale }: LocaleProps) {
 
   return (
     <section className={styles.section}>
-      <SectionHeader
-        title={t("title")}
-        description={t("description")}
-        variant="primary"
-      />
+      <SectionHeader title={t("title")} description={t("description")} variant="primary" />
       <div className={styles.grid}>
         {FEATURES_DATA.map((feat) => {
           const Icon = feat.icon;
@@ -22,11 +18,7 @@ export default async function Features({ locale }: LocaleProps) {
             <ContainerCard key={feat.id}>
               <div className={styles.featuresItem}>
                 {/* npr. <Icon size="40px" /> */}
-                <Badge
-                  icon={<Icon />}
-                  bgColor={feat.bgColor}
-                  hoverBgColor={feat.bgHoverColor}
-                />
+                <Badge icon={<Icon />} bgColor={feat.bgColor} hoverBgColor={feat.bgHoverColor} />
                 <h3>{t(`items.${feat.id}.title`)}</h3>
                 <p>{t(`items.${feat.id}.desc`)}</p>
               </div>
