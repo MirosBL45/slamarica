@@ -1,6 +1,10 @@
 import clientPromise from "@/lib/mongodb";
 import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
+import { v4 as uuidv4 } from "uuid";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   const body = await req.json();
@@ -24,11 +28,27 @@ export async function POST(req: Request) {
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
+  const verificationToken = uuidv4();
+
   await db.collection("users").insertOne({
     email,
     name,
     password: hashedPassword,
+    emailVerified: false,
+    verificationToken,
     createdAt: new Date(),
+  });
+
+  await resend.emails.send({
+    from: "onboarding@resend.dev",
+    to: email,
+    subject: "Verify your email",
+    html: `
+    <p>Klikni da verifikuješ nalog:</p>
+    <a href="${process.env.APP_URL}/api/auth/verify?token=${verificationToken}">
+      Verify Email
+    </a>
+  `,
   });
 
   return NextResponse.json({ success: true });

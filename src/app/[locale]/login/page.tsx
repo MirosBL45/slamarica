@@ -71,7 +71,7 @@ export default function LoginPage() {
       return;
     }
 
-    await handleCredentialsLogin();
+    setError("Proveri email i klikni na link za verifikaciju");
   };
 
   if (status === "loading") {
