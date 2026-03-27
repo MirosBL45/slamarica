@@ -51,7 +51,7 @@ export default function LoginPage() {
       </div>
 
       <hr />
-      <p>ispod obican login</p>
+      <p>ispod obican login koji treba da se doradi uskoro</p>
 
       <input placeholder="email" onChange={(e) => setEmail(e.target.value)} />
 
