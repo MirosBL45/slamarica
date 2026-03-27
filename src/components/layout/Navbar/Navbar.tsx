@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
 
 import { Drawer, Dropdown, Button, Grid } from "antd";
 import { MenuOutlined, GlobalOutlined } from "@ant-design/icons";
@@ -26,10 +27,13 @@ const FLAGS: Record<string, string> = {
 export default function Navbar() {
   const locale = useLocale();
   const pathname = usePathname();
+  const { status } = useSession();
+
   const t = useTranslations("navbarLayout");
   const r = route(locale);
 
   const screens = useBreakpoint();
+
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -111,9 +115,22 @@ export default function Navbar() {
                 </Button>
               </Dropdown>
 
-              <ActionLink variant="outline" href={r.login} className={styles.loginBtn}>
-                {t("login")}
-              </ActionLink>
+              {status === "authenticated" ? (
+                <Button
+                  className={styles.loginBtn}
+                  onClick={() =>
+                    signOut({
+                      callbackUrl: `/${locale}/login`,
+                    })
+                  }
+                >
+                  Logout
+                </Button>
+              ) : (
+                <ActionLink variant="outline" href={r.login} className={styles.loginBtn}>
+                  {t("login")}
+                </ActionLink>
+              )}
             </div>
           </div>
         ) : (
@@ -167,17 +184,28 @@ export default function Navbar() {
                   ))}
                 </div>
 
-                <ActionLink
-                  variant="outline"
-                  href={r.login}
-                  onClick={closeDrawer}
-                  className={styles.mobileLogin}
-                  style={{
-                    animationDelay: `${(navLinks.length + SUPPORTED_LOCALES.length) * 0.05}s`,
-                  }}
-                >
-                  {t("login")}
-                </ActionLink>
+                {status === "authenticated" ? (
+                  <Button
+                    className={styles.mobileLogin}
+                    onClick={() => {
+                      closeDrawer();
+                      signOut({
+                        callbackUrl: `/${locale}/login`,
+                      });
+                    }}
+                  >
+                    Logout
+                  </Button>
+                ) : (
+                  <ActionLink
+                    variant="outline"
+                    href={r.login}
+                    onClick={closeDrawer}
+                    className={styles.mobileLogin}
+                  >
+                    {t("login")}
+                  </ActionLink>
+                )}
               </div>
             </Drawer>
           </>

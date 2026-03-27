@@ -1,75 +1,108 @@
 "use client";
 
-import { signIn, signOut } from "next-auth/react";
-import { useParams } from "next/navigation";
-import { useState } from "react";
+import { signIn, signOut, useSession } from "next-auth/react";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import Spinner from "@/components/ui/Spinner/Spinner";
 
 export default function LoginPage() {
-  const { locale } = useParams();
+  const { locale } = useParams<{ locale: string }>();
+  const router = useRouter();
+  const { status } = useSession();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const register = async () => {
-    await fetch("/api/auth/register", {
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.replace(`/${locale}/household`);
+    }
+  }, [status, locale, router]);
 
-    signIn("credentials", {
-      email,
-      password,
+  const handleGoogleLogin = async () => {
+    await signIn("google", {
       callbackUrl: `/${locale}/household`,
     });
   };
 
+  const handleLogout = async () => {
+    await signOut({
+      callbackUrl: `/${locale}/login`,
+    });
+  };
+
+  const handleCredentialsLogin = async () => {
+    setError("");
+
+    const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+
+    if (result?.error) {
+      setError("Pogrešan email ili lozinka");
+      return;
+    }
+
+    router.push(`/${locale}/household`);
+  };
+
+  const handleRegister = async () => {
+    setError("");
+
+    const res = await fetch("/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+        name: email.split("@")[0],
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      setError(data.error || "Greška pri registraciji");
+      return;
+    }
+
+    await handleCredentialsLogin();
+  };
+
+  if (status === "loading") {
+    return <Spinner text="Loging loading..." />;
+  }
+
   return (
     <div>
-      <div>
-        <button
-          onClick={() =>
-            signIn("google", {
-              callbackUrl: `/${locale}/household`,
-            })
-          }
-        >
-          Login with Google
-        </button>
-        <p>ispod logout</p>
-        <button
-          onClick={() =>
-            signOut({
-              callbackUrl: `/${locale}/login`,
-            })
-          }
-        >
-          Logout
-        </button>
-      </div>
+      <button onClick={handleGoogleLogin}>Login with Google</button>
+      <button onClick={handleLogout}>Logout</button>
 
       <hr />
-      <p>ispod obican login koji treba da se doradi uskoro</p>
 
-      <input placeholder="email" onChange={(e) => setEmail(e.target.value)} />
+      <input
+        type="email"
+        value={email}
+        placeholder="email"
+        onChange={(e) => setEmail(e.target.value)}
+      />
 
-      <input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
+      <input
+        value={password}
+        type="password"
+        placeholder="password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
 
-      <button
-        onClick={() =>
-          signIn("credentials", {
-            email,
-            password,
-            callbackUrl: `/${locale}/household`,
-          })
-        }
-      >
-        Login
-      </button>
+      <button onClick={handleCredentialsLogin}>Login</button>
+      <button onClick={handleRegister}>Register</button>
 
-      <button onClick={register}>Register</button>
+      {error ? <p>{error}</p> : null}
     </div>
   );
 }
