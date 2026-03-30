@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
 
 import { GoogleOutlined } from "@ant-design/icons";
 
-import { ActionButton } from "@/components/ui";
+import { ActionButton, ActionLink } from "@/components/ui";
 import AppInput from "@/components/ui/AppInput/AppInput";
 import ContainerCard from "@/components/ui/ContainerCard/ContainerCard";
 import Spinner from "@/components/ui/Spinner/Spinner";
@@ -18,6 +19,8 @@ export default function LoginPage() {
   const { locale } = useParams<{ locale: string }>();
   const router = useRouter();
   const { status } = useSession();
+
+  const t = useTranslations("login");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -52,31 +55,6 @@ export default function LoginPage() {
     router.push(`/${locale}/household`);
   };
 
-  const handleRegister = async () => {
-    setError("");
-
-    const res = await fetch("/api/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-        name: email.split("@")[0],
-      }),
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      setError(data.error || "Greška pri registraciji");
-      return;
-    }
-
-    setError("Proveri email i klikni na link za verifikaciju");
-  };
-
   if (status === "loading") {
     return <Spinner text="Loging loading..." />;
   }
@@ -89,8 +67,8 @@ export default function LoginPage() {
       </div>
 
       <ContainerCard className={styles.card}>
-        <h1 className={styles.title}>Welcome</h1>
-        <p className={styles.subtitle}>Sign in to your household account</p>
+        <h1 className={styles.title}>{t("welcome")}</h1>
+        <p className={styles.subtitle}>{t("siginText")}</p>
 
         <div className={styles.form}>
           <AppInput
@@ -98,7 +76,7 @@ export default function LoginPage() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="your@email.com"
+            placeholder="mike@email.com"
           />
 
           <AppInput
@@ -106,28 +84,28 @@ export default function LoginPage() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="••••••••"
+            placeholder="***&&&***++##@@"
           />
 
           <ActionButton onClick={handleCredentialsLogin} disabled={!email || !password}>
-            Sign In
+            {t("siginButton")}
           </ActionButton>
 
           <div className={styles.row}>
-            <Link href={`/${locale}/forgot-password`}>Forgot password?</Link>
+            <Link href={`/${locale}/forgot-password`}>{t("forgot")}</Link>
           </div>
 
           <ActionButton variant="outline" onClick={handleGoogleLogin}>
-            <span className={styles.googleText}>Continue with Google</span>
+            <span className={styles.googleText}>{t("google")}</span>
             <GoogleOutlined className={styles.googleIcon} />
           </ActionButton>
 
           {error && <p className={styles.error}>{error}</p>}
         </div>
 
-        <p className={styles.bottomText}>
-          Don&apos;t have an account? <span onClick={handleRegister}>Create one</span>
-        </p>
+        <ActionLink href={`/${locale}/register`} variant="white">
+          {t("noAccount")}
+        </ActionLink>
       </ContainerCard>
     </div>
   );
