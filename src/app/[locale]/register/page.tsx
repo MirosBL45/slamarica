@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 import { ActionButton, ActionLink } from "@/components/ui";
 import AppInput from "@/components/ui/AppInput/AppInput";
@@ -16,6 +17,8 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  const t = useTranslations("register");
 
   const handleRegister = async () => {
     setError("");
@@ -51,8 +54,8 @@ export default function RegisterPage() {
       </div>
 
       <ContainerCard className={styles.card}>
-        <h1 className={styles.title}>Create account</h1>
-        <p className={styles.subtitle}>Start managing your household today</p>
+        <h1 className={styles.title}>{t("title")}</h1>
+        <p className={styles.subtitle}>{t("signUpText")}</p>
 
         <div className={styles.form}>
           <AppInput
@@ -72,19 +75,16 @@ export default function RegisterPage() {
           />
 
           <ActionButton onClick={handleRegister} disabled={!email || !password}>
-            Create account
+            {t("signupButton")}
           </ActionButton>
 
           {error && <p className={styles.error}>{error}</p>}
           {success && <p className={styles.success}>{success}</p>}
         </div>
 
-        <p className={styles.bottomText}>
-          Already have an account?{" "}
-          <ActionLink href={`/${locale}/login`} variant="white">
-            Sign in
-          </ActionLink>
-        </p>
+        <ActionLink href={`/${locale}/login`} variant="white">
+          {t("haveAccount")}
+        </ActionLink>
       </ContainerCard>
     </div>
   );

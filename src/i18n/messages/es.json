@@ -371,5 +371,11 @@
     "forgot": "¿Olvidaste tu contraseña?",
     "google": "Continuar con Google",
     "noAccount": "¿No tienes una cuenta? Regístrate"
+  },
+  "register": {
+    "title": "Crear cuenta",
+    "signUpText": "Empieza a gestionar tu hogar hoy mismo",
+    "signupButton": "Crear cuenta",
+    "haveAccount": "¿Ya tienes una cuenta? Inicia sesión"
   }
 }

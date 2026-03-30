@@ -371,5 +371,11 @@
     "forgot": "Forgot password?",
     "google": "Continue with Google",
     "noAccount": "Don't have an account? Sign up"
+  },
+  "register": {
+    "title": "Create account",
+    "signUpText": "Start managing your household today",
+    "signupButton": "Create account",
+    "haveAccount": "Already have an account? Sign in"
   }
 }
