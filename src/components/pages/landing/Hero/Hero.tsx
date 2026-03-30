@@ -1,7 +1,9 @@
 import { getTranslations } from "next-intl/server";
+
 import { ActionLink } from "@/components/ui";
-import { LocaleProps } from "@/lib/types/i18n";
 import { route } from "@/utils/route";
+import { LocaleProps } from "@/lib/types/i18n";
+
 import styles from "./Hero.module.scss";
 
 export default async function Hero({ locale }: LocaleProps) {

@@ -2,6 +2,7 @@
 
 import { Input } from "antd";
 import { InputProps } from "antd";
+
 import styles from "./AppInput.module.scss";
 
 interface Props extends InputProps {

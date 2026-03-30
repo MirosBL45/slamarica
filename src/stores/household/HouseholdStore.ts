@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
-import { MoneyCurrency, IHousehold } from "@/types/household.types";
-
 import { v4 as uuidv4 } from "uuid";
+
+import { IHousehold, MoneyCurrency } from "@/types/household.types";
 
 const STORAGE_KEY = "slamarica_households_v1";
 

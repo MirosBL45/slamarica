@@ -1,19 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
+import { useLocale, useTranslations } from "next-intl";
 
-import { Drawer, Dropdown, Button, Grid } from "antd";
-import { MenuOutlined, GlobalOutlined } from "@ant-design/icons";
-
-import styles from "./Navbar.module.scss";
+import { GlobalOutlined, MenuOutlined } from "@ant-design/icons";
+import { Button, Drawer, Dropdown, Grid } from "antd";
 
 import { ActionLink } from "@/components/ui";
-import { SUPPORTED_LOCALES } from "@/lib/types/i18n";
 import { route } from "@/utils/route";
+import { SUPPORTED_LOCALES } from "@/lib/types/i18n";
+
+import styles from "./Navbar.module.scss";
 
 const { useBreakpoint } = Grid;
 
@@ -83,6 +83,12 @@ export default function Navbar() {
     return pathname.startsWith(href);
   };
 
+  function handleLogout() {
+    signOut({
+      callbackUrl: `/${locale}/login`,
+    });
+  }
+
   return (
     <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ""}`}>
       <div className={styles.container}>
@@ -116,14 +122,7 @@ export default function Navbar() {
               </Dropdown>
 
               {status === "authenticated" ? (
-                <Button
-                  className={styles.loginBtn}
-                  onClick={() =>
-                    signOut({
-                      callbackUrl: `/${locale}/login`,
-                    })
-                  }
-                >
+                <Button className={styles.loginBtn} onClick={handleLogout}>
                   Logout
                 </Button>
               ) : (
@@ -189,9 +188,7 @@ export default function Navbar() {
                     className={styles.mobileLogin}
                     onClick={() => {
                       closeDrawer();
-                      signOut({
-                        callbackUrl: `/${locale}/login`,
-                      });
+                      handleLogout();
                     }}
                   >
                     Logout

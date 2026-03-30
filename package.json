@@ -33,6 +33,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "sass": "^1.97.2",
     "typescript": "^5"
   }

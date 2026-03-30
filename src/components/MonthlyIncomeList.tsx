@@ -1,12 +1,14 @@
 "use client";
 
-import { observer } from "mobx-react-lite";
-import { Table, Card } from "antd";
-import { useStores } from "@/stores/StoreContext";
 import { useLocale, useTranslations } from "next-intl";
+
+import { Card, Table } from "antd";
+import { observer } from "mobx-react-lite";
+
+import { useStores } from "@/stores/StoreContext";
 import { formatCurrency } from "@/utils/helpers/formatCurrency";
-import { MoneyCurrency } from "@/types/household.types";
 import { BudgetPoolType } from "@/types/budget.types";
+import { MoneyCurrency } from "@/types/household.types";
 
 interface Props {
   month: string;

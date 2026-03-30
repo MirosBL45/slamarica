@@ -1,10 +1,13 @@
-import clientPromise from "@/lib/mongodb";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/auth/authOptions";
 import { NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+
 import { v4 as uuidv4 } from "uuid";
-import { IMember, MemberRole, MemberStatus } from "@/types/member.types";
+
+import clientPromise from "@/lib/mongodb";
 import { IMonthlyIncome } from "@/types/income.types";
+import { IMember, MemberRole, MemberStatus } from "@/types/member.types";
+
+import { authOptions } from "@/auth/authOptions";
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);

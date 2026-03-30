@@ -1,14 +1,17 @@
 "use client";
 
-import { signIn, signOut, useSession } from "next-auth/react";
-import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
 
-import ContainerCard from "@/components/ui/ContainerCard/ContainerCard";
+import { GoogleOutlined } from "@ant-design/icons";
+
+import { ActionButton } from "@/components/ui";
 import AppInput from "@/components/ui/AppInput/AppInput";
-import { ActionButton, ActionLink } from "@/components/ui";
-
+import ContainerCard from "@/components/ui/ContainerCard/ContainerCard";
 import Spinner from "@/components/ui/Spinner/Spinner";
+
 import styles from "./page.module.scss";
 
 export default function LoginPage() {
@@ -29,12 +32,6 @@ export default function LoginPage() {
   const handleGoogleLogin = async () => {
     await signIn("google", {
       callbackUrl: `/${locale}/household`,
-    });
-  };
-
-  const handleLogout = async () => {
-    await signOut({
-      callbackUrl: `/${locale}/login`,
     });
   };
 
@@ -92,7 +89,7 @@ export default function LoginPage() {
       </div>
 
       <ContainerCard className={styles.card}>
-        <h1 className={styles.title}>Welcome back</h1>
+        <h1 className={styles.title}>Welcome</h1>
         <p className={styles.subtitle}>Sign in to your household account</p>
 
         <div className={styles.form}>
@@ -112,23 +109,17 @@ export default function LoginPage() {
             placeholder="••••••••"
           />
 
-          <div className={styles.row}>
-            <label className={styles.checkbox}>
-              <input type="checkbox" />
-              Remember me
-            </label>
-
-            <ActionLink href={`/${locale}/forgot-password`} variant="white">
-              Forgot password?
-            </ActionLink>
-          </div>
-
           <ActionButton onClick={handleCredentialsLogin} disabled={!email || !password}>
             Sign In
           </ActionButton>
 
+          <div className={styles.row}>
+            <Link href={`/${locale}/forgot-password`}>Forgot password?</Link>
+          </div>
+
           <ActionButton variant="outline" onClick={handleGoogleLogin}>
-            Continue with Google
+            <span className={styles.googleText}>Continue with Google</span>
+            <GoogleOutlined className={styles.googleIcon} />
           </ActionButton>
 
           {error && <p className={styles.error}>{error}</p>}
@@ -138,10 +129,6 @@ export default function LoginPage() {
           Don&apos;t have an account? <span onClick={handleRegister}>Create one</span>
         </p>
       </ContainerCard>
-
-      <ActionLink href={`/${locale}`} variant="white">
-        ← Back to home
-      </ActionLink>
     </div>
   );
 }

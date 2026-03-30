@@ -1,10 +1,12 @@
 "use client";
 
-import { observer } from "mobx-react-lite";
-import { Card, InputNumber, Row, Col } from "antd";
-import { useStores } from "@/stores/StoreContext";
-import { useTranslations } from "next-intl";
 import { useEffect } from "react";
+import { useTranslations } from "next-intl";
+
+import { Card, Col, InputNumber, Row } from "antd";
+import { observer } from "mobx-react-lite";
+
+import { useStores } from "@/stores/StoreContext";
 
 interface Props {
   month: string;

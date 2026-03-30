@@ -1,5 +1,6 @@
 @use "sass:color";
 @use "@/styles/variables" as v;
+@use "@/styles/mixins" as m;
 
 .button {
   padding: 0.875rem 1.5rem;
@@ -8,6 +9,9 @@
   cursor: pointer;
   transition: 0.2s ease;
   border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .primary {

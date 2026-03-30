@@ -1,8 +1,10 @@
 "use client";
 
-import { observer } from "mobx-react-lite";
-import { Table, Button, Card, Tag, Modal } from "antd";
 import { useTranslations } from "next-intl";
+
+import { Button, Card, Modal, Table, Tag } from "antd";
+import { observer } from "mobx-react-lite";
+
 import { useStores } from "@/stores/StoreContext";
 import { MemberStatus } from "@/types/member.types";
 

@@ -1,8 +1,10 @@
-import clientPromise from "@/lib/mongodb";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/auth/authOptions";
 import { NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+
+import clientPromise from "@/lib/mongodb";
 import { IMonthlyBudget } from "@/types/budget.types";
+
+import { authOptions } from "@/auth/authOptions";
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);

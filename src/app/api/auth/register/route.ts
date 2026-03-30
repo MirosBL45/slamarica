@@ -1,8 +1,10 @@
-import clientPromise from "@/lib/mongodb";
-import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
+
+import bcrypt from "bcrypt";
 import { Resend } from "resend";
 import { v4 as uuidv4 } from "uuid";
+
+import clientPromise from "@/lib/mongodb";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

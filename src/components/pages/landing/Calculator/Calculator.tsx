@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./Calculator.module.scss";
-import { DEMO_CATEGORIES, INCOME } from "@/utils/helpers/demoConstants";
-import { ActionButton, ContainerCard, SectionHeader, StatCard } from "@/components/ui";
-import { Slider, InputNumber, Space, Progress, Tooltip } from "antd";
-
 import { useTranslations } from "next-intl";
+
+import { InputNumber, Progress, Slider, Space, Tooltip } from "antd";
+
+import { ActionButton, ContainerCard, SectionHeader, StatCard } from "@/components/ui";
+import { DEMO_CATEGORIES, INCOME } from "@/utils/helpers/demoConstants";
+
+import styles from "./Calculator.module.scss";
 
 export default function Calculator() {
   const [income, setIncome] = useState<number>(INCOME);

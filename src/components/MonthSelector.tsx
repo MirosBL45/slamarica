@@ -1,10 +1,12 @@
 "use client";
 
+import { useLocale, useTranslations } from "next-intl";
+
 import { DatePicker } from "antd";
 import dayjs, { Dayjs } from "dayjs";
+
 import "dayjs/locale/sr";
 import "dayjs/locale/en";
-import { useLocale, useTranslations } from "next-intl";
 
 interface Props {
   value: string;
