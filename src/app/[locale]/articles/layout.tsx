@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
-import { PageProps, Locale, SUPPORTED_LOCALES, getAlternativeLanguages } from "@/lib/types/i18n";
-
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
+
+import { getAlternativeLanguages, Locale, PageProps, SUPPORTED_LOCALES } from "@/lib/types/i18n";
 
 export async function generateMetadata({ params }: PageProps) {
   const { locale } = await params;

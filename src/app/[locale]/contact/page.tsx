@@ -1,5 +1,7 @@
 import { getTranslations } from "next-intl/server";
+
 import { PageProps } from "@/lib/types/i18n";
+
 import styles from "./page.module.scss";
 
 export default async function ContactPage({ params }: PageProps) {

@@ -1,10 +1,12 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/auth/authOptions";
 import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
+import { getTranslations } from "next-intl/server";
+
+import { PageProps } from "@/lib/types/i18n";
+
+import { authOptions } from "@/auth/authOptions";
 
 import HouseholdClient from "./components/HouseholdClient";
-import { getTranslations } from "next-intl/server";
-import { PageProps } from "@/lib/types/i18n";
 
 export default async function HouseholdPage({ params }: PageProps) {
   const session = await getServerSession(authOptions);

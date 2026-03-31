@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: $color-text-main;
+}
+
+.input {
+  border-radius: $radius-lg !important;
+  padding: 0.8rem 1rem !important;
+  background: $color-bg !important;
+  border: 1px solid $color-border !important;
+
+  &:focus,
+  &:hover {
+    border-color: $color-primary !important;
+    box-shadow: 0 0 0 2px rgba(63, 95, 90, 0.1);
+  }
+}
+
+.error {
+  font-size: 0.75rem;
+  color: $color-danger;
+}

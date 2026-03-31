@@ -1,9 +1,11 @@
 import { NextAuthOptions } from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
+
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
-import clientPromise from "@/lib/mongodb";
 import bcrypt from "bcrypt";
+
+import clientPromise from "@/lib/mongodb";
 
 export const authOptions: NextAuthOptions = {
   adapter: MongoDBAdapter(clientPromise),
@@ -26,21 +28,29 @@ export const authOptions: NextAuthOptions = {
       },
 
       async authorize(credentials) {
+        if (!credentials?.email || !credentials.password) {
+          return null;
+        }
+
         const client = await clientPromise;
         const db = client.db();
 
         const user = await db.collection("users").findOne({
-          email: credentials?.email,
+          email: credentials.email,
         });
 
-        if (!user) {
-          throw new Error("User not found");
+        if (!user || !user.password) {
+          return null;
         }
 
-        const isValid = await bcrypt.compare(credentials!.password, user.password);
+        if (!user.emailVerified) {
+          return null;
+        }
+
+        const isValid = await bcrypt.compare(credentials.password, user.password);
 
         if (!isValid) {
-          throw new Error("Invalid password");
+          return null;
         }
 
         return {
@@ -51,10 +61,6 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-
-  pages: {
-    signIn: "/login",
-  },
 
   secret: process.env.NEXTAUTH_SECRET,
 };

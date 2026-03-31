@@ -1,10 +1,10 @@
-import AddMemberForm from "@/components/AddMemberForm";
-import MemberList from "@/components/MemberList";
-import CurrencySettings from "@/components/CurrencySettings";
-import { getTranslations } from "next-intl/server";
-
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
+
+import AddMemberForm from "@/components/AddMemberForm";
+import CurrencySettings from "@/components/CurrencySettings";
+import MemberList from "@/components/MemberList";
 
 const supportedLocales = ["sr", "en", "es", "de"] as const;
 

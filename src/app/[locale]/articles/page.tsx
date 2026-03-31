@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+
 import { PageProps } from "@/lib/types/i18n";
 
 export default async function ArticlesPage({ params }: PageProps) {

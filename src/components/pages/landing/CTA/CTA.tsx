@@ -1,7 +1,9 @@
 import { getTranslations } from "next-intl/server";
-import { LocaleProps } from "@/lib/types/i18n";
-import { ActionLink, SectionHeader, ContainerCard } from "@/components/ui";
+
+import { ActionLink, ContainerCard, SectionHeader } from "@/components/ui";
 import { route } from "@/utils/route";
+import { LocaleProps } from "@/lib/types/i18n";
+
 import styles from "./CTA.module.scss";
 
 export default async function CTA({ locale }: LocaleProps) {

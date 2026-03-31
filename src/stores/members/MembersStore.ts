@@ -1,6 +1,8 @@
 import { makeAutoObservable } from "mobx";
-import { RootStore } from "../RootStore";
+
 import { MemberRole, MemberStatus } from "@/types/member.types";
+
+import { RootStore } from "../RootStore";
 
 export class MembersStore {
   constructor(private rootStore: RootStore) {

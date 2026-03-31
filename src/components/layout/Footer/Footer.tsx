@@ -1,10 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import styles from "./Footer.module.scss";
 import { useLocale, useTranslations } from "next-intl";
+
 import { GithubOutlined, LinkedinOutlined, XOutlined } from "@ant-design/icons";
+
 import { route } from "@/utils/route";
+
+import styles from "./Footer.module.scss";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

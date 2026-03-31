@@ -1,4 +1,5 @@
 import { getRequestConfig } from "next-intl/server";
+
 import sr from "./messages/sr.json";
 
 // Definišemo tip na osnovu srpskog fajla

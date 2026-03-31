@@ -1,13 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import MonthSelector from "@/components/MonthSelector";
-import AddIncomeForm from "@/components/AddIncomeForm";
-import MonthlyIncomeList from "@/components/MonthlyIncomeList";
-import MonthlyTotals from "@/components/MonthlyTotals";
-import BudgetSettings from "@/components/BudgetSettings";
+import { useEffect, useState } from "react";
+
 // import { BaseHasPermission } from "@/components/BaseHasPermission";
 import dayjs from "dayjs";
+
+import AddIncomeForm from "@/components/AddIncomeForm";
+import BudgetSettings from "@/components/BudgetSettings";
+import MonthlyIncomeList from "@/components/MonthlyIncomeList";
+import MonthlyTotals from "@/components/MonthlyTotals";
+import MonthSelector from "@/components/MonthSelector";
 import { useStores } from "@/stores/StoreContext";
 
 export default function HouseholdClient() {

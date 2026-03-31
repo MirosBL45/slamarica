@@ -1,4 +1,5 @@
 import Badge from "../Badge/Badge";
+
 import styles from "./StatCard.module.scss";
 
 interface StatCardProps {

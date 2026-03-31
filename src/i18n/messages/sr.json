@@ -363,5 +363,19 @@
     "privacy": "Privatnost",
     "terms": "Uslovi korišćenja",
     "contact": "Kontakt"
+  },
+  "login": {
+    "welcome": "Dobrodošli",
+    "siginText": "Ulogujte se na svoj nalog",
+    "siginButton": "Uloguj se",
+    "forgot": "Zaboravili ste lozinku?",
+    "google": "Nastavite sa Google",
+    "noAccount": "Nemate nalog? Registrujte se"
+  },
+  "register": {
+    "title": "Napravi nalog",
+    "signUpText": "Počnite da upravljate svojim domaćinstvom već danas",
+    "signupButton": "Napravi nalog",
+    "haveAccount": "Već imate nalog? Prijavite se"
   }
 }

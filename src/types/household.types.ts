@@ -1,6 +1,6 @@
-import { IMember } from "./member.types";
-import { IMonthlyIncome } from "./income.types";
 import { IMonthlyBudget } from "./budget.types";
+import { IMonthlyIncome } from "./income.types";
+import { IMember } from "./member.types";
 
 export enum MoneyCurrency {
   RSD = "RSD",

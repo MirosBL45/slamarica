@@ -1,6 +1,7 @@
 "use client";
 
 import { ButtonHTMLAttributes } from "react";
+
 import styles from "./Action.module.scss";
 
 type Variant = "primary" | "outline" | "white";

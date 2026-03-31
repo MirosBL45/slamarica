@@ -1,7 +1,8 @@
 // src/utils/route.ts
 
-import { routes } from "@/constants/routes";
 import { AppRoute } from "@/types/routes.type";
+
+import { routes } from "@/constants/routes";
 
 const withLocale = (locale: string, route: AppRoute) => {
   return `/${locale}${route}`;

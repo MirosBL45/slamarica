@@ -363,5 +363,19 @@
     "privacy": "Datenschutz",
     "terms": "Allgemeine",
     "contact": "Kontakt"
+  },
+  "login": {
+    "welcome": "Willkommen",
+    "siginText": "Melden Sie sich bei Ihrem Haushaltskonto an",
+    "siginButton": "Anmelden",
+    "forgot": "Passwort vergessen?",
+    "google": "Mit Google fortfahren",
+    "noAccount": "Sie haben noch kein Konto? Registrieren Sie sich"
+  },
+  "register": {
+    "title": "Konto erstellen",
+    "signUpText": "Beginnen Sie noch heute mit der Verwaltung Ihres Haushalts",
+    "signupButton": "Konto erstellen",
+    "haveAccount": "Sie haben bereits ein Konto? Anmelden"
   }
 }
