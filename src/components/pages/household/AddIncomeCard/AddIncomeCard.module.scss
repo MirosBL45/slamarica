@@ -1,0 +1,58 @@
+@use "@/styles/variables" as v;
+
+.card {
+  max-width: 420px;
+  padding: 1.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  h3 {
+    font-size: 1.1rem;
+    color: v.$color-text-main;
+  }
+}
+
+.month {
+  padding: 0.4rem 0.6rem;
+  border-radius: v.$radius-md;
+  border: 1px solid v.$color-border;
+  background: v.$color-accent;
+  color: v.$color-surface;
+  font-size: 0.85rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.selectWrapper,
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+
+  label {
+    font-size: 0.85rem;
+  }
+}
+
+.select,
+.input {
+  padding: 0.9rem;
+  border-radius: v.$radius-md;
+  border: 1px solid v.$color-border;
+  background: v.$color-bg;
+  font-size: 1rem;
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+}

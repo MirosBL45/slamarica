@@ -10,7 +10,8 @@ import BudgetSettings from "@/components/BudgetSettings";
 import MonthlyIncomeList from "@/components/MonthlyIncomeList";
 import MonthlyTotals from "@/components/MonthlyTotals";
 import MonthSelector from "@/components/MonthSelector";
-import PercentagePreview from "@/components/pages/household/PercentagePreview";
+import AddIncomeCard from "@/components/pages/household/AddIncomeCard/AddIncomeCard";
+import PercentagePreview from "@/components/pages/household/PercentagePreview/PercentagePreview";
 import { useStores } from "@/stores/StoreContext";
 
 export default function HouseholdClient() {
@@ -38,6 +39,7 @@ export default function HouseholdClient() {
   return (
     <>
       <PercentagePreview month={month} />
+      <AddIncomeCard month={month} onMonthChange={setMonth} />
       {/* <BaseHasPermission permission={membersStore.isAdmin(activeUserId)}> */}
       <BudgetSettings month={month} />
       {/* </BaseHasPermission> */}
