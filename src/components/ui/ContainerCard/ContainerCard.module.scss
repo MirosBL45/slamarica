@@ -16,6 +16,6 @@
       color.scale(v.$color-primary, $lightness: -10%)
     );
     // Ovde možeš dodati i boju teksta ako je gradijent taman
-    color: white;
+    color: v.$color-surface;
   }
 }
