@@ -9,14 +9,13 @@ import AddIncomeForm from "@/components/AddIncomeForm";
 import BudgetSettings from "@/components/BudgetSettings";
 import MonthlyIncomeList from "@/components/MonthlyIncomeList";
 import MonthlyTotals from "@/components/MonthlyTotals";
-import MonthSelector from "@/components/MonthSelector";
+// import MonthSelector from "@/components/MonthSelector";
 import AddIncomeCard from "@/components/pages/household/AddIncomeCard/AddIncomeCard";
 import PercentagePreview from "@/components/pages/household/PercentagePreview/PercentagePreview";
 import { useStores } from "@/stores/StoreContext";
 
 export default function HouseholdClient() {
   const [month, setMonth] = useState(() => dayjs().format("YYYY-MM"));
-
   const { membersStore, householdStore, monthlyIncomeStore } = useStores();
 
   useEffect(() => {
@@ -32,7 +31,7 @@ export default function HouseholdClient() {
     };
 
     load();
-  }, []);
+  }, [householdStore, monthlyIncomeStore, membersStore]);
 
   // const activeUserId = membersStore.members[0]?.id;
 
@@ -43,7 +42,7 @@ export default function HouseholdClient() {
       {/* <BaseHasPermission permission={membersStore.isAdmin(activeUserId)}> */}
       <BudgetSettings month={month} />
       {/* </BaseHasPermission> */}
-      <MonthSelector value={month} onChange={setMonth} />
+      {/* <MonthSelector value={month} onChange={setMonth} /> */}
       <AddIncomeForm month={month} />
       <MonthlyIncomeList month={month} />
       <MonthlyTotals month={month} />

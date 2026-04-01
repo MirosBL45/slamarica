@@ -3,16 +3,20 @@
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
-// import dayjs from "dayjs";
+import { DatePicker } from "antd";
+import dayjs, { Dayjs } from "dayjs";
 import { observer } from "mobx-react-lite";
 
-import { ActionButton } from "@/components/ui";
+import ActionButton from "@/components/ui/ActionButtons/ActionButton";
 import ContainerCard from "@/components/ui/ContainerCard/ContainerCard";
 import { useStores } from "@/stores/StoreContext";
 import { formatNumber } from "@/utils/helpers/formatNumber";
 import { MemberStatus } from "@/types/member.types";
 
 import styles from "./AddIncomeCard.module.scss";
+
+import "dayjs/locale/sr";
+import "dayjs/locale/en";
 
 interface Props {
   month: string;
@@ -23,19 +27,31 @@ const AddIncomeCard = observer(({ month, onMonthChange }: Props) => {
   const { membersStore, budgetStore, monthlyIncomeStore } = useStores();
 
   const t = useTranslations("income");
+
+  const monthT = useTranslations("month");
   const locale = useLocale();
+
+  dayjs.locale(locale);
 
   const [memberId, setMemberId] = useState("");
   const [salary, setSalary] = useState<number | null>(null);
   const [error, setError] = useState("");
 
-  const isLocked = budgetStore.isLocked(month);
+  const handleMonthChange = (date: Dayjs | null) => {
+    if (!date) return;
+    onMonthChange(date.format("YYYY-MM"));
+  };
 
   const handleSubmit = async () => {
     setError("");
 
+    if (!memberId) {
+      setError(t("selectMember"));
+      return;
+    }
+
     if (!salary || salary <= 0) {
-      setError(t("salaryMustBePositive") || "Invalid salary");
+      setError(t("salaryMustBePositive"));
       return;
     }
 
@@ -53,30 +69,27 @@ const AddIncomeCard = observer(({ month, onMonthChange }: Props) => {
 
   return (
     <ContainerCard className={styles.card}>
-      {/* HEADER */}
       <div className={styles.header}>
         <h3>{t("addIncome")}</h3>
 
-        <input
-          type="month"
-          value={month}
-          onChange={(e) => onMonthChange(e.target.value)}
-          className={styles.month}
-          disabled={isLocked}
+        <DatePicker
+          picker="month"
+          value={month ? dayjs(month) : undefined}
+          onChange={handleMonthChange}
+          placeholder={monthT("selectMonth")}
+          format={locale === "sr" ? "MM-YYYY" : "YYYY-MM"}
+          className={styles.monthPicker}
         />
       </div>
 
-      {/* FORM */}
       <div className={styles.form}>
-        {/* MEMBER */}
-        <div className={styles.selectWrapper}>
+        <div className={styles.field}>
           <label>* {t("member")}</label>
 
           <select
             value={memberId}
             onChange={(e) => setMemberId(e.target.value)}
             className={styles.select}
-            disabled={isLocked}
           >
             <option value="">{t("selectMember")}</option>
 
@@ -90,8 +103,7 @@ const AddIncomeCard = observer(({ month, onMonthChange }: Props) => {
           </select>
         </div>
 
-        {/* SALARY */}
-        <div className={styles.inputWrapper}>
+        <div className={styles.field}>
           <label>* {t("salary")}</label>
 
           <input
@@ -102,22 +114,18 @@ const AddIncomeCard = observer(({ month, onMonthChange }: Props) => {
               setSalary(Number(onlyDigits || 0));
             }}
             className={styles.input}
-            disabled={isLocked}
+            placeholder="0"
           />
         </div>
 
-        {/* BUTTON */}
         <ActionButton
           onClick={handleSubmit}
-          disabled={!memberId || !salary || !budgetStore.isValid(month) || isLocked}
+          disabled={!memberId || !salary || !budgetStore.isValid(month)}
         >
           + {t("addIncome")}
         </ActionButton>
 
-        {/* ERRORS */}
         {!budgetStore.isValid(month) && <p className={styles.error}>{t("percentageError")}</p>}
-
-        {isLocked && <p className={styles.error}>{t("monthLocked") || "Month is locked"}</p>}
 
         {error && <p className={styles.error}>{error}</p>}
       </div>
