@@ -1,9 +1,11 @@
-import clientPromise from "@/lib/mongodb";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/auth/authOptions";
 import { NextResponse } from "next/server";
-import { MoneyCurrency } from "@/types/household.types";
+import { getServerSession } from "next-auth";
+
 import { householdName } from "@/utils/helpers/householdName";
+import clientPromise from "@/lib/mongodb";
+import { MoneyCurrency } from "@/types/household.types";
+
+import { authOptions } from "@/auth/authOptions";
 
 type HouseholdPatchData = {
   currency?: string;
@@ -77,10 +79,9 @@ export async function PATCH(req: Request) {
     updateData.currencyLocked = currencyLocked;
   }
 
-  await db.collection("households").updateOne(
-    { userEmail: session.user.email },
-    { $set: updateData }
-  );
+  await db
+    .collection("households")
+    .updateOne({ userEmail: session.user.email }, { $set: updateData });
 
   return NextResponse.json({ success: true });
 }

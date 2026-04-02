@@ -1,13 +1,9 @@
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
-import {
-  PageProps,
-  Locale,
-  SUPPORTED_LOCALES,
-  getAlternativeLanguages,
-} from "@/lib/types/i18n";
-
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
+
+import { route } from "@/utils/route";
+import { getAlternativeLanguages, Locale, PageProps, SUPPORTED_LOCALES } from "@/lib/types/i18n";
 
 export async function generateMetadata({ params }: PageProps) {
   const { locale } = await params;
@@ -54,6 +50,7 @@ export default async function HouseholdLayout({
     locale,
     namespace: "householdLayout",
   });
+  const r = route(locale);
 
   return (
     <div>
@@ -62,19 +59,11 @@ export default async function HouseholdLayout({
 
         <p>
           {t("text")}{" "}
-          <Link
-            style={{ color: "green" }}
-            title={t("settingsTitle")}
-            href={`/${locale}/household/settings`}
-          >
+          <Link style={{ color: "green" }} title={t("settingsTitle")} href={r.household.settings}>
             {t("settings")}
           </Link>{" "}
           {t("or")}{" "}
-          <Link
-            style={{ color: "green" }}
-            title={t("mainTitle")}
-            href={`/${locale}/household`}
-          >
+          <Link style={{ color: "green" }} title={t("mainTitle")} href={r.household.index}>
             {t("main")}
           </Link>
           .

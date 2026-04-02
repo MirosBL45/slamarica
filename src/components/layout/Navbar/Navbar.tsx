@@ -1,17 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
+import { useLocale, useTranslations } from "next-intl";
 
-import { Drawer, Dropdown, Button, Grid } from "antd";
-import { MenuOutlined, GlobalOutlined } from "@ant-design/icons";
-
-import styles from "./Navbar.module.scss";
+import { GlobalOutlined, MenuOutlined } from "@ant-design/icons";
+import { Button, Drawer, Dropdown, Grid } from "antd";
 
 import { ActionLink } from "@/components/ui";
+import { route } from "@/utils/route";
 import { SUPPORTED_LOCALES } from "@/lib/types/i18n";
+
+import styles from "./Navbar.module.scss";
 
 const { useBreakpoint } = Grid;
 
@@ -25,9 +27,13 @@ const FLAGS: Record<string, string> = {
 export default function Navbar() {
   const locale = useLocale();
   const pathname = usePathname();
+  const { status } = useSession();
+
   const t = useTranslations("navbarLayout");
+  const r = route(locale);
 
   const screens = useBreakpoint();
+
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -53,11 +59,11 @@ export default function Navbar() {
     },
     {
       label: t("household"),
-      href: `/${locale}/household`,
+      href: r.household.index,
     },
     {
       label: t("articles"),
-      href: `/${locale}/articles`,
+      href: r.articles,
     },
   ];
 
@@ -77,10 +83,14 @@ export default function Navbar() {
     return pathname.startsWith(href);
   };
 
+  function handleLogout() {
+    signOut({
+      callbackUrl: `/${locale}/login`,
+    });
+  }
+
   return (
-    <header
-      className={`${styles.header} ${scrolled ? styles.headerScrolled : ""}`}
-    >
+    <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ""}`}>
       <div className={styles.container}>
         {/* LOGO */}
         <Link href={`/${locale}`} className={styles.logo}>
@@ -96,9 +106,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`${styles.link} ${
-                    isActive(link.href) ? styles.active : ""
-                  }`}
+                  className={`${styles.link} ${isActive(link.href) ? styles.active : ""}`}
                 >
                   {link.label}
                 </Link>
@@ -106,24 +114,22 @@ export default function Navbar() {
             </nav>
 
             <div className={styles.actions}>
-              <Dropdown
-                menu={{ items: languageItems }}
-                trigger={["hover"]}
-                placement="bottomRight"
-              >
+              <Dropdown menu={{ items: languageItems }} trigger={["hover"]} placement="bottomRight">
                 <Button className={styles.langBtn}>
                   <GlobalOutlined />
                   {FLAGS[locale]} {locale.toUpperCase()}
                 </Button>
               </Dropdown>
 
-              <ActionLink
-                variant="outline"
-                href={`/${locale}/login`}
-                className={styles.loginBtn}
-              >
-                {t("login")}
-              </ActionLink>
+              {status === "authenticated" ? (
+                <Button className={styles.loginBtn} onClick={handleLogout}>
+                  Logout
+                </Button>
+              ) : (
+                <ActionLink variant="outline" href={r.login} className={styles.loginBtn}>
+                  {t("login")}
+                </ActionLink>
+              )}
             </div>
           </div>
         ) : (
@@ -177,17 +183,26 @@ export default function Navbar() {
                   ))}
                 </div>
 
-                <ActionLink
-                  variant="outline"
-                  href={`/${locale}/login`}
-                  onClick={closeDrawer}
-                  className={styles.mobileLogin}
-                  style={{
-                    animationDelay: `${(navLinks.length + SUPPORTED_LOCALES.length) * 0.05}s`,
-                  }}
-                >
-                  {t("login")}
-                </ActionLink>
+                {status === "authenticated" ? (
+                  <Button
+                    className={styles.mobileLogin}
+                    onClick={() => {
+                      closeDrawer();
+                      handleLogout();
+                    }}
+                  >
+                    Logout
+                  </Button>
+                ) : (
+                  <ActionLink
+                    variant="outline"
+                    href={r.login}
+                    onClick={closeDrawer}
+                    className={styles.mobileLogin}
+                  >
+                    {t("login")}
+                  </ActionLink>
+                )}
               </div>
             </Drawer>
           </>

@@ -1,0 +1,39 @@
+@use "@/styles/variables" as v;
+@use "@/styles/mixins" as m;
+
+.page {
+  background: $color-bg;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 1.5rem;
+  height: 50vh;
+  margin-bottom: auto;
+
+  @include m.flex-center;
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  @include m.flex-center;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.error {
+  color: $color-danger;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.success {
+  color: $color-success;
+  text-align: center;
+  font-size: 0.85rem;
+}

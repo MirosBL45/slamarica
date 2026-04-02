@@ -1,16 +1,14 @@
-import { NextIntlClientProvider } from "next-intl";
-import Providers from "../providers";
 import { notFound } from "next/navigation";
+import { NextIntlClientProvider } from "next-intl";
+
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import {
-  PageProps,
-  Locale,
-  SUPPORTED_LOCALES,
-  getAlternativeLanguages,
-} from "@/lib/types/i18n";
+
+import { Footer, Navbar } from "@/components/layout";
+import { getAlternativeLanguages, Locale, PageProps, SUPPORTED_LOCALES } from "@/lib/types/i18n";
+
+import Providers from "../providers";
 
 import "@/styles/globals.scss";
-import { Navbar, Footer } from "@/components/layout";
 
 export async function generateMetadata({ params }: PageProps) {
   const { locale } = await params;

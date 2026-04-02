@@ -1,0 +1,48 @@
+@use "@/styles/variables" as v;
+
+.card {
+  padding: 1.2rem 1.5rem;
+  border-radius: v.$radius-lg;
+  box-shadow: v.$shadow-card;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+  h3 {
+    font-size: 1.1rem;
+    color: v.$color-text-main;
+  }
+}
+
+.pools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.pool {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+
+  padding: 0.4rem 0.7rem;
+
+  background: v.$color-accent-soft;
+  border-radius: v.$radius-md;
+
+  font-size: 0.85rem;
+}
+
+.label {
+  color: v.$color-text-main;
+}
+
+.value {
+  font-weight: 600;
+  color: v.$color-primary;
+}

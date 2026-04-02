@@ -1,63 +1,66 @@
 import { NextAuthOptions } from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
+
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
-import clientPromise from "@/lib/mongodb";
 import bcrypt from "bcrypt";
 
+import clientPromise from "@/lib/mongodb";
+
 export const authOptions: NextAuthOptions = {
-    adapter: MongoDBAdapter(clientPromise),
+  adapter: MongoDBAdapter(clientPromise),
 
-    session: {
-        strategy: "jwt",
-    },
+  session: {
+    strategy: "jwt",
+  },
 
-    providers: [
-        GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID!,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-        }),
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
 
-        CredentialsProvider({
-            name: "Credentials",
-            credentials: {
-                email: { label: "Email", type: "text" },
-                password: { label: "Password", type: "password" },
-            },
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
+      },
 
-            async authorize(credentials) {
-                const client = await clientPromise;
-                const db = client.db();
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials.password) {
+          return null;
+        }
 
-                const user = await db.collection("users").findOne({
-                    email: credentials?.email,
-                });
+        const client = await clientPromise;
+        const db = client.db();
 
-                if (!user) {
-                    throw new Error("User not found");
-                }
+        const user = await db.collection("users").findOne({
+          email: credentials.email,
+        });
 
-                const isValid = await bcrypt.compare(
-                    credentials!.password,
-                    user.password
-                );
+        if (!user || !user.password) {
+          return null;
+        }
 
-                if (!isValid) {
-                    throw new Error("Invalid password");
-                }
+        if (!user.emailVerified) {
+          return null;
+        }
 
-                return {
-                    id: user._id.toString(),
-                    email: user.email,
-                    name: user.name,
-                };
-            },
-        }),
-    ],
+        const isValid = await bcrypt.compare(credentials.password, user.password);
 
-    pages: {
-        signIn: "/login",
-    },
+        if (!isValid) {
+          return null;
+        }
 
-    secret: process.env.NEXTAUTH_SECRET,
+        return {
+          id: user._id.toString(),
+          email: user.email,
+          name: user.name,
+        };
+      },
+    }),
+  ],
+
+  secret: process.env.NEXTAUTH_SECRET,
 };

@@ -1,43 +1,47 @@
 @use "sass:color";
 @use "@/styles/variables" as v;
+@use "@/styles/mixins" as m;
 
 .button {
-    padding: 0.875rem 1.5rem;
-    border-radius: v.$radius-lg;
-    font-weight: 500;
-    cursor: pointer;
-    transition: 0.2s ease;
-    border: none;
+  padding: 0.875rem 1.5rem;
+  border-radius: v.$radius-lg;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .primary {
-    background: v.$color-primary;
-    color: v.$color-surface;
-    box-shadow: v.$shadow-card;
+  background: v.$color-primary;
+  color: v.$color-surface;
+  box-shadow: v.$shadow-card;
 
-    &:hover {
-        transform: translateY(-2px);
-        background: color.scale(v.$color-primary, $lightness: -5%);
-    }
+  &:hover {
+    transform: translateY(-2px);
+    background: color.scale(v.$color-primary, $lightness: -5%);
+  }
 }
 
 .outline {
-    background: transparent;
-    border: 1px solid v.$color-border;
-    color: v.$color-text-main;
+  background: transparent;
+  border: 1px solid v.$color-border;
+  color: v.$color-text-main;
 
-    &:hover {
-        background: v.$color-bg;
-    }
+  &:hover {
+    background: v.$color-bg;
+  }
 }
 
 .white {
-    background: v.$color-surface;
-    color: v.$color-primary;
+  background: v.$color-surface;
+  color: v.$color-primary;
 
-    &:hover {
-        background: v.$color-bg;
-    }
+  &:hover {
+    background: v.$color-bg;
+  }
 }
 
 .button:disabled {
@@ -48,6 +52,6 @@
   color: v.$text-inactive;
 
   &:hover {
-        transform: translateY(0px);
-    }
+    transform: translateY(0px);
+  }
 }

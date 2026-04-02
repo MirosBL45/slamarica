@@ -1,10 +1,13 @@
-import clientPromise from "@/lib/mongodb";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/auth/authOptions";
 import { NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+
 import { v4 as uuidv4 } from "uuid";
+
+import clientPromise from "@/lib/mongodb";
 import { IMonthlyIncome } from "@/types/income.types";
 import { IMember, MemberStatus } from "@/types/member.types";
+
+import { authOptions } from "@/auth/authOptions";
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
@@ -28,26 +31,21 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Household not found" });
   }
 
-  const member = household.members.find(
-    (m: IMember) => m.id === memberId
-  );
+  const member = household.members.find((m: IMember) => m.id === memberId);
   if (member?.status === MemberStatus.INACTIVE) {
-    return NextResponse.json(
-      { error: "Inactive member cannot submit income" },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: "Inactive member cannot submit income" }, { status: 400 });
   }
 
   const incomes = (household.incomes ?? []) as IMonthlyIncome[];
 
   const alreadyExists = incomes.some(
-    (i: IMonthlyIncome) => i.memberId === memberId && i.month === month,
+    (i: IMonthlyIncome) => i.memberId === memberId && i.month === month
   );
 
   if (alreadyExists) {
     return NextResponse.json(
       { error: "Income already exists for this member and month" },
-      { status: 400 },
+      { status: 400 }
     );
   }
 
@@ -64,7 +62,7 @@ export async function POST(req: Request) {
     {
       $push: { incomes: income },
       ...(household.currencyLocked ? {} : { $set: { currencyLocked: true } }),
-    },
+    }
   );
 
   return NextResponse.json(income);

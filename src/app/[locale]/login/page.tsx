@@ -1,79 +1,112 @@
 "use client";
 
-import { signIn, signOut } from "next-auth/react";
-import { useParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
+
+import { GoogleOutlined } from "@ant-design/icons";
+
+import { ActionButton, ActionLink } from "@/components/ui";
+import AppInput from "@/components/ui/AppInput/AppInput";
+import ContainerCard from "@/components/ui/ContainerCard/ContainerCard";
+import Spinner from "@/components/ui/Spinner/Spinner";
+
+import styles from "./page.module.scss";
 
 export default function LoginPage() {
-  const { locale } = useParams();
+  const { locale } = useParams<{ locale: string }>();
+  const router = useRouter();
+  const { status } = useSession();
+
+  const t = useTranslations("login");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const register = async () => {
-    await fetch("/api/auth/register", {
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.replace(`/${locale}/household`);
+    }
+  }, [status, locale, router]);
 
-    signIn("credentials", {
-      email,
-      password,
+  const handleGoogleLogin = async () => {
+    await signIn("google", {
       callbackUrl: `/${locale}/household`,
     });
   };
 
+  const handleCredentialsLogin = async () => {
+    setError("");
+
+    const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+
+    if (result?.error) {
+      setError("Pogrešan email ili lozinka");
+      return;
+    }
+
+    router.push(`/${locale}/household`);
+  };
+
+  if (status === "loading") {
+    return <Spinner text="Loging loading..." />;
+  }
+
   return (
-    <div>
-      <div>
-        <button
-          onClick={() =>
-            signIn("google", {
-              callbackUrl: `/${locale}/household`,
-            })
-          }
-        >
-          Login with Google
-        </button>
-        <p>ispod logout</p>
-        <button
-          onClick={() =>
-            signOut({
-              callbackUrl: `/${locale}/login`,
-            })
-          }
-        >
-          Logout
-        </button>
+    <div className={styles.page}>
+      <div className={styles.logo}>
+        <div className={styles.icon}>✦</div>
+        <span>Household</span>
       </div>
 
-      <hr />
-      <p>ispod obican login</p>
+      <ContainerCard className={styles.card}>
+        <h1 className={styles.title}>{t("welcome")}</h1>
+        <p className={styles.subtitle}>{t("siginText")}</p>
 
-      <input placeholder="email" onChange={(e) => setEmail(e.target.value)} />
+        <div className={styles.form}>
+          <AppInput
+            label="Email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="mike@email.com"
+          />
 
-      <input
-        type="password"
-        placeholder="password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+          <AppInput
+            label="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="***&&&***++##@@"
+          />
 
-      <button
-        onClick={() =>
-          signIn("credentials", {
-            email,
-            password,
-            callbackUrl: `/${locale}/household`,
-          })
-        }
-      >
-        Login
-      </button>
+          <ActionButton onClick={handleCredentialsLogin} disabled={!email || !password}>
+            {t("siginButton")}
+          </ActionButton>
 
-      <button onClick={register}>Register</button>
+          <div className={styles.row}>
+            <Link href={`/${locale}/forgot-password`}>{t("forgot")}</Link>
+          </div>
+
+          <ActionButton variant="outline" onClick={handleGoogleLogin}>
+            <span className={styles.googleText}>{t("google")}</span>
+            <GoogleOutlined className={styles.googleIcon} />
+          </ActionButton>
+
+          {error && <p className={styles.error}>{error}</p>}
+        </div>
+
+        <ActionLink href={`/${locale}/register`} variant="white">
+          {t("noAccount")}
+        </ActionLink>
+      </ContainerCard>
     </div>
   );
 }

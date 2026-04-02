@@ -1,0 +1,97 @@
+@use "@/styles/variables" as v;
+@use "@/styles/mixins" as m;
+
+.page {
+  background: $color-bg;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.5rem;
+
+  @include m.flex-center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  color: $color-text-main;
+
+  .icon {
+    width: 2rem;
+    height: 2rem;
+    background: $color-primary;
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @include m.flex-center;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.subtitle {
+  text-align: center;
+  color: $color-text-muted;
+  margin-bottom: 1.5rem;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.row {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.85rem;
+}
+
+.error {
+  color: $color-danger;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.bottomText {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+
+  span {
+    color: $color-primary;
+    cursor: pointer;
+  }
+}
+
+.googleText {
+  margin-right: 0.5rem;
+}
+
+.googleIcon {
+  font-size: 20px;
+  color: v.$color-primary;
+
+  @include m.transition(all, 0.2s);
+
+  &:hover {
+    transform: scale(1.15);
+    color: v.$color-accent;
+  }
+}

@@ -1,10 +1,13 @@
-import clientPromise from "@/lib/mongodb";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/auth/authOptions";
 import { NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+
 import { v4 as uuidv4 } from "uuid";
-import { IMember, MemberRole, MemberStatus } from "@/types/member.types";
+
+import clientPromise from "@/lib/mongodb";
 import { IMonthlyIncome } from "@/types/income.types";
+import { IMember, MemberRole, MemberStatus } from "@/types/member.types";
+
+import { authOptions } from "@/auth/authOptions";
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
@@ -29,8 +32,7 @@ export async function POST(req: Request) {
   const members = (household.members ?? []) as IMember[];
 
   const exists = members.some(
-    (m: IMember) =>
-      typeof m.name === "string" && m.name.toLowerCase() === name.toLowerCase(),
+    (m: IMember) => typeof m.name === "string" && m.name.toLowerCase() === name.toLowerCase()
   );
 
   if (!name || !name.trim()) {
@@ -38,10 +40,7 @@ export async function POST(req: Request) {
   }
 
   if (exists) {
-    return NextResponse.json(
-      { error: "Member already exists" },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: "Member already exists" }, { status: 400 });
   }
 
   // Sprecava Miroslav i miroslav i MIROSLAV
@@ -79,8 +78,7 @@ export async function GET() {
 
 export async function DELETE(req: Request) {
   const session = await getServerSession(authOptions);
-  if (!session?.user?.email)
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!session?.user?.email) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { memberId } = await req.json();
 
   const client = await clientPromise;
@@ -90,30 +88,24 @@ export async function DELETE(req: Request) {
     userEmail: session.user.email,
   });
 
-  const hasIncome = household?.incomes?.some(
-    (i: IMonthlyIncome) => i.memberId === memberId,
-  );
+  const hasIncome = household?.incomes?.some((i: IMonthlyIncome) => i.memberId === memberId);
   if (hasIncome) {
     return NextResponse.json(
       { error: "Cannot delete member with existing incomes" },
-      { status: 400 },
+      { status: 400 }
     );
   }
 
   await db
     .collection("households")
-    .updateOne(
-      { _id: household?._id },
-      { $pull: { members: { id: memberId } } },
-    );
+    .updateOne({ _id: household?._id }, { $pull: { members: { id: memberId } } });
 
   return NextResponse.json({ success: true });
 }
 
 export async function PATCH(req: Request) {
   const session = await getServerSession(authOptions);
-  if (!session?.user?.email)
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!session?.user?.email) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { memberId, status } = await req.json();
 
   const client = await clientPromise;
@@ -132,7 +124,7 @@ export async function PATCH(req: Request) {
       $set: {
         "members.$.status": status,
       },
-    },
+    }
   );
 
   return NextResponse.json({ success: true });

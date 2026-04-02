@@ -1,5 +1,5 @@
 import DistributionIcon from "./DistributionIcon";
-import SecureIcon from "./SecureIcon";
 import GrowthIcon from "./GrowthIcon";
+import SecureIcon from "./SecureIcon";
 
 export { DistributionIcon, GrowthIcon, SecureIcon };

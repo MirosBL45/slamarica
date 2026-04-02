@@ -1,8 +1,10 @@
 "use client";
 
-import { observer } from "mobx-react-lite";
-import { Table, Button, Card, Tag, Modal } from "antd";
 import { useTranslations } from "next-intl";
+
+import { Button, Card, Modal, Table, Tag } from "antd";
+import { observer } from "mobx-react-lite";
+
 import { useStores } from "@/stores/StoreContext";
 import { MemberStatus } from "@/types/member.types";
 
@@ -85,12 +87,8 @@ const MemberList = observer(() => {
             size="small"
             onClick={() => {
               Modal.confirm({
-                title: hasIncome
-                  ? t("confirmInactiveTitle")
-                  : t("confirmDeleteTitle"),
-                content: hasIncome
-                  ? t("confirmInactiveText")
-                  : t("confirmDeleteText"),
+                title: hasIncome ? t("confirmInactiveTitle") : t("confirmDeleteTitle"),
+                content: hasIncome ? t("confirmInactiveText") : t("confirmDeleteText"),
                 okText: hasIncome ? t("setInactive") : t("delete"),
                 cancelText: t("cancel"),
                 onOk: () => {

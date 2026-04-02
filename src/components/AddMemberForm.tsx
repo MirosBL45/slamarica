@@ -1,8 +1,10 @@
 "use client";
 
-import { observer } from "mobx-react-lite";
-import { Form, Input, Button, Card } from "antd";
 import { useTranslations } from "next-intl";
+
+import { Button, Card, Form, Input } from "antd";
+import { observer } from "mobx-react-lite";
+
 import { useStores } from "@/stores/StoreContext";
 
 interface IFormValues {

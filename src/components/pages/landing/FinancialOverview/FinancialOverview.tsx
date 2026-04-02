@@ -1,7 +1,9 @@
 import { getTranslations } from "next-intl/server";
-import { LocaleProps } from "@/lib/types/i18n";
+
 import { ContainerCard } from "@/components/ui";
 import { DEMO_CATEGORIES, INCOME } from "@/utils/helpers/demoConstants";
+import { LocaleProps } from "@/lib/types/i18n";
+
 import styles from "./FinancialOverview.module.scss";
 
 export default async function FinancialOverview({ locale }: LocaleProps) {

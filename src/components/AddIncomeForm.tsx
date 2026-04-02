@@ -1,8 +1,9 @@
 "use client";
 
-import { observer } from "mobx-react-lite";
-import { Form, Select, InputNumber, Button, Card } from "antd";
 import { useLocale, useTranslations } from "next-intl";
+
+import { Button, Card, Form, InputNumber, Select } from "antd";
+import { observer } from "mobx-react-lite";
 
 import { useStores } from "@/stores/StoreContext";
 import { formatNumber } from "@/utils/helpers/formatNumber";
@@ -25,17 +26,11 @@ const AddIncomeForm = observer(({ month }: Props) => {
 
   const onFinish = async (values: IFormValues) => {
     try {
-      await monthlyIncomeStore.createIncome(
-        values.memberId,
-        month,
-        values.salary,
-        budgetStore,
-      );
+      await monthlyIncomeStore.createIncome(values.memberId, month, values.salary, budgetStore);
 
       form.resetFields();
     } catch (error: unknown) {
-      const message =
-        error instanceof Error ? error.message : "Something went wrong";
+      const message = error instanceof Error ? error.message : "Something went wrong";
 
       form.setFields([
         {
@@ -102,19 +97,12 @@ const AddIncomeForm = observer(({ month }: Props) => {
           />
         </Form.Item>
 
-        <Button
-          type="primary"
-          htmlType="submit"
-          block
-          disabled={!budgetStore.isValid(month)}
-        >
+        <Button type="primary" htmlType="submit" block disabled={!budgetStore.isValid(month)}>
           {t("addIncome")}
         </Button>
 
         {!budgetStore.isValid(month) && (
-          <div style={{ marginTop: "0.5rem", color: "#b94a48" }}>
-            {t("percentageError")}
-          </div>
+          <div style={{ marginTop: "0.5rem", color: "#b94a48" }}>{t("percentageError")}</div>
         )}
       </Form>
     </Card>

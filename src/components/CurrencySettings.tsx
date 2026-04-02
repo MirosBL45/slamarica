@@ -1,10 +1,11 @@
 "use client";
 
-import { Select, Card } from "antd";
+import { Card, Select } from "antd";
 import { observer } from "mobx-react-lite";
+
+import { BaseHasPermission } from "@/components/BaseHasPermission";
 import { useStores } from "@/stores/StoreContext";
 import { MoneyCurrency } from "@/types/household.types";
-import { BaseHasPermission } from "@/components/BaseHasPermission";
 
 const CurrencySettings = observer(() => {
   const { householdStore, membersStore } = useStores();

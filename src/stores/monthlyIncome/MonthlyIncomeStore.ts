@@ -1,8 +1,10 @@
 import { makeAutoObservable } from "mobx";
-import { RootStore } from "../RootStore";
-import { BudgetStore } from "../budget/BudgetStore";
+
 import { BudgetPoolType } from "@/types/budget.types";
 import { MemberStatus } from "@/types/member.types";
+
+import { BudgetStore } from "../budget/BudgetStore";
+import { RootStore } from "../RootStore";
 
 export class MonthlyIncomeStore {
   constructor(private rootStore: RootStore) {
@@ -40,12 +42,7 @@ export class MonthlyIncomeStore {
     return this.incomes.some((income) => income.memberId === memberId);
   }
 
-  async createIncome(
-    memberId: string,
-    month: string,
-    salary: number,
-    budgetStore: BudgetStore,
-  ) {
+  async createIncome(memberId: string, month: string, salary: number, budgetStore: BudgetStore) {
     const household = this.rootStore.householdStore.activeHousehold;
     if (!household) return;
 
@@ -55,7 +52,7 @@ export class MonthlyIncomeStore {
     }
 
     const alreadyExists = household.incomes.some(
-      (income) => income.memberId === memberId && income.month === month,
+      (income) => income.memberId === memberId && income.month === month
     );
 
     if (alreadyExists) {
