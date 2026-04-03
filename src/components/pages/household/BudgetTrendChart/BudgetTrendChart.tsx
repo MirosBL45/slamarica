@@ -1,8 +1,9 @@
 "use client";
+
 import { useState } from "react";
 import { useLocale } from "next-intl";
 
-import { Line } from "@ant-design/plots";
+import { DualAxes } from "@ant-design/plots";
 import { Card, Segmented } from "antd";
 import { observer } from "mobx-react-lite";
 
@@ -19,99 +20,157 @@ type ChartDataItem = {
   type: BudgetPoolType;
 };
 
+const COLORS: Record<BudgetPoolType, string> = {
+  [BudgetPoolType.PERSONAL]: "#3f5f5a",
+  [BudgetPoolType.BILLS]: "#6f8f8a",
+  [BudgetPoolType.TRAVEL]: "#c2a36b",
+  [BudgetPoolType.FOOD]: "#9bb5b0",
+  [BudgetPoolType.SAVINGS]: "#8c734b",
+  [BudgetPoolType.INVESTMENTS]: "#e6d6b3",
+};
+
 const BudgetTrendChart = observer(() => {
   const { monthlyIncomeStore, householdStore } = useStores();
   const locale = useLocale();
   const currency = householdStore.activeHousehold?.currency ?? MoneyCurrency.RSD;
-  const [range, setRange] = useState(6); // 3, 6, 12
+
+  const [range, setRange] = useState(3);
+
+  // 🔥 kontrola koje linije su vidljive
+  const [visibleTypes, setVisibleTypes] = useState<BudgetPoolType[]>(Object.values(BudgetPoolType));
 
   const months = monthlyIncomeStore.getLastMonths(range);
   const data: ChartDataItem[] = [];
 
-  const COLORS: Record<BudgetPoolType, string> = {
-    [BudgetPoolType.PERSONAL]: "#3f5f5a",
-    [BudgetPoolType.BILLS]: "#6f8f8a",
-    [BudgetPoolType.TRAVEL]: "#c2a36b",
-    [BudgetPoolType.FOOD]: "#9bb5b0",
-    [BudgetPoolType.SAVINGS]: "#8c734b",
-    [BudgetPoolType.INVESTMENTS]: "#e6d6b3",
-  };
-
   months.forEach((month: string) => {
     const totals = monthlyIncomeStore.getTotalsByMonth(month);
+
     Object.values(BudgetPoolType).forEach((type) => {
-      data.push({
-        month,
-        value: totals[type] || 0,
-        type,
-      });
+      if (visibleTypes.includes(type)) {
+        data.push({
+          month,
+          value: totals[type] || 0,
+          type,
+        });
+      }
     });
   });
 
+  // 🔥 total po mesecu (za tooltip)
+  const getTotalForMonth = (month: string) => {
+    const totals = monthlyIncomeStore.getTotalsByMonth(month);
+    return Object.values(BudgetPoolType).reduce((sum, type) => sum + (totals[type] || 0), 0);
+  };
+
   const config = {
-    data,
     xField: "month",
-    yField: "value",
-    seriesField: "type",
-    smooth: true,
-    color: (datum: ChartDataItem) => COLORS[datum.type],
-    lineStyle: ({ type }: { type: BudgetPoolType }) => ({
-      stroke: COLORS[type],
-      lineWidth: 2,
-    }),
-    point: ({ type }: { type: BudgetPoolType }) => ({
-      size: 4,
-      shape: "circle",
-      style: {
-        fill: COLORS[type],
-        stroke: COLORS[type],
-        lineWidth: 2,
-      },
-    }),
-    legend: false,
-    tooltip: {
-      shared: true,
-      showTitle: false,
-      formatter: (datum: ChartDataItem) => {
-        return {
-          name: getLabel(datum.type),
-          value: formatCurrency(datum.value, locale, currency),
-        };
-      },
-      domStyles: {
-        "g2-tooltip-list-item-value": {
-          color: "#000",
-          fontWeight: "500",
-        },
+
+    axis: {
+      y: {
+        labelFormatter: (v: number) => formatCurrency(v, locale, currency),
       },
     },
-    itemNameFormatter: (name: string) => getLabel(name as BudgetPoolType),
+
+    scale: {
+      color: {
+        range: Object.values(COLORS),
+      },
+    },
+
+    children: [
+      {
+        type: "area",
+        data,
+        yField: "value",
+        colorField: "type",
+        shapeField: "smooth",
+        style: {
+          fillOpacity: 0.15,
+        },
+        // axis: false, // 🔥 gasi dodatnu osu
+      },
+      {
+        type: "line",
+        data,
+        yField: "value",
+        colorField: "type",
+        shapeField: "smooth",
+        style: {
+          lineWidth: 2,
+        },
+        axis: false, // 🔥 gasi dodatnu osu
+      },
+      {
+        type: "point",
+        data,
+        yField: "value",
+        colorField: "type",
+        sizeField: 4,
+        shapeField: "point",
+        axis: false, // 🔥 gasi dodatnu osu
+        tooltip: false,
+      },
+    ],
+
+    tooltip: {
+      shared: true,
+      title: (datum: ChartDataItem) => {
+        const total = getTotalForMonth(datum.month);
+        return `${datum.month} — Ukupno: ${formatCurrency(total, locale, currency)}`;
+      },
+      items: (datum: ChartDataItem) => ({
+        name: getLabel(datum.type),
+        value: formatCurrency(datum.value, locale, currency),
+      }),
+    },
+
+    legend: false,
+  };
+
+  const toggleType = (type: BudgetPoolType) => {
+    setVisibleTypes((prev) =>
+      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
+    );
   };
 
   return (
-    <Card className={styles.card}>
-      <div className={styles.header}>
-        <h3>Pregled po kategorijama</h3>
-        <Segmented
-          options={[
-            { label: "3M", value: 3 },
-            { label: "6M", value: 6 },
-            { label: "12M", value: 12 },
-          ]}
-          value={range}
-          onChange={(val) => setRange(val as number)}
-        />
-      </div>
-      <Line {...config} className={styles.chart} />
-      <div className={styles.legend}>
-        {Object.values(BudgetPoolType).map((type) => (
-          <div key={type} className={styles.legendItem}>
-            <span className={styles.dot} style={{ background: COLORS[type] }} />
-            {getLabel(type)}
-          </div>
-        ))}
-      </div>
-    </Card>
+    <div className={styles.wrapper}>
+      <Card className={styles.card}>
+        <div className={styles.header}>
+          <h3>Pregled po kategorijama</h3>
+
+          <Segmented
+            options={[
+              { label: "3M", value: 3 },
+              { label: "6M", value: 6 },
+              { label: "12M", value: 12 },
+            ]}
+            value={range}
+            onChange={(val) => setRange(val as number)}
+          />
+        </div>
+
+        <DualAxes {...config} className={styles.chart} />
+
+        {/* 🔥 INTERAKTIVNA LEGENDA */}
+        <div className={styles.legend}>
+          {Object.values(BudgetPoolType).map((type) => {
+            const isActive = visibleTypes.includes(type);
+
+            return (
+              <div
+                key={type}
+                className={`${styles.legendItem} ${!isActive ? styles.inactive : ""}`}
+                onClick={() => toggleType(type)}
+              >
+                <span className={styles.dot} style={{ background: COLORS[type] }} />
+                {getLabel(type)}
+              </div>
+            );
+          })}
+        </div>
+      </Card>
+    </div>
   );
 });
 
