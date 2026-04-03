@@ -60,7 +60,8 @@
     "savings": "Ahorros",
     "unknown": "Desconocido",
     "empty": "No hay datos",
-    "investments": "Inversiones"
+    "investments": "Inversiones",
+    "title": "Vista mensual de ingresos y distribución"
   },
   "totals": {
     "personal": "Personal",

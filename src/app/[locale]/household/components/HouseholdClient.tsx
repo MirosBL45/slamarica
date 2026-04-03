@@ -5,12 +5,13 @@ import { useEffect, useState } from "react";
 // import { BaseHasPermission } from "@/components/BaseHasPermission";
 import dayjs from "dayjs";
 
-import AddIncomeForm from "@/components/AddIncomeForm";
+// import AddIncomeForm from "@/components/AddIncomeForm";
 import BudgetSettings from "@/components/BudgetSettings";
-import MonthlyIncomeList from "@/components/MonthlyIncomeList";
+// import MonthlyIncomeList from "@/components/MonthlyIncomeList";
 import MonthlyTotals from "@/components/MonthlyTotals";
 // import MonthSelector from "@/components/MonthSelector";
 import AddIncomeCard from "@/components/pages/household/AddIncomeCard/AddIncomeCard";
+import IncomeList from "@/components/pages/household/IncomeList/IncomeList";
 import PercentagePreview from "@/components/pages/household/PercentagePreview/PercentagePreview";
 import { useStores } from "@/stores/StoreContext";
 
@@ -43,8 +44,9 @@ export default function HouseholdClient() {
       <BudgetSettings month={month} />
       {/* </BaseHasPermission> */}
       {/* <MonthSelector value={month} onChange={setMonth} /> */}
-      <AddIncomeForm month={month} />
-      <MonthlyIncomeList month={month} />
+      {/* <AddIncomeForm month={month} /> */}
+      {/* <MonthlyIncomeList month={month} /> */}
+      <IncomeList month={month} />
       <MonthlyTotals month={month} />
     </>
   );
