@@ -6,6 +6,8 @@ import AddMemberForm from "@/components/AddMemberForm";
 import CurrencySettings from "@/components/CurrencySettings";
 import MemberList from "@/components/MemberList";
 
+import SettingsClient from "./components/SettingsClient";
+
 const supportedLocales = ["sr", "en", "es", "de"] as const;
 
 type Locale = (typeof supportedLocales)[number];
@@ -66,6 +68,7 @@ export default async function HouseholdSettings({
   return (
     <div style={{ padding: "1rem" }}>
       <h1>{t("title")}</h1>
+      <SettingsClient />
       <CurrencySettings />
       <AddMemberForm />
       <MemberList />

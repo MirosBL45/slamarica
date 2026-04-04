@@ -1,0 +1,85 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.card {
+  margin-top: 16px;
+  border-radius: 16px;
+  background: $color-surface;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+
+  width: 100%;
+  max-width: 500px;
+}
+
+.header {
+  margin-bottom: 16px;
+
+  h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: $color-text-main;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rowTop {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: $color-text-main;
+}
+
+.percent {
+  font-weight: 500;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.slider {
+  flex: 1;
+}
+
+.input {
+  width: 70px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.total {
+  font-weight: 600;
+  color: $color-text-main;
+}
+
+.error {
+  color: #d9534f;
+}
+
+.locked {
+  margin-top: 12px;
+  color: #b94a48;
+  font-size: 13px;
+}
