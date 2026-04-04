@@ -1,0 +1,38 @@
+.card {
+  margin-top: 16px;
+  max-width: 420px;
+  width: 100%;
+
+  border-radius: 16px;
+  background: $color-surface;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 14px;
+  color: $color-text-main;
+
+  padding: 10px 12px;
+  border-radius: 10px;
+
+  background: $color-bg;
+
+  &:hover {
+    background: $color-accent-soft;
+  }
+}
+
+.value {
+  font-weight: 600;
+  color: $color-primary;
+}

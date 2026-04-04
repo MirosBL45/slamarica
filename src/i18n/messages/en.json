@@ -60,7 +60,8 @@
     "savings": "Savings",
     "unknown": "Unknown",
     "empty": "No data",
-    "investments": "Investments"
+    "investments": "Investments",
+    "title": "Monthly income and distribution preview"
   },
   "totals": {
     "personal": "Personal",
