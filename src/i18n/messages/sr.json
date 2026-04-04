@@ -60,7 +60,8 @@
     "savings": "Štednja",
     "unknown": "Nepoznat",
     "empty": "Nema podataka",
-    "investments": "Investicije"
+    "investments": "Investicije",
+    "title": "Mesečni prikaz prihoda i raspodele"
   },
   "totals": {
     "personal": "Lični",

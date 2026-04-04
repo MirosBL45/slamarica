@@ -38,6 +38,20 @@ export class MonthlyIncomeStore {
     return totals;
   }
 
+  getLastMonths(count: number): string[] {
+    // uzmi sve mesece iz income-a
+    const months = this.incomes.map((i) => i.month);
+
+    // ukloni duplikate
+    const uniqueMonths = Array.from(new Set(months));
+
+    // sortiraj (pretpostavka: format "YYYY-MM")
+    uniqueMonths.sort((a, b) => a.localeCompare(b));
+
+    // uzmi poslednjih N
+    return uniqueMonths.slice(-count);
+  }
+
   hasIncomeForMember(memberId: string) {
     return this.incomes.some((income) => income.memberId === memberId);
   }

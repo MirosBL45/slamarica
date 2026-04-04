@@ -60,7 +60,8 @@
     "savings": "Ersparnisse",
     "unknown": "Unbekannt",
     "empty": "Keine Daten",
-    "investments": "Investitionen"
+    "investments": "Investitionen",
+    "title": "Monatliche Darstellung von Einnahmen und Ausgaben"
   },
   "totals": {
     "personal": "Persönlich",
