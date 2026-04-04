@@ -56,6 +56,24 @@
 
 .slider {
   flex: 1;
+
+  :global(.ant-slider-track) {
+    transition: all 0.25s ease;
+  }
+
+  :global(.ant-slider-handle) {
+    transition: all 0.2s ease;
+    background-color: currentColor;
+
+    &:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+    }
+
+    &:active {
+      transform: scale(1.3);
+    }
+  }
 }
 
 .input {
@@ -82,4 +100,72 @@
   margin-top: 12px;
   color: #b94a48;
   font-size: 13px;
+}
+
+//
+// 🎨 BOJE (SAMO GLOBAL VARIJANTA — jedna istina)
+//
+
+.personal {
+  :global(.ant-slider-track) {
+    background-color: #3f5f5a !important;
+  }
+
+  :global(.ant-slider-handle) {
+    border-color: #3f5f5a !important;
+  }
+}
+
+.bills {
+  :global(.ant-slider-track) {
+    background-color: #6f8f8a !important;
+  }
+
+  :global(.ant-slider-handle) {
+    border-color: #6f8f8a !important;
+  }
+}
+
+.travel {
+  :global(.ant-slider-track) {
+    background-color: #c2a36b !important;
+  }
+
+  :global(.ant-slider-handle) {
+    border-color: #c2a36b !important;
+  }
+}
+
+.food {
+  :global(.ant-slider-track) {
+    background-color: #9bb5b0 !important;
+  }
+
+  :global(.ant-slider-handle) {
+    border-color: #9bb5b0 !important;
+  }
+}
+
+.savings {
+  :global(.ant-slider-track) {
+    background-color: #8c734b !important;
+  }
+
+  :global(.ant-slider-handle) {
+    border-color: #8c734b !important;
+  }
+}
+
+.investments {
+  :global(.ant-slider-track) {
+    background-color: #e6d6b3 !important;
+  }
+
+  :global(.ant-slider-handle) {
+    border-color: #e6d6b3 !important;
+  }
+}
+
+:global(.ant-slider-rail) {
+  background-color: #f0f0f0;
 }
