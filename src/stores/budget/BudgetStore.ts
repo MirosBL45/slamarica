@@ -26,7 +26,7 @@ export class BudgetStore {
     return DEFAULT_POOLS.map((p) => ({ ...p }));
   }
 
-  // ✅ OVO sme da upisuje (poziva se iz useEffect / akcije)
+  // ✅ INIT
   initMonth(month: string) {
     const household = this.household;
     if (!household) return;
@@ -53,7 +53,7 @@ export class BudgetStore {
     this.rootStore.householdStore.persist();
   }
 
-  // ✅ OVO NIKAD ne upisuje (sigurno za render)
+  // ✅ READ
   getPools(month: string): IBudgetPool[] {
     const household = this.household;
     if (!household) return this.cloneDefault();
@@ -62,6 +62,7 @@ export class BudgetStore {
     return existing ? existing.pools : this.cloneDefault();
   }
 
+  // ❗ OSTAVI (ali više ga NE koristiš za Save)
   async setPercentage(month: string, type: BudgetPoolType, value: number) {
     this.initMonth(month);
 
@@ -87,6 +88,38 @@ export class BudgetStore {
     this.rootStore.householdStore.persist();
   }
 
+  // ✅ 🔥 NOVA FUNKCIJA (GLAVNA)
+  async setAllPercentages(
+    month: string,
+    newPools: Record<BudgetPoolType, number>
+  ) {
+    this.initMonth(month);
+
+    const household = this.household;
+    if (!household) return;
+
+    const budget = household.monthlyBudgets.find((b) => b.month === month);
+    if (!budget) return;
+
+    // 🔥 update svih odjednom
+    budget.pools.forEach((pool) => {
+      pool.percentage = newPools[pool.type] ?? 0;
+    });
+
+    // 🔥 JEDAN request
+    await fetch("/api/monthlyBudgets", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        month,
+        pools: budget.pools,
+      }),
+    });
+
+    this.rootStore.householdStore.persist();
+  }
+
+  // ✅ UTILS
   getTotalPercentage(month: string) {
     return this.getPools(month).reduce((sum, p) => sum + p.percentage, 0);
   }

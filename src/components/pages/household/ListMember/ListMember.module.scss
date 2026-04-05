@@ -1,0 +1,95 @@
+.card {
+  margin-top: 16px;
+}
+
+/* TITLE */
+.title {
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: $color-text-main;
+}
+
+/* HEADER */
+.headerRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  font-size: 13px;
+  color: $color-text-muted;
+  padding-bottom: 8px;
+  border-bottom: 1px solid $color-border;
+}
+
+/* LIST */
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ROW */
+.row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid $color-border;
+  transition: all 0.2s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+/* INACTIVE ROW */
+.inactive {
+  opacity: 0.6;
+}
+
+/* NAME */
+.name {
+  font-weight: 500;
+  color: $color-text-main;
+}
+
+/* ROLE */
+.role {
+  font-size: 13px;
+  color: $color-text-muted;
+}
+
+/* STATUS */
+.status {
+  display: flex;
+  align-items: center;
+}
+
+/* BADGE */
+.badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.activeBadge {
+  background: rgba(79, 138, 111, 0.1);
+  color: $color-success;
+}
+
+.inactiveBadge {
+  background: rgba(180, 74, 72, 0.1);
+  color: #b94a48;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* EMPTY */
+.empty {
+  padding: 20px 0;
+  text-align: center;
+  color: $color-text-muted;
+}
