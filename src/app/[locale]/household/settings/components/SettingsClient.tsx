@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 
 import AddMemberCard from "@/components/pages/household/AddMemberCard/AddMemberCard";
 import BudgetDonutChart from "@/components/pages/household/BudgetDonutChart/BudgetDonutChart";
+import ListMember from "@/components/pages/household/ListMember/ListMember";
 import SettingsBudget from "@/components/pages/household/SettingsBudget/SettingsBudget";
 import { useStores } from "@/stores/StoreContext";
 import { BudgetPoolType } from "@/types/budget.types";
@@ -94,6 +95,7 @@ const SettingsClient = () => {
         />
       </div>
       <AddMemberCard />
+      <ListMember />
     </>
   );
 };

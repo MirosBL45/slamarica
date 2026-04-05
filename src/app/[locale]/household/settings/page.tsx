@@ -2,10 +2,9 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
-import AddMemberForm from "@/components/AddMemberForm";
-import CurrencySettings from "@/components/CurrencySettings";
-import MemberList from "@/components/MemberList";
-
+// import AddMemberForm from "@/components/AddMemberForm";
+// import CurrencySettings from "@/components/CurrencySettings";
+// import MemberList from "@/components/MemberList";
 import SettingsClient from "./components/SettingsClient";
 
 const supportedLocales = ["sr", "en", "es", "de"] as const;
@@ -69,9 +68,9 @@ export default async function HouseholdSettings({
     <div style={{ padding: "1rem" }}>
       <h1>{t("title")}</h1>
       <SettingsClient />
-      <CurrencySettings />
+      {/* <CurrencySettings /> */}
       {/* <AddMemberForm /> */}
-      <MemberList />
+      {/* <MemberList /> */}
     </div>
   );
 }
