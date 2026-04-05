@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import dayjs from "dayjs";
 
+import AddMemberCard from "@/components/pages/household/AddMemberCard/AddMemberCard";
 import BudgetDonutChart from "@/components/pages/household/BudgetDonutChart/BudgetDonutChart";
 import SettingsBudget from "@/components/pages/household/SettingsBudget/SettingsBudget";
 import { useStores } from "@/stores/StoreContext";
@@ -77,20 +78,23 @@ const SettingsClient = () => {
   }, [budgetStore, householdStore, monthlyIncomeStore, month]);
 
   return (
-    <div className={styles.main}>
-      <SettingsBudget
-        month={month}
-        activeType={activeType}
-        localPools={localPools}
-        setLocalPools={setLocalPools}
-      />
+    <>
+      <div className={styles.main}>
+        <SettingsBudget
+          month={month}
+          activeType={activeType}
+          localPools={localPools}
+          setLocalPools={setLocalPools}
+        />
 
-      <BudgetDonutChart
-        localPools={localPools}
-        activeType={activeType}
-        setActiveType={setActiveType}
-      />
-    </div>
+        <BudgetDonutChart
+          localPools={localPools}
+          activeType={activeType}
+          setActiveType={setActiveType}
+        />
+      </div>
+      <AddMemberCard />
+    </>
   );
 };
 

@@ -70,7 +70,7 @@ export default async function HouseholdSettings({
       <h1>{t("title")}</h1>
       <SettingsClient />
       <CurrencySettings />
-      <AddMemberForm />
+      {/* <AddMemberForm /> */}
       <MemberList />
     </div>
   );
