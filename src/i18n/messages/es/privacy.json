@@ -1,0 +1,106 @@
+{
+  "title": "Política de privacidad",
+  "lastUpdated": "Última actualización: March 23, 2026",
+  "intro": "Bienvenido a la aplicación Slamarica.",
+  "description": "Tu privacidad es importante para nosotros. Esta Política de privacidad explica qué datos recopilamos, cómo los utilizamos y cuáles son tus derechos.",
+  "sections": [
+    {
+      "title": "Qué datos recopilamos",
+      "content": [
+        "Podemos recopilar la siguiente información:"
+      ],
+      "lists": [
+        {
+          "title": "Datos que proporcionas",
+          "items": [
+            "Nombre del hogar",
+            "Datos financieros (ingresos, gastos, categorías)",
+            "Moneda",
+            "Datos que introduces manualmente en la aplicación"
+          ]
+        },
+        {
+          "title": "Datos de la cuenta",
+          "items": [
+            "Dirección de correo electrónico",
+            "Datos del proveedor de autenticación (por ejemplo, Google)"
+          ]
+        },
+        {
+          "title": "Datos técnicos",
+          "items": [
+            "Dirección IP",
+            "Tipo de dispositivo y navegador",
+            "Registros básicos de la aplicación"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cómo utilizamos tus datos",
+      "content": [
+        "Utilizamos tus datos exclusivamente para:"
+      ],
+      "lists": [
+        {
+          "items": [
+            "El funcionamiento de la aplicación",
+            "El almacenamiento y la visualización de tus datos",
+            "La mejora de la experiencia de usuario",
+            "La seguridad y la prevención del uso indebido"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Almacenamiento de datos",
+      "content": [
+        "Tus datos se almacenan en bases de datos seguras mientras utilices la aplicación.",
+        "Puedes solicitar la eliminación de tus datos en cualquier momento."
+      ]
+    },
+    {
+      "title": "Compartición de datos",
+      "content": [
+        "No compartimos tus datos personales, excepto cuando la ley lo exija o cuando utilicemos servicios de confianza (por ejemplo, alojamiento o autenticación)."
+      ]
+    },
+    {
+      "title": "Cookies",
+      "content": [
+        "Utilizamos cookies para el funcionamiento básico de la aplicación y para mantener la sesión activa."
+      ]
+    },
+    {
+      "title": "Seguridad",
+      "content": [
+        "Tomamos medidas razonables para proteger tus datos, pero ningún sistema es completamente seguro."
+      ]
+    },
+    {
+      "title": "Tus derechos",
+      "lists": [
+        {
+          "items": [
+            "Acceder a tus datos",
+            "Corregir tus datos",
+            "Solicitar la eliminación de tus datos",
+            "Dejar de utilizar la aplicación"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cambios en esta política",
+      "content": [
+        "Nos reservamos el derecho de modificar esta política. Todos los cambios se publicarán en esta página."
+      ]
+    },
+    {
+      "title": "Contacto",
+      "content": [
+        "Puedes enviar todas tus preguntas a través del formulario de contacto en la página de contacto."
+      ]
+    }
+  ]
+}

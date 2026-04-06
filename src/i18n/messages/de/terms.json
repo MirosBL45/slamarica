@@ -1,0 +1,92 @@
+{
+  "title": "Nutzungsbedingungen",
+  "lastUpdated": "Letzte Aktualisierung: March 23, 2026",
+  "intro": "Willkommen bei der Slamarica-App.",
+  "description": "Durch die Nutzung dieser Anwendung stimmen Sie den folgenden Bedingungen zu.",
+  "sections": [
+    {
+      "title": "Nutzung der Anwendung",
+      "content": [
+        "Slamarica dient der persönlichen Finanzverwaltung.",
+        "Die Nutzung ist nur zu rechtmäßigen Zwecken erlaubt."
+      ],
+      "lists": [
+        {
+          "items": [
+            "Eingabe und Verwaltung finanzieller Daten",
+            "Organisation von Einnahmen und Ausgaben",
+            "Nutzung aller verfügbaren Funktionen"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Verbotene Aktivitäten",
+      "content": [
+        "Benutzer dürfen nicht:"
+      ],
+      "lists": [
+        {
+          "items": [
+            "Die Anwendung für illegale Zwecke nutzen",
+            "Unbefugten Zugriff versuchen",
+            "Den Betrieb der Anwendung stören",
+            "Daten oder Funktionen missbrauchen"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Benutzerkonten",
+      "content": [
+        "Sie sind für die Sicherheit Ihres Kontos verantwortlich.",
+        "Alle Aktivitäten über Ihr Konto liegen in Ihrer Verantwortung."
+      ]
+    },
+    {
+      "title": "Daten und Verantwortung",
+      "content": [
+        "Slamarica übernimmt keine Gewähr für die Richtigkeit der Finanzberichte.",
+        "Sie sind für die eingegebenen Daten verantwortlich."
+      ]
+    },
+    {
+      "title": "Verfügbarkeit",
+      "content": [
+        "Wir garantieren keine unterbrechungsfreie oder fehlerfreie Verfügbarkeit."
+      ]
+    },
+    {
+      "title": "Änderungen an der Anwendung",
+      "content": [
+        "Wir können Funktionen jederzeit ändern oder einstellen."
+      ]
+    },
+    {
+      "title": "Haftungsbeschränkung",
+      "content": [
+        "Slamarica haftet nicht für finanzielle oder andere Schäden."
+      ]
+    },
+    {
+      "title": "Beendigung",
+      "content": [
+        "Sie können die Nutzung jederzeit beenden.",
+        "Wir können den Zugang bei Verstößen sperren."
+      ]
+    },
+    {
+      "title": "Änderungen der Bedingungen",
+      "content": [
+        "Diese Bedingungen können jederzeit geändert werden.",
+        "Die weitere Nutzung gilt als Zustimmung."
+      ]
+    },
+    {
+      "title": "Kontakt",
+      "content": [
+        "Alle Fragen können Sie über das Kontaktformular auf der Kontaktseite senden."
+      ]
+    }
+  ]
+}

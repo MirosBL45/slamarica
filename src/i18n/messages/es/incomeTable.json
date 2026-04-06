@@ -1,0 +1,13 @@
+{
+  "member": "Miembro",
+  "salary": "Salario",
+  "personal": "Personal",
+  "bills": "Facturas",
+  "travel": "Viajes",
+  "food": "Comida",
+  "savings": "Ahorros",
+  "unknown": "Desconocido",
+  "empty": "No hay datos",
+  "investments": "Inversiones",
+  "title": "Vista mensual de ingresos y distribución"
+}

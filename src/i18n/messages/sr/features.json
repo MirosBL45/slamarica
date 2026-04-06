@@ -1,0 +1,18 @@
+{
+  "title": "Ključne funkcije",
+  "description": "Naša aplikacija je dizajnirana da vam pomogne da lako upravljate porodičnim finansijama i ostvarite svoje ciljeve štednje",
+  "items": {
+    "distribution": {
+      "title": "Pametna raspodela",
+      "desc": "Automatski podelite prihode kroz prilagodljive kategorije"
+    },
+    "growth": {
+      "title": "Pratite napredak",
+      "desc": "Gledajte kako vaša štednja raste uz moćne uvide u troškove"
+    },
+    "secure": {
+      "title": "Sigurno i privatno",
+      "desc": "Vaši finansijski podaci su zaštićeni i šifrovani"
+    }
+  }
+}

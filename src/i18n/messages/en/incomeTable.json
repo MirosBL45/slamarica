@@ -1,0 +1,13 @@
+{
+  "member": "Member",
+  "salary": "Salary",
+  "personal": "Personal",
+  "bills": "Bills",
+  "travel": "Travel",
+  "food": "Food",
+  "savings": "Savings",
+  "unknown": "Unknown",
+  "empty": "No data",
+  "investments": "Investments",
+  "title": "Monthly income and distribution preview"
+}

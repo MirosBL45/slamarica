@@ -1,0 +1,106 @@
+{
+  "title": "Privacy Policy",
+  "lastUpdated": "Last updated: March 23, 2026",
+  "intro": "Welcome to the Slamarica application.",
+  "description": "Your privacy is important to us. This Privacy Policy explains what data we collect, how we use it, and your rights.",
+  "sections": [
+    {
+      "title": "What data we collect",
+      "content": [
+        "We may collect the following information:"
+      ],
+      "lists": [
+        {
+          "title": "Data you provide",
+          "items": [
+            "Household name",
+            "Financial data (income, expenses, categories)",
+            "Currency",
+            "Data you manually enter into the application"
+          ]
+        },
+        {
+          "title": "Account data",
+          "items": [
+            "Email address",
+            "Authentication provider data (e.g. Google)"
+          ]
+        },
+        {
+          "title": "Technical data",
+          "items": [
+            "IP address",
+            "Device and browser type",
+            "Basic application logs"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "How we use your data",
+      "content": [
+        "We use your data exclusively for:"
+      ],
+      "lists": [
+        {
+          "items": [
+            "Operating the application",
+            "Storing and displaying your data",
+            "Improving the user experience",
+            "Security and prevention of misuse"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Data retention",
+      "content": [
+        "Your data is stored in secure databases while you use the application.",
+        "You may request deletion of your data at any time."
+      ]
+    },
+    {
+      "title": "Data sharing",
+      "content": [
+        "We do not share your personal data except when required by law or when we use trusted services (e.g. hosting, authentication)."
+      ]
+    },
+    {
+      "title": "Cookies",
+      "content": [
+        "We use cookies for the basic functionality of the application and to maintain your session."
+      ]
+    },
+    {
+      "title": "Security",
+      "content": [
+        "We take reasonable measures to protect your data, but no system is 100% secure."
+      ]
+    },
+    {
+      "title": "Your rights",
+      "lists": [
+        {
+          "items": [
+            "Access your data",
+            "Correct your data",
+            "Request deletion of your data",
+            "Stop using the application"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Changes to this policy",
+      "content": [
+        "We reserve the right to update this policy. Any changes will be published on this page."
+      ]
+    },
+    {
+      "title": "Contact",
+      "content": [
+        "You can send all your questions via the contact form on the contact page."
+      ]
+    }
+  ]
+}

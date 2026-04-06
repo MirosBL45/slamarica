@@ -1,0 +1,14 @@
+{
+  "member": "Miembro",
+  "selectMember": "Selecciona un miembro",
+  "salary": "Salario",
+  "enterAmount": "Introduce el importe",
+  "greaterThanZero": "Debe ser mayor que 0",
+  "addIncome": "Agregar salario",
+  "duplicate": "Ya existe un registro para este miembro en este mes",
+  "percentageError": "Los porcentajes deben sumar 100%",
+  "noMembers": "No hay miembros",
+  "salaryRequired": "Introduce el importe",
+  "salaryMustBeNumber": "Introduce solo un número",
+  "salaryMustBePositive": "El importe debe ser mayor que 0"
+}

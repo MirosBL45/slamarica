@@ -1,0 +1,13 @@
+{
+  "member": "Mitglied",
+  "salary": "Gehalt",
+  "personal": "Persönlich",
+  "bills": "Rechnungen",
+  "travel": "Reisen",
+  "food": "Lebensmittel",
+  "savings": "Ersparnisse",
+  "unknown": "Unbekannt",
+  "empty": "Keine Daten",
+  "investments": "Investitionen",
+  "title": "Monatliche Darstellung von Einnahmen und Ausgaben"
+}
