@@ -48,7 +48,11 @@
     "confirmRestoreTitle": "Restore member",
     "confirmRestoreText": "Do you want to reactivate this member?",
     "restore": "Restore member",
-    "duplicate": "Member with this name already exists"
+    "duplicate": "Member with this name already exists",
+    "role": "Role",
+    "householdMembers": "Household Members",
+    "admin": "Admin",
+    "member": "Member"
   },
   "incomeTable": {
     "member": "Member",
