@@ -48,7 +48,11 @@
     "confirmRestoreTitle": "Restaurar miembro",
     "confirmRestoreText": "¿Deseas reactivar a este miembro?",
     "restore": "Restaurar miembro",
-    "duplicate": "Ya existe un miembro con ese nombre"
+    "duplicate": "Ya existe un miembro con ese nombre",
+    "role": "Rol",
+    "householdMembers": "Miembros del hogar",
+    "admin": "Admin",
+    "member": "Miembro"
   },
   "incomeTable": {
     "member": "Miembro",

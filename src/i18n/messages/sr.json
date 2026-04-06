@@ -48,7 +48,11 @@
     "confirmRestoreTitle": "Vraćanje člana",
     "confirmRestoreText": "Da li želite ponovo da aktivirate ovog člana?",
     "restore": "Vrati člana",
-    "duplicate": "Član sa tim imenom već postoji"
+    "duplicate": "Član sa tim imenom već postoji",
+    "role": "Uloga",
+    "householdMembers": "Članovi domaćinstva",
+    "admin": "Admin",
+    "member": "Član"
   },
   "incomeTable": {
     "member": "Član",
