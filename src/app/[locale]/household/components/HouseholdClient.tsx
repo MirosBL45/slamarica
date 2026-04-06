@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 
 // import AddIncomeForm from "@/components/AddIncomeForm";
-import BudgetSettings from "@/components/BudgetSettings";
+// import BudgetSettings from "@/components/BudgetSettings";
 // import MonthlyIncomeList from "@/components/MonthlyIncomeList";
 // import MonthlyTotals from "@/components/MonthlyTotals";
 // import MonthSelector from "@/components/MonthSelector";
@@ -14,6 +14,7 @@ import AddIncomeCard from "@/components/pages/household/AddIncomeCard/AddIncomeC
 import BudgetTrendChart from "@/components/pages/household/BudgetTrendChart/BudgetTrendChart";
 import IncomeList from "@/components/pages/household/IncomeList/IncomeList";
 import PercentagePreview from "@/components/pages/household/PercentagePreview/PercentagePreview";
+// import SettingsBudget from "@/components/pages/household/SettingsBudget/SettingsBudget";
 import TotalsMonthly from "@/components/pages/household/TotalsMonthly/TotalsMonthly";
 import { useStores } from "@/stores/StoreContext";
 
@@ -35,9 +36,6 @@ export default function HouseholdClient() {
 
     load();
   }, [householdStore, monthlyIncomeStore, membersStore]);
-  console.log("ispod je mesec");
-  console.log(month);
-  console.log("iznad je mesec");
 
   // const activeUserId = membersStore.members[0]?.id;
 
@@ -46,7 +44,7 @@ export default function HouseholdClient() {
       <PercentagePreview month={month} />
       <AddIncomeCard month={month} onMonthChange={setMonth} />
       {/* <BaseHasPermission permission={membersStore.isAdmin(activeUserId)}> */}
-      <BudgetSettings month={month} />
+      {/* <BudgetSettings month={month} /> */}
       {/* </BaseHasPermission> */}
       {/* <MonthSelector value={month} onChange={setMonth} /> */}
       {/* <AddIncomeForm month={month} /> */}
@@ -55,6 +53,7 @@ export default function HouseholdClient() {
       {/* <MonthlyTotals month={month} /> */}
       <TotalsMonthly month={month} />
       <BudgetTrendChart />
+      {/* <SettingsBudget month={month} /> */}
     </>
   );
 }

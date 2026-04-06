@@ -35,7 +35,9 @@ export class MembersStore {
       (m) => m.name.toLowerCase() === name.trim().toLowerCase()
     );
     if (exists) {
-      throw new Error("Member already exists");
+      // throw new Error("Member already exists");
+      alert("Član sa tim imenom već postoji");
+      return;
     }
 
     const res = await fetch("/api/members", {

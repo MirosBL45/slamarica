@@ -1,0 +1,56 @@
+@use "@/styles/variables" as v;
+
+.card {
+  max-width: 500px;
+  margin: 16px auto 0;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+
+  h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: $color-text-main;
+  }
+}
+
+/* CURRENCY SELECT */
+.currency {
+  width: 90px;
+
+  :global(.ant-select-selector) {
+    border-radius: 8px !important;
+    height: 32px !important;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* INPUT */
+.input {
+  height: 40px;
+  border-radius: 10px;
+
+  &:hover,
+  &:focus {
+    border-color: $color-primary;
+  }
+}
+
+/* BUTTON */
+.button {
+  height: 40px;
+  border-radius: 10px;
+  font-weight: 500;
+  background: v.$color-primary;
+
+  &:hover {
+    background: v.$color-accent-dark;
+  }
+}
