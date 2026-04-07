@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 
@@ -124,7 +125,7 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  const messages = (await import(`@/i18n/messages/${locale}.json`)).default;
+  const messages = await getMessages({ locale });
 
   return (
     <html lang={locale} data-scroll-behavior="smooth">

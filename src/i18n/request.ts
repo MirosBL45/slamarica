@@ -14,7 +14,6 @@ import household from "./messages/sr/household.json";
 import householdLayout from "./messages/sr/householdLayout.json";
 import income from "./messages/sr/income.json";
 import incomeTable from "./messages/sr/incomeTable.json";
-import ispod from "./messages/sr/ispod_ide_text_koji_se_stavlja_u_UI.json";
 import login from "./messages/sr/login.json";
 import members from "./messages/sr/members.json";
 import month from "./messages/sr/month.json";
@@ -39,7 +38,6 @@ export type Messages = {
   settings: typeof settings;
   householdLayout: typeof householdLayout;
   articlesLayout: typeof articlesLayout;
-  ispod_ide_text_koji_se_stavlja_u_UI: typeof ispod;
   hero: typeof hero;
   financialOverview: typeof financialOverview;
   features: typeof features;
@@ -70,9 +68,6 @@ export default getRequestConfig(async ({ locale }) => {
       settings: (await import(`./messages/${resolvedLocale}/settings.json`)).default,
       householdLayout: (await import(`./messages/${resolvedLocale}/householdLayout.json`)).default,
       articlesLayout: (await import(`./messages/${resolvedLocale}/articlesLayout.json`)).default,
-      ispod_ide_text_koji_se_stavlja_u_UI: (
-        await import(`./messages/${resolvedLocale}/ispod_ide_text_koji_se_stavlja_u_UI.json`)
-      ).default,
       hero: (await import(`./messages/${resolvedLocale}/hero.json`)).default,
       financialOverview: (await import(`./messages/${resolvedLocale}/financialOverview.json`))
         .default,

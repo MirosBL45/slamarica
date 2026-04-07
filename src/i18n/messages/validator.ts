@@ -5,7 +5,6 @@ import es from "./es";
 import sr from "./sr";
 
 // Ova promenljiva osigurava da svi jezici prate strukturu sr.json
-
 const check: Record<string, Messages> = {
   sr,
   en,
