@@ -1,0 +1,11 @@
+{
+  "title": "Distribución del presupuesto mensual",
+  "personal": "Personal",
+  "bills": "Facturas",
+  "travel": "Viajes",
+  "food": "Comida",
+  "savings": "Ahorros",
+  "total": "Total",
+  "locked": "El presupuesto está bloqueado porque ya existe un registro para este mes.",
+  "investments": "Inversiones"
+}

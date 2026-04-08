@@ -1,0 +1,13 @@
+{
+  "member": "Član",
+  "salary": "Plata",
+  "personal": "Lični",
+  "bills": "Računi",
+  "travel": "Putovanja",
+  "food": "Hrana",
+  "savings": "Štednja",
+  "unknown": "Nepoznat",
+  "empty": "Nema podataka",
+  "investments": "Investicije",
+  "title": "Mesečni prikaz prihoda i raspodele"
+}

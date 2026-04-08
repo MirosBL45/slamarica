@@ -1,0 +1,18 @@
+{
+  "title": "Finansijski pregled",
+  "monthly": "Mesečni prihod",
+  "calculator": "Isprobaj kalkulator",
+  "income": "Pogledajte kako se vaš prihod može raspodeliti po pametnim kategorijama budžeta",
+  "placeholder": "Unesite iznos",
+  "total": "Ukupno",
+  "normalize": "Poravnaj na 100%",
+  "percentages": "Procenti moraju biti 100%",
+  "categories": {
+    "personal": "Lični novac",
+    "bills": "Računi",
+    "travel": "Putovanja",
+    "food": "Hrana",
+    "savings": "Kućna štednja",
+    "investments": "Investicije"
+  }
+}

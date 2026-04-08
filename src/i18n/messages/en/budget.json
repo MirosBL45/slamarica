@@ -1,0 +1,11 @@
+{
+  "title": "Monthly budget distribution",
+  "personal": "Personal",
+  "bills": "Bills",
+  "travel": "Travel",
+  "food": "Food",
+  "savings": "Savings",
+  "total": "Total",
+  "locked": "Budget is locked because income already exists for this month.",
+  "investments": "Investments"
+}

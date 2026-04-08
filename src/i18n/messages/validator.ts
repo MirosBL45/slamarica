@@ -1,8 +1,8 @@
 import { Messages } from "../request";
-import de from "./de.json";
-import en from "./en.json";
-import es from "./es.json";
-import sr from "./sr.json";
+import de from "./de";
+import en from "./en";
+import es from "./es";
+import sr from "./sr";
 
 // Ova promenljiva osigurava da svi jezici prate strukturu sr.json
 const check: Record<string, Messages> = {

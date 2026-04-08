@@ -1,0 +1,18 @@
+{
+  "title": "Built for modern families",
+  "description": "Our app is designed to help you easily manage family finances and achieve your savings goals",
+  "items": {
+    "distribution": {
+      "title": "Smart Distribution",
+      "desc": "Automatically split income across customizable categories"
+    },
+    "growth": {
+      "title": "Track Growth",
+      "desc": "Watch your savings grow with powerful insights"
+    },
+    "secure": {
+      "title": "Secure & Private",
+      "desc": "Your financial data stays protected and encrypted"
+    }
+  }
+}
