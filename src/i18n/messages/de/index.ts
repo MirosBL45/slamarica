@@ -11,7 +11,6 @@ import household from "./household.json";
 import householdLayout from "./householdLayout.json";
 import income from "./income.json";
 import incomeTable from "./incomeTable.json";
-import ispod from "./ispod_ide_text_koji_se_stavlja_u_UI.json";
 import login from "./login.json";
 import members from "./members.json";
 import month from "./month.json";
@@ -35,7 +34,6 @@ const de = {
   settings,
   householdLayout,
   articlesLayout,
-  ispod_ide_text_koji_se_stavlja_u_UI: ispod,
   hero,
   financialOverview,
   features,
