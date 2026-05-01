@@ -1,0 +1,106 @@
+{
+  "title": "Politika privatnosti",
+  "lastUpdated": "Poslednje ažuriranje: March 23, 2026",
+  "intro": "Dobrodošli u Slamarica aplikaciju.",
+  "description": "Vaša privatnost nam je važna. Ova Politika privatnosti objašnjava koje podatke prikupljamo, kako ih koristimo i koja su vaša prava.",
+  "sections": [
+    {
+      "title": "Koje podatke prikupljamo",
+      "content": [
+        "Možemo prikupljati sledeće informacije:"
+      ],
+      "lists": [
+        {
+          "title": "Podaci koje vi unosite",
+          "items": [
+            "Ime domaćinstva",
+            "Finansijski podaci (prihodi, troškovi, kategorije)",
+            "Valuta",
+            "Podaci koje ručno unesete u aplikaciju"
+          ]
+        },
+        {
+          "title": "Podaci o nalogu",
+          "items": [
+            "Email adresa",
+            "Podaci sa autentifikacionog provajdera (npr. Google)"
+          ]
+        },
+        {
+          "title": "Tehnički podaci",
+          "items": [
+            "IP adresa",
+            "Tip uređaja i browser",
+            "Osnovni logovi aplikacije"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Kako koristimo vaše podatke",
+      "content": [
+        "Vaše podatke koristimo isključivo za:"
+      ],
+      "lists": [
+        {
+          "items": [
+            "Funkcionisanje aplikacije",
+            "Čuvanje i prikaz podataka",
+            "Poboljšanje korisničkog iskustva",
+            "Bezbednost i sprečavanje zloupotrebe"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Čuvanje podataka",
+      "content": [
+        "Vaši podaci se čuvaju u bezbednim bazama podataka dok koristite aplikaciju.",
+        "Možete u svakom trenutku zatražiti brisanje svojih podataka."
+      ]
+    },
+    {
+      "title": "Deljenje podataka",
+      "content": [
+        "Ne delimo vaše podatke osim kada je to zakonski obavezno ili kada koristimo pouzdane servise (npr. hosting, autentifikacija)."
+      ]
+    },
+    {
+      "title": "Kolačići",
+      "content": [
+        "Koristimo kolačiće za osnovnu funkcionalnost aplikacije i održavanje sesije."
+      ]
+    },
+    {
+      "title": "Bezbednost",
+      "content": [
+        "Preduzimamo razumne mere zaštite, ali nijedan sistem nije 100% siguran."
+      ]
+    },
+    {
+      "title": "Vaša prava",
+      "lists": [
+        {
+          "items": [
+            "Pristup svojim podacima",
+            "Ispravku podataka",
+            "Brisanje podataka",
+            "Prestanak korišćenja aplikacije"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Izmene politike",
+      "content": [
+        "Zadržavamo pravo izmene ove politike. Sve izmene će biti objavljene na ovoj stranici."
+      ]
+    },
+    {
+      "title": "Kontakt",
+      "content": [
+        "Sva pitanja možete poslati putem kontakt forme na kontakt stranici."
+      ]
+    }
+  ]
+}

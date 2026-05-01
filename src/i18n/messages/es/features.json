@@ -1,0 +1,18 @@
+{
+  "title": "Construido para familias modernas",
+  "description": "Nuestras aplicacione está diseñadas para ayudarte a gestionar fácilmente las finanzas familiares y alcanzar tus objetivos de ahorro",
+  "items": {
+    "distribution": {
+      "title": "Distribución Inteligente",
+      "desc": "Divide tus ingresos automáticamente en categorías personalizables"
+    },
+    "growth": {
+      "title": "Sigue el Crecimiento",
+      "desc": "Mira cómo crecen tus ahorros con análisis detallados"
+    },
+    "secure": {
+      "title": "Seguro y Privado",
+      "desc": "Tus datos financieros están protegidos y cifrados"
+    }
+  }
+}

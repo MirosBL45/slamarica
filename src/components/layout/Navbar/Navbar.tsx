@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import { useLocale, useTranslations } from "next-intl";
 
@@ -11,7 +11,7 @@ import { Button, Drawer, Dropdown, Grid } from "antd";
 
 import { ActionLink } from "@/components/ui";
 import { route } from "@/utils/route";
-import { SUPPORTED_LOCALES } from "@/lib/types/i18n";
+import { Locale, SUPPORTED_LOCALES } from "@/lib/types/i18n";
 
 import styles from "./Navbar.module.scss";
 
@@ -27,6 +27,7 @@ const FLAGS: Record<string, string> = {
 export default function Navbar() {
   const locale = useLocale();
   const pathname = usePathname();
+  const router = useRouter();
   const { status } = useSession();
 
   const t = useTranslations("navbarLayout");
@@ -48,8 +49,15 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const getLocalePath = (lng: string) => {
-    return `/${lng}${pathname.replace(`/${locale}`, "")}`;
+  // 🔥 NOVA FUNKCIJA (bez reload-a)
+  const changeLanguage = (nextLocale: Locale) => {
+    if (nextLocale === locale) return;
+
+    const pathWithoutLocale = pathname.replace(/^\/(sr|en|de|es)/, "");
+
+    const newPath = `/${nextLocale}${pathWithoutLocale || ""}`;
+
+    router.replace(newPath, { scroll: false });
   };
 
   const navLinks = [
@@ -67,13 +75,10 @@ export default function Navbar() {
     },
   ];
 
+  // 🔥 DROPDOWN BEZ LINKOVA
   const languageItems = SUPPORTED_LOCALES.map((lng) => ({
     key: lng,
-    label: (
-      <Link href={getLocalePath(lng)} onClick={closeDrawer}>
-        {FLAGS[lng]} {lng.toUpperCase()}
-      </Link>
-    ),
+    label: `${FLAGS[lng]} ${lng.toUpperCase()}`,
   }));
 
   const isActive = (href: string) => {
@@ -114,7 +119,14 @@ export default function Navbar() {
             </nav>
 
             <div className={styles.actions}>
-              <Dropdown menu={{ items: languageItems }} trigger={["hover"]} placement="bottomRight">
+              <Dropdown
+                menu={{
+                  items: languageItems,
+                  onClick: ({ key }) => changeLanguage(key as Locale),
+                }}
+                trigger={["click"]}
+                placement="bottomRight"
+              >
                 <Button className={styles.langBtn}>
                   <GlobalOutlined />
                   {FLAGS[locale]} {locale.toUpperCase()}
@@ -168,18 +180,22 @@ export default function Navbar() {
                   </Link>
                 ))}
 
+                {/* 🔥 MOBILE LANGUAGE (BEZ LINK) */}
                 <div className={styles.mobileLanguages}>
                   {SUPPORTED_LOCALES.map((lng, index) => (
-                    <Link
+                    <button
                       key={lng}
-                      href={getLocalePath(lng)}
-                      onClick={closeDrawer}
                       style={{
+                        cursor: "pointer",
                         animationDelay: `${(navLinks.length + index) * 0.05}s`,
+                      }}
+                      onClick={() => {
+                        changeLanguage(lng as Locale);
+                        closeDrawer();
                       }}
                     >
                       {FLAGS[lng]} {lng.toUpperCase()}
-                    </Link>
+                    </button>
                   ))}
                 </div>
 

@@ -1,0 +1,11 @@
+{
+  "title": "Raspodela budžeta za mesec",
+  "personal": "Lični",
+  "bills": "Računi",
+  "travel": "Putovanja",
+  "food": "Hrana",
+  "savings": "Štednja",
+  "total": "Ukupno",
+  "locked": "Budžet je zaključan jer već postoji unos za ovaj mesec.",
+  "investments": "Investicije"
+}

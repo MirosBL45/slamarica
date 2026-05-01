@@ -1,0 +1,18 @@
+{
+  "title": "Financial overview",
+  "monthly": "Monthly income",
+  "calculator": "Try the Calculator",
+  "income": "See how your income can be distributed across smart budget categories",
+  "placeholder": "Enter amount",
+  "total": "Total",
+  "normalize": "Normalize to 100%",
+  "percentages": "Percentages must equal 100%",
+  "categories": {
+    "personal": "Personal Money",
+    "bills": "Bills",
+    "travel": "Travel",
+    "food": "Food",
+    "savings": "House Savings",
+    "investments": "Investments"
+  }
+}

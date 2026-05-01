@@ -1,0 +1,18 @@
+{
+  "title": "Gebaut für moderne Familien",
+  "description": "Unsere Apps wurden entwickelt, um Ihnen die Verwaltung Ihrer Familienfinanzen zu erleichtern und Ihnen beim Erreichen Ihrer Sparziele zu helfen",
+  "items": {
+    "distribution": {
+      "title": "Intelligente Verteilung",
+      "desc": "Teilen Sie Einnahmen automatisch in anpassbare Kategorien auf"
+    },
+    "growth": {
+      "title": "Wachstum verfolgen",
+      "desc": "Beobachten Sie Ihre Ersparnisse mit hilfreichen Einblicken"
+    },
+    "secure": {
+      "title": "Sicher & Privat",
+      "desc": "Ihre Finanzdaten bleiben geschützt und verschlüsselt"
+    }
+  }
+}

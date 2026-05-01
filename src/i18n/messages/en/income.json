@@ -1,0 +1,14 @@
+{
+  "member": "Member",
+  "selectMember": "Select member",
+  "salary": "Salary",
+  "enterAmount": "Enter amount",
+  "greaterThanZero": "Must be greater than 0",
+  "addIncome": "Add income",
+  "duplicate": "Income already exists for this member in this month",
+  "percentageError": "Percentages must equal 100%",
+  "noMembers": "No members",
+  "salaryRequired": "Enter amount",
+  "salaryMustBeNumber": "Enter numbers only",
+  "salaryMustBePositive": "Amount must be greater than 0"
+}

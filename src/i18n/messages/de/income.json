@@ -1,0 +1,14 @@
+{
+  "member": "Mitglied",
+  "selectMember": "Mitglied auswählen",
+  "salary": "Gehalt",
+  "enterAmount": "Betrag eingeben",
+  "greaterThanZero": "Muss größer als 0 sein",
+  "addIncome": "Gehalt hinzufügen",
+  "duplicate": "Für dieses Mitglied existiert bereits ein Eintrag in diesem Monat",
+  "percentageError": "Die Prozentsätze müssen 100% ergeben",
+  "noMembers": "Keine Mitglieder",
+  "salaryRequired": "Betrag eingeben",
+  "salaryMustBeNumber": "Nur eine Zahl eingeben",
+  "salaryMustBePositive": "Der Betrag muss größer als 0 sein"
+}

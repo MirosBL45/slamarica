@@ -1,0 +1,11 @@
+{
+  "title": "Monatliche Budgetverteilung",
+  "personal": "Persönlich",
+  "bills": "Rechnungen",
+  "travel": "Reisen",
+  "food": "Lebensmittel",
+  "savings": "Ersparnisse",
+  "total": "Gesamt",
+  "locked": "Das Budget ist gesperrt, da für diesen Monat bereits ein Eintrag existiert.",
+  "investments": "Investitionen"
+}

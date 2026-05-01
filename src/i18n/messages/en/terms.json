@@ -1,0 +1,92 @@
+{
+  "title": "Terms of Service",
+  "lastUpdated": "Last updated: March 23, 2026",
+  "intro": "Welcome to the Slamarica application.",
+  "description": "By using this application, you agree to the following terms.",
+  "sections": [
+    {
+      "title": "Use of the application",
+      "content": [
+        "Slamarica is designed for personal financial management.",
+        "You may use the application only for lawful purposes."
+      ],
+      "lists": [
+        {
+          "items": [
+            "Entering and tracking financial data",
+            "Organizing expenses and income",
+            "Using all available application features"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Prohibited activities",
+      "content": [
+        "Users must not:"
+      ],
+      "lists": [
+        {
+          "items": [
+            "Use the application for illegal purposes",
+            "Attempt unauthorized access",
+            "Disrupt the application",
+            "Abuse data or functionality"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "User accounts",
+      "content": [
+        "You are responsible for maintaining the security of your account.",
+        "All activities under your account are your responsibility."
+      ]
+    },
+    {
+      "title": "Data and responsibility",
+      "content": [
+        "Slamarica does not guarantee the accuracy of financial reports.",
+        "You are responsible for the data you enter."
+      ]
+    },
+    {
+      "title": "Availability",
+      "content": [
+        "We do not guarantee uninterrupted or error-free availability."
+      ]
+    },
+    {
+      "title": "Changes to the application",
+      "content": [
+        "We may modify or discontinue features at any time."
+      ]
+    },
+    {
+      "title": "Limitation of liability",
+      "content": [
+        "Slamarica is not liable for any financial or other damages."
+      ]
+    },
+    {
+      "title": "Termination",
+      "content": [
+        "You may stop using the application at any time.",
+        "We may suspend access for violations."
+      ]
+    },
+    {
+      "title": "Changes to terms",
+      "content": [
+        "These terms may be updated at any time.",
+        "Continued use means acceptance of changes."
+      ]
+    },
+    {
+      "title": "Contact",
+      "content": [
+        "You can send all your questions via the contact form on the contact page."
+      ]
+    }
+  ]
+}

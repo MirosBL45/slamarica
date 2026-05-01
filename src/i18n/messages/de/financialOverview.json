@@ -1,0 +1,18 @@
+{
+  "title": "Finanzübersicht",
+  "monthly": "Monatliches Einkommen",
+  "calculator": "Rechner testen",
+  "income": "Erfahren Sie, wie Sie Ihr Einkommen auf sinnvolle Budgetkategorien verteilen können",
+  "placeholder": "Betrag eingeben",
+  "total": "Gesamt",
+  "normalize": "Auf 100% anpassen",
+  "percentages": "Prozentsätze müssen 100% ergeben",
+  "categories": {
+    "personal": "Persönliches Geld",
+    "bills": "Rechnungen",
+    "travel": "Reisen",
+    "food": "Lebensmittel",
+    "savings": "Haushaltsersparnisse",
+    "investments": "Investitionen"
+  }
+}
