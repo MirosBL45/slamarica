@@ -16,7 +16,7 @@ export default function ForgotPasswordPage() {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
-  const handleReset = async () => {
+  async function handleReset() {
     setError("");
     setSuccess("");
 
@@ -36,7 +36,7 @@ export default function ForgotPasswordPage() {
     }
 
     setSuccess("Check your email for reset link");
-  };
+  }
 
   return (
     <div className={styles.page}>

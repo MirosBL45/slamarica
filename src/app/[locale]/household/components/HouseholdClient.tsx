@@ -23,7 +23,7 @@ export default function HouseholdClient() {
   const { membersStore, householdStore, monthlyIncomeStore } = useStores();
 
   useEffect(() => {
-    const load = async () => {
+    async function load() {
       try {
         await householdStore.loadFromServer();
         await monthlyIncomeStore.loadIncomes();
@@ -32,7 +32,7 @@ export default function HouseholdClient() {
         // fallback → ništa ne radiš
         // već imaš podatke iz localStorage (hydrate)
       }
-    };
+    }
 
     load();
   }, [householdStore, monthlyIncomeStore, membersStore]);
