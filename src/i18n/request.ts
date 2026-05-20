@@ -4,6 +4,7 @@ import { getRequestConfig } from "next-intl/server";
 import articles from "./messages/sr/articles.json";
 import articlesLayout from "./messages/sr/articlesLayout.json";
 import budget from "./messages/sr/budget.json";
+import budgetChart from "./messages/sr/budgetChart.json";
 import common from "./messages/sr/common.json";
 import cta from "./messages/sr/cta.json";
 import features from "./messages/sr/features.json";
@@ -48,6 +49,7 @@ export type Messages = {
   footer: typeof footer;
   login: typeof login;
   register: typeof register;
+  budgetChart: typeof budgetChart;
 };
 
 export default getRequestConfig(async ({ locale }) => {
@@ -79,6 +81,7 @@ export default getRequestConfig(async ({ locale }) => {
       footer: (await import(`./messages/${resolvedLocale}/footer.json`)).default,
       login: (await import(`./messages/${resolvedLocale}/login.json`)).default,
       register: (await import(`./messages/${resolvedLocale}/register.json`)).default,
+      budgetChart: (await import(`./messages/${resolvedLocale}/budgetChart.json`)).default,
     } as Messages,
   };
 });
