@@ -20,7 +20,7 @@ export default function RegisterPage() {
 
   const t = useTranslations("register");
 
-  const handleRegister = async () => {
+  async function handleRegister() {
     setError("");
     setSuccess("");
 
@@ -44,7 +44,7 @@ export default function RegisterPage() {
     }
 
     setSuccess("Check your email to verify your account");
-  };
+  }
 
   return (
     <div className={styles.page}>

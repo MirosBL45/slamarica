@@ -30,7 +30,7 @@ const SettingsClient = () => {
   const { householdStore, monthlyIncomeStore, budgetStore } = useStores();
 
   useEffect(() => {
-    const load = async () => {
+    async function load() {
       try {
         await householdStore.loadFromServer();
         await monthlyIncomeStore.loadIncomes();
@@ -73,7 +73,7 @@ const SettingsClient = () => {
 
         setLocalPools(initial);
       }
-    };
+    }
 
     load();
   }, [budgetStore, householdStore, monthlyIncomeStore, month]);

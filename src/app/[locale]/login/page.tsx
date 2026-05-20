@@ -32,13 +32,13 @@ export default function LoginPage() {
     }
   }, [status, locale, router]);
 
-  const handleGoogleLogin = async () => {
+  async function handleGoogleLogin() {
     await signIn("google", {
       callbackUrl: `/${locale}/household`,
     });
-  };
+  }
 
-  const handleCredentialsLogin = async () => {
+  async function handleCredentialsLogin() {
     setError("");
 
     const result = await signIn("credentials", {
@@ -53,7 +53,7 @@ export default function LoginPage() {
     }
 
     router.push(`/${locale}/household`);
-  };
+  }
 
   if (status === "loading") {
     return <Spinner text="Loging loading..." />;

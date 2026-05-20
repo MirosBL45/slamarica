@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+
 import { SUPPORTED_LOCALES } from "@/lib/types/i18n";
 
 const DEFAULT_LOCALE = SUPPORTED_LOCALES[0];
