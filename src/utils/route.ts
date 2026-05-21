@@ -14,6 +14,7 @@ export const route = (locale: string) => ({
   household: {
     index: withLocale(locale, routes.household.index),
     settings: withLocale(locale, routes.household.settings),
+    analytics: withLocale(locale, routes.household.analytics),
     // members: withLocale(locale, routes.household.members),
     // budgets: withLocale(locale, routes.household.budgets),
   },

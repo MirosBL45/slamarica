@@ -1,5 +1,6 @@
 import { getRequestConfig } from "next-intl/server";
 
+import analytics from "./messages/sr/analytics.json";
 // ✅ IMPORT ZA TYPE
 import articles from "./messages/sr/articles.json";
 import articlesLayout from "./messages/sr/articlesLayout.json";
@@ -50,6 +51,7 @@ export type Messages = {
   login: typeof login;
   register: typeof register;
   budgetChart: typeof budgetChart;
+  analytics: typeof analytics;
 };
 
 export default getRequestConfig(async ({ locale }) => {
@@ -82,6 +84,7 @@ export default getRequestConfig(async ({ locale }) => {
       login: (await import(`./messages/${resolvedLocale}/login.json`)).default,
       register: (await import(`./messages/${resolvedLocale}/register.json`)).default,
       budgetChart: (await import(`./messages/${resolvedLocale}/budgetChart.json`)).default,
+      analytics: (await import(`./messages/${resolvedLocale}/analytics.json`)).default,
     } as Messages,
   };
 });

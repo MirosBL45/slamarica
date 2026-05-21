@@ -66,6 +66,10 @@ export default async function HouseholdLayout({
           <Link style={{ color: "green" }} title={t("mainTitle")} href={r.household.index}>
             {t("main")}
           </Link>
+          {t("or")}{" "}
+          <Link style={{ color: "green" }} title={t("mainTitle")} href={r.household.analytics}>
+            analitika
+          </Link>
           .
         </p>
       </header>

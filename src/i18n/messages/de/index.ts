@@ -1,3 +1,4 @@
+import analytics from "./analytics.json";
 import articles from "./articles.json";
 import articlesLayout from "./articlesLayout.json";
 import budget from "./budget.json";
@@ -46,6 +47,7 @@ const de = {
   login,
   register,
   budgetChart,
+  analytics,
 };
 
 export default de;
