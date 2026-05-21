@@ -4,5 +4,13 @@
     "totalIncome": "Ukupan prihod",
     "biggestExpense": "Najveći trošak",
     "savingAndInvestments": "Štednja + Investicije",
-    "personalFund": "Lični fond"
+    "personalFund": "Lični fond",
+    "personal": "Lični",
+    "bills": "Računi",
+    "travel": "Putovanja",
+    "food": "Hrana",
+    "savings": "Štednja",
+    "investments": "Investicije",
+    "previousMonth": "u odnosu na prošli mesec",
+    "ofIncome": "prihoda"
 }

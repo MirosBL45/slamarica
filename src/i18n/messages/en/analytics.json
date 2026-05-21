@@ -4,5 +4,13 @@
     "totalIncome": "Total Income",
     "biggestExpense": "Biggest Expense",
     "savingAndInvestments": "Savings + Investments",
-    "personalFund": "Personal Fund"
+    "personalFund": "Personal Fund",
+    "personal": "Personal",
+    "bills": "Bills",
+    "travel": "Travel",
+    "food": "Food",
+    "savings": "Savings",
+    "investments": "Investments",
+    "previousMonth": "vs previous month",
+    "ofIncome": "of income"
 }

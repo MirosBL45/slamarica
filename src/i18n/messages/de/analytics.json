@@ -4,5 +4,13 @@
     "totalIncome": "Gesamteinnahmen",
     "biggestExpense": "Größte Ausgabe",
     "savingAndInvestments": "Ersparnisse + Investitionen",
-    "personalFund": "Persönlicher Fonds"
+    "personalFund": "Persönlicher Fonds",
+    "personal": "Persönliches",
+    "bills": "Rechnungen",
+    "travel": "Reisen",
+    "food": "Lebensmittel",
+    "savings": "Ersparnisse",
+    "investments": "Investitionen",
+    "previousMonth": "im Vergleich zum Vormonat",
+    "ofIncome": "Einkommen"
 }

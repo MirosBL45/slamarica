@@ -67,3 +67,20 @@
     font-size: 32px;
   }
 }
+
+.summaryCard {
+  p {
+    margin-top: 12px;
+    margin-bottom: 0;
+
+    color: #777;
+  }
+}
+
+.positive {
+  color: #52c41a !important;
+}
+
+.negative {
+  color: #ff4d4f !important;
+}
