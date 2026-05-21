@@ -12,5 +12,12 @@
     "savings": "Štednja",
     "investments": "Investicije",
     "previousMonth": "u odnosu na prošli mesec",
-    "ofIncome": "prihoda"
+    "ofIncome": "prihoda",
+    "incomeVsSpending": "Prihod vs Potrošnja",
+    "last4Months": "Prikaz za poslednja 4 meseca",
+    "notEnoughData": "Prikaz će biti dostupan kada budu uneti podaci za najmanje 4 meseca.",
+    "income": "Prihod",
+    "spending": "Potrošnja",
+    "budgetDistribution": "Raspodela budžeta",
+    "categoryDistribution": "Udeo kategorija za izabrani mesec"
 }

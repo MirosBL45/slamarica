@@ -12,5 +12,12 @@
     "savings": "Ersparnisse",
     "investments": "Investitionen",
     "previousMonth": "im Vergleich zum Vormonat",
-    "ofIncome": "Einkommen"
+    "ofIncome": "Einkommen",
+    "incomeVsSpending": "Einnahmen vs. Ausgaben",
+    "last4Months": "Anzeige für die letzten 4 Monate",
+    "notEnoughData": "Die Anzeige ist verfügbar, sobald Daten für mindestens 4 Monate eingegeben wurden.",
+    "income": "Einnahmen",
+    "spending": "Ausgaben",
+    "budgetDistribution": "Budgetverteilung",
+    "categoryDistribution": "Kategorieanteil für den ausgewählten Monat"
 }

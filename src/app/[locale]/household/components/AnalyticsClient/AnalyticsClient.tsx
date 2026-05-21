@@ -1,11 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
-import { Card, Select } from "antd";
+import { Select } from "antd";
 import { observer } from "mobx-react-lite";
 
+import BudgetDonutChart from "@/components/pages/analytics/BudgetDonutChart/BudgetDonutChart";
+import IncomeExpenseChart from "@/components/pages/analytics/IncomeExpenseChart/IncomeExpenseChart";
+import SummaryCards from "@/components/pages/analytics/SummaryCards/SummaryCards";
 import { useStores } from "@/stores/StoreContext";
 import { Locale, LOCALE_FORMAT_MAP } from "@/lib/types/i18n";
 import { BudgetPoolType } from "@/types/budget.types";
@@ -35,12 +38,6 @@ const AnalyticsClient = observer(() => {
       year: "numeric",
     }).format(new Date(Number(year), Number(monthNumber) - 1));
   };
-
-  // const totalIncome = useMemo(() => {
-  //   return monthlyIncomeStore
-  //     .getByMonth(selectedMonth)
-  //     .reduce((sum, income) => sum + income.salary, 0);
-  // }, [selectedMonth]);
 
   // helpers
   const currentMonthIncomes = monthlyIncomeStore.getByMonth(selectedMonth);
@@ -112,8 +109,48 @@ const AnalyticsClient = observer(() => {
     }
   };
 
+  const trendMonths = monthlyIncomeStore.getLastMonths(4);
+
+  const trendData = useMemo(() => {
+    return trendMonths.map((month) => {
+      const totals = monthlyIncomeStore.getTotalsByMonth(month);
+
+      const income = monthlyIncomeStore
+        .getByMonth(month)
+        .reduce((sum, income) => sum + income.salary, 0);
+
+      const spending =
+        totals[BudgetPoolType.BILLS] +
+        totals[BudgetPoolType.TRAVEL] +
+        totals[BudgetPoolType.FOOD] +
+        totals[BudgetPoolType.PERSONAL];
+
+      return {
+        month: formatMonth(month),
+
+        income,
+
+        spending,
+      };
+    });
+  }, [trendMonths, locale]);
+
+  const donutData = useMemo(() => {
+    const total = Object.values(currentMonthTotals).reduce((sum, value) => sum + value, 0);
+
+    return Object.entries(currentMonthTotals).map(([key, value]) => ({
+      type: key as BudgetPoolType,
+
+      label: getBudgetLabel(key as BudgetPoolType),
+
+      value,
+
+      percentage: total > 0 ? Number(((value / total) * 100).toFixed(1)) : 0,
+    }));
+  }, [currentMonthTotals]);
+
   return (
-    <div className={styles.page}>
+    <section className={styles.page}>
       {/* HEADER */}
       <div className={styles.header}>
         <div>
@@ -133,58 +170,27 @@ const AnalyticsClient = observer(() => {
         />
       </div>
 
-      {/* GRID */}
-      <div className={styles.grid}>
-        {/* TOTAL INCOME */}
-        <Card className={styles.summaryCard}>
-          <span>{t("totalIncome")}</span>
+      <SummaryCards
+        totalIncome={totalIncome}
+        incomeDifferencePercent={incomeDifferencePercent}
+        biggestExpenseType={biggestExpenseType}
+        biggestExpenseValue={biggestExpenseValue}
+        totalSpending={totalSpending}
+        savingsAndInvestments={savingsAndInvestments}
+        personalFund={personalFund}
+        getBudgetLabel={getBudgetLabel}
+      />
 
-          <h2>{totalIncome.toLocaleString()}</h2>
+      <div className={styles.secondRow}>
+        <div className={styles.lineChartCol}>
+          <IncomeExpenseChart trendMonths={trendMonths} trendData={trendData} />
+        </div>
 
-          {incomeDifferencePercent && (
-            <p className={Number(incomeDifferencePercent) >= 0 ? styles.positive : styles.negative}>
-              {incomeDifferencePercent > 0 ? "+" : ""}
-              {incomeDifferencePercent}% {t("previousMonth")}
-            </p>
-          )}
-        </Card>
-
-        {/* BIGGEST EXPENSE */}
-        <Card className={styles.summaryCard}>
-          <span>{t("biggestExpense")}</span>
-
-          <h2>{getBudgetLabel(biggestExpenseType)}</h2>
-
-          <p>
-            {biggestExpenseValue.toLocaleString()} {" -> "}
-            {totalSpending > 0 ? ((biggestExpenseValue / totalSpending) * 100).toFixed(1) : 0}%
-          </p>
-        </Card>
-
-        {/* SAVINGS + INVESTMENTS */}
-        <Card className={styles.summaryCard}>
-          <span>{t("savingAndInvestments")}</span>
-
-          <h2>{savingsAndInvestments.toLocaleString()}</h2>
-
-          <p>
-            {totalIncome > 0 ? ((savingsAndInvestments / totalIncome) * 100).toFixed(1) : 0}%{" "}
-            {t("ofIncome")}
-          </p>
-        </Card>
-
-        {/* PERSONAL FUND */}
-        <Card className={styles.summaryCard}>
-          <span>{t("personalFund")}</span>
-
-          <h2>{personalFund.toLocaleString()}</h2>
-
-          <p>
-            {totalIncome > 0 ? ((personalFund / totalIncome) * 100).toFixed(1) : 0}% {t("ofIncome")}
-          </p>
-        </Card>
+        <div className={styles.donutChartCol}>
+          <BudgetDonutChart donutData={donutData} />
+        </div>
       </div>
-    </div>
+    </section>
   );
 });
 
