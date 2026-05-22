@@ -7,6 +7,9 @@ import { Select } from "antd";
 import { observer } from "mobx-react-lite";
 
 import BudgetDonutChart from "@/components/pages/analytics/BudgetDonutChart/BudgetDonutChart";
+import BudgetRadarChart from "@/components/pages/analytics/BudgetRadarChart/BudgetRadarChart";
+import CategoryBarChart from "@/components/pages/analytics/CategoryBarChart/CategoryBarChart";
+import HouseholdContributionChart from "@/components/pages/analytics/HouseholdContributionChart/HouseholdContributionChart";
 import IncomeExpenseChart from "@/components/pages/analytics/IncomeExpenseChart/IncomeExpenseChart";
 import SummaryCards from "@/components/pages/analytics/SummaryCards/SummaryCards";
 import { useStores } from "@/stores/StoreContext";
@@ -16,7 +19,7 @@ import { BudgetPoolType } from "@/types/budget.types";
 import styles from "./AnalyticsClient.module.scss";
 
 const AnalyticsClient = observer(() => {
-  const { monthlyIncomeStore } = useStores();
+  const { monthlyIncomeStore, householdStore } = useStores();
 
   const t = useTranslations("analytics");
 
@@ -149,6 +152,43 @@ const AnalyticsClient = observer(() => {
     }));
   }, [currentMonthTotals]);
 
+  const categoryData = useMemo(() => {
+    const total = Object.values(currentMonthTotals).reduce((sum, value) => sum + value, 0);
+
+    return Object.entries(currentMonthTotals).map(([key, value]) => ({
+      type: key as BudgetPoolType,
+
+      label: getBudgetLabel(key as BudgetPoolType),
+
+      value,
+
+      percentage: total > 0 ? Number(((value / total) * 100).toFixed(1)) : 0,
+    }));
+  }, [currentMonthTotals]);
+
+  const radarData = useMemo(() => {
+    return Object.entries(currentMonthTotals).map(([key, value]) => ({
+      category: getBudgetLabel(key as BudgetPoolType),
+
+      value,
+    }));
+  }, [currentMonthTotals]);
+
+  const contributionData = useMemo(() => {
+    return currentMonthIncomes.map((income) => {
+      const member = householdStore.activeHousehold?.members.find((m) => m.id === income.memberId);
+
+      const value =
+        income.breakdown[BudgetPoolType.SAVINGS] + income.breakdown[BudgetPoolType.INVESTMENTS];
+
+      return {
+        name: member?.name || "Unknown",
+
+        value,
+      };
+    });
+  }, [currentMonthIncomes, householdStore.activeHousehold]);
+
   return (
     <section className={styles.page}>
       {/* HEADER */}
@@ -188,6 +228,20 @@ const AnalyticsClient = observer(() => {
 
         <div className={styles.donutChartCol}>
           <BudgetDonutChart donutData={donutData} />
+        </div>
+      </div>
+
+      <div className={styles.bottomChartsRow}>
+        <div className={styles.categoryChartCol}>
+          <CategoryBarChart categoryData={categoryData} />
+        </div>
+
+        <div className={styles.radarCol}>
+          <BudgetRadarChart radarData={radarData} />
+        </div>
+
+        <div className={styles.contributionCol}>
+          <HouseholdContributionChart contributionData={contributionData} />
         </div>
       </div>
     </section>

@@ -19,5 +19,12 @@
     "income": "Income",
     "spending": "Spending",
     "budgetDistribution": "Budget Distribution",
-    "categoryDistribution": "Category share for the selected month"
+    "categoryDistribution": "Category share for the selected month",
+    "categoryOverview": "Category Overview",
+    "allCategoriesCurrentMonth": "All categories for the selected month",
+    "budgetBalance": "Budget Balance",
+    "budgetBalanceDescription": "Distribution of all categories",
+    "householdContribution": "Member contribution",
+    "savingsAndInvestmentsByMember": "Savings + investments per member",
+    "amount": "amount"
 }

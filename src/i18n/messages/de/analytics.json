@@ -19,5 +19,12 @@
     "income": "Einnahmen",
     "spending": "Ausgaben",
     "budgetDistribution": "Budgetverteilung",
-    "categoryDistribution": "Kategorieanteil für den ausgewählten Monat"
+    "categoryDistribution": "Kategorieanteil für den ausgewählten Monat",
+    "categoryOverview": "Kategorieübersicht",
+    "allCategoriesCurrentMonth": "Alle Kategorien für den ausgewählten Monat",
+    "budgetBalance": "Budgetsaldo",
+    "budgetBalanceDescription": "Verteilung aller Kategorien",
+    "householdContribution": "Beitrag der Mitglieder",
+    "savingsAndInvestmentsByMember": "Ersparnisse + Investitionen pro Mitglied",
+    "amount": "betrag"
 }

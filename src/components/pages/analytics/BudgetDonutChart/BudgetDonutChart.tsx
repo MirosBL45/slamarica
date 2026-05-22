@@ -48,8 +48,10 @@ const BudgetDonutChart = ({ donutData }: Props) => {
                 data={donutData}
                 dataKey="value"
                 nameKey="label"
-                innerRadius={75}
-                outerRadius={110}
+                // innerRadius={75}
+                // outerRadius={110}
+                innerRadius={65}
+                outerRadius={95}
                 paddingAngle={2}
               >
                 {donutData.map((entry) => (

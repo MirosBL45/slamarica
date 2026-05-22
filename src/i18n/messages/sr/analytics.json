@@ -19,5 +19,12 @@
     "income": "Prihod",
     "spending": "Potrošnja",
     "budgetDistribution": "Raspodela budžeta",
-    "categoryDistribution": "Udeo kategorija za izabrani mesec"
+    "categoryDistribution": "Udeo kategorija za izabrani mesec",
+    "categoryOverview": "Pregled kategorija",
+    "allCategoriesCurrentMonth": "Sve kategorije za izabrani mesec",
+    "budgetBalance": "Balans budžeta",
+    "budgetBalanceDescription": "Raspodela svih kategorija",
+    "householdContribution": "Doprinos članova",
+    "savingsAndInvestmentsByMember": "Štednja + investicije po članu",
+    "amount": "iznos"
 }

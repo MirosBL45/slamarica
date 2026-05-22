@@ -1,0 +1,27 @@
+.chartCard {
+  border-radius: 24px;
+
+  height: 100%;
+}
+
+.cardHeader {
+  margin-bottom: 24px;
+
+  h3 {
+    margin: 0;
+
+    font-size: 22px;
+  }
+
+  p {
+    margin-top: 4px;
+
+    color: #777;
+  }
+}
+
+.chartWrapper {
+  width: 100%;
+
+  height: 360px;
+}

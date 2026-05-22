@@ -53,3 +53,41 @@
 .donutChartCol {
   width: 100%;
 }
+
+.bottomChartsRow {
+  margin-top: 24px;
+
+  display: grid;
+
+  grid-template-columns: 1.4fr 1fr 1fr;
+
+  gap: 24px;
+
+  @include down($bp-xl) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include down($bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.categoryChartCol {
+  @include down($bp-xl) {
+    grid-column: span 2;
+  }
+
+  @include down($bp-md) {
+    grid-column: span 1;
+  }
+}
+
+.radarCol,
+.contributionCol {
+  width: 100%;
+}
+
+// .lineChartCol,
+// .donutChartCol {
+//   display: flex;
+// }
