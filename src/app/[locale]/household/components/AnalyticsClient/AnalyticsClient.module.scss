@@ -1,0 +1,93 @@
+@use "@/styles/breakpoints" as *;
+
+.page {
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+
+  margin-bottom: 24px;
+
+  @include down($bp-md) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 32px;
+  }
+
+  p {
+    margin-top: 4px;
+    color: #777;
+  }
+}
+
+.select {
+  min-width: 240px;
+
+  @include down($bp-md) {
+    width: 100%;
+  }
+}
+
+.secondRow {
+  margin-top: 24px;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+
+  gap: 24px;
+
+  @include down($bp-lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lineChartCol,
+.donutChartCol {
+  width: 100%;
+}
+
+.bottomChartsRow {
+  margin-top: 24px;
+
+  display: grid;
+
+  grid-template-columns: 1.4fr 1fr 1fr;
+
+  gap: 24px;
+
+  @include down($bp-xl) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include down($bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.categoryChartCol {
+  @include down($bp-xl) {
+    grid-column: span 2;
+  }
+
+  @include down($bp-md) {
+    grid-column: span 1;
+  }
+}
+
+.radarCol,
+.contributionCol {
+  width: 100%;
+}
+
+// .lineChartCol,
+// .donutChartCol {
+//   display: flex;
+// }

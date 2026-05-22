@@ -4,7 +4,7 @@ export const routes = {
   household: {
     index: "/household",
     settings: "/household/settings",
-    // members: "/household/members",
+    analytics: "/household/analytics",
     // budgets: "/household/budgets",
   },
 

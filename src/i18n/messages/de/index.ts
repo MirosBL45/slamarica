@@ -1,6 +1,8 @@
+import analytics from "./analytics.json";
 import articles from "./articles.json";
 import articlesLayout from "./articlesLayout.json";
 import budget from "./budget.json";
+import budgetChart from "./budgetChart.json";
 import common from "./common.json";
 import cta from "./cta.json";
 import features from "./features.json";
@@ -44,6 +46,8 @@ const de = {
   footer,
   login,
   register,
+  budgetChart,
+  analytics,
 };
 
 export default de;

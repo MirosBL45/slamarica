@@ -16,3 +16,10 @@ export interface PageProps {
 export const getAlternativeLanguages = (path: string) => {
   return Object.fromEntries(SUPPORTED_LOCALES.map((lang) => [lang, `/${lang}${path}`]));
 };
+
+export const LOCALE_FORMAT_MAP: Record<Locale, string> = {
+  sr: "sr-Latn-RS",
+  en: "en-US",
+  de: "de-DE",
+  es: "es-ES",
+};
